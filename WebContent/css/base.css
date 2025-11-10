@@ -1,0 +1,145 @@
+/* ===== ベーススタイル ===== */
+body {
+  margin: 0;
+  font-family: "Hiragino Sans", "Meiryo", sans-serif;
+  background-color: #f7f7f7;
+}
+
+/* ===== ヘッダー ===== */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #333;
+  color: #fff;
+  position: relative;
+}
+
+header h1 {
+  font-size: 1.5rem;
+}
+
+/* ===== ハンバーガー ===== */
+.hamburger {
+  width: 30px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hamburger span {
+  display: block;
+  height: 3px;
+  background-color: white;
+  margin: 6px 0;
+  transition: 0.3s;
+}
+
+/* 開いたときのアニメーション */
+.hamburger.open span:nth-child(1) {
+  transform: rotate(45deg) translateY(8px);
+}
+.hamburger.open span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.open span:nth-child(3) {
+  transform: rotate(-45deg) translateY(-8px);
+}
+
+/* ===== ナビゲーション ===== */
+nav {
+  display: none;
+  flex-direction: column;
+  background-color: #444;
+  position: absolute;
+  top: 60px;
+  right: 0;
+  width: 180px;
+  border-radius: 0 0 0 10px;
+  z-index: 1000;
+}
+
+nav.active {
+  display: flex;
+}
+
+nav a {
+  color: white;
+  padding: 12px;
+  text-decoration: none;
+  border-bottom: 1px solid #555;
+}
+
+nav a:hover {
+  background-color: #555;
+}
+
+/* ===== メインメニュー ===== */
+.mainmenu ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 50px;
+  text-align: center;
+}
+
+.mainmenu li {
+  margin: 15px 0;
+  background-color: #4CAF50;
+}
+
+.mainmenu a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 2rem;
+  display: block;
+  padding: 15px 0;
+}
+
+/* ===== ログアウト画面 ===== */
+.logout-container {
+  text-align: center;
+  margin-top: 100px;
+}
+
+.logout-buttons {
+  margin-top: 30px;
+}
+
+.btn {
+  display: inline-block;
+  text-decoration: none;
+  font-size: 1.1rem;
+  padding: 12px 30px;
+  border-radius: 8px;
+  margin: 10px;
+  transition: 0.3s;
+}
+
+.btn.yes {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.btn.no {
+  background-color: #ccc;
+  color: black;
+}
+
+.btn:hover {
+  opacity: 0.8;
+}
+
+/* ===== スマホ対応 ===== */
+@media (max-width: 600px) {
+  header h1 {
+    font-size: 1.2rem;
+  }
+  .logout-container h1 {
+    font-size: 1.3rem;
+  }
+  .btn {
+    width: 70vw;
+  }
+}
