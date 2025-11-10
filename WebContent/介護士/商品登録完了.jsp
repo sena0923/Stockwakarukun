@@ -1,5 +1,4 @@
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
-<%@ include file="base.jsp" %>
 
 <!DOCTYPE html>
 <html lang="ja">
@@ -43,6 +42,6 @@
 </head>
 <body>
   <h1>商品の登録が完了しました</h1>
-  <a href="EC管理.html">管理一覧へ</a>
+  <a href="EC管理.jsp">管理一覧へ</a>
 </body>
 </html>

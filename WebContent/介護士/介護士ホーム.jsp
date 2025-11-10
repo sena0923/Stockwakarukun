@@ -1,5 +1,4 @@
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
-<%@ include file="base.jsp" %>
 
 <!DOCTYPE html>
 <html>
@@ -47,8 +46,8 @@
     <h1>ストックわかるくん(介護士用)</h1>
 
     <div class="menu">
-        <a href="MYP.html">マイページ</a>
-        <a href="入居者.html">入居者一覧</a>
+        <a href="Mypage.jsp">マイページ</a>
+        <a href="入居者一覧.jsp">入居者一覧</a>
     </div>
 </body>
 </html>

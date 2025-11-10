@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
-<%@ include file="base.jsp" %>
+
 
 <!DOCTYPE html>
 <html>
@@ -113,7 +113,7 @@
         <!-- 入力欄のすぐ下に配置 -->
         <div class="button-group">
             <button class="btn" type="submit">ログイン</button>
-            <a href="介護士新規登録.html" class="btn">新規登録画面へ</a>
+            <a href="介護士新規登録.jsp" class="btn">新規登録画面へ</a>
         </div>
     </form>
 

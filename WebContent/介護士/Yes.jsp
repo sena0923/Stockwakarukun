@@ -1,18 +1,15 @@
-<%@ page contentType="text/html; charset=UTF-8" language="java" %>
-<%@ include file="base.jsp" %>
-
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="utf-8">
-<title>介護士情報</title>
+<meta charset="UTF-8">
+<title>ログアウト完了</title>
 <style>
   html, body {
     height: 100%;
     margin: 0;
   }
 
-  /* 中央配置 */
+  /* 画面中央に配置 */
   body {
     display: flex;
     flex-direction: column;
@@ -26,48 +23,23 @@
     margin-bottom: 20px;
   }
 
-  p {
-    margin: 5px 0;
-    font-size: 18px;
-  }
-
   a {
-    text-decoration: none;
-    background: #b8d200;
-    color: #000;
-    border-radius: 0.25em;
-    padding: 1em 2em 0.8em;
-    line-height: 1;
     display: inline-block;
+    padding: 10px 20px;
+    text-decoration: none;
+    background-color: #b8d200;
+    color: #000;
+    border-radius: 6px;
     font-weight: bold;
-    margin-top: 10px;
   }
 
   a:hover {
-    background: #a5bf00;
-  }
-
-  /* 戻るボタンのスタイル */
-  .back-button {
-    background: #ccc;
-    color: #000;
-    margin-top: 30px;
-  }
-
-  .back-button:hover {
-    background: #999;
+    background-color: #a5bf00;
   }
 </style>
 </head>
-
-
 <body>
-  <h1>介護士情報</h1>
-  <p>名前 | ○○</p>
-  <p>職員番号 | 1234</p>
-
-  <a href="変更.html">情報更新</a>
-  <a href="logout.html">ログアウト</a>
-  <a href="home.html" class="back-button">戻る</a>
+  <h1>ログアウトが完了しました</h1>
+  <a href="介護士ログイン.jsp">ログイン画面へ</a>
 </body>
 </html>

@@ -5,8 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import bean.CaregiverLogin;
-
 public class CaregiverLoginDao extends Dao {
 
     /**
@@ -16,8 +14,8 @@ public class CaregiverLoginDao extends Dao {
      * @return 介護士情報:存在しない場合はnull
      * @throws Exception
      */
-    public CaregiverLogin get(String staffId) throws Exception {
-        CaregiverLogin caregiver = null;
+    public CaregiverLoginDao get(String staffId) throws Exception {
+        CaregiverLoginDao caregiver = null;
 
         try (Connection connection = getConnection();
              PreparedStatement statement = connection.prepareStatement(
@@ -27,7 +25,7 @@ public class CaregiverLoginDao extends Dao {
 
             try (ResultSet resultSet = statement.executeQuery()) {
                 if (resultSet.next()) {
-                    caregiver = new CaregiverLogin();
+                    caregiver = new CaregiverLoginDao();
                     caregiver.setName(resultSet.getString("name"));
                     caregiver.setStaffId(resultSet.getString("staffid"));
                     caregiver.setFacilityPassword(resultSet.getString("facilitypassword"));
@@ -50,8 +48,8 @@ public class CaregiverLoginDao extends Dao {
      * @return 認証成功:介護士クラス, 失敗:null
      * @throws Exception
      */
-    public CaregiverLogin login(String staffId, String password) throws Exception {
-        CaregiverLogin caregiver = get(staffId);
+    public CaregiverLoginDao login(String staffId, String password) throws Exception {
+        CaregiverLoginDao caregiver = get(staffId);
 
         if (caregiver == null || !caregiver.getPassword().equals(password)) {
             return null;

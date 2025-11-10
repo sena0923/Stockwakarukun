@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
-<%@ include file="base.jsp" %>
+
 
 <!DOCTYPE html>
 <html lang="ja">
@@ -71,13 +71,13 @@
     <h1>△△さんの詳細ページ</h1>
 
     <div class="menu">
-      <a href="在庫.html">在庫情報</a>
-      <a href="連絡帳.html">連絡帳</a>
-      <a href="PR.html">プロフィール</a>
-      <a href="気分.html">気分管理</a>
+      <a href="在庫.jsp">在庫情報</a>
+      <a href="連絡帳.jsp">連絡帳</a>
+      <a href="PR.jsp">プロフィール</a>
+      <a href="気分.jsp">気分管理</a>
     </div>
 
-    <a class="back-link" href="入居者.html">戻る</a>
+    <a class="back-link" href="入居者一覧.jsp">戻る</a>
   </div>
 </body>
 </html>

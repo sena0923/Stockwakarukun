@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
-<%@ include file="base.jsp" %>
+
 
 <!DOCTYPE html>
 <html lang="ja">
@@ -45,8 +45,8 @@
 <body>
   <h1>ログアウトしますか</h1>
   <div>
-    <a href="Yes.html">はい</a>
-    <a href="MYP.html">いいえ</a>
+    <a href="Yes.jsp">はい</a>
+    <a href="MYP.jsp">いいえ</a>
   </div>
 </body>
 </html>
