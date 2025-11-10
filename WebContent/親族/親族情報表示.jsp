@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
-<%@ include file="base.jsp" %>
+<%@ include file="../base.jsp" %>
+<link rel="stylesheet" href="../css/base.css">
 
 <main>
   <h2 style="font-size: 50px;">ユーザー情報</h2>
