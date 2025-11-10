@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="CSS/base.css">
+  <link rel="stylesheet" href="css/base.css">
   <title>ストックわかる君</title>
 </head>
 
@@ -27,15 +27,15 @@
   </header>
 
   <script>
-	  document.addEventListener("DOMContentLoaded", () => {
-	      const hamburger = document.getElementById('hamburger');
-	      const nav = document.getElementById('nav');
+  	document.addEventListener("DOMContentLoaded", function() {
+	    const hamburger = document.getElementById('hamburger');
+	    const nav = document.getElementById('nav');
 
-	      hamburger.addEventListener('click', () => {
+	    hamburger.addEventListener('click', function() {
 	        nav.classList.toggle('active');
 	        hamburger.classList.toggle('open');
-	      });
-	  });
+	    });
+	});
 
   </script>
 
