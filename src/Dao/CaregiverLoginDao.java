@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import bean.Caregiver;
 public class CaregiverLoginDao extends Dao {
 
     /**
@@ -14,23 +15,29 @@ public class CaregiverLoginDao extends Dao {
      * @return 介護士情報:存在しない場合はnull
      * @throws Exception
      */
-    public CaregiverLoginDao get(String staffId) throws Exception {
-        CaregiverLoginDao caregiver = null;
+    public Caregiver get(String staffId) throws Exception {
 
-        try (Connection connection = getConnection();
-             PreparedStatement statement = connection.prepareStatement(
-                     "SELECT * FROM caregiverlogin WHERE staffid = ?")) {
+    	Caregiver caregiver = new Caregiver();
+
+    	Connection connection = getConnection();
+
+    	PreparedStatement statement = null;
+
+
+        try {
+        	statement = connection.prepareStatement("#");
 
             statement.setString(1, staffId);
 
-            try (ResultSet resultSet = statement.executeQuery()) {
-                if (resultSet.next()) {
-                    caregiver = new CaregiverLoginDao();
-                    caregiver.setName(resultSet.getString("name"));
-                    caregiver.setStaffId(resultSet.getString("staffid"));
-                    caregiver.setFacilityPassword(resultSet.getString("facilitypassword"));
-                    caregiver.setPassword(resultSet.getString("password"));
-                }
+            ResultSet resultSet = statement.executeQuery();
+
+            if (resultSet.next()) {
+                caregiver.setName(resultSet.getString("name"));
+                caregiver.setStaffid(resultSet.getString("staffid"));
+                caregiver.setFacilityPassword(resultSet.getString("facilitypassword"));
+                caregiver.setPassword(resultSet.getString("password"));
+            } else {
+            	caregiver = null;
             }
 
         } catch (SQLException e) {
@@ -48,8 +55,8 @@ public class CaregiverLoginDao extends Dao {
      * @return 認証成功:介護士クラス, 失敗:null
      * @throws Exception
      */
-    public CaregiverLoginDao login(String staffId, String password) throws Exception {
-        CaregiverLoginDao caregiver = get(staffId);
+    public Caregiver login(String staffId, String password) throws Exception {
+        Caregiver caregiver = get(staffId);
 
         if (caregiver == null || !caregiver.getPassword().equals(password)) {
             return null;
