@@ -1,7 +1,6 @@
+<%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <!DOCTYPE html>
-<html lang="ja">
 <head>
-<meta charset="UTF-8">
 <title>ログアウト完了</title>
 <style>
   html, body {
