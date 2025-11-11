@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import bean.Caregiver;
-public class CaregiverLoginDao extends Dao {
+public class CaregiverDao extends Dao {
 
     /**
      * 介護士情報をIDで取得
