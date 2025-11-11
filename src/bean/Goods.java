@@ -6,7 +6,7 @@ import java.io.Serializable;
 					/*** 商品テーブル＋カテゴリーテーブル*/
 
 
-public class Goodslist implements Serializable {
+public class Goods implements Serializable {
 	/**
 	 * 商品ID:char
 	 */
