@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
-<%@ include file="base.jsp" %>
+
 
 <!DOCTYPE html>
 <html lang="ja">
@@ -83,7 +83,7 @@
       <p><strong>サイズ：</strong>120cm × 40cm</p>
       <p><strong>色：</strong>水色</p>
       <p><strong>在庫数：</strong>7</p>
-      <a href="商品更新.html" class="detail-btn">商品更新</a>
+      <a href="商品更新.jsp" class="detail-btn">商品更新</a>
     </div>
   </div>
 
@@ -95,7 +95,7 @@
       <p><strong>サイズ：</strong>80cm × 34cm</p>
       <p><strong>色：</strong>白</p>
       <p><strong>在庫数：</strong>15</p>
-      <a href="商品更新.html" class="detail-btn">商品更新</a>
+      <a href="商品更新.jsps" class="detail-btn">商品更新</a>
     </div>
   </div>
 </body>

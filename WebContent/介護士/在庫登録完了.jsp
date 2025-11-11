@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
-<%@ include file="base.jsp" %>
+
 
 <!DOCTYPE html>
 <html lang="ja">
@@ -43,6 +43,6 @@
 </head>
 <body>
   <h1>在庫の登録が完了しました</h1>
-  <a href="home.html">ホームへ</a>
+  <a href="home.jsp">ホームへ</a>
 </body>
 </html>

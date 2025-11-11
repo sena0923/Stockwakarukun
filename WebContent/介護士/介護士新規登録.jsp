@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
-<%@ include file="base.jsp" %>
+
 
 <!DOCTYPE html>
 <html>
@@ -83,7 +83,7 @@
     </style>
 </head>
 <body>
-    <form action="home.html" method="get" onsubmit="return validateForm();">
+    <form action="home.jsp" method="get" onsubmit="return validateForm();">
         <h2>介護士新規登録</h2>
 
         <div class="controll">

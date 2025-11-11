@@ -1,5 +1,4 @@
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
-<%@ include file="base.jsp" %>
 
 <!DOCTYPE html>
 <html lang="ja">
@@ -76,7 +75,7 @@
   <div class="container">
     <h2>商品更新画面</h2>
 
-    <form id="productForm" action="在庫登録完了.html" method="post" onsubmit="return checkForm();">
+    <form id="productForm" action="在庫登録完了.jsp" method="post" onsubmit="return checkForm();">
       <div id="generalError"></div>
 
       <div class="form-group">

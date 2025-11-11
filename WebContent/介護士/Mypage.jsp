@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
-<%@ include file="base.jsp" %>
+
 
 <!DOCTYPE html>
 <html lang="ja">
@@ -66,8 +66,8 @@
   <p>名前 | ○○</p>
   <p>職員番号 | 1234</p>
 
-  <a href="変更.html">情報更新</a>
-  <a href="logout.html">ログアウト</a>
-  <a href="home.html" class="back-button">戻る</a>
+  <a href="変更.jsp">情報更新</a>
+  <a href="logoutkai.jsp">ログアウト</a>
+  <a href="介護士ホーム.jsp" class="back-button">戻る</a>
 </body>
 </html>

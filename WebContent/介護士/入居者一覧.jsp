@@ -1,5 +1,4 @@
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
-<%@ include file="base.jsp" %>
 
 <!DOCTYPE html>
 <html lang="ja">
@@ -103,32 +102,32 @@
         <td>4月5日</td>
         <td>男</td>
         <td>要介護コース</td>
-        <td><a href="詳細.html">詳細</a></td>
+        <td><a href="詳細.jsp">詳細</a></td>
       </tr>
       <tr>
         <td>□□さん</td>
         <td>7月17日</td>
         <td>女</td>
         <td>独立コース</td>
-        <td><a href="詳細.html">詳細</a></td>
+        <td><a href="詳細.jsp">詳細</a></td>
       </tr>
       <tr>
         <td>〇〇さん</td>
         <td>10月2日</td>
         <td>男</td>
         <td>独立コース</td>
-        <td><a href="詳細.html">詳細</a></td>
+        <td><a href="詳細.jsp">詳細</a></td>
       </tr>
       <tr>
         <td>▽▽さん</td>
         <td>9月26日</td>
         <td>女</td>
         <td>要介護コース</td>
-        <td><a href="詳細.html">詳細</a></td>
+        <td><a href="詳細.jsp">詳細</a></td>
       </tr>
     </table>
 
-    <a href="home.html" class="back-btn">ホームへ戻る</a>
+    <a href="介護士ホーム.jsp" class="back-btn">ホームへ戻る</a>
   </div>
 </body>
 </html>

@@ -1,5 +1,4 @@
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
-<%@ include file="base.jsp" %>
 
 <!DOCTYPE html>
 <html lang="ja">
@@ -94,7 +93,7 @@
 <body>
   <div class="container">
     <h1>情報更新画面</h1>
-    <form action="更新完了.html" method="post">
+    <form action="更新完了.jsp" method="post">
       <div class="controll">
         <label for="name">氏名</label>
         <input type="text" id="name" name="name" required>
@@ -111,7 +110,7 @@
     </form>
 
     <!-- 枠の右下に配置された戻るボタン -->
-    <a href="MYP.html" class="back-button">戻る</a>
+    <a href="Mypage.jsp" class="back-button">戻る</a>
   </div>
 </body>
 </html>

@@ -1,5 +1,4 @@
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
-<%@ include file="base.jsp" %>
 
 <!DOCTYPE html>
 <html lang="ja">
@@ -111,7 +110,7 @@
     </form>
 
     <!-- 枠の右下に配置された戻るボタン -->
-    <a href="MYP.html" class="back-button">戻る</a>
+    <a href="MYP.jsp" class="back-button">戻る</a>
   </div>
 </body>
 </html>
