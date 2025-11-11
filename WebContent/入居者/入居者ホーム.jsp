@@ -9,7 +9,7 @@
 	  <li><a href="purchase.jsp">購入</a></li>
 	  <li><a href="notes.jsp">連絡帳</a></li>
 	  <li><a href="./入居者情報表示.jsp">ユーザー情報表示</a></li>
-	  <li><a href="./入居者ログアウト.jsp">ログアウト</a></li>
+	  <li><a href="./入居者ログアウト確認.jsp">ログアウト</a></li>
     </ul>
   </div>
 </main>

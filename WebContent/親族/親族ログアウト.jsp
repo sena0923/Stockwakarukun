@@ -4,5 +4,5 @@
   session.invalidate();
 
   // ログアウト完了画面へリダイレクト
-  response.sendRedirect("親族/親族ログアウト完了.jsp");
+  response.sendRedirect("./親族ログアウト完了.jsp");
 %>

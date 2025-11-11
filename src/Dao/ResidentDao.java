@@ -19,7 +19,7 @@ public class ResidentDao extends Dao {
 
 		try {
 			// プリペアードステートメントにSQL文をセット
-			statement = connection.prepareStatement("select * from Resident where id=?");
+			statement = connection.prepareStatement("select * from Resident where rd_id=?");
 			// プリペアードステートメントに入居者IDをバインド
 			statement.setString(1, id);
 			// プリペアードステートメントを実行
@@ -81,5 +81,79 @@ public class ResidentDao extends Dao {
 
 	}
 
+	// save - 教師情報を登録または更新
+	// 引数1 teacher - 登録したいデータの入った教師beanを指定 全てのデータ（ID, password, 名前, 学校, 管理者権限の有無）が揃っている必要がある
+	public boolean save(Resident resident) throws Exception {
+		// コネクションを確立
+		Connection connection = getConnection();
+		// プリペアードステートメント
+		PreparedStatement statement = null;
+
+		// 実行件数
+		int count = 0;
+
+		try {
+			// データベースから教師を取得
+			Resident old = get(resident.getrd_id());
+
+			if (old == null) {
+				// 教師が存在しなかった場合、教師を新規作成
+				// プリペアードステートメントにINSERT文をセット
+				statement = connection.prepareStatement("INSERT INTO RESIDENT(RD_ID, PASSWORD, NAME, SCHOOL_CD, ISADMIN) VALUES(?, ?, ?, ?, ?)");
+				// プリペアードステートメントに値をバインド
+				statement.setString(1, resident.getrd_id());
+				statement.setString(2, resident.getPassword());
+				statement.setString(3, resident.getName());
+				statement.setString(4, resident.getSchool().getCd());
+				statement.setBoolean(5, resident.isAdmin());
+
+			} else {
+				// 教師が存在した場合、情報を更新
+				// プリペアードステートメントにUPDATE文をセット
+				statement = connection.prepareStatement("UPDATE TEACHER SET PASSWORD = ?, NAME = ?, SCHOOL_CD = ?, ISADMIN = ? WHERE ID = ?");
+				// プリペアードステートメントに値をバインド
+				statement.setString(1, resident.getPassword());
+				statement.setString(2, resident.getName());
+				statement.setString(3, resident.getSchool().getCd());
+				statement.setBoolean(4, resident.isAdmin());
+				statement.setString(5, resident.getrd_id());
+			}
+
+			// プリペアードステートメントを実行
+			count = statement.executeUpdate();
+
+		} catch (Exception e) {
+			throw e;
+		} finally {
+			// プリペアードステートメントを閉じる
+			if (statement != null) {
+				try {
+					statement.close();
+				} catch (SQLException sqle) {
+					throw sqle;
+				}
+			}
+			// コネクションを閉じる
+			if (connection != null) {
+				try {
+					connection.close();
+				} catch (SQLException sqle) {
+					throw sqle;
+				}
+			}
+		}
+
+		if (count == 1) {
+			// 実行件数1件の場合
+			return true;
+		} else {
+			// 実行件数がそれ以外の場合
+			return false;
+		}
+	}
+
+
 }
+
+
 

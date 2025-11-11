@@ -10,8 +10,8 @@
   <p style="font-size: 25px;">ログインID | <%= session.getAttribute("loginId") != null ? session.getAttribute("loginId") : "未設定" %></p>
 
   <div class="button-container">
-    <button onclick="location.href='親族/親族ホーム.jsp'">戻る</button>
-    <button onclick="location.href='親族/親族情報変更.jsp'">変更する</button>
+    <button onclick="location.href='./親族ホーム.jsp'">戻る</button>
+    <button onclick="location.href='./親族情報変更.jsp'">変更する</button>
   </div>
 </main>
 

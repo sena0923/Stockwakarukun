@@ -6,8 +6,8 @@
   <div class="logout-container">
     <h1>ログアウトしますか？</h1>
     <div class="logout-buttons">
-      <a href="親族/親族ログアウト.jsp" class="btn yes">はい</a>
-      <a href="親族/親族ホーム.jsp" class="btn no">いいえ</a>
+      <a href="./親族ログアウト.jsp" class="btn yes">はい</a>
+      <a href="./親族ホーム.jsp" class="btn no">いいえ</a>
     </div>
   </div>
 </main>

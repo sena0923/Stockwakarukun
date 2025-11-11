@@ -75,7 +75,7 @@
 <body>
   <h1>ユーザー情報変更画面</h1>
 
-  <form method="post" action="親族/親族情報変更完了.jsp" onsubmit="return checkPasswords();">
+  <form method="post" action="./親族情報変更完了.jsp" onsubmit="return checkPasswords();">
     <h2>メールアドレス</h2>
     <input type="email" id="email" name="email" placeholder="example@example.com" required>
 

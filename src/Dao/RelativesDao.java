@@ -19,7 +19,7 @@ public class RelativesDao extends Dao {
 
 		try {
 			// プリペアードステートメントにSQL文をセット
-			statement = connection.prepareStatement("select * from Relatives where id=?");
+			statement = connection.prepareStatement("select * from Relatives where rt_id=?");
 			// プリペアードステートメントに親族IDをバインド
 			statement.setString(1, id);
 			// プリペアードステートメントを実行
@@ -28,7 +28,7 @@ public class RelativesDao extends Dao {
 			if (resultSet.next()) {
 				// リザルトセットが存在する場合
 				// 親族インスタンスに検索結果をセット
-				relatives.setRd_id(resultSet.getString("rt_id"));
+				relatives.setRt_id(resultSet.getString("rt_id"));
 				relatives.setPassword(resultSet.getString("password"));
 				relatives.setName(resultSet.getString("name"));
 			} else {

@@ -30,7 +30,7 @@
   </form>
 
   <br>
-  <a href="親族/親族新規登録.jsp">新規登録</a>
+  <a href="./親族新規登録.jsp">新規登録</a>
 
   <script>
     const form = document.getElementById("loginForm");

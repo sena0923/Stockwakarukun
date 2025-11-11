@@ -77,7 +77,7 @@
 
     <h1>ユーザー情報変更画面</h1>
 
-    <form method="post" action="入居者情報変更完了.jsp" onsubmit="return validateForm();">
+    <form method="post" action="./入居者情報変更完了.jsp" onsubmit="return validateForm();">
         <h2>メールアドレス</h2>
         <input type="email" id="email" name="email" placeholder="example@example.com" required>
 
