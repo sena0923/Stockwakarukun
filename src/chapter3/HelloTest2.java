@@ -15,24 +15,24 @@ import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
 
-@WebServlet(urlPatterns = { "/hello" })
-public class HelloTest extends HttpServlet {
+@WebServlet(urlPatterns = { "/hello2" })
+public class HelloTest2 extends HttpServlet {
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
 		try {
 			InitialContext ic = new InitialContext();
-			DataSource ds = (DataSource) ic.lookup("java:/comp/env/jdbc/ec");
+			DataSource ds = (DataSource) ic.lookup("java:/comp/env/jdbc/stock");
 			Connection con = ds.getConnection();
 
-			PreparedStatement st = con.prepareStatement("select * from goods");
+			PreparedStatement st = con.prepareStatement("select * from CAREGIVER");
 			ResultSet rs = st.executeQuery();
 
 			while (rs.next()) {
-				out.println(rs.getInt("goods_id"));
+				out.println(rs.getString("cg_num"));
 				out.println("：");
-				out.println(rs.getString("goods_name"));
+				out.println(rs.getString("name"));
 				out.println("<br>");
 			}
 
