@@ -1,4 +1,4 @@
-package 親族;
+package scoremanager.relatives;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

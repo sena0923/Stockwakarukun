@@ -1,4 +1,4 @@
-package 入居者;
+package scoremanager.resident;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

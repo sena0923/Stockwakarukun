@@ -1,6 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
-<%@ include file="../base.jsp" %>
-<link rel="stylesheet" href="../css/base.css">
+<%@ include file="../../base.jsp" %>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/base.css">
 
 <main>
   <div class="mainmenu">
