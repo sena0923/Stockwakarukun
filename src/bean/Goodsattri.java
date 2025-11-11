@@ -7,7 +7,7 @@ import java.io.Serializable;
 public class Goodsattri implements Serializable {
 
 	/**商品ID**/
-	private int course_id;
+	private String course_id;
 
 	/**商品名**/
 	private String course_name;
@@ -16,11 +16,11 @@ public class Goodsattri implements Serializable {
 	 * ゲッター・セッター
 	 */
 
-	public int getCourse_id() {
+	public String getCourse_id() {
 		return course_id;
 	}
 
-	public void setCourse_id(int course_id) {
+	public void setCourse_id(String course_id) {
 		this.course_id = course_id;
 	}
 
