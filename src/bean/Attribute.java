@@ -13,7 +13,7 @@ public class Attribute implements Serializable {
 	private String attribute_name;
 
 	/**属性タイプ**/
-	private int attribute_type;
+	private String attribute_type;
 
 	/**
 	 * ゲッター・セッター
@@ -35,11 +35,11 @@ public class Attribute implements Serializable {
 		this.attribute_name = attribute_name;
 	}
 
-	public int getAttribute_type() {
+	public String getAttribute_type() {
 		return attribute_type;
 	}
 
-	public void setAttribute_type(int attribute_type) {
+	public void setAttribute_type(String attribute_type) {
 		this.attribute_type = attribute_type;
 	}
 
