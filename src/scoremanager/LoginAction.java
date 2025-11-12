@@ -23,6 +23,6 @@ public class LoginAction extends Action {
 		//レスポンス値をセット 6
 		//なし
 		//JSPへフォワード 7
-		req.getRequestDispatcher("/scoremanager/身分選択.jsp").forward(req, res);
+		req.getRequestDispatcher("/身分選択.jsp").forward(req, res);
 	}
 }
