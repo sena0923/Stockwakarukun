@@ -65,4 +65,20 @@ public class Relatives implements Serializable {
 		this.e_mail = e_mail;
 	}
 
+	/**
+	 * 認証済みフラグ:boolean true:認証済み
+	 */
+	private boolean isAuthenticated;
+
+	/**
+	 * ゲッター、セッター
+	 */
+	public boolean isAuthenticated() {
+		return isAuthenticated;
+	}
+
+	public void setAuthenticated(boolean isAuthenticated) {
+		this.isAuthenticated = isAuthenticated;
+	}
+
 }
