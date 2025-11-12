@@ -56,7 +56,7 @@ public class SinLoginExecuteAction extends Action {
 				req.setAttribute("rt_id" , rt_id);
 
 				//フォワード
-				url = "親族ログイン.jsp";
+				url = "rtLogin.jsp";
 				req.getRequestDispatcher(url).forward(req,res);
 			}
 	}
