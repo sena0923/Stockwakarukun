@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 					/*** 介護士テーブル*/
 
+
 public class Caregiver implements Serializable {
 
 	/**職員番号**/
@@ -52,6 +53,24 @@ public class Caregiver implements Serializable {
 
 	public void setFacilityPassword(String facilityPassword) {
 		FacilityPassword = facilityPassword;
+	}
+
+	/*メモ ログイン認証→サーブレット*/
+
+	/**
+	 * 認証済みフラグ:boolean true:認証済み
+	 */
+	private boolean isAuthenticated;
+
+	/**
+	 * ゲッター、セッター
+	 */
+	public boolean isAuthenticated() {
+		return isAuthenticated;
+	}
+
+	public void setAuthenticated(boolean isAuthenticated) {
+		this.isAuthenticated = isAuthenticated;
 	}
 
 }
