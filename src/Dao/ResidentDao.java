@@ -102,7 +102,6 @@ public class ResidentDao extends Dao {
 				statement = connection.prepareStatement("INSERT INTO RESIDENT(RD_ID, PASSWORD, NAME, SCHOOL_CD, ISADMIN) VALUES(?, ?, ?, ?, ?)");
 				// プリペアードステートメントに値をバインド
 				statement.setString(2, resident.getName());
-				statement.setString(3,resident.getFname());
 				statement.setString(4,resident.getGender());
 				statement.setString(5, resident.getrd_id());
 				statement.setString(6, resident.getPassword());
