@@ -6,55 +6,49 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import bean.Goods;
+
 public class GoodsDao extends Dao {
 
-    public Caregiver get(String goodsId) throws Exception {
+    /**
+     * 商品IDから商品情報を1件取得する
+     */
+    public Goods get(String goods_Id) throws Exception {
 
-    	Caregiver caregiver = new Caregiver();
-
-    	Connection connection = getConnection();
-
-    	PreparedStatement statement = null;
-
+        Goods goods = null;
+        Connection connection = getConnection();
+        PreparedStatement statement = null;
 
         try {
-        	statement = connection.prepareStatement("#");
+            // 商品1件取得SQL
+            String sql = "SELECT * FROM goods WHERE goods_id = ?";
 
-            statement.setString(1, goodsId);
+            statement = connection.prepareStatement(sql);
+            statement.setString(1, goods_Id);
 
             ResultSet resultSet = statement.executeQuery();
 
             if (resultSet.next()) {
-                caregiver.setGoods_Name(resultSet.getString("goods_name"));
-                caregiver.setStaffid(resultSet.getString("staffid"));
-                caregiver.setFacilityPassword(resultSet.getString("facilitypassword"));
-                caregiver.setPassword(resultSet.getString("password"));
-            } else {
-            	caregiver = null;
+                goods = new Goods();
+
+                goods.setGoods_id(resultSet.getString("goods_id"));
+                goods.setGoods_name(resultSet.getString("goods_name"));
+                goods.setPrice(resultSet.getInt("price"));
+                goods.setCategory_id(resultSet.getString("category_id"));
+                goods.setCategory_name(resultSet.getString("category_name"));
+                goods.setStock(resultSet.getInt("stock"));
             }
 
         } catch (SQLException e) {
             throw new Exception("データ取得エラー", e);
+        } finally {
+            if (statement != null) {
+                try { statement.close(); } catch (SQLException ignored) {}
+            }
+            if (connection != null) {
+                try { connection.close(); } catch (SQLException ignored) {}
+            }
         }
 
-        return caregiver;
-    }
-
-    /**
-     * ログイン認証
-     *
-     * @param staffId  介護士ID
-     * @param password パスワード
-     * @return 認証成功:介護士クラス, 失敗:null
-     * @throws Exception
-     */
-    public Caregiver login(String staffId, String password) throws Exception {
-        Caregiver caregiver = get(staffId);
-
-        if (caregiver == null || !caregiver.getPassword().equals(password)) {
-            return null;
-        }
-
-        return caregiver;
+        return goods;
     }
 }
