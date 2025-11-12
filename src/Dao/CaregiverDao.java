@@ -34,7 +34,6 @@ public class CaregiverDao extends Dao {
             if (resultSet.next()) {
                 caregiver.setName(resultSet.getString("name"));
                 caregiver.setStaffid(resultSet.getString("staffid"));
-                caregiver.setFacilityPassword(resultSet.getString("facilitypassword"));
                 caregiver.setPassword(resultSet.getString("password"));
             } else {
             	caregiver = null;

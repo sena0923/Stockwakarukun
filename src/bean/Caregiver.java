@@ -16,8 +16,6 @@ public class Caregiver implements Serializable {
 	/**パスワード**/
 	private String password;
 
-	/**施設パスワード**/
-	private String FacilityPassword;
 
 	/**
 	 * ゲッター・セッター
@@ -47,13 +45,7 @@ public class Caregiver implements Serializable {
 		this.password = password;
 	}
 
-	public String getFacilityPassword() {
-		return FacilityPassword;
-	}
 
-	public void setFacilityPassword(String facilityPassword) {
-		FacilityPassword = facilityPassword;
-	}
 
 	/*メモ ログイン認証→サーブレット*/
 
