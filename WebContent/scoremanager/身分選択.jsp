@@ -5,9 +5,9 @@
   <h1>あなたの立場は何ですか</h1>
 
   <div class="button-row">
-    <a href="介護士ログイン.jsp" class="btn1">介護士</a>
-    <a href="入居者ログイン.jsp" class="btn1">入居者</a>
-    <a href="親族ログイン.jsp" class="btn1">親族</a>
+    <a href="caregiver/介護士ログイン.jsp" class="btn1">介護士</a>
+    <a href="resident/入居者ログイン.jsp" class="btn1">入居者</a>
+    <a href="relatives/親族ログイン.jsp" class="btn1">親族</a>
   </div>
 </main>
 
