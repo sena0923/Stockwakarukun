@@ -10,7 +10,7 @@ public class Goods implements Serializable {
 	/**
 	 * 商品ID:char
 	 */
-	private char goods_id;
+	private String goods_id;
 
 	/**
 	 * 商品名:String
@@ -25,7 +25,7 @@ public class Goods implements Serializable {
 	/**
 	 * カテゴリーID:char
 	 */
-	private char category_id;
+	private String category_id;
 
 	/**
 	 * カテゴリー名:String
@@ -41,11 +41,11 @@ public class Goods implements Serializable {
 	/**
 	 * ゲッター・セッター
 	 */
-	public char getGoods_id() {
+	public String getGoods_id() {
 		return goods_id;
 	}
 
-	public void setGoods_id(char goods_id) {
+	public void setGoods_id(String goods_id) {
 		this.goods_id = goods_id;
 	}
 
@@ -65,11 +65,11 @@ public class Goods implements Serializable {
 		this.price = price;
 	}
 
-	public char getCategory_id() {
+	public String getCategory_id() {
 		return category_id;
 	}
 
-	public void setCategory_id(char category_id) {
+	public void setCategory_id(String category_id) {
 		this.category_id = category_id;
 	}
 
