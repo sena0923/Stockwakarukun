@@ -8,8 +8,8 @@
       <li><a href="#">備品管理</a></li>
 	  <li><a href="#">購入</a></li>
 	  <li><a href="#">連絡帳</a></li>
-	  <li><a href="./親族情報表示.jsp">ユーザー情報表示</a></li>
-	  <li><a href="./親族ログアウト確認.jsp">ログアウト</a></li>
+	  <li><a href="./rtInfoDisplay.jsp">ユーザー情報表示</a></li>
+	  <li><a href="./rtLogoutCon.jsp">ログアウト</a></li>
     </ul>
   </div>
 </main>

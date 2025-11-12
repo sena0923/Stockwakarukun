@@ -53,6 +53,6 @@
 
 <body>
   <h1>ログアウトしました</h1>
-  <a href="./親族ログイン.jsp">ログイン画面へ</a>
+  <a href="./rdLogin.jsp">ログイン画面へ</a>
 </body>
 </html>
