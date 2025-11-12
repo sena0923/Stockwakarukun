@@ -10,6 +10,6 @@ public class SinLoginAction extends Action {
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse res)
 			throws Exception{
-		req.getRequestDispatcher("親族ログイン.jsp").forward(req, res);
+		req.getRequestDispatcher("rtLogin.jsp").forward(req, res);
 	}
 }
