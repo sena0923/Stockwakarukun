@@ -7,7 +7,7 @@ import java.sql.SQLException;
 
 import bean.Goodsdescri;
 
-public class Goods_Description extends Dao {
+public class Goods_DescriptionDao extends Dao {
 
     public static void main(String[] args) {
         // TODO 自動生成されたメソッド・スタブ
