@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 					/*** 商品個人在庫テーブル*/
 
-public class Goodsinve implements Serializable {
+public class Ingoodsinventory implements Serializable {
 
 	/**商品在庫ID**/
 	private String goods_inve_id;

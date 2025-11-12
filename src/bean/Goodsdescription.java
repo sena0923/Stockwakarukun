@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 					/*** 商品説明テーブル+商品テーブル*/
 
-public class Goodsdescri implements Serializable {
+public class Goodsdescription implements Serializable {
 
 	/**商品ID**/
 	private String goods_id;
