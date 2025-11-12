@@ -9,6 +9,7 @@
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/base.css">
   	<title>ストックわかる君</title>
   	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	${param.scripts}
 </head>
 <body>
 
