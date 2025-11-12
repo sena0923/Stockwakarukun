@@ -5,7 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import bean.Goodsdescri;
+import bean.Goodsdescription;
 
 public class Goods_DescriptionDao extends Dao {
 
@@ -13,9 +13,9 @@ public class Goods_DescriptionDao extends Dao {
         // TODO 自動生成されたメソッド・スタブ
     }
 
-    public Goodsdescri get(String goods_Id) throws Exception {
+    public Goodsdescription get(String goods_Id) throws Exception {
 
-        Goodsdescri goodsdescri = null;
+        Goodsdescription goodsdescri = null;
         Connection connection = getConnection();
         PreparedStatement statement = null;
 
@@ -29,7 +29,7 @@ public class Goods_DescriptionDao extends Dao {
             ResultSet resultSet = statement.executeQuery();
 
             if (resultSet.next()) {
-                goodsdescri = new Goodsdescri();
+                goodsdescri = new Goodsdescription();
 
                 goodsdescri.setGoods_id(resultSet.getString("goods_id"));
                 goodsdescri.setGoods_dp(resultSet.getString("goods_dp"));

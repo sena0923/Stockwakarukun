@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 					/*** 支払方法テーブル*/
 
-public class Purchasehis implements Serializable {
+public class Purchasehistory implements Serializable {
 
 	/**購入履歴ID**/
 	private String payment_id;

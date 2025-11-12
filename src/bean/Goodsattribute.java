@@ -4,7 +4,7 @@ import java.io.Serializable;
 					/***商品属性***/
 					/*** コーステーブル+商品テーブル*/
 
-public class Goodsattri implements Serializable {
+public class Goodsattribute implements Serializable {
 
 	/**商品ID**/
 	private String course_id;
