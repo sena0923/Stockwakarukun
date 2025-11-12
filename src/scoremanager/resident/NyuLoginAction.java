@@ -10,6 +10,6 @@ public class NyuLoginAction extends Action {
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse res)
 			throws Exception{
-		req.getRequestDispatcher("入居者ログイン.jsp").forward(req, res);
+		req.getRequestDispatcher("tdLogin.jsp").forward(req, res);
 	}
 }

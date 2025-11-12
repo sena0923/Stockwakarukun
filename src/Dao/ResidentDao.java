@@ -99,13 +99,13 @@ public class ResidentDao extends Dao {
 			if (old == null) {
 				// 教師が存在しなかった場合、教師を新規作成
 				// プリペアードステートメントにINSERT文をセット
-				statement = connection.prepareStatement("INSERT INTO RESIDENT(RD_ID, PASSWORD, NAME, SCHOOL_CD, ISADMIN) VALUES(?, ?, ?, ?, ?)");
+				statement = connection.prepareStatement("INSERT INTO RESIDENT(COURSE_ID, RD_ID, GENDER, PASSWORD, NAME) VALUES(?, ?, ?, ?, ?)");
 				// プリペアードステートメントに値をバインド
+				statement.setInt(1,resident.getCourse_id());
 				statement.setString(2, resident.getName());
-				statement.setString(3,resident.getFname());
-				statement.setString(4,resident.getGender());
-				statement.setString(5, resident.getrd_id());
-				statement.setString(6, resident.getPassword());
+				statement.setString(3,resident.getGender());
+				statement.setString(4, resident.getrd_id());
+				statement.setString(5, resident.getPassword());
 
 
 			} else {

@@ -21,8 +21,6 @@ public class Resident implements Serializable {
 	/**パスワード**/
 	private String password;
 
-	/**氏名(フリガナ)**/
-	private String fname;
 
 
 	/**
@@ -69,13 +67,6 @@ public class Resident implements Serializable {
 		this.password = password;
 	}
 
-	public String getFname() {
-		return fname;
-	}
-
-	public void setFname(String fname) {
-		this.fname = fname;
-	}
 
 	/**
 	 * 認証済みフラグ:boolean true:認証済み

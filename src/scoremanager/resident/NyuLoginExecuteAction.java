@@ -56,7 +56,7 @@ public class NyuLoginExecuteAction extends Action {
 				req.setAttribute("rd_id" , rd_id);
 
 				//フォワード
-				url = "入居者ログイン.jsp";
+				url = "rdLogin.jsp";
 				req.getRequestDispatcher(url).forward(req,res);
 			}
 	}
