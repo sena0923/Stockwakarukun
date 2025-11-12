@@ -38,7 +38,7 @@
 
 <body>
     <h1>新規登録が完了しました</h1>
-    <form action="./入居者ログイン.jsp" method="get">
+    <form action="./rdLogin.jsp" method="get">
         <button type="submit">ログイン画面へ</button>
     </form>
 </body>

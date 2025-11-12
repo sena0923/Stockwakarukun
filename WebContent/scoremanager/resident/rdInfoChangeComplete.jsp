@@ -58,6 +58,6 @@
 </head>
 <body>
   <h1>更新が完了しました</h1>
-  <button onclick="location.href='./親族ホーム.jsp'">ホームページへ</button>
+  <button onclick="location.href='./rdHome.jsp'">ホームページへ</button>
 </body>
 </html>

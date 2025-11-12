@@ -11,7 +11,7 @@
 
   <h1>新規登録画面</h1>
 
-  <form id="infoForm" action="親族情報登録完了.jsp" method="post">
+  <form id="infoForm" action="rtSignUpComplete.jsp" method="post">
     <!-- ログインID -->
     <label for="login-id">ログインID</label>
     <input type="text" id="login-id" name="login-id" required>

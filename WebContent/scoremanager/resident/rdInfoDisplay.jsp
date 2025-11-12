@@ -9,8 +9,8 @@
 	  <p style="font-size: 25px;">ログインID | <%= request.getAttribute("loginId") != null ? request.getAttribute("loginId") : "未設定" %></p>
 
 	  <div class="button-container">
-	    <button onclick="location.href='./入居者ホーム.jsp'">戻る</button>
-	    <button onclick="location.href='./入居者情報変更.jsp'">変更する</button>
+	    <button onclick="location.href='./rdHome.jsp'">戻る</button>
+	    <button onclick="location.href='./rdInfoChange.jsp'">変更する</button>
 	  </div>
 
 	  <style>

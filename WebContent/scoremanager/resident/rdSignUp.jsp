@@ -12,7 +12,7 @@
   <main>
     <h1>新規登録画面</h1>
 
-    <form id="residentForm" action="入居者新規登録完了.jsp" method="post">
+    <form id="residentForm" action="./rdSignUpComplete.jsp" method="post">
 
       <!-- コース選択 -->
       <label>コースを選んでください</label>
