@@ -1,3 +1,4 @@
+
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <%@ include file="../base.jsp" %>
 
@@ -5,9 +6,9 @@
   <h1>あなたの立場は何ですか</h1>
 
   <div class="button-row">
-    <a href="介護士ログイン.jsp" class="btn1">介護士</a>
-    <a href="入居者ログイン.jsp" class="btn1">入居者</a>
-    <a href="親族ログイン.jsp" class="btn1">親族</a>
+    <a href="caregiver/介護士ログイン.jsp" class="btn1">介護士</a>
+    <a href="resident/入居者ログイン.jsp" class="btn1">入居者</a>
+    <a href="relatives/親族ログイン.jsp" class="btn1">親族</a>
   </div>
 </main>
 
@@ -55,11 +56,3 @@
     .button-row {
       gap: 15px;
     }
-
-    .btn1 {
-      width: 100%;
-      text-align: center;
-      padding: 12px 0;
-    }
-  }
-</style>
