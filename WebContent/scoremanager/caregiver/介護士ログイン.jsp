@@ -1,6 +1,21 @@
-<%@ page contentType="text/html; charset=UTF-8" language="java" %>
+<%-- 介護士ログイン画面 --%>
+<%-- ログインJSP --%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+<c:import url="../../base.jsp">
+	<c:param name="title">
+		ストックわかるくん
+	</c:param>
+	
+	
 
 
+</c:import>
+
+
+<%--
 <!DOCTYPE html>
 <html>
 <head>
@@ -135,3 +150,5 @@
     </script>
 </body>
 </html>
+
+--%>

@@ -1,4 +1,4 @@
-package 介護士;
+package scoremanager.caregiver;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

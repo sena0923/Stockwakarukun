@@ -13,13 +13,17 @@ public class Resident implements Serializable {
 	private String name;
 
 	/**コースID**/
-	private String course_id;
+	private int course_id;
 
 	/**性別**/
 	private String gender;
 
 	/**パスワード**/
 	private String password;
+
+	/**氏名(フリガナ)**/
+	private String fname;
+
 
 	/**
 	 * ゲッター・セッター
@@ -41,11 +45,11 @@ public class Resident implements Serializable {
 		this.name = name;
 	}
 
-	public String getCourse_id() {
+	public int getCourse_id() {
 		return course_id;
 	}
 
-	public void setCourse_id(String course_id) {
+	public void setCourse_id(int course_id) {
 		this.course_id = course_id;
 	}
 
@@ -64,5 +68,14 @@ public class Resident implements Serializable {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
+	public String getFname() {
+		return fname;
+	}
+
+	public void setFname(String fname) {
+		this.fname = fname;
+	}
+
 
 }

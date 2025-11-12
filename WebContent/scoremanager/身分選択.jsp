@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
-<%@ include file="base.jsp" %>
+<%@ include file="../base.jsp" %>
 
 <main>
   <h1>あなたの立場は何ですか</h1>
