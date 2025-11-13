@@ -15,7 +15,7 @@ public class Message implements Serializable {
 	/**
 	 * 介護士ID:String
 	 */
-	private String cg_num ;
+	private String cg_id ;
 
 	/**
 	 * 親族ID:String
@@ -44,12 +44,12 @@ public class Message implements Serializable {
 		this.me_id = me_id;
 	}
 
-	public String getCg_num() {
-		return cg_num;
+	public String getCg_id() {
+		return cg_id;
 	}
 
-	public void setCg_num(String cg_num) {
-		this.cg_num = cg_num;
+	public void setCg_id(String cg_id) {
+		this.cg_id = cg_id;
 	}
 
 	public String getRt_id() {
@@ -75,4 +75,5 @@ public class Message implements Serializable {
 	public void setDa_ti(java.util.Date da_ti) {
 		this.da_ti = da_ti;
 	}
+
 }

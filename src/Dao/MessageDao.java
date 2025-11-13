@@ -32,6 +32,8 @@ public class MessageDao extends Dao {
                 message = new Message();
 
                 message.setMessage_id(resultSet.getString("me_id"));
+                message.setCg_id(resultSet.getString("cg_id"));
+                message.setRt_id(resultSet.getString("rt_id"));
                 message.setMessage(resultSet.getString("message"));
                 message.setDa_ti(resultSet.getTimestamp("da_ti"));
 
