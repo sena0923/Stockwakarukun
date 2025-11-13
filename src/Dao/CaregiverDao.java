@@ -63,4 +63,68 @@ public class CaregiverDao extends Dao {
 
         return caregiver;
     }
+		public boolean save(Caregiver caregiver) throws Exception {
+			// コネクションを確立
+			Connection connection = getConnection();
+			// プリペアードステートメント
+			PreparedStatement statement = null;
+
+			// 実行件数
+			int count = 0;
+
+			try {
+				// データベースから介護士を取得
+				Caregiver old = get(caregiver.getStaffid());
+
+				if (old == null) {
+					// 教師が存在しなかった場合、教師を新規作成
+					// プリペアードステートメントにINSERT文をセット
+					statement = connection.prepareStatement("INSERT INTO CARIGIVER(STAFFID, PASSWORD, NAME) VALUES(?, ?, ?, ?, ?)");
+					// プリペアードステートメントに値をバインド
+					statement.setString(2, caregiver.getName());
+					statement.setString(4, caregiver.getStaffid());
+					statement.setString(6, caregiver.getPassword());
+
+
+				} else {
+					// 教師が存在した場合、情報を更新
+					// プリペアードステートメントにUPDATE文をセット
+					statement = connection.prepareStatement("UPDATE CAREGIVER SET NAME = ?, STAFFID = ?");
+					// プリペアードステートメントに値をバインド
+					statement.setString(2, caregiver.getName());
+					statement.setString(5, caregiver.getStaffid());
+				}
+
+				// プリペアードステートメントを実行
+				count = statement.executeUpdate();
+
+			} catch (Exception e) {
+				throw e;
+			} finally {
+				// プリペアードステートメントを閉じる
+				if (statement != null) {
+					try {
+						statement.close();
+					} catch (SQLException sqle) {
+						throw sqle;
+					}
+				}
+				// コネクションを閉じる
+				if (connection != null) {
+					try {
+						connection.close();
+					} catch (SQLException sqle) {
+						throw sqle;
+					}
+				}
+			}
+
+			if (count == 1) {
+				// 実行件数1件の場合
+				return true;
+			} else {
+				// 実行件数がそれ以外の場合
+				return false;
+			}
+		}
 }

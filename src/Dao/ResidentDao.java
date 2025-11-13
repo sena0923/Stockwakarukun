@@ -9,7 +9,7 @@ import bean.Resident;
 
 public class ResidentDao extends Dao {
 
-	public Resident get(String id) throws Exception {
+	public Resident get(String rd_id) throws Exception {
 		// 入居者インスタンスを初期化
 		Resident resident = new Resident();
 		// コネクションを確立
@@ -21,16 +21,17 @@ public class ResidentDao extends Dao {
 			// プリペアードステートメントにSQL文をセット
 			statement = connection.prepareStatement("select * from Resident where rd_id=?");
 			// プリペアードステートメントに入居者IDをバインド
-			statement.setString(1, id);
+			statement.setString(1, rd_id);
 			// プリペアードステートメントを実行
 			ResultSet resultSet = statement.executeQuery();
 
 			if (resultSet.next()) {
 				// リザルトセットが存在する場合
 				// 入居者インスタンスに検索結果をセット
+				resident.setName(resultSet.getString("name"));
 				resident.setRd_id(resultSet.getString("rd_id"));
 				resident.setPassword(resultSet.getString("password"));
-				resident.setName(resultSet.getString("name"));
+
 			} else {
 				// リザルトセットが存在しない場合
 				// 入居者インスタンスにnullをセット
@@ -70,9 +71,9 @@ public class ResidentDao extends Dao {
 	 * @return 認証成功:入居者クラスのインスタンス, 認証失敗:null
 	 * @throws Exception
 	 */
-	public Resident login(String id, String password) throws Exception {
+	public Resident login(String rd_id, String password) throws Exception {
 		// 入居者クラスのインスタンスを取得
-		Resident resident = get(id);
+		Resident resident = get(rd_id);
 		// 入居者がnullまたはパスワードが一致しない場合
 		if (resident == null || !resident.getPassword().equals(password)) {
 			return null;
@@ -99,7 +100,7 @@ public class ResidentDao extends Dao {
 			if (old == null) {
 				// 教師が存在しなかった場合、教師を新規作成
 				// プリペアードステートメントにINSERT文をセット
-				statement = connection.prepareStatement("INSERT INTO RESIDENT(COURSE_ID, RD_ID, GENDER, PASSWORD, NAME) VALUES(?, ?, ?, ?, ?)");
+				statement = connection.prepareStatement("INSERT INTO RESIDENT(COURSE_ID, NAME, GENDER, RD_ID, PASSWORD) VALUES(?, ?, ?, ?, ?)");
 				// プリペアードステートメントに値をバインド
 				statement.setInt(1,resident.getCourse_id());
 				statement.setString(2, resident.getName());
@@ -111,11 +112,10 @@ public class ResidentDao extends Dao {
 			} else {
 				// 教師が存在した場合、情報を更新
 				// プリペアードステートメントにUPDATE文をセット
-				statement = connection.prepareStatement("UPDATE TEACHER SET PASSWORD = ?, NAME = ?, SCHOOL_CD = ?, ISADMIN = ? WHERE ID = ?");
+				statement = connection.prepareStatement("UPDATE TEACHER SET COURSE_ID = ?, PASSWORD = ?");
 				// プリペアードステートメントに値をバインド
+				statement.setInt(1,resident.getCourse_id());
 				statement.setString(1, resident.getPassword());
-				statement.setString(2, resident.getName());
-				statement.setString(5, resident.getrd_id());
 			}
 
 			// プリペアードステートメントを実行
