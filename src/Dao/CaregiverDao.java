@@ -67,22 +67,23 @@ public class CaregiverDao extends Dao {
 				Caregiver old = get(caregiver.getStaffid());
 
 				if (old == null) {
-					// 教師が存在しなかった場合、教師を新規作成
+					// 介護士が存在しなかった場合、介護士を新規作成
 					// プリペアードステートメントにINSERT文をセット
-					statement = connection.prepareStatement("INSERT INTO CARIGIVER(STAFFID, PASSWORD, NAME) VALUES(?, ?, ?, ?, ?)");
+					statement = connection.prepareStatement("INSERT INTO CAREGIVER  (cg_num,  NAME, password) VALUES(?, ? ,?)");
 					// プリペアードステートメントに値をバインド
+					statement.setString(1, caregiver.getStaffid());
 					statement.setString(2, caregiver.getName());
-					statement.setString(4, caregiver.getStaffid());
-					statement.setString(6, caregiver.getPassword());
+					statement.setString(3, caregiver.getPassword());
 
 
 				} else {
-					// 教師が存在した場合、情報を更新
+					// 介護士が存在した場合、情報を更新
 					// プリペアードステートメントにUPDATE文をセット
-					statement = connection.prepareStatement("UPDATE CAREGIVER SET NAME = ?, STAFFID = ?");
+					statement = connection.prepareStatement("UPDATE CAREGIVER SET NAME = ? , password = ? where cg_num = ? ;");
 					// プリペアードステートメントに値をバインド
-					statement.setString(2, caregiver.getName());
-					statement.setString(5, caregiver.getStaffid());
+					statement.setString(1, caregiver.getName());
+					statement.setString(2, caregiver.getPassword());
+					statement.setString(3, caregiver.getStaffid());
 				}
 
 				// プリペアードステートメントを実行
