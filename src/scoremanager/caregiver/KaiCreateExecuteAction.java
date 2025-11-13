@@ -20,6 +20,7 @@ public class KaiCreateExecuteAction extends Action {
 		HttpSession session = req.getSession(); // セッション
 		Caregiver caregiver = (Caregiver)session.getAttribute("user");
 		String ca_pw = "";
+		String ca_pw2 = "";
 		String ca_name = "";
 		String ca_id = "";
 		String facility_pw = "";
@@ -29,42 +30,47 @@ public class KaiCreateExecuteAction extends Action {
 
 		//リクエストパラメーターの取得
 		ca_pw = req.getParameter("pw");
+		ca_pw2 = req.getParameter("pw_2");
 		ca_name = req.getParameter("name");
 		ca_id = req.getParameter("id");
+		facility_pw = req.getParameter("facility_id");
 
 
-
-		if (facility_pw == "01"){
+		if ("01".equals(facility_pw)){
 			//介護士の新規登録ができる様になる
+
+			if (caregiverDao.get(ca_id)!= null) { // 教師が重複している場合
+				errors.put("1", "職員番号が重複しています");
+				// リクエストにエラーメッセージをセット
+				req.setAttribute("errors", errors);
+			}else if (!ca_pw.equals(req.getParameter("pw_2"))) {
+				errors.put("2", "パスワードが一致しません");
+			} else {
+				// subjectに科目情報をセット
+				createCaregiver.setStaffid(ca_id);
+				createCaregiver.setName(ca_name);
+				createCaregiver.setPassword(ca_pw);
+				// saveメソッドで情報を登録
+				caregiverDao.save(createCaregiver);
+			}
+
+			//リクエストに値をセット
+			req.setAttribute("pw", ca_pw);
+			req.setAttribute("name", ca_name);
+			req.setAttribute("id", ca_id);
+
+			// JSPへフォワード
+			if (errors.isEmpty()) { // エラーメッセージがない場合
+				// 登録完了画面にフォワード
+				req.getRequestDispatcher("Kai_menu.jsp").forward(req, res);
+			} else { // エラーメッセージがある場合
+				// 登録画面にフォワード
+				req.getRequestDispatcher("KaiCreate.action").forward(req, res);
+			}
 		}else{
 			//施設パスワードが違うため，介護士の新規登録はできない
-		}
-
-		if (caregiverDao.get(ca_id)!= null) { // 教師が重複している場合
-			errors.put("1", "職員番号が重複しています");
-			// リクエストにエラーメッセージをセット
-			req.setAttribute("errors", errors);
-		} else {
-			// subjectに科目情報をセット
-			createCaregiver.setStaffid(ca_id);
-			createCaregiver.setName(ca_name);
-			createCaregiver.setPassword(ca_pw);
-			// saveメソッドで情報を登録
-			caregiverDao.save(createCaregiver);
-		}
-
-		//リクエストに値をセット
-		req.setAttribute("pw", ca_pw);
-		req.setAttribute("name", ca_name);
-		req.setAttribute("id", ca_id);
-
-		// JSPへフォワード
-		if (errors.isEmpty()) { // エラーメッセージがない場合
-			// 登録完了画面にフォワード
-			req.getRequestDispatcher("Kai_menu.jsp").forward(req, res);
-		} else { // エラーメッセージがある場合
 			// 登録画面にフォワード
-			req.getRequestDispatcher("書き直しする→TeacherCreate.action").forward(req, res);
+			req.getRequestDispatcher("KaiCreate.action").forward(req, res);
 		}
 	}
 

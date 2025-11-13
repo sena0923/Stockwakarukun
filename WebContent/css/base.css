@@ -96,6 +96,13 @@ nav a:hover {
   display: block;
   padding: 15px 0;
 }
+.mainmenu b {
+  text-decoration: none;
+  color: #e6e6fa;
+  font-size: 2rem;
+  display: block;
+  padding: 15px 0;
+}
 
 /* メニュー全体 */
 .menu-container {
