@@ -38,7 +38,7 @@ public class KaiCreateExecuteAction extends Action {
 		if (isAdminStr != null) {
 			isAdmin = true;
 		}
-		
+
 		if (facility_pw == "01"){
 			//介護士の新規登録ができる様になる
 		}else{
@@ -69,10 +69,10 @@ public class KaiCreateExecuteAction extends Action {
 		// JSPへフォワード
 		if (errors.isEmpty()) { // エラーメッセージがない場合
 			// 登録完了画面にフォワード
-			req.getRequestDispatcher(".jsp").forward(req, res);
+			req.getRequestDispatcher("Kai_menu.jsp").forward(req, res);
 		} else { // エラーメッセージがある場合
 			// 登録画面にフォワード
-			req.getRequestDispatcher("TeacherCreate.action").forward(req, res);
+			req.getRequestDispatcher("書き直しする→TeacherCreate.action").forward(req, res);
 		}
 	}
 

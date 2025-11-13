@@ -19,6 +19,10 @@
 	<c:import url="/header.jsp" />
   </header>
 
+  <main>
+  	${param.content}
+  </main>
+
 
 </body>
 </html>
