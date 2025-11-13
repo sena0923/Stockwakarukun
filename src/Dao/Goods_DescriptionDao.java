@@ -21,7 +21,7 @@ public class Goods_DescriptionDao extends Dao {
 
         try {
             // 商品1件取得SQL
-            String sql = "SELECT * FROM goods WHERE goods_id = ?";
+            String sql = "SELECT * FROM goods_description WHERE goods_id = ?";
 
             statement = connection.prepareStatement(sql);
             statement.setString(1, goods_Id);
