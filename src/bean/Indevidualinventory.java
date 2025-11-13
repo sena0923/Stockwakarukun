@@ -16,7 +16,7 @@ public class Indevidualinventory implements Serializable {
 	private int inve_count;
 
 	/**登録日**/
-	private int regi_date;
+	private java.util.Date regi_date;
 
 	public String getRd_id() {
 		return rd_id;
@@ -42,11 +42,11 @@ public class Indevidualinventory implements Serializable {
 		this.inve_count = inve_count;
 	}
 
-	public int getRegi_date() {
+	public java.util.Date getRegi_date() {
 		return regi_date;
 	}
 
-	public void setRegi_date(int regi_date) {
+	public void setRegi_date(java.util.Date regi_date) {
 		this.regi_date = regi_date;
 	}
 
