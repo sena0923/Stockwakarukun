@@ -10,14 +10,11 @@
 	</c:param>
 
 	<c:param name="scripts">
-		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/base.css">
-
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/login.css">
 	</c:param>
 
 	<c:param name="content">
-		<form class="body">
-		<form class="content" onsubmit="return checkFacilityPassword();" action="home.html" method="get">
-
+		<form class="content" action="KaiLoginExecute.action" method="get">
 			<h1>介護士ログイン</h1>
 			<div class="controll">
 			<label for="name">氏名</label>
@@ -39,11 +36,10 @@
 
 	        <!-- 入力欄のすぐ下に配置 -->
 	        <div class="button-group">
-	            <button class="btn" type="submit">ログイン</button>
-	            <a href="介護士新規登録.jsp" class="btn">新規登録画面へ</a>
-	        </div>
-	    </form>
-	    </form>
+	            <button class=btn-primary type="submit">ログイン</button>
+	            <a href="介護士新規登録.jsp" class="btn-primary">新規登録画面へ</a>
+			</div>
+		</form>
 	</c:param>
 </c:import>
 
