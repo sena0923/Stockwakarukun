@@ -10,42 +10,32 @@ public class CaregiverDao extends Dao {
 
     /**
      * 介護士情報をIDで取得
-     *
      * @param id 介護士ID
      * @return 介護士情報:存在しない場合はnull
      * @throws Exception
      */
-    public Caregiver get(String staffId) throws Exception {
-
+    public Caregiver get(String CG_NUM) throws Exception {
     	Caregiver caregiver = new Caregiver();
-
     	Connection connection = getConnection();
-
     	PreparedStatement statement = null;
-
-
         try {
-        	statement = connection.prepareStatement("#");
 
-            statement.setString(1, staffId);
-
+        	statement = connection.prepareStatement("SELECT * FROM caregiver WHERE CG_NUM = ? ");
+            statement.setString(1, CG_NUM);
             ResultSet resultSet = statement.executeQuery();
-
             if (resultSet.next()) {
                 caregiver.setName(resultSet.getString("name"));
-                caregiver.setStaffid(resultSet.getString("staffid"));
+                caregiver.setStaffid(resultSet.getString("cg_num"));
                 caregiver.setPassword(resultSet.getString("password"));
             } else {
             	caregiver = null;
             }
-
         } catch (SQLException e) {
             throw new Exception("データ取得エラー", e);
         }
 
-        return caregiver;
+       return caregiver;
     }
-
     /**
      * ログイン認証
      *
