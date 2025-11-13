@@ -7,7 +7,7 @@ import java.sql.SQLException;
 
 import bean.Paymentmethod;
 
-public class Payment_mehodDao extends Dao {
+public class Payment_MehodDao extends Dao {
 
     public static void main(String[] args) {
         // TODO 自動生成されたメソッド・スタブ
