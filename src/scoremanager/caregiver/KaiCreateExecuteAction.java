@@ -23,8 +23,6 @@ public class KaiCreateExecuteAction extends Action {
 		String ca_name = "";
 		String ca_id = "";
 		String facility_pw = "";
-		String isAdminStr = "";
-		boolean isAdmin = false;
 		Caregiver createCaregiver = new Caregiver();
 		CaregiverDao caregiverDao = new CaregiverDao();
 		Map<String, String> errors = new HashMap<>(); // エラーメッセージ
@@ -33,11 +31,8 @@ public class KaiCreateExecuteAction extends Action {
 		ca_pw = req.getParameter("pw");
 		ca_name = req.getParameter("name");
 		ca_id = req.getParameter("id");
-		isAdminStr = req.getParameter("is_admin");
 
-		if (isAdminStr != null) {
-			isAdmin = true;
-		}
+
 
 		if (facility_pw == "01"){
 			//介護士の新規登録ができる様になる
@@ -54,7 +49,6 @@ public class KaiCreateExecuteAction extends Action {
 			createCaregiver.setStaffid(ca_id);
 			createCaregiver.setName(ca_name);
 			createCaregiver.setPassword(ca_pw);
-			createCaregiver.setAdmin(isAdmin);
 			// saveメソッドで情報を登録
 			caregiverDao.save(createCaregiver);
 		}
@@ -63,7 +57,6 @@ public class KaiCreateExecuteAction extends Action {
 		req.setAttribute("pw", ca_pw);
 		req.setAttribute("name", ca_name);
 		req.setAttribute("id", ca_id);
-		req.setAttribute("is_admin", isAdmin);
 
 		// JSPへフォワード
 		if (errors.isEmpty()) { // エラーメッセージがない場合
