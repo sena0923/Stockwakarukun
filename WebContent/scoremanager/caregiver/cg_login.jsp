@@ -14,8 +14,11 @@
 	</c:param>
 
 	<c:param name="content">
-		<form class="content" action="KaiLoginExecute.action" method="get">
+		<form class="content" action="KaiLoginExecute.action" method="post">
 			<h1>介護士ログイン</h1>
+
+
+
 			<div class="controll">
 			<label for="name">氏名</label>
 			<input type="text" id="name" name="name" required>
@@ -26,18 +29,17 @@
 				<input type="text" id="staffnum" name="staffnum" required>
 			</div>
 
-
-	        <p id="error-message"></p>
-
 	        <div class="controll">
-	            <label for="mypassword">パスワード</label>
-	            <input id="mypassword" type="password" name="password" required>
+	            <label for="password">パスワード</label>
+	            <input id="password" type="password" name="password" required>
 	        </div>
+
+
 
 	        <!-- 入力欄のすぐ下に配置 -->
 	        <div class="button-group">
 	            <button class=btn-primary type="submit">ログイン</button>
-	            <a href="介護士新規登録.jsp" class="btn-primary">新規登録画面へ</a>
+	            <a href="cg_create.jsp" class="btn-primary">新規登録画面へ</a>
 			</div>
 		</form>
 	</c:param>

@@ -1,3 +1,5 @@
+<%-- 該当入居者のメインメニュー --%>
+
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
 
 

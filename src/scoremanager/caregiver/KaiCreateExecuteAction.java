@@ -36,15 +36,19 @@ public class KaiCreateExecuteAction extends Action {
 		facility_pw = req.getParameter("facility_id");
 
 
+
 		if ("01".equals(facility_pw)){
 			//介護士の新規登録ができる様になる
+
 
 			if (caregiverDao.get(ca_id)!= null) { // 教師が重複している場合
 				errors.put("1", "職員番号が重複しています");
 				// リクエストにエラーメッセージをセット
-				req.setAttribute("errors", errors);
+				System.out.println(errors.values());
+
 			}else if (!ca_pw.equals(req.getParameter("pw_2"))) {
 				errors.put("2", "パスワードが一致しません");
+
 			} else {
 				// subjectに科目情報をセット
 				createCaregiver.setStaffid(ca_id);
@@ -54,22 +58,29 @@ public class KaiCreateExecuteAction extends Action {
 				caregiverDao.save(createCaregiver);
 			}
 
+			System.out.println(errors.values());
+
 			//リクエストに値をセット
 			req.setAttribute("pw", ca_pw);
 			req.setAttribute("name", ca_name);
 			req.setAttribute("id", ca_id);
+			req.setAttribute("errors", errors);
 
 			// JSPへフォワード
 			if (errors.isEmpty()) { // エラーメッセージがない場合
+
 				// 登録完了画面にフォワード
-				req.getRequestDispatcher("Kai_menu.jsp").forward(req, res);
+				req.getRequestDispatcher("KaiMenu.action").forward(req, res);
 			} else { // エラーメッセージがある場合
+				req.setAttribute("errors", errors);
 				// 登録画面にフォワード
 				req.getRequestDispatcher("KaiCreate.action").forward(req, res);
 			}
 		}else{
 			//施設パスワードが違うため，介護士の新規登録はできない
+			errors.put("3", "施設パスワードが一致しません");
 			// 登録画面にフォワード
+			req.setAttribute("errors", errors);
 			req.getRequestDispatcher("KaiCreate.action").forward(req, res);
 		}
 	}

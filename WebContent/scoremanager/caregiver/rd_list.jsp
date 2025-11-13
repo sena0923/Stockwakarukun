@@ -1,5 +1,45 @@
-<%@ page contentType="text/html; charset=UTF-8" language="java" %>
+<%-- 介護士が閲覧する入居者リスト画面 --%>
 
+<%@ page contentType="text/html; charset=UTF-8" language="java" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+<c:import url="../../base.jsp">
+	<c:param name="title">
+		入居者一覧
+	</c:param>
+
+	<c:param name="scripts">
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/rd_list.css">
+	</c:param>
+
+	<c:param name="content">
+		<form class="container" <%-- action="RdList.action"--%> method="get">
+			<h1>入居者一覧</h1>
+			<p>詳細を押下すると入居者の連絡帳やプロフィールが確認できます。</p>
+
+					<table class="table">
+						<tr>
+							<td>入居者氏名</td>
+							<td>性別</td>
+							<td>コース</td>
+							<td>詳細</td>
+						</tr>
+						<c:forEach var="resident" items="${list}">
+							<tr>
+								<td>${resident.name}</td>
+								<td>${resident.gender}</td>
+								<td>${resident.course_id}</td>
+								<td><a href="#<%-- 入居者IDから該当入居者の詳細ページへ ?no=${resident.rd_id}--%>">変更</a></td>
+							</tr>
+						</c:forEach>
+					</table>
+			<a href="KaiMenu.action" class="back-btn">ホームへ戻る</a>
+		</form>
+	</c:param>
+</c:import>
+
+
+<%--
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -127,7 +167,8 @@
       </tr>
     </table>
 
-    <a href="介護士ホーム.jsp" class="back-btn">ホームへ戻る</a>
+    <a href="kai_menu.jsp" class="back-btn">ホームへ戻る</a>
   </div>
 </body>
 </html>
+--%>

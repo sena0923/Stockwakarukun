@@ -1,10 +1,12 @@
+<%-- 入居者と親族が閲覧するECサイトの商品詳細画面 --%>
+
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <%@ include file="base.jsp" %>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <title>Cart_on</title>
+    <title>Product Details</title>
     <style>
         .product-list {
             display: flex;
@@ -13,16 +15,20 @@
             margin: 20px;
         }
 
-        .product-item {
+        .product-list {
             display: flex;
-            align-items: center;
+            /*align-items: center;*/
             gap: 20px;
         }
 
+
         .product-item img {
-            width: 150px; /* サイズ調整 */
-            height: auto;
+            width: 300px;
+            height: 300px;
+            object-fit: cover;
+            border: 1px solid #ddd;
         }
+
 
         nav li {
             display: inline;
@@ -33,43 +39,41 @@
 <body>
     <header>
         <nav>
-            <li><a href="#">メインメニュー</a></li>
             <li><a href="#">アカウント情報</a></li>
             <li><a href="#">ログアウト</a></li>
         </nav>
     </header>
 
     <div>
-        <h2>ECサイト </h2>
+        <br>
+        <a href="#">商品一覧</a>
+        <a href="#">カート</a>
+        <a href="#">購入履歴</a>
     </div>
 
     <div>
-        <a>カートへ追加しました</a>
+        <h2>商品詳細ページ</h2>
     </div>
 
     <div class="product-list">
         <div class="product-item">
             <img src="image/image1.jpg">
-            <span>商品名A
-                <br>￥150
-            </span>
-        </div>
-        <div class="product-item">
-            <img src="image/image2.jpg" alt="">
-            <span>商品名B
-                <br>￥128
-            </span>
-        </div>
-        <div class="product-item">
-            <img src="image/image3.jpg" alt="">
-            <span>商品名C
-                <br>￥200
-            </span>
+                <span>商品名A
+                    <br>￥150
+                    <br><a href="#">カートに入れる</a>
+                </span>
+
+            <div>
+                <br>販売元 : 大原株式会社
+                <br>サイズ : 100×30 cm
+                <br>材質   : 綿100%
+                <br>説明   : コットン100%のため，吸水性と肌触りが・・・
+            </div>
         </div>
     </div>
 
     <div>
-        <h1><a href="#">カートの内の商品を購入</a></h1>
+
     </div>
 
     <footer>

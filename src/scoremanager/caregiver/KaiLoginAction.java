@@ -10,6 +10,6 @@ public class KaiLoginAction extends Action {
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse res)
 			throws Exception{
-		req.getRequestDispatcher("介護士ログイン.jsp").forward(req, res);
+		req.getRequestDispatcher("cg_login.jsp").forward(req, res);
 	}
 }

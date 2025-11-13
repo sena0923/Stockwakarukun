@@ -17,6 +17,6 @@ public class KaiCreateAction extends Action {
 
 
 			// JSPへフォワード
-			req.getRequestDispatcher("介護士新規登録.jsp").forward(req, res);
+			req.getRequestDispatcher("cg_create.jsp").forward(req, res);
 		}
 	}
