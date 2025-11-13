@@ -19,7 +19,6 @@ public class NyuLoginExecuteAction extends Action {
 		//ローカル変数の宣言
 			String url = "";
 			String rd_id = "";
-			String name = "";
 			String password = "";
 			ResidentDao residentDao = new ResidentDao();
 			Resident resident = null;
@@ -45,7 +44,7 @@ public class NyuLoginExecuteAction extends Action {
 				session.setAttribute("user", resident);
 
 				//リダイレクト
-				url = "入居者/Mene.action";
+				url = "NyuMene.action";
 				res.sendRedirect(url);
 			}else{ //認証失敗の場合
 				//エラーメッセージをセット
