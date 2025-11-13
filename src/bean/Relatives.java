@@ -33,7 +33,7 @@ public class Relatives implements Serializable {
 		this.rt_id = rt_id;
 	}
 
-	public String getrd_id() {
+	public String getRd_id() {
 		return rd_id;
 	}
 
