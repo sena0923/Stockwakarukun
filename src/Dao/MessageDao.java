@@ -21,7 +21,7 @@ public class MessageDao extends Dao {
 
         try {
             // メッセージ取得SQL
-            String sql = "SELECT * FROM message WHERE me_id";
+            String sql = "SELECT * FROM message WHERE me_id = ?";
 
             statement = connection.prepareStatement(sql);
             statement.setString(1, message_id);

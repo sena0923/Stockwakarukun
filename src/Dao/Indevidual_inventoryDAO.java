@@ -21,7 +21,7 @@ public class Indevidual_inventoryDAO extends Dao {
 
         try {
             // 個人在庫取得SQL
-            String sql = "SELECT * FROM Indevidual_inventory WHERE rd_id";
+            String sql = "SELECT * FROM Indevidual_inventory WHERE rd_id = ?";
 
             statement = connection.prepareStatement(sql);
             statement.setString(1, Inve_name);
