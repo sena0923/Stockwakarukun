@@ -8,10 +8,43 @@
 	<c:param name="title">
 		ストックわかるくん
 	</c:param>
-	
-	
+
+	<c:param name="scripts">
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/base.css">
+
+	</c:param>
+
+	<c:param name="content">
+		<form class="body">
+		<form class="content" onsubmit="return checkFacilityPassword();" action="home.html" method="get">
+
+			<h1>介護士ログイン</h1>
+			<div class="controll">
+			<label for="name">氏名</label>
+			<input type="text" id="name" name="name" required>
+			</div>
+
+			<div class="controll">
+			<label for="staffnum">職員番号</label>
+				<input type="text" id="staffnum" name="staffnum" required>
+			</div>
 
 
+	        <p id="error-message"></p>
+
+	        <div class="controll">
+	            <label for="mypassword">パスワード</label>
+	            <input id="mypassword" type="password" name="password" required>
+	        </div>
+
+	        <!-- 入力欄のすぐ下に配置 -->
+	        <div class="button-group">
+	            <button class="btn" type="submit">ログイン</button>
+	            <a href="介護士新規登録.jsp" class="btn">新規登録画面へ</a>
+	        </div>
+	    </form>
+	    </form>
+	</c:param>
 </c:import>
 
 
@@ -150,5 +183,5 @@
     </script>
 </body>
 </html>
-
 --%>
+

@@ -1,3 +1,101 @@
+/* ===== ログイン画面専用 ===== */
+body {
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #f5f5f5;
+  margin: 0;
+  font-family: "Hiragino Sans", "Meiryo", sans-serif;
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+h2 {
+  font-size: 1.1rem;
+  margin: 10px 0 5px 0;
+}
+
+.content {
+  background: #fff;
+  padding: 40px 50px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  text-align: left;
+}
+
+.controll {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+input {
+  height: 45px;
+  width: 80vw;
+  max-width: 300px;
+  font-size: 1rem;
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-sizing: border-box;
+}
+
+.btn-primary {
+  margin-top: 30px;
+  height: 50px;
+  width: 80vw;
+  max-width: 300px;
+  font-size: 1.1rem;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+  background-color: #45a049;
+}
+
+.button-group {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 25px;
+}
+
+.error-message {
+  color: red;
+  font-size: 0.9rem;
+  margin-top: 10px;
+  text-align: center;
+}
+
+@media screen and (max-width: 480px) {
+  h1 {
+    font-size: 1.6rem;
+    margin-bottom: 25px;
+  }
+  h2 {
+    font-size: 1rem;
+  }
+  input, .btn-primary {
+    width: 90vw;
+  }
+}
+
+/*
 body {
   height: 80vh;
   display: flex;
@@ -68,3 +166,4 @@ input {
     width: 90vw;
   }
 }
+*/
