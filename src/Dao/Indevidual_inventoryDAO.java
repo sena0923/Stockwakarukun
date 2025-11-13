@@ -5,35 +5,37 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import bean.Paymentmethod;
+import bean.Indevidualinventory;
 
-public class Payment_mehodDao extends Dao {
+public class Indevidual_inventoryDAO extends Dao {
 
     public static void main(String[] args) {
         // TODO 自動生成されたメソッド・スタブ
     }
 
-    public Paymentmethod get(String payment_Id) throws Exception {
+    public Indevidualinventory get(String Inve_name) throws Exception {
 
-        Paymentmethod paymentmethod = null;
+    	Indevidualinventory indevidual = null;
         Connection connection = getConnection();
         PreparedStatement statement = null;
 
         try {
-            // 支払い方法1件取得SQL
-            String sql = "SELECT * FROM paymentmethod WHERE payment_id = ?";
+            // 個人在庫取得SQL
+            String sql = "SELECT * FROM Indevidual_inventory WHERE goods_id = ?";
 
             statement = connection.prepareStatement(sql);
-            statement.setString(1, payment_Id);
+            statement.setString(1, Inve_name);
 
             ResultSet resultSet = statement.executeQuery();
 
             if (resultSet.next()) {
-                paymentmethod = new Paymentmethod();
+            	indevidual = new Indevidualinventory();
 
-                paymentmethod.setPayment_id(resultSet.getString("payment_id"));
-                paymentmethod.setPayment(resultSet.getString("payment"));
+            	indevidual.setInve_name(resultSet.getString("inve_name"));
+            	indevidual.setInve_count(resultSet.getInt("inve_count"));
+            	indevidual.setRegi_date(resultSet.getTimestamp("regi_date"));
             }
+
         } catch (SQLException e) {
             throw new Exception("データ取得エラー", e);
         } finally {
@@ -45,6 +47,6 @@ public class Payment_mehodDao extends Dao {
             }
         }
 
-        return paymentmethod;
+        return indevidual;
     }
 }

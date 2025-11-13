@@ -10,42 +10,32 @@ public class CaregiverDao extends Dao {
 
     /**
      * 介護士情報をIDで取得
-     *
      * @param id 介護士ID
      * @return 介護士情報:存在しない場合はnull
      * @throws Exception
      */
-    public Caregiver get(String staffId) throws Exception {
-
+    public Caregiver get(String CG_NUM) throws Exception {
     	Caregiver caregiver = new Caregiver();
-
     	Connection connection = getConnection();
-
     	PreparedStatement statement = null;
-
-
         try {
-        	statement = connection.prepareStatement("#");
 
-            statement.setString(1, staffId);
-
+        	statement = connection.prepareStatement("SELECT * FROM caregiver WHERE CG_NUM = ? ");
+            statement.setString(1, CG_NUM);
             ResultSet resultSet = statement.executeQuery();
-
             if (resultSet.next()) {
                 caregiver.setName(resultSet.getString("name"));
-                caregiver.setStaffid(resultSet.getString("staffid"));
+                caregiver.setStaffid(resultSet.getString("cg_num"));
                 caregiver.setPassword(resultSet.getString("password"));
             } else {
             	caregiver = null;
             }
-
         } catch (SQLException e) {
             throw new Exception("データ取得エラー", e);
         }
 
-        return caregiver;
+       return caregiver;
     }
-
     /**
      * ログイン認証
      *
@@ -63,4 +53,68 @@ public class CaregiverDao extends Dao {
 
         return caregiver;
     }
+		public boolean save(Caregiver caregiver) throws Exception {
+			// コネクションを確立
+			Connection connection = getConnection();
+			// プリペアードステートメント
+			PreparedStatement statement = null;
+
+			// 実行件数
+			int count = 0;
+
+			try {
+				// データベースから介護士を取得
+				Caregiver old = get(caregiver.getStaffid());
+
+				if (old == null) {
+					// 教師が存在しなかった場合、教師を新規作成
+					// プリペアードステートメントにINSERT文をセット
+					statement = connection.prepareStatement("INSERT INTO CARIGIVER(STAFFID, PASSWORD, NAME) VALUES(?, ?, ?, ?, ?)");
+					// プリペアードステートメントに値をバインド
+					statement.setString(2, caregiver.getName());
+					statement.setString(4, caregiver.getStaffid());
+					statement.setString(6, caregiver.getPassword());
+
+
+				} else {
+					// 教師が存在した場合、情報を更新
+					// プリペアードステートメントにUPDATE文をセット
+					statement = connection.prepareStatement("UPDATE CAREGIVER SET NAME = ?, STAFFID = ?");
+					// プリペアードステートメントに値をバインド
+					statement.setString(2, caregiver.getName());
+					statement.setString(5, caregiver.getStaffid());
+				}
+
+				// プリペアードステートメントを実行
+				count = statement.executeUpdate();
+
+			} catch (Exception e) {
+				throw e;
+			} finally {
+				// プリペアードステートメントを閉じる
+				if (statement != null) {
+					try {
+						statement.close();
+					} catch (SQLException sqle) {
+						throw sqle;
+					}
+				}
+				// コネクションを閉じる
+				if (connection != null) {
+					try {
+						connection.close();
+					} catch (SQLException sqle) {
+						throw sqle;
+					}
+				}
+			}
+
+			if (count == 1) {
+				// 実行件数1件の場合
+				return true;
+			} else {
+				// 実行件数がそれ以外の場合
+				return false;
+			}
+		}
 }

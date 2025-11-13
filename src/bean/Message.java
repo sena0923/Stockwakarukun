@@ -10,7 +10,7 @@ public class Message implements Serializable {
 	/**
 	 * メッセージID:String
 	 */
-	private String message_id;
+	private String me_id;
 
 	/**
 	 * 介護士ID:String
@@ -30,18 +30,18 @@ public class Message implements Serializable {
 	/**
 	 * 送信日時:date
 	 */
-	private int da_ti;
+	private java.util.Date da_ti;
 
 
 	/**
 	 * ゲッター・セッター
 	 */
-	public String getMessage_id() {
-		return message_id;
+	public String getMe_id() {
+		return me_id;
 	}
 
-	public void setMessage_id(String message_id) {
-		this.message_id = message_id;
+	public void setMessage_id(String me_id) {
+		this.me_id = me_id;
 	}
 
 	public String getCg_num() {
@@ -68,11 +68,11 @@ public class Message implements Serializable {
 		this.message = message;
 	}
 
-	public int getDa_ti() {
+	public java.util.Date getDa_ti() {
 		return da_ti;
 	}
 
-	public void setDa_ti(int da_ti) {
+	public void setDa_ti(java.util.Date da_ti) {
 		this.da_ti = da_ti;
 	}
 }

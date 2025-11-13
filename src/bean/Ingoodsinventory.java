@@ -19,7 +19,7 @@ public class Ingoodsinventory implements Serializable {
 	private int goods_inve_count;
 
 	/**購入日**/
-	private int purchase_date;
+	private java.util.Date purchase_date;
 	/**
 	 * ゲッター・セッター
 	 */
@@ -56,11 +56,11 @@ public class Ingoodsinventory implements Serializable {
 		this.goods_inve_count = goods_inve_count;
 	}
 
-	public int getPurchase_date() {
+	public java.util.Date getPurchase_date() {
 		return purchase_date;
 	}
 
-	public void setPurchase_date(int purchase_date) {
+	public void setPurchase_date(java.util.Date purchase_date) {
 		this.purchase_date = purchase_date;
 	}
 }
