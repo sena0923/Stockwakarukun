@@ -55,7 +55,6 @@ public class KaiCreateExecuteAction extends Action {
 			createCaregiver.setName(ca_name);
 			createCaregiver.setPassword(ca_pw);
 			createCaregiver.setAdmin(isAdmin);
-			createCaregiver.setSchool(caregiver.getSchool());
 			// saveメソッドで情報を登録
 			caregiverDao.save(createCaregiver);
 		}
