@@ -7,31 +7,56 @@
     <title>入居者情報変更画面</title>
     <style>
         body {
-            height: 80vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            background-color: #f5f5f5;
+            min-height: 100vh;
             margin: 0;
+            background-color: #f5f5f5;
             font-family: "Hiragino Sans", "Meiryo", sans-serif;
+
+            display: flex;
+            flex-direction: column; /* タイトルは上、フォームは中央へ */
+            align-items: center;
         }
 
+        /* タイトルは画面上部に固定 */
         h1 {
             font-size: 2rem;
-            margin-bottom: 40px;
+            margin-top: 20px;
+            margin-bottom: 20px;
             text-align: center;
+            position: sticky;
+            top: 0;
+            background-color: #f5f5f5;
+            padding: 15px 0;
+            width: 100%;
+        }
+
+        /* フォームを中央寄せ */
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            width: 100%;
+            max-width: 350px;
+            margin-top: 30px;
         }
 
         h2 {
             font-size: 1.1rem;
             margin: 10px 0 5px 0;
+            width: 100%;
+        }
+
+        label {
+            width: 100%;
+            margin-bottom: 5px;
+            display: block;
         }
 
         input {
             height: 45px;
-            width: 80vw;               /* 画面幅の80% */
-            max-width: 300px;          /* 最大幅を設定 */
+            width: 100%;
             font-size: 1rem;
             padding: 5px 10px;
             border: 1px solid #ccc;
@@ -40,10 +65,9 @@
         }
 
         .btn2 {
-            margin-top: 30px;
+            margin-top: 25px;
             height: 50px;
-            width: 80vw;
-            max-width: 300px;
+            width: 100%;
             font-size: 1.1rem;
             background-color: #4CAF50;
             color: white;
@@ -57,14 +81,11 @@
             background-color: #45a049;
         }
 
-        /* 小さいスマホ向けに文字や余白を少し調整 */
+        /* スマホ調整 */
         @media screen and (max-width: 480px) {
             h1 {
                 font-size: 1.6rem;
-                margin-bottom: 25px;
-            }
-            h2 {
-                font-size: 1rem;
+                padding: 10px 0;
             }
             input, .btn2 {
                 width: 90vw;
@@ -78,8 +99,17 @@
     <h1>ユーザー情報変更画面</h1>
 
     <form method="post" action="./rdInfoChangeComplete.jsp" onsubmit="return validateForm();">
-        <h2>メールアドレス</h2>
-        <input type="email" id="email" name="email" placeholder="example@example.com" required>
+         <label>コースを選んでください</label>
+      <div class="radio-group column">
+        <div class="radio-item">
+          <input id="radio-a" type="radio" name="course" value="ziritu" checked>
+          <label for="radio-a">自立コース</label>
+        </div>
+        <div class="radio-item">
+          <input id="radio-b" type="radio" name="course" value="youkaigo">
+          <label for="radio-b">要介護コース</label>
+        </div>
+      </div>
 
         <h2>パスワード</h2>
         <input type="password" id="password" name="password" pattern="^[0-9]+$" required>

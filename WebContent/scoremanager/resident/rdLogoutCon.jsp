@@ -17,7 +17,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 70vh;
+    height: 25vh;
     text-align: center;
     font-family: "Hiragino Sans", "Meiryo", sans-serif;
   }
