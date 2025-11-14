@@ -9,11 +9,12 @@
 
   <h1>ログイン画面</h1>
 
-  <form id="loginForm" method="post">
+  <form class="content" action="NyuLoginExecute.action" method="get">
+
 
     <!-- ログインID -->
-    <label for="login-id">ログインID</label>
-    <input type="text" id="login-id" name="login-id" pattern="^[0-9]+$" required>
+    <label for="RD_ID">ログインID</label>
+    <input type="text" id="rd_id" name="rd_id" pattern="^[0-9]+$" required>
 
     <!-- パスワード -->
     <label for="password">パスワード</label>
@@ -32,7 +33,7 @@
 
   <script>
     const form = document.getElementById("loginForm");
-    const loginId = document.getElementById("login-id");
+    const rd_id = document.getElementById("rd_id");
     const password = document.getElementById("password");
     const errorDiv = document.getElementById("login-error");
 
@@ -49,11 +50,7 @@
         return;
       }
 
-      // 仮の認証（本番ではサーバー側で処理）
-      if (idValue === "5678" && pwValue === "9999") {
-        errorDiv.style.color = "green";
-        errorDiv.textContent = "ログイン成功！";
-        // window.location.href = "./親族ホーム.html"; // 実際の遷移先
+
       } else {
         errorDiv.textContent = "ログインIDまたはパスワードが正しくありません。";
       }
