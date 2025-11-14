@@ -44,7 +44,7 @@ public class NyuLoginExecuteAction extends Action {
 				session.setAttribute("user", resident);
 
 				//リダイレクト
-				url = "NyuMene.action";
+				url = "NyuMenu.action";
 				res.sendRedirect(url);
 			}else{ //認証失敗の場合
 				//エラーメッセージをセット
