@@ -1,22 +1,25 @@
+<%-- 本当にログアウトしても大丈夫ですか画面 --%>
+
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
+
 
 <!DOCTYPE html>
 <html lang="ja">
 <head>
 <meta charset="utf-8">
-<title>登録完了</title>
+<title>ログアウト確認</title>
 <style>
   html, body {
     height: 100%;
     margin: 0;
   }
 
-  /* 画面中央に配置 */
+  /* Flexboxで中央寄せ */
   body {
     display: flex;
-    flex-direction: column;
-    justify-content: center; /* 縦方向中央 */
-    align-items: center;     /* 横方向中央 */
+    flex-direction: column; /* 縦方向に並べる */
+    justify-content: center; /* 垂直中央 */
+    align-items: center;     /* 水平中央 */
     background-color: #f5f5f5;
     font-family: sans-serif;
   }
@@ -27,6 +30,7 @@
 
   a {
     display: inline-block;
+    margin: 0 10px;
     padding: 10px 20px;
     text-decoration: none;
     background-color: #b8d200;
@@ -41,7 +45,10 @@
 </style>
 </head>
 <body>
-  <h1>商品の登録が完了しました</h1>
-  <a href="EC管理.jsp">管理一覧へ</a>
+  <h1>ログアウトしますか</h1>
+  <div>
+    <a href="Yes.jsp">はい</a>
+    <a href="MYP.jsp">いいえ</a>
+  </div>
 </body>
 </html>

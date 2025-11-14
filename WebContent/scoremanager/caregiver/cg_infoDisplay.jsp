@@ -1,3 +1,5 @@
+<%-- 介護士アカウント情報表示画面 --%>
+
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
 
 
@@ -66,8 +68,8 @@
   <p>名前 | ○○</p>
   <p>職員番号 | 1234</p>
 
-  <a href="変更.jsp">情報更新</a>
+  <a href="cg_infoChange.jsp.jsp">情報更新</a>
   <a href="logoutkai.jsp">ログアウト</a>
-  <a href="介護士ホーム.jsp" class="back-button">戻る</a>
+  <a href="kai_menu.jsp" class="back-button">戻る</a>
 </body>
 </html>

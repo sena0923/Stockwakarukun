@@ -1,11 +1,9 @@
+<%-- ログアウト完了画面 --%>
+
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
-
-
 <!DOCTYPE html>
-<html lang="ja">
 <head>
-<meta charset="utf-8">
-<title>登録完了</title>
+<title>ログアウト完了</title>
 <style>
   html, body {
     height: 100%;
@@ -42,7 +40,7 @@
 </style>
 </head>
 <body>
-  <h1>在庫の登録が完了しました</h1>
-  <a href="home.jsp">ホームへ</a>
+  <h1>ログアウトが完了しました</h1>
+  <a href="介護士ログイン.jsp">ログイン画面へ</a>
 </body>
 </html>

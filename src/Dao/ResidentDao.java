@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import bean.Resident;
 
@@ -82,8 +84,85 @@ public class ResidentDao extends Dao {
 
 	}
 
-	// save - 教師情報を登録または更新
-	// 引数1 teacher - 登録したいデータの入った教師beanを指定 全てのデータ（ID, password, 名前, 学校, 管理者権限の有無）が揃っている必要がある
+
+	private List<Resident> postFilter(ResultSet resultSet) throws Exception {
+
+		// リストを初期化
+		List<Resident> list = new ArrayList<>();
+		try {
+			// リザルトセットを全権走査
+			while (resultSet.next()) {
+				// 学生インスタンスを初期化
+				Resident resident = new Resident();
+				// 学生インスタンスに検索結果をセット
+				resident.setRd_id(resultSet.getString("rd_id"));
+				resident.setName(resultSet.getString("name"));
+				resident.setCourse_id(resultSet.getInt("course_id"));
+				resident.setGender(resultSet.getString("gender"));
+				// リストに追加
+				list.add(resident);
+			}
+		} catch (SQLException | NullPointerException e) {
+			e.printStackTrace();
+		}
+
+		return list;
+	}
+
+	//すべての入居者を，入居者インスタンスに保存。
+	//すべての入居者を一括で表示したいときなどに利用。
+
+	public List<Resident> getAll() throws Exception {
+		List<Resident> list = new ArrayList<>();
+
+		// データベースへのコネクションを確立
+		Connection connection = getConnection();
+		// プリペアードステートメント
+		PreparedStatement statement = null;
+
+
+		String sql = "SELECT * FROM resident";
+
+		try {
+			statement = connection.prepareStatement(sql);
+			ResultSet resultSet = statement.executeQuery();
+
+				while(resultSet.next()) {
+					Resident resident = new Resident();
+					resident.setRd_id(resultSet.getString("rd_id"));
+					resident.setName(resultSet.getString("name"));
+					resident.setCourse_id(resultSet.getInt("course_id"));
+					resident.setGender(resultSet.getString("gender"));
+					list.add(resident);
+				}
+		} catch (Exception e) {
+			e.printStackTrace(); // ログ出力
+			throw e;
+		} finally {
+			// プリペアードステートメントを閉じる
+			if (statement != null) {
+				try {
+					statement.close();
+				} catch (SQLException sqle) {
+					throw sqle;
+				}
+			}
+			// コネクションを閉じる
+			if (connection != null) {
+				try {
+					connection.close();
+				} catch (SQLException sqle) {
+					throw sqle;
+				}
+			}
+		}
+
+		return list;
+	}
+
+
+	// save - 入居者情報を登録または更新
+	// 引数1 teacher - 登録したいデータの入った入居者beanを指定 全てのデータ（ID, password, 名前, 学校, 管理者権限の有無）が揃っている必要がある
 	public boolean save(Resident resident) throws Exception {
 		// コネクションを確立
 		Connection connection = getConnection();
@@ -94,23 +173,23 @@ public class ResidentDao extends Dao {
 		int count = 0;
 
 		try {
-			// データベースから教師を取得
-			Resident old = get(resident.getrd_id());
+			// データベースから入居者を取得
+			Resident old = get(resident.getRd_id());
 
 			if (old == null) {
-				// 教師が存在しなかった場合、教師を新規作成
+				// 入居者が存在しなかった場合、入居者を新規作成
 				// プリペアードステートメントにINSERT文をセット
 				statement = connection.prepareStatement("INSERT INTO RESIDENT(COURSE_ID, NAME, GENDER, RD_ID, PASSWORD) VALUES(?, ?, ?, ?, ?)");
 				// プリペアードステートメントに値をバインド
 				statement.setInt(1,resident.getCourse_id());
 				statement.setString(2, resident.getName());
 				statement.setString(3,resident.getGender());
-				statement.setString(4, resident.getrd_id());
+				statement.setString(4, resident.getRd_id());
 				statement.setString(5, resident.getPassword());
 
 
 			} else {
-				// 教師が存在した場合、情報を更新
+				// 入居者が存在した場合、情報を更新
 				// プリペアードステートメントにUPDATE文をセット
 				statement = connection.prepareStatement("UPDATE TEACHER SET COURSE_ID = ?, PASSWORD = ?");
 				// プリペアードステートメントに値をバインド

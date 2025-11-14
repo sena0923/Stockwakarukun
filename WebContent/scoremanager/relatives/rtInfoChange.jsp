@@ -1,10 +1,11 @@
+<%-- 親族アカウント情報変更画面 --%>
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>親族情報変更画面</title>
+  <title>アカウント情報変更</title>
   <style>
     body {
       height: 80vh;

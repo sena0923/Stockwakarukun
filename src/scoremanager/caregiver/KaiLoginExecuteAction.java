@@ -42,7 +42,7 @@ public class KaiLoginExecuteAction extends Action {
 				//認証済みフラグを立てる
 				caregiver.setAuthenticated(true);
 				//セッションにログイン情報を保存
-				session.setAttribute("user", caregiver);
+				session.setAttribute(staffnum, caregiver);
 
 				//リダイレクト
 				url = "KaiMenu.action";
@@ -56,7 +56,7 @@ public class KaiLoginExecuteAction extends Action {
 				req.setAttribute("staffnum" , staffnum);
 
 				//フォワード
-				url = "介護士ログイン.jsp";
+				url = "cg_login.jsp";
 				req.getRequestDispatcher(url).forward(req,res);
 			}
 	}

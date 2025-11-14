@@ -1,3 +1,6 @@
+<%-- ECサイト管理者画面　商品一覧 --%>
+
+
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
 
 

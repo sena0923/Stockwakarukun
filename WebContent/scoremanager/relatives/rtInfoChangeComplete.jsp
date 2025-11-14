@@ -1,3 +1,4 @@
+<%-- 親族アカウント情報変更画面 --%>
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="ja">

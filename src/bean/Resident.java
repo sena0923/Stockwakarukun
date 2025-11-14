@@ -27,7 +27,7 @@ public class Resident implements Serializable {
 	 * ゲッター・セッター
 	 */
 
-	public String getrd_id() {
+	public String getRd_id() {
 		return rd_id;
 	}
 

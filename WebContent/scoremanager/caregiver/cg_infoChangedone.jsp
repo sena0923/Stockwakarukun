@@ -1,3 +1,4 @@
+<%-- 介護士アカウント更新完了画面 --%>
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
 
 <!DOCTYPE html>
@@ -110,7 +111,7 @@
     </form>
 
     <!-- 枠の右下に配置された戻るボタン -->
-    <a href="Mypage.jsp" class="back-button">戻る</a>
+    <a href="kai_menu.jsp" class="back-button">戻る</a>
   </div>
 </body>
 </html>

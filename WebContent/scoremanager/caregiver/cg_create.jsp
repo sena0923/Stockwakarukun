@@ -40,7 +40,15 @@
             <input type="text" id="pw_2" name="pw_2" required>
         </div>
 
-		<p id="error-message">${errors['1']}</p>
+
+		<c:if test="${not empty errors}">
+			<ul style="color:red;">
+				<c:forEach var="err" items="${errors}">
+					<li>${err.value}</li>
+				</c:forEach>
+			</ul>
+		</c:if>
+
 
         <div class="controll">
             <button class="btn" type="submit">新規登録</button>

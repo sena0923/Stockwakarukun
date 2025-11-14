@@ -1,10 +1,12 @@
+<%-- 入居者と親族が閲覧するECサイト　カート追加完了画面 --%>
+
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <%@ include file="base.jsp" %>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <title>Product List</title>
+    <title>Cart_on</title>
     <style>
         .product-list {
             display: flex;
@@ -33,18 +35,18 @@
 <body>
     <header>
         <nav>
+            <li><a href="#">メインメニュー</a></li>
             <li><a href="#">アカウント情報</a></li>
             <li><a href="#">ログアウト</a></li>
         </nav>
     </header>
 
     <div>
-        <h2>ECサイト ー商品一覧ー</h2>
+        <h2>ECサイト </h2>
     </div>
 
     <div>
-        <a href="#">カート</a>
-        <a href="#">購入履歴</a>
+        <a>カートへ追加しました</a>
     </div>
 
     <div class="product-list">
@@ -52,27 +54,24 @@
             <img src="image/image1.jpg">
             <span>商品名A
                 <br>￥150
-                <br><a href="#">カートに入れる</a>
             </span>
         </div>
         <div class="product-item">
             <img src="image/image2.jpg" alt="">
             <span>商品名B
                 <br>￥128
-                <br><a href="#">カートに入れる</a>
             </span>
         </div>
         <div class="product-item">
             <img src="image/image3.jpg" alt="">
             <span>商品名C
                 <br>￥200
-                <br><a href="#">カートに入れる</a>
             </span>
         </div>
     </div>
 
     <div>
-        <a href="#">メインメニューへ</a>
+        <h1><a href="#">カートの内の商品を購入</a></h1>
     </div>
 
     <footer>
