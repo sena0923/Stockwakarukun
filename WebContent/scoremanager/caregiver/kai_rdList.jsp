@@ -9,7 +9,7 @@
 	</c:param>
 
 	<c:param name="scripts">
-		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/rd_list.css">
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/kai_rdList.css">
 	</c:param>
 
 	<c:param name="content">
@@ -19,17 +19,17 @@
 
 					<table class="table">
 						<tr>
-							<td>入居者氏名</td>
-							<td>性別</td>
-							<td>コース</td>
-							<td>詳細</td>
+							<th>入居者氏名</th>
+							<th>性別</th>
+							<th>コース</th>
+							<th>詳細</th>
 						</tr>
 						<c:forEach var="resident" items="${list}">
 							<tr>
 								<td>${resident.name}</td>
 								<td>${resident.gender}</td>
 								<td>${resident.course_id}</td>
-								<td><a href="#<%-- 入居者IDから該当入居者の詳細ページへ ?no=${resident.rd_id}--%>">変更</a></td>
+								<td><a href="Kai_rdMenu.action?rd_id=${resident.rd_id}">詳細</a></td>
 							</tr>
 						</c:forEach>
 					</table>

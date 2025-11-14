@@ -2,15 +2,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <c:import url="../../base.jsp">
 	<c:param name="title">
 		ストックわかるくん
 	</c:param>
 
-	<c:param name="scripts"></c:param>
+	<c:param name="scripts">
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/menu.css">
+	</c:param>
 
 	<c:param name="content">
-		<section class="menu-container">
+		<section class="container">
 			<h2 class="menu-title">メニュー</h2>
 			<div class="menu-grid">
             <div class="menu-item">

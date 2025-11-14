@@ -38,8 +38,8 @@
 
 	        <!-- 入力欄のすぐ下に配置 -->
 	        <div class="button-group">
-	            <button class=btn-primary type="submit">ログイン</button>
-	            <a href="cg_create.jsp" class="btn-primary">新規登録画面へ</a>
+	            <button class=btn type="submit">ログイン</button>
+	            <a href="cg_create.jsp" class="btn">新規登録画面へ</a>
 			</div>
 		</form>
 	</c:param>

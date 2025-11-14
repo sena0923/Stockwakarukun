@@ -6,6 +6,23 @@ body {
 }
 
 /* ===== ヘッダー ===== */
+
+/* ヘッダーを固定 */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #333;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  z-index: 1000; /* コンテンツより前面に */
+}
+
+/*
 header {
   display: flex;
   justify-content: space-between;
@@ -15,6 +32,7 @@ header {
   color: #fff;
   position: relative;
 }
+*/
 
 header h1 {
   font-size: 1.5rem;
@@ -104,54 +122,7 @@ nav a:hover {
   padding: 15px 0;
 }
 
-/* メニュー全体 */
-.menu-container {
-    max-width: 900px;
-    margin: 40px auto;
-    padding: 20px;
-    text-align: center;
-}
 
-/* タイトル */
-.menu-title {
-    font-size: 1.8rem;
-    margin-bottom: 30px;
-    color: #333;
-}
-
-/* グリッド配置 */
-.menu-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-}
-
-/* メニュー項目 */
-.menu-item {
-    background-color: #f0f8ff;
-    border-radius: 10px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    width: 200px;
-    height: 120px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: transform 0.3s, background-color 0.3s;
-}
-
-.menu-item a {
-    text-decoration: none;
-    font-size: 1.2rem;
-    color: #333;
-    font-weight: bold;
-}
-
-/* ホバー効果 */
-.menu-item:hover {
-    background-color: #d6eaff;
-    transform: scale(1.05);
-}
 
 
 

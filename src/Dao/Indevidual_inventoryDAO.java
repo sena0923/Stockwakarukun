@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import bean.Indevidualinventory;
 
@@ -13,29 +15,46 @@ public class Indevidual_inventoryDAO extends Dao {
         // TODO 自動生成されたメソッド・スタブ
     }
 
-    public Indevidualinventory get(String Inve_name) throws Exception {
+    /* 入居者IDから，個人で登録したストックを取得する */
+    public List<Indevidualinventory> get(String RD_ID) throws Exception {
 
-    	Indevidualinventory indevidual = null;
+    	List<Indevidualinventory> list = new ArrayList<>();
+    	Indevidualinventory indevidualinventory = null;
         Connection connection = getConnection();
         PreparedStatement statement = null;
 
         try {
             // 個人在庫取得SQL
-            String sql = "SELECT * FROM Indevidual_inventory WHERE rd_id = ?";
+            String sql = "SELECT * FROM INDEVIDUAL_INVENTORY  WHERE rd_id = ?";
 
             statement = connection.prepareStatement(sql);
-            statement.setString(1, Inve_name);
+            statement.setString(1, RD_ID);
 
             ResultSet resultSet = statement.executeQuery();
 
-            if (resultSet.next()) {
-            	indevidual = new Indevidualinventory();
+			while (resultSet.next()) {
+				indevidualinventory = new Indevidualinventory();
+				indevidualinventory.setRd_id(resultSet.getString("rd_id"));
+				indevidualinventory.setInve_name(resultSet.getString("inve_name"));
+				indevidualinventory.setInve_count(resultSet.getInt("inve_count"));
+				indevidualinventory.setRegi_date(resultSet.getTimestamp("regi_date"));
+				list.add(indevidualinventory);
+			}
 
-            	indevidual.setRd_id(resultSet.getString("rd_id"));
-            	indevidual.setInve_name(resultSet.getString("inve_name"));
-            	indevidual.setInve_count(resultSet.getInt("inve_count"));
-            	indevidual.setRegi_date(resultSet.getTimestamp("regi_date"));
-            }
+
+
+            /*
+            if (resultSet.next()) {
+            	indevidualinventory = new Indevidualinventory();
+
+            	indevidualinventory.setRd_id(resultSet.getString("rd_id"));
+            	indevidualinventory.setInve_name(resultSet.getString("inve_name"));
+            	indevidualinventory.setInve_count(resultSet.getInt("inve_count"));
+            	indevidualinventory.setRegi_date(resultSet.getTimestamp("regi_date"));
+            	list.add(indevidualinventory);
+            }else{
+            	indevidualinventory = null;
+            }*/
 
         } catch (SQLException e) {
             throw new Exception("データ取得エラー", e);
@@ -48,6 +67,6 @@ public class Indevidual_inventoryDAO extends Dao {
             }
         }
 
-        return indevidual;
+        return list;
     }
 }

@@ -1,8 +1,32 @@
 <%-- 該当入居者のメインメニュー --%>
 
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+<c:import url="../../base.jsp">
+	<c:param name="title">
+		入居者の詳細メニュー
+	</c:param>
 
+	<c:param name="scripts">
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/rd_Details.css">
+	</c:param>
+
+	<c:param name="content">
+		<form class="container" <%-- action="RdList.action"--%> method="get">
+			<h1>${resident.name}さん</h1>
+
+			<div class="menu">
+				<a href="Kai_stockList.action?rd_id=${resident.rd_id}">在庫情報</a>
+				<a href="cg_contactList.jsp">連絡帳</a>
+			</div>
+
+			<a class="back-link" href="入居者一覧.jsp">戻る</a>
+		</form>
+	</c:param>
+</c:import>
+
+<%--
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -83,3 +107,4 @@
   </div>
 </body>
 </html>
+--%>

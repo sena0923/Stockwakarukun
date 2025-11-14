@@ -41,7 +41,7 @@ public class RdListAction extends Action{
 
 
 		// JSPへフォワード 7
-		req.getRequestDispatcher("rd_list.jsp").forward(req, res);
+		req.getRequestDispatcher("kai_rdList.jsp").forward(req, res);
 	}
 
 }

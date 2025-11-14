@@ -1,22 +1,16 @@
-/* 画面中央配置 */
-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #f5f5f5;
-    font-family: sans-serif;
-}
 
-/* 中央に配置されるカード */
-.container {
-    background: #fff;
-    padding: 30px 40px;
+/* カード風コンテナ */
+  .container {
+    background: #ffffff;
+    padding: 30px 50px;
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     text-align: center;
-    width: 600px;
-    max-width: 95%;
-}
+    width: 500px;
+    max-width: 90%;
+    margin: 50px auto; /* ヘッダー分の余白を確保 */
+  }
+
 
 h1 {
     margin-bottom: 10px;
@@ -41,6 +35,8 @@ table th, table td {
 
 table th {
     background: #f0f0f0;
+    border-radius: 8px; /* 角を丸く */
+    margin: 4px; /* 切れ目を作るための余白 */
 }
 
 
