@@ -3,7 +3,7 @@
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<c:import url="../../base.jsp">
+<c:import url="../../baseKai.jsp">
 	<c:param name="title">
 		入居者ストック管理画面
 	</c:param>
@@ -14,7 +14,8 @@
 
 	<c:param name="content">
 		<form class="container" <%-- action="Kai_stockList.action" --%>method="get">
-			<h1>${resident.name}さん　== ストック管理画面 ==</h1>
+			<h1>== ストック管理画面 ==</h1>
+			<h2>${resident.name}さん</h2>
 
 			<table class="table">
 			<c:forEach var="iiList" items ="${iiList}">

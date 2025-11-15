@@ -1,6 +1,7 @@
 /* ===== ベーススタイル ===== */
 body {
   margin: 0;
+  padding: 0;
   font-family: "Hiragino Sans", "Meiryo", sans-serif;
   background-color: #f7f7f7;
 }
@@ -10,11 +11,13 @@ body {
 /* ヘッダーを固定 */
 header {
   position: fixed;
+  /*position: absolute; /* header内で絶対配置 */
+  max-width: 100vw; /* ビューポート幅に制限 */
   top: 0;
   left: 0;
-  width: 100%;
+  width: 98%; /*力技の部分　余裕があったら直す！！*/
   background-color: #333;
-  color: #fff;
+  color: #ffffff;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -36,6 +39,30 @@ header {
 
 header h1 {
   font-size: 1.5rem;
+}
+
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* ユーザー情報とハンバーガーの間隔 */
+}
+
+.user {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    color: #fff;
+}
+
+.logout-link {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.logout-link:hover {
+    text-decoration: underline;
 }
 
 /* ===== ハンバーガー ===== */

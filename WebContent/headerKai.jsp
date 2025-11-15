@@ -8,28 +8,25 @@
 
 <h1>ストックわかる君</h1>
 
+<div class="header-right">
 <c:if test="${sessionScope.caregiver.isAuthenticated()}">
-	<div class="header-right">
+
 		<span class="user">${sessionScope.caregiver.getName()} さん</span>
 		<a class="logout-link" href="Logout.action">ログアウト</a>
-	</div>
+
 </c:if>
-
-
-
-<div class="hamburger" id="hamburger">
+	<div class="hamburger" id="hamburger">
       <span></span>
       <span></span>
       <span></span>
-    </div>
     <nav id="nav">
-      <a href="#">ストック管理</a>
-      <a href="#">ECサイト</a>
+      <a href="#">入居者一覧</a>
       <a href="#">連絡帳</a>
       <a href="#">マイページ</a>
       <a href="#">ログアウト</a>
     </nav>
-
+    </div>
+</div>
 
 
 <script>
@@ -44,3 +41,4 @@
 	});
 
 </script>
+

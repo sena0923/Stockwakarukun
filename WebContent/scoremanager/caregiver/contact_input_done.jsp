@@ -2,7 +2,7 @@
 
 
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
-<%@ include file="base.jsp" %>
+<%@ include file="../../baseKai.jsp" %>
 <!DOCTYPE html>
 <html lang="ja">
 <head>

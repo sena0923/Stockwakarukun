@@ -24,6 +24,7 @@ public class KaiLoginExecuteAction extends Action {
 			CaregiverDao caregiverDao = new CaregiverDao();
 			Caregiver caregiver = null;
 
+
 			//リクエストパラメーターの取得
 			staffnum = req.getParameter("staffnum");//介護士職員番号
 			password = req.getParameter("password");
@@ -42,7 +43,7 @@ public class KaiLoginExecuteAction extends Action {
 				//認証済みフラグを立てる
 				caregiver.setAuthenticated(true);
 				//セッションにログイン情報を保存
-				session.setAttribute(staffnum, caregiver);
+				session.setAttribute("caregiver", caregiver);
 
 				//リダイレクト
 				url = "KaiMenu.action";

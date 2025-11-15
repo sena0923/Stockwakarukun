@@ -3,7 +3,7 @@
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<c:import url="../../base.jsp">
+<c:import url="../../baseKai.jsp">
 	<c:param name="title">
 		入居者の詳細メニュー
 	</c:param>
@@ -17,7 +17,7 @@
 			<h1>${resident.name}さん</h1>
 
 			<div class="menu">
-				<a href="Kai_stockList.action?rd_id=${resident.rd_id}">在庫情報</a>
+				<a href="Kai_stockList.action?rd_id=${resident.rd_id}">ストック管理</a>
 				<a href="cg_contactList.jsp">連絡帳</a>
 			</div>
 
