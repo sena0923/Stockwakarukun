@@ -1,0 +1,142 @@
+
+/* カード風コンテナ */
+  .container {
+    background: #ffffff;
+    padding: 30px 50px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    text-align: center;
+    width: 500px;
+    max-width: 90%;
+    margin: 50px auto; /* ヘッダー分の余白を確保 */
+  }
+
+
+h1 {
+    margin-bottom: 10px;
+}
+
+p {
+    margin: 8px 0;
+}
+
+a.update_link {
+	display: inline-block;
+    margin: 0 10px;
+    padding: 10px 20px;
+    text-decoration: none;
+    background-color: #b8d200;
+    color: #000;
+    border-radius: 6px;
+    font-weight: bold;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    margin-bottom: 20px;
+    font-size: 30px;
+}
+
+table th, table td {
+    padding: 2px;
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+    line-height: 1.2;
+}
+
+table th {
+    background: #f0f0f0;
+    border-radius: 8px; /* 角を丸く */
+    margin: 4px; /* 切れ目を作るための余白 */
+}
+
+
+
+/* テーブル内のリンク */
+table a {
+    text-decoration: none;
+    background: #b8d200;
+    color: #000;
+    border-radius: 5px;
+    padding: 2px 2px;
+    display: inline-block;
+    font-weight: bold;
+}
+
+table a:hover {
+    background: #a5bf00;
+}
+
+/* 戻るボタン */
+.back-btn {
+    margin-top: 20px;
+    background: #ccc;
+    color: #000;
+    padding: 8px 16px;
+    border-radius: 6px;
+    display: inline-block;
+    text-decoration: none;
+}
+
+.back-btn:hover {
+    background: #bbb;
+}
+
+.qty {
+	background: #f1ede9;
+	padding: 20px 10px;
+	border-radius: 10px;
+	display: flex;
+	width: fit-content;
+	margin: 20px auto;
+	gap: 10px;
+}
+
+.down, .up {
+	border-radius: 8px;
+	font-size: 30px;
+	padding: 0 14px;
+	cursor: pointer;
+	user-select: none;
+}
+
+
+.down {
+    background-color: #15cfea; /* 青 */
+    color: #fff;
+    cursor: pointer;
+}
+
+.down:hover {
+    background-color: #23758f;
+}
+
+
+.up {
+    background-color: #d25b76; /* 赤 */
+    color: #fff;
+    cursor: pointer;
+}
+
+.up:hover {
+    background-color: #aa2f4a;
+}
+
+
+.qty-input {
+	border: none;
+	background: none;
+	font-size: 30px;
+	text-align: center;
+	width: 70px;
+}
+
+/* [input type="number"]のデフォルトの矢印を消す */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+margin: 0;
+	-moz-appearance:textfield;
+}

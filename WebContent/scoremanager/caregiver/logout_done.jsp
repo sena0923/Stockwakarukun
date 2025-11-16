@@ -41,6 +41,6 @@
 </head>
 <body>
   <h1>ログアウトが完了しました</h1>
-  <a href="介護士ログイン.jsp">ログイン画面へ</a>
+  <a href="/stockwakarukun/scoremanager/Login.action">ログイン画面へ</a>
 </body>
 </html>

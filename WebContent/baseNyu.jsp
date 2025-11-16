@@ -1,4 +1,4 @@
-<%-- 共通テンプレート 介護士専用 --%>
+<%-- 共通テンプレート 入居者専用 --%>
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
@@ -16,7 +16,7 @@
 
 
   <header>
-	<c:import url="/headerKai.jsp" />
+	<c:import url="/headerNyu.jsp" />
   </header>
 
   <main>

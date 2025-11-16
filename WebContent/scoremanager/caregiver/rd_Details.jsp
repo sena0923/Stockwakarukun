@@ -21,7 +21,7 @@
 				<a href="cg_contactList.jsp">連絡帳</a>
 			</div>
 
-			<a class="back-link" href="入居者一覧.jsp">戻る</a>
+			<a class="back-link" href="RdList.action">戻る</a>
 		</form>
 	</c:param>
 </c:import>
