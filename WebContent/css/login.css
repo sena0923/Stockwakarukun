@@ -28,10 +28,15 @@ h2 {
 }
 
 label {
+  margin-bottom: 12px;     /* ← 今 5px → 12px にして距離を広げる */
   display: block;
-  margin-bottom: 5px;
   font-weight: bold;
 }
+
+input {
+  margin-bottom: 9px;     /* 入力欄同士も少しゆとりを追加 */
+}
+
 
 input {
   height: 45px;
