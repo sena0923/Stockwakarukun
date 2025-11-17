@@ -4,9 +4,13 @@
 <main>
 	  <h2 style="font-size: 50px;">ユーザー情報</h2>
 	  <form class="content" action="NyuLoginExecute.action" method="get">
-		  <p style="font-size: 40px;">名前 | <%= request.getAttribute("userName") != null ? request.getAttribute("userName") : %></p>
+		<p style="font-size: 40px;">
+		    名前 | <%= request.getAttribute("userName") != null ? request.getAttribute("userName") : "" %>
+		</p>
 		  <p style="font-size: 30px;">パスワード | ＊＊＊＊＊＊</p>
-		  <p style="font-size: 25px;">ログインID | <%= request.getAttribute("rd_id") != null ? request.getAttribute("rd_id") : %></p>
+		<p style="font-size: 25px;">
+		    ログインID | <%= request.getAttribute("rd_id") != null ? request.getAttribute("rd_id") : "" %>
+		</p>
 	  </form>
 	  <div class="button-container">
 	    <button onclick="location.href='./rdHome.jsp'">戻る</button>
