@@ -2,7 +2,7 @@
 
 
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
-<%@ include file="base.jsp" %>
+<%@ include file="../../baseNyu.jsp" %>
 
 <main>
   <form action="saveStock.jsp" method="post">

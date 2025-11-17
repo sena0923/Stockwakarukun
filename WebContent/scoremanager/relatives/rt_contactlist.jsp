@@ -1,7 +1,7 @@
 <%-- 親族用　連絡帳受信一覧 --%>
 
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
-<%@ include file="base.jsp" %>
+<%@ include file="../../baseSin.jsp" %>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
