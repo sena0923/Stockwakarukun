@@ -12,7 +12,6 @@
 <c:if test="${sessionScope.relatives.isAuthenticated()}">
 
 		<span class="user">${sessionScope.relatives.getName()} さん</span>
-		<a class="logout-link" href="Logout.action">ログアウト</a>
 
 
 	<div class="hamburger" id="hamburger">
