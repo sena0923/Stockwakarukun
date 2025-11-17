@@ -20,6 +20,7 @@
   </header>
 
   <main>
+  	<br><br>
   	${param.content}
   </main>
 

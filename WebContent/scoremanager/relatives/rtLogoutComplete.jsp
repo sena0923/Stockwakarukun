@@ -53,6 +53,6 @@
 
 <body>
   <h1>ログアウトしました</h1>
-  <a href="./rtHome.jsp">ログイン画面へ</a>
+  <a href="./rtLogin.jsp">ログイン画面へ</a>
 </body>
 </html>

@@ -69,4 +69,62 @@ public class Indevidual_inventoryDAO extends Dao {
 
         return list;
     }
+
+
+	public boolean update(String rd_id , String inve_name , int inve_count) throws Exception {
+
+
+		// プリペアードステートメント
+		PreparedStatement statement = null;
+	    int count = 0;
+
+	    try {Connection connection = getConnection();
+	    	/**
+	        * 既存データの確認
+	    	*Indevidualinventory existing = get(indevidualinventory.getRd_id(), indevidualinventory.getInve_name(), indevidualinventory.getInve_count(), indevidualinventory.getRegi_date());
+	    	**/
+			// UPDATE
+			statement = connection.prepareStatement(
+				"UPDATE INDEVIDUAL_INVENTORY SET INVE_COUNT = ? , REGI_DATE = ?  WHERE rd_id = ? and INVE_NAME  = ? ;"
+			);
+			statement.setInt(1, inve_count);
+			// 現在日付をセット
+			java.sql.Date currentDate = new java.sql.Date(System.currentTimeMillis());
+			statement.setDate(2, currentDate);
+			statement.setString(3, rd_id);
+			statement.setString(4, inve_name);
+			count = statement.executeUpdate();
+	    } catch (Exception e) {
+			throw e;
+		} finally {
+			// プリペアードステートメントを閉じる
+			if (statement != null) {
+				try {
+					statement.close();
+				} catch (SQLException sqle) {
+					throw sqle;
+				}
+			}
+			/*
+			// コネクションを閉じる
+			if (connection != null) {
+				try {
+					connection.close();
+
+				} catch (SQLException sqle) {
+					throw sqle;
+				}
+			}
+			*/
+		}
+
+		if (count > 0) {
+			// 実行件数が1件以上ある場合
+			return true;
+		} else {
+			// 実行件数が0件の場合
+			return false;
+		}
+}
+
 }

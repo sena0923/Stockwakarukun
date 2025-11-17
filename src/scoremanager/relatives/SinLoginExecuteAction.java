@@ -42,10 +42,10 @@ public class SinLoginExecuteAction extends Action {
 				//認証済みフラグを立てる
 				relatives.setAuthenticated(true);
 				//セッションにログイン情報を保存
-				session.setAttribute("user", relatives);
+				session.setAttribute("relatives", relatives);
 
 				//リダイレクト
-				url = "親族/Mene.action";
+				url = "SinMenu.action";
 				res.sendRedirect(url);
 			}else{ //認証失敗の場合
 				//エラーメッセージをセット

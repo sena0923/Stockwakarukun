@@ -20,7 +20,7 @@ p {
     margin: 8px 0;
 }
 
-a.update_link {
+.update_link {
 	display: inline-block;
     margin: 0 10px;
     padding: 10px 20px;
@@ -30,6 +30,12 @@ a.update_link {
     border-radius: 6px;
     font-weight: bold;
 }
+
+
+.update_link:hover {
+    background-color: #a5bf00;
+}
+
 
 table {
     width: 100%;

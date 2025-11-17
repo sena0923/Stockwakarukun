@@ -84,5 +84,10 @@ public class Resident implements Serializable {
 		this.isAuthenticated = isAuthenticated;
 	}
 
+	public Resident get(int rdId) {
+		// TODO 自動生成されたメソッド・スタブ
+		return null;
+	}
+
 
 }

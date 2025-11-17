@@ -26,10 +26,11 @@
     </p>
 
     <button class="btn2" type="submit">ログイン</button>
+
+    <br><br>
+  <a href="./rtSignUp.jsp">新規登録</a>
   </form>
 
-  <br>
-  <a href="./rtSignUp.jsp">新規登録</a>
 
   <script>
     const form = document.getElementById("loginForm");

@@ -13,7 +13,7 @@
 	</c:param>
 
 	<c:param name="content">
-		<form class="container" <%-- action="Kai_stockList.action" --%>method="get">
+		<form class="container"  action="Kai_stockUpdate.action"method="get">
 			<h1>== ストック管理画面 ==</h1>
 			<h2>${resident.name}さん</h2>
 
@@ -24,7 +24,7 @@
 					<td>
 						<div class="qty">
 							<button type="button" class="down">-</button>
-							<input type="number" value="${iiList.inve_count}" class="qty-input">
+							<input type="number" name="count_${iiList.inve_name}" value="${iiList.inve_count}" class="qty-input">
 							<button type="button" class="up">+</button>
 						</div>
 					</td>
@@ -52,8 +52,11 @@
 				});
 			</script>
 
-			<a class="update_link" href="Kai_stockUpdate.action?rd_id=${resident.rd_id}">更新</a>
 
+			<input type="hidden" name="rd_id" value="${resident.rd_id}">
+			<button type="submit" class="update_link">更新</button>
+			<a class ="update_link" href="Kai_stockAdd.action">ストック登録</a>
+		
 		</form>
 	</c:param>
 </c:import>

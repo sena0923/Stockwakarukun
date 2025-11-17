@@ -41,7 +41,7 @@ public class NyuLoginExecuteAction extends Action {
 				//認証済みフラグを立てる
 				resident.setAuthenticated(true);
 				//セッションにログイン情報を保存
-				session.setAttribute("user", resident);
+				session.setAttribute("resident", resident);
 
 				//リダイレクト
 				url = "NyuMenu.action";
