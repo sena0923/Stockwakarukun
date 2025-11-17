@@ -1,7 +1,7 @@
 <%-- 親族アカウント情報表示画面 --%>
 
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
-<%@ include file="../../base.jsp" %>
+<%@ include file="../../baseSin.jsp" %>
 <link rel="stylesheet" href="../css/base.css">
 
 <main>

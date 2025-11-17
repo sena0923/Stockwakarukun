@@ -113,10 +113,12 @@ public class RelativesDao extends Dao {
 			} else {
 				// 教師が存在した場合、情報を更新
 				// プリペアードステートメントにUPDATE文をセット
-				statement = connection.prepareStatement("UPDATE RELATIVES SET E_MAIL = ?, PASSWORD = ?");
+				statement = connection.prepareStatement("UPDATE RELATIVES SET E_MAIL = ?, PASSWORD = ? WHERE RT_ID = ?");
 				// プリペアードステートメントに値をバインド
 				statement.setString(1, relatives.getE_mail());
 				statement.setString(2, relatives.getPassword());
+				statement.setString(3, relatives.getRt_id());
+
 			}
 
 			// プリペアードステートメントを実行
