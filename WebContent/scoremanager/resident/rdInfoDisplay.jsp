@@ -3,11 +3,13 @@
 <link rel="stylesheet" href="../css/base.css">
 <main>
 	  <h2 style="font-size: 50px;">ユーザー情報</h2>
-	  <form class="content" action="NyuLoginExecute.action" method="get">
+	  <form class="content" action="NyuDisplay.action" method="get">
 		<p style="font-size: 40px;">
-		    名前 | <%= request.getAttribute("userName") != null ? request.getAttribute("userName") : "" %>
+		    名前 | <%= request.getAttribute("name") != null ? request.getAttribute("name") : "" %>
 		</p>
-		  <p style="font-size: 30px;">パスワード | ＊＊＊＊＊＊</p>
+		<p style="font-size: 30px;">
+		    パスワード | <%= request.getAttribute("password") != null ? request.getAttribute("password") : "" %>
+		</p>
 		<p style="font-size: 25px;">
 		    ログインID | <%= request.getAttribute("rd_id") != null ? request.getAttribute("rd_id") : "" %>
 		</p>
