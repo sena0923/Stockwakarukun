@@ -25,7 +25,7 @@ public class SinCreateExecuteAction extends Action {
         Map<String, String> errors = new HashMap<>();
 
         // 入力値の取得
-        String rt_id = req.getParameter("user_id");
+        String rt_id = req.getParameter("rt_id");
         String rd_id = req.getParameter("rd_id");
         String name = req.getParameter("name");
         String e_mail = req.getParameter("email");
@@ -36,7 +36,7 @@ public class SinCreateExecuteAction extends Action {
             errors.put("rt_id", "ユーザーIDを入力してください");
         }
         if (rd_id == null || rd_id.isEmpty()) {
-            errors.put("rd_id", "ユーザーIDを入力してください");
+            errors.put("rd_id", "入居者のユーザーIDを入力してください");
         }
         if (name == null || name.isEmpty()) {
             errors.put("name", "名前を入力してください");
@@ -60,9 +60,11 @@ public class SinCreateExecuteAction extends Action {
         if (errors.isEmpty()) {
             Relatives relatives = new Relatives();
             relatives.setRt_id(rt_id);
+            relatives.setRd_id(rd_id);
             relatives.setName(name);
             relatives.setE_mail(e_mail);
             relatives.setPassword(password);
+
             relativesDao.save(relatives);
 
             // 完了画面へ
