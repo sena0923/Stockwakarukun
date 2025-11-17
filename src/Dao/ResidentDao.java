@@ -132,7 +132,7 @@ public class ResidentDao extends Dao {
 					Resident resident = new Resident();
 					resident.setRd_id(resultSet.getString("rd_id"));
 					resident.setName(resultSet.getString("name"));
-					resident.setPassword(resultSet.getString("Password"));
+					resident.setPassword(resultSet.getString("password"));
 					resident.setCourse_id(resultSet.getInt("course_id"));
 					resident.setGender(resultSet.getString("gender"));
 					list.add(resident);
