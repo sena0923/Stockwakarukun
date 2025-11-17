@@ -12,7 +12,7 @@
 <c:if test="${sessionScope.relatives.isAuthenticated()}">
 
 		<span class="user">${sessionScope.relatives.getName()} さん</span>
-
+		<a class="logout-link" href="rtlogout.jsp">ログアウト</a>
 
 	<div class="hamburger" id="hamburger">
       <span></span>
@@ -23,7 +23,7 @@
       <a href="#">ECサイト</a>
       <a href="#">連絡帳</a>
       <a href="#">マイページ</a>
-      <a href="#">ログアウト</a>
+      <a href="Logout.action">ログアウト</a>
     </nav>
     </div>
     </c:if>

@@ -13,7 +13,7 @@ h2 {
 
 .content {
   background: #ffffff;
-    padding: 30px 50px;
+    padding: 20px 40px;
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     text-align: center;
@@ -21,7 +21,6 @@ h2 {
     max-width: 90%;
     margin: 100px auto; /* ヘッダー分の余白を確保 */
 }
-
 
 
 .controll {
@@ -105,6 +104,7 @@ input {
   margin-top: 10px;
   text-align: center;
 }
+
 
 @media screen and (max-width: 480px) {
   h1 {
