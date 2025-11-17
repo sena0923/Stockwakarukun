@@ -14,7 +14,7 @@
 
     <!-- ログインID -->
     <label for="RT_ID">ログインID</label>
-    <input type="text" id="rd_id" name="rd_id" pattern="^[0-9]+$" required>
+    <input type="text" id="rt_id" name="rt_id" pattern="^[0-9]+$" required>
 
     <!-- パスワード -->
     <label for="password">パスワード</label>
@@ -33,7 +33,7 @@
 
   <script>
     const form = document.getElementById("loginForm");
-    const rd_id = document.getElementById("rd_id");
+    const rd_id = document.getElementById("rt_id");
     const password = document.getElementById("password");
     const errorDiv = document.getElementById("login-error");
 
