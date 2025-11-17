@@ -9,7 +9,7 @@
 <form class="container">
   <div class="button-row">
     <a href="caregiver/KaiLogin.action" class="btn1">介護士</a>
-    <a href="resident/入居者ログイン.jsp" class="btn1">入居者</a>
+    <a href="resident/NyuLogin.action" class="btn1">入居者</a>
     <a href="relatives/親族ログイン.jsp" class="btn1">親族</a>
   </div>
 </form>
