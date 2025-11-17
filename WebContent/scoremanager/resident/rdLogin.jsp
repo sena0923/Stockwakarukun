@@ -7,9 +7,10 @@
 </head>
 <body>
 
-  <h1>ログイン画面</h1>
+  <h1 style="margin-bottom: 10px;">	入居者ログイン画面</h1>
 
-  <form class="content" action="NyuLoginExecute.action" method="get">
+<form class="content" action="NyuLoginExecute.action" method="get" style="margin-top: 0;">
+
 
 
     <!-- ログインID -->
@@ -26,10 +27,11 @@
     </p>
 
     <button class="btn2" type="submit">ログイン</button>
+    <br><br>
+  	<a href="./rdSignUp.jsp">新規登録</a>
+
   </form>
 
-  <br>
-  <a href="./rdSignUp.jsp">新規登録</a>
 
   <script>
     const form = document.getElementById("loginForm");
