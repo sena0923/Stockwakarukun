@@ -125,6 +125,58 @@ public class Indevidual_inventoryDAO extends Dao {
 			// 実行件数が0件の場合
 			return false;
 		}
-}
+	}
+
+	public boolean save(List<Indevidualinventory> list)throws Exception{
+		// コネクションを確立
+		Connection connection = getConnection();
+		// プリペアードステートメント
+		PreparedStatement statement = null;
+		// 実行件数
+		int count = 0;
+
+		try{
+			//プリペアードステートメントにinsert文をセット
+			statement = connection.prepareStatement
+				( "insert into INDEVIDUAL_INVENTORY (RD_ID , INVE_NAME , INVE_COUNT , REGI_DATE) values (? , ? , ? , ? )");
+
+
+			for (Indevidualinventory indevidualinventory : list) {
+				statement.setString(1, indevidualinventory.getRd_id());
+				statement.setString(2, indevidualinventory.getInve_name());
+				statement.setInt(3, indevidualinventory.getInve_count());
+				// 現在日付をセット
+				java.sql.Date currentDate = new java.sql.Date(System.currentTimeMillis());
+				statement.setDate(4, currentDate);
+			}
+		} catch (Exception e) {
+			throw e;
+		} finally {
+			// プリペアードステートメントを閉じる
+			if (statement != null) {
+				try {
+					statement.close();
+				} catch (SQLException sqle) {
+					throw sqle;
+				}
+			}
+			// コネクションを閉じる
+			if (connection != null) {
+				try {
+					connection.close();
+				} catch (SQLException sqle) {
+					throw sqle;
+				}
+			}
+		}
+
+		if (count > 0) {
+			// 実行件数が1件以上ある場合
+			return true;
+		} else {
+			// 実行件数が0件の場合
+			return false;
+		}
+	}
 
 }

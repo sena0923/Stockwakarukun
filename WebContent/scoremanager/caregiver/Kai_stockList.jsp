@@ -55,8 +55,8 @@
 
 			<input type="hidden" name="rd_id" value="${resident.rd_id}">
 			<button type="submit" class="update_link">更新</button>
-			<a class ="update_link" href="Kai_stockAdd.action">ストック登録</a>
-		
+			<a class ="update_link" href="Kai_stockAdd.action?rd_id=${resident.rd_id}">ストック登録</a>
+
 		</form>
 	</c:param>
 </c:import>

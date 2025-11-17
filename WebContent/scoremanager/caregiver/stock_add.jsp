@@ -20,21 +20,21 @@
 
 
 			<div class="controll">
-			<label for="">ストック名</label>
-			<input type="text" id="" name="" required>
+				<label for="inve_name">ストック名</label>
+				<input type="text" id="inve_name" name="inve_name" required>
 			</div>
 
 			<div class="controll">
-			<label for="">個数</label>
-				<input type="text" id="" name="" required>
+				<label for="inve_count">個数</label>
+				<input type="number" id="inve_count" name="inve_count" required min="0" step="1" placeholder="0以上の数を入力">
 			</div>
 
 
 
 	        <!-- 入力欄のすぐ下に配置 -->
 	        <div class="button-group">
-	            <button class=btn type="submit">ログイン</button>
-	            <a href="cg_create.jsp" class="btn">新規登録画面へ</a>
+	            <button class=btn type="submit">登録する</button>
+	            <a class="logout_link" href="#" onclick="history.back()">戻る</a>
 			</div>
 		</form>
 	</c:param>
