@@ -1,5 +1,7 @@
 package scoremanager.caregiver;
 
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -17,7 +19,9 @@ public class Kai_stockUpdateAction extends Action{
 		//ローカル変数の指定
 		String rd_id ="";
 		String inve_name = "";
+		String inve_countStr = "";
 		int inve_count = 0;
+		Map<String, String[]> paramMap = req.getParameterMap();
 		ResidentDao residentDao = new ResidentDao();
 		Resident resident = null;
 		Indevidual_inventoryDAO iiDao = new Indevidual_inventoryDAO(); //個人で登録したストックDAO
@@ -25,10 +29,27 @@ public class Kai_stockUpdateAction extends Action{
 
 		//リクエストパラメーターの取得
 		rd_id = req.getParameter("rd_id");
-		inve_name = req.getParameter("inve_name");
 
-		System.out.println("rd_id");
-		System.out.println("inve_name");
+
+	    for (String key : paramMap.keySet()) {
+	        if (key.startsWith("count_")) {
+	            String inveName = key.substring(6); // "count_"を除去
+	            int inveCount = Integer.parseInt(paramMap.get(key)[0]);
+	            iiDao.update(rd_id, inveName, inveCount);
+	        }
+	    }
+
+	    resident = residentDao.get(rd_id);
+
+		System.out.println(rd_id);
+		System.out.println(inve_name);
+
+		// レスポンス値をセット 6
+		// リクエストに入居者リストをセット
+		req.setAttribute("resident", resident);
+
+		//フォワード先
+		req.getRequestDispatcher("Kai_stock_done.jsp").forward(req, res);
 
 	}
 }

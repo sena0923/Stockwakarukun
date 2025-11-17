@@ -13,51 +13,8 @@
 	</c:param>
 
 	<c:param name="content">
-		<form class="container"  action="Kai_stockUpdate.action"method="get">
-			<h1>== ストック管理画面 ==</h1>
-			<h2>${resident.name}さん</h2>
-
-			<table class="table">
-			<c:forEach var="iiList" items ="${iiList}">
-				<tr>
-					<td>${iiList.inve_name}</td>
-					<td>
-						<div class="qty">
-							<button type="button" class="down">-</button>
-							<input type="number" name="count_${iiList.inve_name}" value="${iiList.inve_count}" class="qty-input">
-							<button type="button" class="up">+</button>
-						</div>
-					</td>
-				</tr>
-			</c:forEach>
-			</table>
-
-			<script>
-			document.querySelectorAll('.qty').forEach(qtyDiv => {
-				const qtyDown = qtyDiv.querySelector('.down');
-				const qtyUp = qtyDiv.querySelector('.up');
-				const input = qtyDiv.querySelector('.qty-input');
-
-					qtyDown.addEventListener('click', () => {
-						let num = parseInt(input.value);
-						if (num > 0) {
-							input.value = num - 1;
-						}
-					});
-
-					qtyUp.addEventListener('click', () => {
-						let num = parseInt(input.value);
-						input.value = num + 1;
-					});
-				});
-			</script>
-
-
-			<input type="hidden" name="rd_id" value="${resident.rd_id}">
-			<button type="submit" class="update_link">更新</button>
-			<a class ="update_link" href="Kai_stockAdd.action">ストック登録</a>
-		
-		</form>
+		<h1>ストック更新が完了しました</h1>
+		<a href="Kai_stockList.action?rd_id=${resident.rd_id}">ストック管理へ</a>
 	</c:param>
 </c:import>
 
