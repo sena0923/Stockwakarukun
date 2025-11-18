@@ -1,3 +1,4 @@
+/** ECサイトのストック表示 **/
 package scoremanager.caregiver;
 
 import java.util.List;
@@ -5,13 +6,13 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import Dao.Indevidual_inventoryDAO;
+import Dao.In_Goods_InventoryDao;
 import Dao.ResidentDao;
-import bean.Indevidualinventory;
+import bean.Ingoodsinventory;
 import bean.Resident;
 import tool.Action;
 
-public class Kai_stockListAction extends Action{
+public class Kai_ECstockListAction extends Action{
 
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse res) throws Exception {
@@ -20,7 +21,10 @@ public class Kai_stockListAction extends Action{
 		String rd_id = "";
 		ResidentDao residentDao = new ResidentDao();
 		Resident resident = new Resident();
-		Indevidual_inventoryDAO iiDao = new Indevidual_inventoryDAO(); //個人で登録したストックDAO
+		In_Goods_InventoryDao igDao = new In_Goods_InventoryDao(); //ECサイトで登録したストックDAO
+		Ingoodsinventory ig = new Ingoodsinventory(); //ECサイトで登録したストックのbean
+
+
 
 		//リクエストパラメーターの取得
 		rd_id = req.getParameter("rd_id");
@@ -28,13 +32,15 @@ public class Kai_stockListAction extends Action{
 		//DBから入居者Beanを，rd_idを用いて取得
 		resident = residentDao.get(rd_id);
 
-		List<Indevidualinventory> list = iiDao.get(rd_id);
+		List<Ingoodsinventory> list = igDao.get(rd_id);
+
+
 
 
 		System.out.println(resident.getName());
 
-		for (Indevidualinventory r : list) {
-			System.out.println(r.getInve_name() + " / " + r.getInve_count());
+		for (Ingoodsinventory r : list) {
+			System.out.println(r.getGoods_inve_id() + " / " + r.getGoods_inve_count());
 		}
 
 
@@ -44,7 +50,7 @@ public class Kai_stockListAction extends Action{
 		req.setAttribute("iiList", list);
 
 		//JSPへフォワード
-		req.getRequestDispatcher("Kai_stockList.jsp").forward(req, res);
+		req.getRequestDispatcher("Kai_stockList_ec.jsp").forward(req, res);
 
 
 	}

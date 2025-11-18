@@ -13,23 +13,23 @@
 	</c:param>
 
 	<c:param name="content">
-		<form class="container"  action="Kai_stockUpdate.action"method="get">
+		<form class="container"  action="Kai_ECstockUpdate.action"method="get">
 			<h1>== ストック管理画面 ==</h1>
 			<h2>${resident.name}さん</h2>
 
 			<div class="tab-container">
-				<a class="type_list">個人ストック</a>
-				<a class="type_list non" href="Kai_ECstockList.action?rd_id=${resident.rd_id}">ECサイトストック</a>
+				<a class="type_list non" href="Kai_stockList.action?rd_id=${resident.rd_id}">個人ストック</a>
+				<a class="type_list">ECサイトストック</a>
 			</div>
 
 			<table class="table">
 			<c:forEach var="iiList" items ="${iiList}">
 				<tr>
-					<td>${iiList.inve_name}</td>
+					<td>${iiList.goods_inve_id}</td>
 					<td>
 						<div class="qty">
 							<button type="button" class="down">-</button>
-							<input type="number" name="count_${iiList.inve_name}" value="${iiList.inve_count}" class="qty-input">
+							<input type="number" name="count_${iiList.goods_inve_id}" value="${iiList.goods_inve_count}" class="qty-input">
 							<button type="button" class="up">+</button>
 						</div>
 					</td>
