@@ -17,6 +17,7 @@ public class SinCreateExecuteAction extends Action {
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse res) throws Exception {
 
+		System.out.println("debug:SinCreateExecuteAction");
 
 		// セッションとDAOの準備
         HttpSession session = req.getSession();
@@ -28,55 +29,58 @@ public class SinCreateExecuteAction extends Action {
         String rt_id = req.getParameter("rt_id");
         String rd_id = req.getParameter("rd_id");
         String name = req.getParameter("name");
-        String e_mail = req.getParameter("email");
+        String e_mail = req.getParameter("e_mail");
         String password = req.getParameter("password");
 
+     // Relatives のインスタンス生成
+        Relatives relatives = new Relatives();
+
+
+        /*
         // 入力チェック
         if (rt_id == null || rt_id.isEmpty()) {
             errors.put("rt_id", "ユーザーIDを入力してください");
-        }
-        if (rd_id == null || rd_id.isEmpty()) {
+        } else if (rd_id == null || rd_id.isEmpty()) {
             errors.put("rd_id", "入居者のユーザーIDを入力してください");
-        }
-        if (name == null || name.isEmpty()) {
+        } else if (name == null || name.isEmpty()) {
             errors.put("name", "名前を入力してください");
-        }
-        if (e_mail == null || e_mail.isEmpty()) {
+        } else if (e_mail == null || e_mail.isEmpty()) {
             errors.put("e_mail", "メールアドレスを入力してください");
-        }
-        if (password == null || password.isEmpty()) {
+        } else if (password == null || password.isEmpty()) {
             errors.put("password", "パスワードを入力してください");
         }
+        */
 
         // ユーザーIDの重複チェック
         if (relativesDao.get(rt_id) != null) {
         	errors.put("duplicate_rt", "この親族IDは既に登録されています");
-        }
-        if (residentDao.get(rd_id) == null) {
+        }else if (residentDao.get(rd_id) == null) {
             errors.put("invalid_rd", "この入居者IDは存在していません");
-        }
-
-        // 登録処理
-        if (errors.isEmpty()) {
-            Relatives relatives = new Relatives();
-            relatives.setRt_id(rt_id);
+        }else{
+        	relatives.setRt_id(rt_id);
             relatives.setRd_id(rd_id);
             relatives.setName(name);
             relatives.setE_mail(e_mail);
             relatives.setPassword(password);
-
             relativesDao.save(relatives);
+        }
+
+
+        req.setAttribute("rt_id", rt_id);
+        req.setAttribute("rd_id", rd_id);
+        req.setAttribute("name", name);
+        req.setAttribute("e_mail", e_mail);
+        req.setAttribute("password", password);
+
+        // 登録処理
+        if (errors.isEmpty()) {
 
             // 完了画面へ
             req.getRequestDispatcher("rtSignUpComplete.jsp").forward(req, res);
         } else {
             // エラーをセットして再入力画面へ
             req.setAttribute("errors", errors);
-            req.setAttribute("rt_id", rt_id);
-            req.setAttribute("rd_id", rd_id);
-            req.setAttribute("name", name);
-            req.setAttribute("e_mail", e_mail);
-            req.setAttribute("password", password);
+
             req.getRequestDispatcher("SinCreate.action").forward(req, res);
         }
     }

@@ -13,7 +13,7 @@ public class SinCreateAction extends Action{
 	public void execute(HttpServletRequest req, HttpServletResponse res) throws Exception {
 
 		HttpSession session = req.getSession(); // セッション
-		Relatives relatives = (Relatives)session.getAttribute("user");
+		Relatives relatives = (Relatives)session.getAttribute("rt_id");
 
 
 		// JSPへフォワード

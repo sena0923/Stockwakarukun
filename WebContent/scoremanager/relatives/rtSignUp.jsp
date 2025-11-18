@@ -8,25 +8,27 @@
   <link rel="stylesheet" href="../../css/style.css">
 </head>
 <body>
-
+	${errors}
   <h1>新規登録画面</h1>
 
-  <form id="infoForm" action="rtSignUpComplete.jsp" method="post">
+
+
+  <form id="infoForm" action="SinCreateExecute.action" method="post">
     <!-- ログインID -->
-    <label for="login-id">ログインID</label>
-    <input type="text" id="login-id" name="login-id" required>
+    <label for="rt_id">ログインID</label>
+    <input type="text" id="rt_id" name="rt_id" required>
 
     <!-- 入居者ID -->
-    <label for="login-id-user">ログインID（入居者）</label>
-    <input type="text" id="login-id-user" name="login-id-user" required>
+    <label for="rd_id">ログインID（入居者）</label>
+    <input type="text" id="rd_id" name="rd_id" required>
 
     <!-- 名前 -->
     <label for="name">お名前</label>
     <input type="text" id="name" name="name" required>
 
     <!-- メールアドレス -->
-    <label for="email">メールアドレス</label>
-    <input type="email" id="email" name="email" placeholder="example@example.com" required>
+    <label for="e_mail">メールアドレス</label>
+    <input type="email" id="e_mail" name="e_mail" placeholder="example@example.com" required>
 
     <!-- パスワード -->
     <label for="password">パスワード</label>
