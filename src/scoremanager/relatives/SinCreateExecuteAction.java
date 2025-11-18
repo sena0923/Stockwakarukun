@@ -24,6 +24,8 @@ public class SinCreateExecuteAction extends Action {
         RelativesDao relativesDao = new RelativesDao();
         ResidentDao residentDao = new ResidentDao();
         Map<String, String> errors = new HashMap<>();
+        // Relatives のインスタンス生成
+        Relatives relatives = new Relatives();
 
         // 入力値の取得
         String rt_id = req.getParameter("rt_id");
@@ -32,30 +34,13 @@ public class SinCreateExecuteAction extends Action {
         String e_mail = req.getParameter("e_mail");
         String password = req.getParameter("password");
 
-     // Relatives のインスタンス生成
-        Relatives relatives = new Relatives();
-
-
-        /*
-        // 入力チェック
-        if (rt_id == null || rt_id.isEmpty()) {
-            errors.put("rt_id", "ユーザーIDを入力してください");
-        } else if (rd_id == null || rd_id.isEmpty()) {
-            errors.put("rd_id", "入居者のユーザーIDを入力してください");
-        } else if (name == null || name.isEmpty()) {
-            errors.put("name", "名前を入力してください");
-        } else if (e_mail == null || e_mail.isEmpty()) {
-            errors.put("e_mail", "メールアドレスを入力してください");
-        } else if (password == null || password.isEmpty()) {
-            errors.put("password", "パスワードを入力してください");
-        }
-        */
 
         // ユーザーIDの重複チェック
         if (relativesDao.get(rt_id) != null) {
-        	errors.put("duplicate_rt", "この親族IDは既に登録されています");
-        }else if (residentDao.get(rd_id) == null) {
-            errors.put("invalid_rd", "この入居者IDは存在していません");
+            errors.put("rt_id", "この親族IDは既に登録されています");
+        } else if (residentDao.get(rd_id) == null) {
+            errors.put("rd_id", "この入居者IDは存在していません");
+
         }else{
         	relatives.setRt_id(rt_id);
             relatives.setRd_id(rd_id);
@@ -87,69 +72,4 @@ public class SinCreateExecuteAction extends Action {
 }
 
 
-
-
-
-		/*
-		//ローカル変数の指定
-		HttpSession session = req.getSession();
-		Relatives relatives = (Relatives)session.getAttribute("user");
-		String rt_id = "";
-		String rd_id = "";
-		String name = "";
-		String e_mail = "";
-		String password = "";
-		Relatives createRelatives = new Relatives();
-		RelativesDao relativesDao = new RelativesDao();
-		Map<String, String> errors = new HashMap<>();
-
-		//リクエストパラメーターの取得
-		rt_id = req.getParameter("rt_id");
-		rd_id = req.getParameter("rd_id");
-		name = req.getParameter("name");
-		e_mail = req.getParameter("e_mail");
-		password = req.getParameter("password");
-
-
-		if ("01".equals(password)){
-			//親族の新規登録ができるようになる
-
-			if (relativesDao.get(rt_id)!=null) {//親族が重複している場合
-				errors.put("1", "ログインIDが重複しています");
-				//リクエストにエラーメッセージをセット
-				System.out.println(errors.values());
-
-			}else if (!)
-
-
-			} else {
-				createRelatives.setRt_id(rt_id);
-				createRelatives.setRd_id(rd_id);
-				createRelatives.setName(name);
-				createRelatives.setE_mail(e_mail);
-				createRelatives.setPassword(password);
-				// saveメソッドで情報を登録
-				relativesDao.save(createRelatives);
-			}
-
-			//リクエストに値をセット
-			req.setAttribute("rt_id", rt_id);
-			req.setAttribute("rd_id", rd_id);
-			req.setAttribute("name", name);
-			req.setAttribute("e_mail", e_mail);
-			req.setAttribute("password", password);
-
-			//JSPへフォワード
-			if (errors.isEmpty()) { //エラーメッセージがない場合
-				//登録完了画面にフォワード
-				req.getRequestDispatcher("rtSignUpComplete.jsp").forward(req, res);
-			} else { //エラーメッセージがある場合
-				//登録画面にフォワード
-				req.getRequestDispatcher("SinCreate.action").forward(req, res);
-			}
-
-	}
-
-}
-*/
 
