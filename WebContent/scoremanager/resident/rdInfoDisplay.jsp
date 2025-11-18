@@ -3,12 +3,13 @@
 <link rel="stylesheet" href="../css/base.css">
 <main>
 	  <h2 style="font-size: 50px;">ユーザー情報</h2>
-<<<<<<< HEAD
-	  <form class="content" action="NyuLoginExecute.action" method="get">
 
-			<p>ID: ${rd_id}</p>
-			<p>名前: ${name}</p>
-			<p>パスワード: ${password}</p>
+	  <form class="content" action="NyuDisplayExecute.action" method="get">
+
+			<span>ユーザーID：${rd_id}</span><br>
+      	    <span>名前：${name}</span><br>
+            <span>パスワード：${password}</span><br>
+	  </form>
 
 	  <%--
 =======
@@ -22,7 +23,7 @@
 		    ログインID | <%= request.getAttribute("rd_id") != null ? request.getAttribute("rd_id") : "" %>
 		</p>
 	   --%>
-	  </form>
+
 	  <div class="button-container">
 	    <button onclick="location.href='./rdHome.jsp'">戻る</button>
 	    <button onclick="location.href='./rdInfoChange.jsp'">変更する</button>

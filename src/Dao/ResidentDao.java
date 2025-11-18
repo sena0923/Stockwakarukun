@@ -33,6 +33,8 @@ public class ResidentDao extends Dao {
 				resident.setName(resultSet.getString("name"));
 				resident.setRd_id(resultSet.getString("rd_id"));
 				resident.setPassword(resultSet.getString("password"));
+				resident.setCourse_id(resultSet.getInt("course_id"));
+				resident.setGender(resultSet.getString("gender"));
 
 			} else {
 				// リザルトセットが存在しない場合
@@ -190,10 +192,11 @@ public class ResidentDao extends Dao {
 				statement.setString(5, resident.getPassword());
 
 
+
 			} else {
 				// 入居者が存在した場合、情報を更新
 				// プリペアードステートメントにUPDATE文をセット
-				statement = connection.prepareStatement("UPDATE TEACHER SET COURSE_ID = ?, PASSWORD = ?");
+				statement = connection.prepareStatement("UPDATE RESIDENT SET COURSE_ID = ?, PASSWORD = ?");
 				// プリペアードステートメントに値をバインド
 				statement.setInt(1,resident.getCourse_id());
 				statement.setString(1, resident.getPassword());
@@ -234,4 +237,7 @@ public class ResidentDao extends Dao {
 
 
 }
+
+
+
 
