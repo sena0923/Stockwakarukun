@@ -15,7 +15,8 @@
 
 	<c:param name="content">
 		<form class="content" action="Kai_stockAddExecute.action" method="get">
-			<h1>介護士ログイン</h1>
+			<h1>ストック登録</h1>
+			<h2>${resident.name}さん</h2>
 
 
 
@@ -34,6 +35,7 @@
 	        <!-- 入力欄のすぐ下に配置 -->
 	        <div class="button-group">
 	            <button class=btn type="submit">登録する</button>
+	            <input type="hidden" name="rd_id" value="${resident.rd_id}">
 	            <a class="logout_link" href="#" onclick="history.back()">戻る</a>
 			</div>
 		</form>

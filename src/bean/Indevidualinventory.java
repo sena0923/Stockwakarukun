@@ -1,6 +1,7 @@
 package bean;
 
 import java.io.Serializable;
+import java.util.Date;
 
 					/*** 個人在庫テーブル*/
 
@@ -16,7 +17,7 @@ public class Indevidualinventory implements Serializable {
 	private int inve_count;
 
 	/**登録日**/
-	private java.util.Date regi_date;
+	private Date regi_date;
 
 	public String getRd_id() {
 		return rd_id;
@@ -42,11 +43,11 @@ public class Indevidualinventory implements Serializable {
 		this.inve_count = inve_count;
 	}
 
-	public java.util.Date getRegi_date() {
+	public Date getRegi_date() {
 		return regi_date;
 	}
 
-	public void setRegi_date(java.util.Date regi_date) {
+	public void setRegi_date(Date regi_date) {
 		this.regi_date = regi_date;
 	}
 

@@ -41,7 +41,7 @@ public class KaiCreateExecuteAction extends Action {
 			//介護士の新規登録ができる様になる
 
 
-			if (caregiverDao.get(ca_id)!= null) { // 教師が重複している場合
+			if (caregiverDao.get(ca_id)!= null) { // 職員番号が重複している場合
 				errors.put("1", "職員番号が重複しています");
 				// リクエストにエラーメッセージをセット
 				System.out.println(errors.values());
@@ -50,7 +50,7 @@ public class KaiCreateExecuteAction extends Action {
 				errors.put("2", "パスワードが一致しません");
 
 			} else {
-				// subjectに科目情報をセット
+				// 介護士beanに科目情報をセット
 				createCaregiver.setStaffid(ca_id);
 				createCaregiver.setName(ca_name);
 				createCaregiver.setPassword(ca_pw);
@@ -59,12 +59,12 @@ public class KaiCreateExecuteAction extends Action {
 			}
 
 			System.out.println(errors.values());
-
 			//リクエストに値をセット
 			req.setAttribute("pw", ca_pw);
 			req.setAttribute("name", ca_name);
 			req.setAttribute("id", ca_id);
 			req.setAttribute("errors", errors);
+
 
 			// JSPへフォワード
 			if (errors.isEmpty()) { // エラーメッセージがない場合

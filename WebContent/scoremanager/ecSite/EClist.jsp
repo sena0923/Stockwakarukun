@@ -1,7 +1,7 @@
 <%-- 入居者と親族が閲覧するECサイトのHOME画面 --%>
 
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
-<%@ include file="base.jsp" %>
+<%@ include file="../../base.jsp" %>
 <!DOCTYPE html>
 <html lang="ja">
 <head>

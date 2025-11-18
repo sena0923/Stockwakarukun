@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<a>ログイン成功 </a>
+<a>登録成功</a>
 
 </body>
 </html>
