@@ -148,6 +148,7 @@ public class Indevidual_inventoryDAO extends Dao {
 				// 現在日付をセット
 				java.sql.Date currentDate = new java.sql.Date(System.currentTimeMillis());
 				statement.setDate(4, currentDate);
+				count += statement.executeUpdate(); // ←これが必須
 			}
 		} catch (Exception e) {
 			throw e;

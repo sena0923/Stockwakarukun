@@ -20,6 +20,45 @@ p {
     margin: 8px 0;
 }
 
+
+.tab-container {
+    display: flex;
+    justify-content: flex-start;
+    margin: 20px auto;
+    overflow: hidden;
+    gap: 0; /* ボタンをくっつける*/
+
+}
+
+
+.type_list {
+	display: inline-block;
+    margin: 0;
+    padding: 25px 20px;
+    text-decoration: none;
+    background-color: #e69462;
+    color: #000;
+    border-radius: 6px 6px 0 0; /* ←下辺の角丸をなくす */
+    font-weight: bold;
+    justify-content: flex-start; /* 中央寄せ */
+    gap: 0; /* ボタンをくっつける */
+	overflow: hidden; /* 丸みを適用 */
+}
+
+.type_list.non{
+	background-color: #f0bfa2;
+	border-radius: 6px 6px 0 0; /* ←下辺の角丸をなくす */
+}
+
+.type_list:hover{
+	background-color: #ecb08c;
+}
+.type_list non:hover{
+	background-color: #e69564;
+}
+
+
+
 .update_link {
 	display: inline-block;
     margin: 0 10px;

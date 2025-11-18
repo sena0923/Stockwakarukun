@@ -1,5 +1,6 @@
 package scoremanager.caregiver;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -21,22 +22,29 @@ public class Kai_stockAddExecuteAction extends Action{
 		String inve_name = req.getParameter("inve_name");
 		String inve_countStr = req.getParameter("inve_count");
 		int inve_count = 0;
-		Resident resident = null;
+		Resident resident = new Resident();
 		ResidentDao residentDao = new ResidentDao();
-		Indevidualinventory ii = null;
+		Indevidualinventory ii = new Indevidualinventory();
 		Indevidual_inventoryDAO iiDao = new Indevidual_inventoryDAO(); //個人で登録したストックDAO
 
+		//入居者beanをgetする
 		resident = residentDao.get(rd_id);
+		//ビジネスロジック
+		inve_count = Integer.parseInt(inve_countStr);
 
-		inve_count = Integer.parseInt(inve_countStr);//ビジネスロジック
-		List<Indevidualinventory> list = iiDao.get(rd_id);//個人で登録したストックのリスト
+		ii.setRd_id(rd_id);
+		ii.setInve_name(inve_name);
+		ii.setInve_count(inve_count);
+		ii.setRegi_date(new java.util.Date()); // ←必須
 
-		iiDao.save(list);
 
-		/**
-		*11月18日は，このページから作業する！！
-		**/
+		List<Indevidualinventory> newList = new ArrayList<>();
+		newList.add(ii);
 
+		iiDao.save(newList);
+
+		//個人で登録したストックのリスト
+		List<Indevidualinventory> list = iiDao.get(rd_id);
 
 		//レスポンス値をセット
 		req.setAttribute("resident", resident);

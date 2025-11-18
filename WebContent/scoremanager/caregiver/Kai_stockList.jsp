@@ -17,6 +17,11 @@
 			<h1>== ストック管理画面 ==</h1>
 			<h2>${resident.name}さん</h2>
 
+			<div class="tab-container">
+				<a class="type_list">個人ストック</a>
+				<a class="type_list non" href="#">ECサイトストック</a>
+			</div>
+
 			<table class="table">
 			<c:forEach var="iiList" items ="${iiList}">
 				<tr>
@@ -56,7 +61,7 @@
 			<input type="hidden" name="rd_id" value="${resident.rd_id}">
 			<button type="submit" class="update_link">更新</button>
 			<a class ="update_link" href="Kai_stockAdd.action?rd_id=${resident.rd_id}">ストック登録</a>
-
+			<a class = "" href="RdList.action">入居者の詳細メニューへ戻る</a>
 		</form>
 	</c:param>
 </c:import>
