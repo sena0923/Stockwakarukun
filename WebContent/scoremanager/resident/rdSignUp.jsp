@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>入居者情報入力画面</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="../../css/style.css">
 </head>
 <body>
 
@@ -35,13 +35,6 @@
     <!-- 名前 -->
     <label for="name">お名前</label>
     <input type="text" id="name" name="name" value="<%= request.getAttribute("name") != null ? request.getAttribute("name") : "" %>" required>
-
-    <!-- フリガナ -->
-    <label for="kana">お名前(フリガナ)</label>
-    <input type="text" id="kana" name="kana"
-           pattern="[\u30A0-\u30FF]+"
-           title="カタカナのみ入力してください"
-           required>
 
     <!-- 性別 -->
     <div class="row">
