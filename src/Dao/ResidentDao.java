@@ -196,7 +196,7 @@ public class ResidentDao extends Dao {
 			} else {
 				// 入居者が存在した場合、情報を更新
 				// プリペアードステートメントにUPDATE文をセット
-				statement = connection.prepareStatement("UPDATE RESIDENT SET COURSE_ID = ?, PASSWORD = ?");
+				statement = connection.prepareStatement("UPDATE RESIDENT SET COURSE_ID = ?, PASSWORD = ? WHERE RD_ID = ?");
 				// プリペアードステートメントに値をバインド
 				statement.setInt(1,resident.getCourse_id());
 				statement.setString(1, resident.getPassword());
