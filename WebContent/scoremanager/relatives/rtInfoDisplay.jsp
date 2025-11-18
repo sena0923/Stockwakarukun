@@ -5,6 +5,7 @@
 <link rel="stylesheet" href="../css/base.css">
 
 <main>
+	<br><br>
   	<h2 style="font-size: 50px;">ユーザー情報</h2>
 
 	<c:if test="${not empty relatives}">

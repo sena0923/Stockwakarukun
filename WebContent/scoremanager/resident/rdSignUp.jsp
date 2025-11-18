@@ -1,142 +1,95 @@
-<%@ page contentType="text/html; charset=UTF-8" language="java" %>
+<%@ page contentType="text/html; charset=UTF-8" %>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>入居者情報変更画面</title>
-    <style>
-        body {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            background-color: #f5f5f5;
-            margin: 0;
-            font-family: "Hiragino Sans", "Meiryo", sans-serif;
-        }
-
-        /* タイトルを上部に固定して中央に揃える */
-        h1 {
-            font-size: 2rem;
-            text-align: center;
-            margin-top: 40px;
-            margin-bottom: 30px;
-        }
-
-        /* フォーム全体を中央に配置するためのコンテナ */
-        .form-wrapper {
-            flex: 1;                        /* 余白を全て受け取って中央に配置 */
-            display: flex;
-            flex-direction: column;
-            justify-content: center;        /* 縦方向中央 */
-            align-items: center;            /* 横方向中央 */
-            width: 100%;
-        }
-
-        h2 {
-            font-size: 1.1rem;
-            margin: 10px 0 5px 0;
-        }
-
-        input {
-            height: 45px;
-            width: 80vw;
-            max-width: 300px;
-            font-size: 1rem;
-            padding: 5px 10px;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-            box-sizing: border-box;
-        }
-
-        .btn2 {
-            margin-top: 30px;
-            height: 50px;
-            width: 80vw;
-            max-width: 300px;
-            font-size: 1.1rem;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .btn2:hover {
-            background-color: #45a049;
-        }
-
-        @media screen and (max-width: 480px) {
-            h1 {
-                font-size: 1.6rem;
-                margin-top: 25px;
-                margin-bottom: 20px;
-            }
-            h2 {
-                font-size: 1rem;
-            }
-            input, .btn2 {
-                width: 90vw;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>入居者情報入力画面</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-    <h1>ユーザー情報変更画面</h1>
+  <h1>入居者情報入力画面</h1>
 
-    <div class="form-wrapper">
-        <form method="post" action="./rdInfoChangeComplete.jsp" onsubmit="return validateForm();">
+  <!-- ★ここを JSP のアクションに変更 -->
+  <form id="residentForm" action="NyuCreateExecute.action" method="post">
 
-            <label>コースを選んでください</label>
-            <div class="radio-group column">
-                <div class="radio-item">
-                    <input id="radio-a" type="radio" name="course" value="ziritu" checked>
-                    <label for="radio-a">自立コース</label>
-                </div>
-                <div class="radio-item">
-                    <input id="radio-b" type="radio" name="course" value="youkaigo">
-                    <label for="radio-b">要介護コース</label>
-                </div>
-            </div>
+    <!-- コース選択 -->
+    <div class="row">
+      <label>コースを選んでください</label>
+      <div class="radio-group column">
 
-            <h2>パスワード</h2>
-            <input type="password" id="password" name="password" pattern="^[0-9]+$" required>
+        <div class="radio-item">
+          <input id="radio-a" type="radio" name="course_id" value="1" checked>
+          <label for="radio-a">自立コース</label>
+        </div>
 
-            <h2>パスワード(確認用)</h2>
-            <input type="password" id="passwordConfirm" name="passwordConfirm" pattern="^[0-9]+$" required placeholder="もう一度入力">
+        <div class="radio-item">
+          <input id="radio-b" type="radio" name="course_id" value="2">
+          <label for="radio-b">要介護コース</label>
+        </div>
 
-            <p id="passwordError" style="color: red; display: none;"></p>
-
-            <button class="btn2" type="submit">完了</button>
-
-        </form>
+      </div>
     </div>
 
-    <script>
-    function validateForm() {
-        const pw1 = document.getElementById('password').value;
-        const pw2 = document.getElementById('passwordConfirm').value;
-        const passwordError = document.getElementById('passwordError');
+    <!-- 名前 -->
+    <label for="name">お名前</label>
+    <input type="text" id="name" name="name" value="<%= request.getAttribute("name") != null ? request.getAttribute("name") : "" %>" required>
 
-        if (pw1 === "" || pw2 === "") {
-            passwordError.style.display = "block";
-            passwordError.textContent = "両方の欄に入力してください。";
-            return false;
-        }
+    <!-- フリガナ -->
+    <label for="kana">お名前(フリガナ)</label>
+    <input type="text" id="kana" name="kana"
+           pattern="[\u30A0-\u30FF]+"
+           title="カタカナのみ入力してください"
+           required>
 
-        if (pw1 !== pw2) {
-            passwordError.style.display = "block";
-            passwordError.textContent = "パスワードが一致しません。";
-            return false;
-        }
+    <!-- 性別 -->
+    <div class="row">
+      <label>性別</label>
+      <div class="radio-group column">
+        <div class="radio-item">
+          <input id="radio-c" type="radio" name="gender" value="男" checked>
+          <label for="radio-c">男</label>
+        </div>
+        <div class="radio-item">
+          <input id="radio-d" type="radio" name="gender" value="女">
+          <label for="radio-d">女</label>
+        </div>
+        <div class="radio-item">
+          <input id="radio-e" type="radio" name="gender" value="回答しない">
+          <label for="radio-e">回答しない</label>
+        </div>
+      </div>
+    </div>
 
-        passwordError.style.display = "none";
-        return true;
-    }
-    </script>
+    <!-- ログインID -->
+    <label for="login-id">ログインID</label>
+    <input type="text" id="login-id" name="rd_id" pattern="^[0-9]+$"
+           value="<%= request.getAttribute("id") != null ? request.getAttribute("id") : "" %>"
+           required>
+    <div id="id-error" class="error-message">
+      <%= request.getAttribute("errors") != null && ((java.util.Map)request.getAttribute("errors")).get("1") != null
+          ? ((java.util.Map)request.getAttribute("errors")).get("1")
+          : "" %>
+    </div>
+
+    <!-- パスワード -->
+    <label for="password">パスワード</label>
+    <input type="password" id="password" name="password" pattern="^[0-9]+$" required>
+
+    <!-- パスワード確認 -->
+    <label for="passwordconfirm">パスワード(確認用)</label>
+    <input type="password" id="passwordconfirm" name="password2" pattern="^[0-9]+$" required>
+
+    <div id="password-error" class="error-message">
+      <%= request.getAttribute("errors") != null && ((java.util.Map)request.getAttribute("errors")).get("2") != null
+          ? ((java.util.Map)request.getAttribute("errors")).get("2")
+          : "" %>
+    </div>
+
+    <button class="btn2" type="submit">送信</button>
+
+  </form>
 
 </body>
 </html>
