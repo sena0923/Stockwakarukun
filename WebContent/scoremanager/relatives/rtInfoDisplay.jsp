@@ -5,16 +5,19 @@
 <link rel="stylesheet" href="../css/base.css">
 
 <main>
-  <h2 style="font-size: 50px;">ユーザー情報</h2>
+  	<h2 style="font-size: 50px;">ユーザー情報</h2>
 
-  <p style="font-size: 40px;">名前 | <%= session.getAttribute("userName") != null ? session.getAttribute("userName") : "未設定" %></p>
-  <p style="font-size: 30px;">パスワード | ＊＊＊＊＊＊</p>
-  <p style="font-size: 25px;">ログインID | <%= session.getAttribute("loginId") != null ? session.getAttribute("loginId") : "未設定" %></p>
+	<c:if test="${not empty relatives}">
+	    <p>親族ID: ${relatives.rt_id}</p>
+	    <p>名前: ${relatives.name}</p>
+	    <p>パスワード: ${relatives.password}</p>
+  	</c:if>
 
-  <div class="button-container">
-    <button onclick="location.href='./rtHome.jsp'">戻る</button>
-    <button onclick="location.href='./rtInfoChange.jsp'">変更する</button>
-  </div>
+
+  	<div class="button-container">
+	    <button onclick="location.href='./rtHome.jsp'">戻る</button>
+	    <button onclick="location.href='./rtInfoChange.jsp'">変更する</button>
+  	</div>
 </main>
 
 <style>

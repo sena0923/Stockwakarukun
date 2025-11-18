@@ -17,7 +17,6 @@ public class SinCreateExecuteAction extends Action {
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse res) throws Exception {
 
-		System.out.println("debug:SinCreateExecuteAction");
 
 		// セッションとDAOの準備
         HttpSession session = req.getSession();
