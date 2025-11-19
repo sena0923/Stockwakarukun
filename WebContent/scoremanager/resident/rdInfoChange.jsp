@@ -98,7 +98,7 @@
 
     <h1>ユーザー情報変更画面</h1>
 
-    <form method="post" action="./rdInfoChangeComplete.jsp" onsubmit="return validateForm();">
+    <form method="post" action="NyuChangeExecute.action" onsubmit="return validateForm();">
          <label>コースを選んでください</label>
       <div class="radio-group column">
         <div class="radio-item">
