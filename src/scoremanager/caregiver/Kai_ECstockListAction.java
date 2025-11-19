@@ -26,8 +26,8 @@ public class Kai_ECstockListAction extends Action{
 		In_Goods_InventoryDao igDao = new In_Goods_InventoryDao(); //ECサイトで登録したストックDAO
 		Ingoodsinventory ig = new Ingoodsinventory(); //ECサイトで登録したストックのbean
 		GoodsDao goodsDao = new GoodsDao();
-		Goods goods = new Goods();
 		String goods_id = "";
+		Goods goods = new Goods();
 
 
 		//リクエストパラメーターの取得
@@ -43,19 +43,17 @@ public class Kai_ECstockListAction extends Action{
 		 * それぞれの商品名を改めて取得する
 		 */
 		for (Ingoodsinventory r : list){
-			goods_id = req.getParameter(r.getGoods_id());
-			goods = goodsDao.get(goods_id);
-			r.setGoods(goods);
+			goods_id = r.getGoods_id(); // 個人在庫Beanから商品IDを取得
+			goods = goodsDao.get(goods_id); // 商品情報をDBから取得
+			r.setGoods(goods); // IngoodsinventoryにGoodsをセット
 		}
-
-
 
 
 
 		System.out.println(resident.getName());
 
 		for (Ingoodsinventory r : list) {
-			System.out.println(r.getGoods_inve_id() + " / " + r.getGoods_inve_count());
+			System.out.println(r.getGoods().getGoods_name() + " / " + r.getGoods_inve_count());
 		}
 
 
