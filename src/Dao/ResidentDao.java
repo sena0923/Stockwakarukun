@@ -199,7 +199,8 @@ public class ResidentDao extends Dao {
 				statement = connection.prepareStatement("UPDATE RESIDENT SET COURSE_ID = ?, PASSWORD = ? WHERE RD_ID = ?");
 				// プリペアードステートメントに値をバインド
 				statement.setInt(1,resident.getCourse_id());
-				statement.setString(1, resident.getPassword());
+				statement.setString(2, resident.getPassword());
+				statement.setString(3, resident.getRd_id());
 			}
 
 			// プリペアードステートメントを実行

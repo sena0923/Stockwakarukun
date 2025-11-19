@@ -25,6 +25,6 @@ public class NyuDisplayExecuteAction extends Action {
         req.setAttribute("resident", resident);
 
         // 詳細表示用JSPへフォワード
-        req.getRequestDispatcher("rtInfoDisplay.jsp").forward(req, res);
+        req.getRequestDispatcher("rdInfoDisplay.jsp").forward(req, res);
     }
 }
