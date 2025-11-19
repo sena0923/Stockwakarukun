@@ -22,7 +22,7 @@
       <a href="#">ストック管理</a>
       <a href="#">ECサイト</a>
       <a href="#">連絡帳</a>
-      <a href="#">マイページ</a>
+      <a href="SinInfoChange.action">マイページ</a>
       <a href="Logout.action">ログアウト</a>
     </nav>
     </div>

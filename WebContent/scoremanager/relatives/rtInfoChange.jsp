@@ -74,9 +74,9 @@
 <body>
   <h1>ユーザー情報変更画面</h1>
 
-  <form method="post" action="./rtInfoChangeComplate.jsp" onsubmit="return checkPasswords();">
+  <form method="post" action="./SinInformationChangeExecute.action" onsubmit="return checkPasswords();">
     <h2>メールアドレス</h2>
-    <input type="email" id="email" name="email" placeholder="example@example.com" required>
+    <input type="email" id="e_mail" name="e_mail" placeholder="example@example.com" required>
 
     <h2>パスワード</h2>
     <input type="password" id="password" name="password" pattern="^[0-9]+$" required>
