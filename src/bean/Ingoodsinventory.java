@@ -20,6 +20,9 @@ public class Ingoodsinventory implements Serializable {
 
 	/**購入日**/
 	private java.util.Date purchase_date;
+
+	/** EC商品情報:Goods*/
+	private Goods goods;
 	/**
 	 * ゲッター・セッター
 	 */
@@ -62,5 +65,13 @@ public class Ingoodsinventory implements Serializable {
 
 	public void setPurchase_date(java.util.Date purchase_date) {
 		this.purchase_date = purchase_date;
+	}
+
+	public Goods getGoods(){
+		return goods;
+	}
+
+	public void setGoods(Goods goods){
+		this.goods = goods;
 	}
 }

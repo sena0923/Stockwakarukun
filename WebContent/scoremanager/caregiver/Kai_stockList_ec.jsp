@@ -25,11 +25,11 @@
 			<table class="table">
 			<c:forEach var="iiList" items ="${iiList}">
 				<tr>
-					<td>${iiList.goods_inve_id}</td>
+					<td>${iiList.goods_id}</td>
 					<td>
 						<div class="qty">
 							<button type="button" class="down">-</button>
-							<input type="number" name="count_${iiList.goods_inve_id}" value="${iiList.goods_inve_count}" class="qty-input">
+							<input type="number" name="count_${iiList.goods_id}" value="${iiList.goods_inve_count}" class="qty-input">
 							<button type="button" class="up">+</button>
 						</div>
 					</td>

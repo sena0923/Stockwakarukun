@@ -15,6 +15,11 @@ public class In_Goods_InventoryDao extends Dao {
         // TODO 自動生成されたメソッド・スタブ
     }
 
+    /** 入居者rd_idから，該当入居者のストックを取得
+     * @param rd_Id
+     * @return
+     * @throws Exception
+     */
     public List<Ingoodsinventory> get(String rd_Id) throws Exception {
 
     	List<Ingoodsinventory> list = new ArrayList<>();
@@ -31,12 +36,12 @@ public class In_Goods_InventoryDao extends Dao {
 
             ResultSet resultSet = statement.executeQuery();
 
-            if (resultSet.next()) {
+            while (resultSet.next()) {
             	ingoodsinventory = new Ingoodsinventory();
             	ingoodsinventory.setGoods_inve_id(resultSet.getString("goods_inve_id"));
             	ingoodsinventory.setGoods_id(resultSet.getString("goods_id"));
             	ingoodsinventory.setRd_id(resultSet.getString("rd_id"));
-            	ingoodsinventory.setGoods_inve_count(resultSet.getInt("goods_inve_id"));
+            	ingoodsinventory.setGoods_inve_count(resultSet.getInt("goods_inve_count"));
             	ingoodsinventory.setPurchase_date(resultSet.getTimestamp("purchase_date"));
             	list.add(ingoodsinventory);
             }

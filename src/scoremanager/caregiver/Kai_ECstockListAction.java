@@ -6,8 +6,10 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import Dao.GoodsDao;
 import Dao.In_Goods_InventoryDao;
 import Dao.ResidentDao;
+import bean.Goods;
 import bean.Ingoodsinventory;
 import bean.Resident;
 import tool.Action;
@@ -23,7 +25,9 @@ public class Kai_ECstockListAction extends Action{
 		Resident resident = new Resident();
 		In_Goods_InventoryDao igDao = new In_Goods_InventoryDao(); //ECサイトで登録したストックDAO
 		Ingoodsinventory ig = new Ingoodsinventory(); //ECサイトで登録したストックのbean
-
+		GoodsDao goodsDao = new GoodsDao();
+		Goods goods = new Goods();
+		String goods_id = "";
 
 
 		//リクエストパラメーターの取得
@@ -32,7 +36,18 @@ public class Kai_ECstockListAction extends Action{
 		//DBから入居者Beanを，rd_idを用いて取得
 		resident = residentDao.get(rd_id);
 
+		//いったんEC連携個人在庫のリストを取得
 		List<Ingoodsinventory> list = igDao.get(rd_id);
+
+		/**取得したEC連携個人在庫の商品IDからEC商品IDと紐づけして
+		 * それぞれの商品名を改めて取得する
+		 */
+		for (Ingoodsinventory r : list){
+			goods_id = req.getParameter(r.getGoods_id());
+			goods = goodsDao.get(goods_id);
+			r.setGoods(goods);
+		}
+
 
 
 
