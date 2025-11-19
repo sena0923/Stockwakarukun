@@ -12,7 +12,7 @@
 <c:if test="${sessionScope.resident.isAuthenticated()}">
 
 		<span class="user">${sessionScope.resident.getName()} さん</span>
-		<a class="logout-link" href="Logout.action">ログアウト</a>
+		<a class="logout-link" href="rdLogout.jsp">ログアウト</a>
 
 
 	<div class="hamburger" id="hamburger">
