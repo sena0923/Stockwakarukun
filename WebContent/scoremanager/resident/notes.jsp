@@ -37,7 +37,7 @@
   </div>
 
 <div class="contact">
-    <button class="">連絡を作成</button>
+    <button class="makenotes.jap">連絡を作成</button>
 </div>
 
 </body>

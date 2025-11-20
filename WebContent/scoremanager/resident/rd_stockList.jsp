@@ -7,6 +7,8 @@
 <main>
   <form action="saveStock.jsp" method="post">
     <%-- 在庫アイテム一覧 --%>
+    <br>
+    <br>
     <%
       String[] items = { "ティッシュボックス", "靴下", "タオル(大)" };
       for (String item : items) {
@@ -41,7 +43,7 @@
     </script>
 
     <div class="button-area">
-      <a href="入居者ホーム.jsp" class="button-a">戻る</a>
+      <a href="rd_Home.jsp" class="button-a">戻る</a>
       <button type="submit" class="button-a">保存する</button>
     </div>
   </form>

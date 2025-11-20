@@ -9,7 +9,6 @@
   	<h2 style="font-size: 50px;">ユーザー情報</h2>
 
 	<c:if test="${not empty resident}">
-	    <p>入居者ID: ${resident.rd_id}</p>
 	    <p>名前: ${resident.name}</p>
 	    <p>パスワード: ${resident.password}</p>
   	</c:if>
