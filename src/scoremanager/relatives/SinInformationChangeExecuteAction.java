@@ -13,34 +13,45 @@ public class SinInformationChangeExecuteAction extends Action {
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse res) throws Exception {
 
-		HttpSession session = req.getSession(false);
+		HttpSession session = req.getSession();
+        Relatives relatives = (Relatives) session.getAttribute("relatives");
+        String rt_id = relatives.getRt_id();
 
-        String rt_id = (String) session.getAttribute("rt_id");
-
-        // フォームから送信された値を取得（e-mail と password のみ）
         String e_mail = req.getParameter("e_mail");
         String password = req.getParameter("password");
+        String passwordConfirm = req.getParameter("passwordConfirm");
 
-        // Beanに詰める
-        Relatives relatives = new Relatives();
-        relatives.setRt_id(rt_id);
-		relatives.setE_mail(e_mail);
-        relatives.setPassword(password);
-
-        // DAOで更新
-        RelativesDao relativesDao = new RelativesDao();
-        boolean updated = relativesDao.save(relatives);
-
-        if (updated) {
-            // 更新成功 → 詳細表示へ
-            req.setAttribute("relatives", relatives);
-            req.setAttribute("message", "情報を変更しました。");
-            req.getRequestDispatcher("rtInfoChangeComplete.jsp").forward(req, res);
-        } else {
-            // 更新失敗 → エラーページへ
-            req.setAttribute("error", "変更に失敗しました。");
+        if (password == null || !password.equals(passwordConfirm)) {
+            req.setAttribute("message", "パスワードが一致しません。");
             req.getRequestDispatcher("rtInfoChange.jsp").forward(req, res);
+            return;
         }
+
+
+
+        // デバッグ出力
+        System.out.println("debug:rt_id > " + rt_id);
+        System.out.println("debug:e_mail > " + e_mail);
+        System.out.println("debug:password > " + password);
+        System.out.println("debug:passwordConfirm > " + passwordConfirm);
+
+        RelativesDao relativesDao = new RelativesDao();
+
+        if (relatives != null) {
+            // パスワード更新
+        	relatives.setE_mail(e_mail);
+            relatives.setPassword(password);
+
+			// DB保存
+            relativesDao.save(relatives);
+
+            req.setAttribute("message", "情報を更新しました。");
+        } else {
+            req.setAttribute("message", "対象の入居者が見つかりません。");
+        }
+
+        req.setAttribute("relatives", relatives);
+        req.getRequestDispatcher("rtInfoChangeComplete.jsp").forward(req, res);
     }
 }
 

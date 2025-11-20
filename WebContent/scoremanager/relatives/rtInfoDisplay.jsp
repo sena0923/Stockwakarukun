@@ -11,6 +11,7 @@
 	<c:if test="${not empty relatives}">
 	    <p>親族ID: ${relatives.rt_id}</p>
 	    <p>名前: ${relatives.name}</p>
+	    <p>メールアドレス: ${relatives.e_mail}</p>
 	    <p>パスワード: ${relatives.password}</p>
   	</c:if>
 
