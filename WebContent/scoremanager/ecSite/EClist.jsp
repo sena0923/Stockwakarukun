@@ -1,218 +1,135 @@
-<%-- 入居者と親族が閲覧するECサイトのHOME画面 --%>
+<%@ page contentType="text/html; charset=UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<%@ page contentType="text/html; charset=UTF-8" language="java" %>
-<%@ include file="../../base.jsp" %>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <title>Product category</title>
-    <style>
-        .product-list {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            margin: 20px;
-        }
+<meta charset="UTF-8">
+<title>EC商品一覧</title>
 
-        .product-item {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
+<style>
+    /* 画面全体を中央寄せ */
+    body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 0;
+        font-family: sans-serif;
+    }
 
-        .product-item img {
-            width: 150px; /* サイズ調整 */
-            height: auto;
-        }
+    /* カテゴリーメニュー */
+    .category-menu {
+        display: flex;
+        gap: 15px;
+        margin: 20px auto;
+    }
 
-        nav li {
-            display: inline;
-            margin-right: 10px;
-        }
+    .category-menu a {
+        text-decoration: none;
+    }
 
+    .category-menu li {
+        list-style: none;
+        padding: 10px 20px;
+        border-radius: 10px 10px 0 0;
+        background: #f0f0f0;
+        transition: 0.3s;
+        cursor: pointer;
+    }
 
-        .list nav {
-            display: flex;
-            gap: 20px; /* 横の間隔 */
-        }
+    .category-menu li:hover {
+        background: #ddd;
+    }
 
-        .list li {
-            list-style: none; /* liの点を消す */
-        }
-        .list nav {
-           display: flex;
-            gap: 10px;
-        }
+    .category-menu .active {
+        background: #4CAF50;
+        color: white;
+        font-weight: bold;
+        box-shadow: 0px 2px 5px rgba(0,0,0,0.2);
+    }
 
-        .list li {
-            list-style: none;
-            padding: 10px 15px;
-            border-radius: 8px 8px 0 0; /* 上だけ角丸でタブ風 */
-            background-color: #f0f0f0;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
+    /* 商品一覧を中央寄せ */
+    .product-list {
+        margin-top: 20px;
+        width: 70%;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
 
-        .list li:hover {
-            background-color: #ddd;
-        }
+    .product-item {
+        display: flex;
+        align-items: center;
+        padding: 15px;
+        border-radius: 10px;
+        background: #fafafa;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        gap: 20px;
+    }
 
-        .list li.active {
-            background-color: #4CAF50; /* 選択中の色 */
-            color: white;
-            font-weight: bold;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-        }
+    .product-item img {
+        width: 130px;
+        height: auto;
+        border-radius: 5px;
+    }
+</style>
 
-
-    </style>
 </head>
 <body>
-    <header>
-        <nav>
-            <li><a href="#">アカウント情報</a></li>
-            <li><a href="#">ログアウト</a></li>
-        </nav>
-    </header>
 
-    <div class="list">
-    <nav>
-        <li><h2>すべて</h2></li>
-        <li><h2>洗面用具</h2></li>
-        <li class="active"><h2>タオル</h2></li>
-        <li><h2>衣類</h2></li>
-        <li><h2>防寒</h2></li>
-        <li><h2>備品</h2></li>
-        <li><h2>娯楽</h2></li>
-        <!-- 洗面用具/タオル/衣類/防寒/備品/娯楽 -->
-    </nav>
-    </div>
+<h2>ECサイト 商品一覧</h2>
 
-    <div>
-        <h2>ECサイト ータオルー</h2>
-    </div>
+<!-- カテゴリータブ -->
+<ul class="category-menu">
 
-    <div>
-        <a href="#">カート</a>
-        <a href="#">購入履歴</a>
-    </div>
+    <li class="${selectedCategory == 'all' ? 'active' : ''}">
+        <a href="NyuECExecute.action?category=all">すべて</a>
+    </li>
 
-    <div class="product-list">
+    <li class="${selectedCategory == 'A' ? 'active' : ''}">
+        <a href="NyuECExecute.action?category=A">洗面用具</a>
+    </li>
+
+    <li class="${selectedCategory == 'B' ? 'active' : ''}">
+        <a href="NyuECExecute.action?category=B">タオル</a>
+    </li>
+
+    <li class="${selectedCategory == 'C' ? 'active' : ''}">
+        <a href="NyuECExecute.action?category=C">衣類</a>
+    </li>
+
+    <li class="${selectedCategory == 'D' ? 'active' : ''}">
+        <a href="NyuECExecute.action?category=D">防寒</a>
+    </li>
+
+    <li class="${selectedCategory == 'E' ? 'active' : ''}">
+        <a href="NyuECExecute.action?category=E">備品</a>
+    </li>
+
+    <li class="${selectedCategory == 'F' ? 'active' : ''}">
+        <a href="NyuECExecute.action?category=F">娯楽</a>
+    </li>
+
+</ul>
+
+<!-- 商品一覧 -->
+<div class="product-list">
+
+    <c:forEach var="g" items="${goodsList}">
         <div class="product-item">
-            <img src="image/image1.jpg">
-            <span>商品名A
-                <br>￥150
-                <br><a href="#">カートに入れる</a>
-            </span>
-        </div>
-        <div class="product-item">
-            <img src="image/image2.jpg" alt="">
-            <span>商品名B
-                <br>￥128
-                <br><a href="#">カートに入れる</a>
-            </span>
-        </div>
-        <div class="product-item">
-            <img src="image/image3.jpg" alt="">
-            <span>商品名C
-                <br>￥200
-                <br><a href="#">カートに入れる</a>
-            </span>
-        </div>
-    </div>
+            <img src="image/${g.goods_id}.jpg" alt="商品画像">
+            <div>
+                <strong>${g.goods_name}</strong><br>
+                価格：￥${g.price}<br>
+                在庫：${g.stock}<br>
+                カテゴリー：${g.category_id}<br><br>
 
-    <div>
-        <a href="#">メインメニューへ</a>
-    </div>
+                <a href="#">カートに入れる</a>
+            </div>
+        </div>
+    </c:forEach>
 
-    <footer>
-    </footer>
+</div>
+
 </body>
 </html>
-
-
-
-<%--
-<%@ page contentType="text/html; charset=UTF-8" language="java" %>
-<%@ include file="base.jsp" %>
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <title>Product List</title>
-    <style>
-        .product-list {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            margin: 20px;
-        }
-
-        .product-item {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .product-item img {
-            width: 150px; /* サイズ調整 */
-            height: auto;
-        }
-
-        nav li {
-            display: inline;
-            margin-right: 10px;
-        }
-    </style>
-</head>
-<body>
-    <header>
-        <nav>
-            <li><a href="#">アカウント情報</a></li>
-            <li><a href="#">ログアウト</a></li>
-        </nav>
-    </header>
-
-    <div>
-        <h2>ECサイト ー商品一覧ー</h2>
-    </div>
-
-    <div>
-        <a href="#">カート</a>
-        <a href="#">購入履歴</a>
-    </div>
-
-    <div class="product-list">
-        <div class="product-item">
-            <img src="image/image1.jpg">
-            <span>商品名A
-                <br>￥150
-                <br><a href="#">カートに入れる</a>
-            </span>
-        </div>
-        <div class="product-item">
-            <img src="image/image2.jpg" alt="">
-            <span>商品名B
-                <br>￥128
-                <br><a href="#">カートに入れる</a>
-            </span>
-        </div>
-        <div class="product-item">
-            <img src="image/image3.jpg" alt="">
-            <span>商品名C
-                <br>￥200
-                <br><a href="#">カートに入れる</a>
-            </span>
-        </div>
-    </div>
-
-    <div>
-        <a href="#">メインメニューへ</a>
-    </div>
-
-    <footer>
-    </footer>
-</body>
-</html>
---%>
