@@ -8,6 +8,8 @@ import javax.sql.DataSource;
 public class Dao {
 
 	static DataSource ds;
+	static DataSource ecDs;
+
 
 	public Connection getConnection() throws Exception {
 		// データソースがnullの場合
@@ -20,4 +22,14 @@ public class Dao {
 		// データベースへのコネクションを返却
 		return ds.getConnection();
 	}
+
+
+	public Connection getConnectionEc() throws Exception {
+		if (ecDs == null) {
+			InitialContext ic = new InitialContext();
+			ecDs = (DataSource) ic.lookup("java:/comp/env/jdbc/ec");
+		}
+		return ecDs.getConnection();
+	}
+
 }

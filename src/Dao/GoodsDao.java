@@ -17,11 +17,11 @@ public class GoodsDao extends Dao {
     public Goods get(String goods_Id) throws Exception {
 
         Goods goods = null;
-        Connection connection = getConnection();
+        Connection connection = getConnectionEc();
         PreparedStatement statement = null;
 
         try {
-            String sql = "SELECT * FROM goods WHERE goods_id = ?";
+            String sql = "SELECT goods.goods_id , goods.goods_name , goods.PRICE  , GOODS_CATEGORY.CATEGORY_NAME , goods.stock FROM goods join GOODS_CATEGORY on GOODS.CATEGORY_ID = GOODS_CATEGORY.CATEGORY_ID  WHERE goods_id = ?";
             statement = connection.prepareStatement(sql);
             statement.setString(1, goods_Id);
 
@@ -32,7 +32,6 @@ public class GoodsDao extends Dao {
                 goods.setGoods_id(resultSet.getString("goods_id"));
                 goods.setGoods_name(resultSet.getString("goods_name"));
                 goods.setPrice(resultSet.getInt("price"));
-                goods.setCategory_id(resultSet.getString("category_id"));
                 goods.setCategory_name(resultSet.getString("category_name"));
                 goods.setStock(resultSet.getInt("stock"));
             }
@@ -53,7 +52,7 @@ public class GoodsDao extends Dao {
     public List<Goods> getAllGoods() throws Exception {
 
         List<Goods> list = new ArrayList<>();
-        Connection connection = getConnection();
+        Connection connection = getConnectionEc();
         PreparedStatement statement = null;
 
         try {
@@ -91,7 +90,7 @@ public class GoodsDao extends Dao {
     public List<Goods> getGoodsByCategory(String categoryId) throws Exception {
 
         List<Goods> list = new ArrayList<>();
-        Connection connection = getConnection();
+        Connection connection = getConnectionEc();
         PreparedStatement statement = null;
 
         try {
