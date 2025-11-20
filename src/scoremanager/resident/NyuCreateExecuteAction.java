@@ -90,6 +90,6 @@ public class NyuCreateExecuteAction extends Action {
 	    }
 
 	    // 正常終了 -> メニュー等へフォワード
-	    req.getRequestDispatcher("NyuMenu.action").forward(req, res);
+	    req.getRequestDispatcher("rdSignUpComplete.jsp").forward(req, res);
 	}
 }
