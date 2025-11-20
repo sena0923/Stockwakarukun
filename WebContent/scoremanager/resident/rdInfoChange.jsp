@@ -102,11 +102,11 @@
          <label>コースを選んでください</label>
       <div class="radio-group column">
         <div class="radio-item">
-          <input id="radio-a" type="radio" name="course" value="ziritu" checked>
+          <input id="radio-a" type="radio" name="course" value="1" checked>
           <label for="radio-a">自立コース</label>
         </div>
         <div class="radio-item">
-          <input id="radio-b" type="radio" name="course" value="youkaigo">
+          <input id="radio-b" type="radio" name="course" value="2">
           <label for="radio-b">要介護コース</label>
         </div>
       </div>

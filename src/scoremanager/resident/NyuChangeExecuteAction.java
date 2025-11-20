@@ -27,30 +27,41 @@ public class NyuChangeExecuteAction extends Action {
             return;
         }
 
-        //JSPのデータが取得できているのか？
+        String courseParam = req.getParameter("course");
+        int Course_id = 0;
+        try {
+            Course_id = Integer.parseInt(courseParam);
+        } catch (NumberFormatException e) {
+            req.setAttribute("message", "コースの値が不正です。");
+            req.getRequestDispatcher("rdInfoChange.jsp").forward(req, res);
+            return;
+        }
+
+
+        // デバッグ出力
         System.out.println("debug:rd_id > " + rd_id);
         System.out.println("debug:course_id > " + course_id);
         System.out.println("debug:password > " + password);
         System.out.println("debug:passwordConfirm > " + passwordConfirm);
 
-
-
-
         ResidentDao residentDao = new ResidentDao();
-//        Resident resident = residentDao.get(rd_id); // ← staticではなくインスタンスから呼び出し
-
-        //resident beanは取得で来ているのか？
-        System.out.println("debug:resident > " + resident.toString());
 
         if (resident != null) {
+            // パスワード更新
             resident.setPassword(password);
+
+            // コース更新（Resident Bean に course フィールドがある前提）
+            resident.setCourse_id(Course_id);
+
+            // DB保存
             residentDao.save(resident);
-            req.setAttribute("message", "パスワードを更新しました。");
+
+            req.setAttribute("message", "情報を更新しました。");
         } else {
             req.setAttribute("message", "対象の入居者が見つかりません。");
         }
 
         req.setAttribute("resident", resident);
-        req.getRequestDispatcher("rdInfoChange.jsp").forward(req, res);
+        req.getRequestDispatcher("rdInfoChangeComplete.jsp").forward(req, res);
     }
 }
