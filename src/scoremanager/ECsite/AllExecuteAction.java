@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import tool.Action;
 
-public class AllAction extends Action {
+public class AllExecuteAction extends Action {
 
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse res) throws Exception {
