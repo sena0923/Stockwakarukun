@@ -15,7 +15,3 @@ public class AllAction extends Action {
 
 }
 
-
-
-ベースを入れる
-ベースも動くようにする
