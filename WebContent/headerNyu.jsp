@@ -20,9 +20,9 @@
       <span></span>
       <span></span>
     <nav id="nav">
-      <a href="#">ストック管理</a>
-      <a href="#">ECサイト</a>
-      <a href="#">連絡帳</a>
+      <a href="rd_stockList.jsp">ストック管理</a>
+      <a href="../ecSite/EClist.jsp">ECサイト</a>
+      <%-- <a href="#">連絡帳</a> --%>
       <a href="rdInfoDisplay.jsp">マイページ</a>
       <a href="rdLogoutCon.jsp">ログアウト</a>
     </nav>
