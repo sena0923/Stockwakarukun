@@ -82,9 +82,9 @@
 <!-- カテゴリータブ -->
 <ul class="category-menu">
 
-    <li class="${selectedCategory == 'all' ? 'active' : ''}">
-        <a href="NyuECExecute.action?category=all">すべて</a>
-    </li>
+   <li class="${selectedCategory == 'All' ? 'active' : ''}">
+    	<a href="NyuECExecute.action?category=All">すべて</a>
+	</li>
 
     <li class="${selectedCategory == 'A' ? 'active' : ''}">
         <a href="NyuECExecute.action?category=A">洗面用具</a>
@@ -114,22 +114,17 @@
 
 <!-- 商品一覧 -->
 <div class="product-list">
+  <!-- 「すべて」カテゴリが選ばれたときに AllList を表示 -->
+<c:if test="${selectedCategory == 'All'}">
+    <h3>すべての持ち物リスト</h3>
+    <ul>
+        <c:forEach var="item" items="${AllList['すべて']}">
+            <li>${item}</li>
+              <a href="#">カートに入れる</a>
+        </c:forEach>
 
-    <c:forEach var="g" items="${goodsList}">
-        <div class="product-item">
-            <img src="image/${g.goods_id}.jpg" alt="商品画像">
-            <div>
-                <strong>${g.goods_name}</strong><br>
-                価格：￥${g.price}<br>
-                在庫：${g.stock}<br>
-                カテゴリー：${g.category_id}<br><br>
-
-                <a href="#">カートに入れる</a>
-            </div>
-        </div>
-    </c:forEach>
-
+    </ul>
+</c:if>
 </div>
-
 </body>
 </html>
