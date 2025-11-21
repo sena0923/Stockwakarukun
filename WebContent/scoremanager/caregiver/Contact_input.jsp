@@ -21,7 +21,7 @@
 
 		    <div class="input-list">
     		<div>
-		        <a>件名</a><input type="text">
+		        <a>件名</a><input type="text" value="title" name="title">
 		        <br>
 		        <a>内容</a>
 		        <br><textarea rows="10" cols="60"></textarea>
