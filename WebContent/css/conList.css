@@ -1,0 +1,71 @@
+.notification-list {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin: 100px auto; /* ヘッダー分の余白を確保 */
+}
+
+.notification-list h1 {
+  text-align: center;
+  color: #333;
+}
+
+.notification-list ul {
+  list-style: none;
+  padding: 0;
+}
+
+.notification {
+  padding: 15px;
+  border-bottom: 1px solid #ddd;
+}
+
+.notification:last-child {
+  border-bottom: none;
+}
+
+.notification .date {
+  font-size: 0.9em;
+  color: #888;
+}
+
+.notification .title {
+  font-weight: bold;
+  color: #333;
+  display: block;
+  margin: 5px 0;
+}
+
+.notification p {
+  margin: 0;
+  color: #555;
+}
+
+.unread {
+  background-color: #fffbcc;
+  border-left: 4px solid #ffcc00;
+}
+
+
+.badge {
+  display: inline-block;
+  background-color: red;
+  color: white;
+  font-size: 0.75em;
+  font-weight: bold;
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin-left: 8px;
+}
+
+.contact {
+    text-align: center;
+}
+
+
+.text-right {
+  text-align: right;
+}

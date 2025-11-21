@@ -32,6 +32,11 @@ public class Message implements Serializable {
 	 */
 	private java.util.Date da_ti;
 
+	/**
+	 * タイトル:String
+	 */
+	private String title;
+
 
 	/**
 	 * ゲッター・セッター
@@ -74,6 +79,15 @@ public class Message implements Serializable {
 
 	public void setDa_ti(java.util.Date da_ti) {
 		this.da_ti = da_ti;
+	}
+
+	//タイトル追加
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
 }

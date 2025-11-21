@@ -1,5 +1,44 @@
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <%@ include file="../../baseKai.jsp" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+<c:import url="../../baseKai.jsp">
+	<c:param name="title">
+		連絡帳一覧
+	</c:param>
+
+	<c:param name="scripts">
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/conList.css">
+	</c:param>
+
+	<c:param name="content">
+		<div class="notification-list">
+		    <h1>連絡帳</h1>
+		    <h2>通知一覧</h2>
+		    
+		    <c:forEach var="" items ="${}">
+		    <ul>
+		      <li class="notification">
+		        <span class="date">${}</span>
+		        <span class="title">${}</span>
+		      </li>
+		    </ul>
+			</c:forEach>
+		    
+		    
+			<div class="contact">
+		    <button class="">連絡を作成</button>
+			</div>
+		  </div>
+
+	</c:param>
+</c:import>
+
+
+
+
+
+<%--
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -42,3 +81,4 @@
 
 </body>
 </html>
+--%>

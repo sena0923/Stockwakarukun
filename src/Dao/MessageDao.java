@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import bean.Message;
 
@@ -13,22 +15,30 @@ public class MessageDao extends Dao {
         // TODO 自動生成されたメソッド・スタブ
     }
 
-    public Message get(String message_id) throws Exception {
+    /**
+     * 親族IDからその親族に送信されたメッセージをリストで取得
+     * @param cg_num
+     * @param rd_id
+     * @return
+     * @throws Exception
+     */
+    public List<Message> get(String rt_id) throws Exception {
 
     	Message message = null;
         Connection connection = getConnection();
         PreparedStatement statement = null;
+        List<Message> list = new ArrayList<>();
 
         try {
             // メッセージ取得SQL
-            String sql = "SELECT * FROM message WHERE me_id = ?";
+            String sql = "SELECT * FROM message WHERE rt_id = ?";
 
             statement = connection.prepareStatement(sql);
-            statement.setString(1, message_id);
+            statement.setString(1, rt_id);
 
             ResultSet resultSet = statement.executeQuery();
 
-            if (resultSet.next()) {
+            while (resultSet.next()) {
                 message = new Message();
 
                 message.setMessage_id(resultSet.getString("me_id"));
@@ -36,8 +46,9 @@ public class MessageDao extends Dao {
                 message.setRt_id(resultSet.getString("rt_id"));
                 message.setMessage(resultSet.getString("message"));
                 message.setDa_ti(resultSet.getTimestamp("da_ti"));
-
-
+                message.setTitle("title");
+                //リストに追加
+                list.add(message);
             }
 
         } catch (SQLException e) {
@@ -51,6 +62,6 @@ public class MessageDao extends Dao {
             }
         }
 
-        return message;
+        return list;
     }
 }
