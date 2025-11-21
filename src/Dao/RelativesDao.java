@@ -64,6 +64,69 @@ public class RelativesDao extends Dao {
 		return relatives;
 	}
 
+	/**入居者IDから親族Beanを取得する
+	 *
+	 * @param rd_id
+	 * @return
+	 * @throws Exception
+	 */
+
+	public Relatives get2(String rd_id) throws Exception {
+		// 親族インスタンスを初期化
+		Relatives relatives = new Relatives();
+		// コネクションを確立
+		Connection connection = getConnection();
+		// プリペアードステートメント
+		PreparedStatement statement = null;
+
+		try {
+			// プリペアードステートメントにSQL文をセット
+			statement = connection.prepareStatement("select * from Relatives where rd_id=?");
+			// プリペアードステートメントに親族IDをバインド
+			statement.setString(1, rd_id);
+			// プリペアードステートメントを実行
+			ResultSet resultSet = statement.executeQuery();
+
+			if (resultSet.next()) {
+				// リザルトセットが存在する場合
+				// 親族インスタンスに検索結果をセット
+				relatives.setName(resultSet.getString("name"));
+				relatives.setRt_id(resultSet.getString("rt_id"));
+				relatives.setRd_id(resultSet.getString("rd_id"));
+				relatives.setE_mail(resultSet.getString("e_mail"));
+				relatives.setPassword(resultSet.getString("password"));
+
+			} else {
+				// リザルトセットが存在しない場合
+				// 親族インスタンスにnullをセット
+				relatives = null;
+			}
+		} catch (Exception e) {
+			throw e;
+		} finally {
+			// プリペアードステートメントを閉じる
+			if (statement != null) {
+				try {
+					statement.close();
+				} catch (SQLException sqle) {
+					throw sqle;
+				}
+			}
+			// コネクションを閉じる
+			if (connection != null) {
+				try {
+					connection.close();
+				} catch (SQLException sqle) {
+					throw sqle;
+				}
+			}
+		}
+
+		return relatives;
+	}
+
+
+
 	/**
 	 * loginメソッド 親族IDとパスワードで認証する
 	 *

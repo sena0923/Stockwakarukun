@@ -13,7 +13,7 @@
 	</c:param>
 
 	<c:param name="content">
-		<form class="container"  action="Kai_stockUpdate.action"method="get">
+		<form class="container"  action="Kai_stockUpdate.action" method="get">
 			<h1>== ストック管理画面 ==</h1>
 			<h2>${resident.name}さん</h2>
 
@@ -32,6 +32,8 @@
 							<input type="number" name="count_${iiList.inve_name}" value="${iiList.inve_count}" class="qty-input">
 							<button type="button" class="up">+</button>
 						</div>
+					</td>
+					<td><a class = "" href="#">削除</a>
 					</td>
 				</tr>
 			</c:forEach>

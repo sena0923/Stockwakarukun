@@ -8,6 +8,12 @@
   margin: 100px auto; /* ヘッダー分の余白を確保 */
 }
 
+.notification {
+  padding: 15px;
+  border-bottom: 1px solid #ddd;
+}
+
+
 .notification-list h1 {
   text-align: center;
   color: #333;
@@ -18,10 +24,6 @@
   padding: 0;
 }
 
-.notification {
-  padding: 15px;
-  border-bottom: 1px solid #ddd;
-}
 
 .notification:last-child {
   border-bottom: none;
@@ -68,4 +70,13 @@
 
 .text-right {
   text-align: right;
+}
+
+.input-list{
+	max-width: 500px;
+	margin: 20px auto;
+	padding: 20px;
+	background: #fff;
+	border-radius: 8px;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }

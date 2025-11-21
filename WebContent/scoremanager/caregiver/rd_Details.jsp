@@ -18,7 +18,7 @@
 
 			<div class="menu">
 				<a href="Kai_stockList.action?rd_id=${resident.rd_id}">ストック管理</a>
-				<a href="cg_contactList.jsp">連絡帳</a>
+				<a href="Kai_conList.action?rd_id=${resident.rd_id }">連絡帳</a>
 			</div>
 
 			<a class="back-link" href="RdList.action">戻る</a>
