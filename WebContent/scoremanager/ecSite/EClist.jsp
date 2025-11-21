@@ -1,82 +1,18 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ include file="../../headerEC.jsp" %>
 
 <!DOCTYPE html>
 <html lang="ja">
 <head>
+<link rel="stylesheet" href="../../css/EClist.css">
 <meta charset="UTF-8">
 <title>EC商品一覧</title>
-
-<style>
-    /* 画面全体を中央寄せ */
-    body {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin: 0;
-        font-family: sans-serif;
-    }
-
-    /* カテゴリーメニュー */
-    .category-menu {
-        display: flex;
-        gap: 15px;
-        margin: 20px auto;
-    }
-
-    .category-menu a {
-        text-decoration: none;
-    }
-
-    .category-menu li {
-        list-style: none;
-        padding: 10px 20px;
-        border-radius: 10px 10px 0 0;
-        background: #f0f0f0;
-        transition: 0.3s;
-        cursor: pointer;
-    }
-
-    .category-menu li:hover {
-        background: #ddd;
-    }
-
-    .category-menu .active {
-        background: #4CAF50;
-        color: white;
-        font-weight: bold;
-        box-shadow: 0px 2px 5px rgba(0,0,0,0.2);
-    }
-
-    /* 商品一覧を中央寄せ */
-    .product-list {
-        margin-top: 20px;
-        width: 70%;
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-    }
-
-    .product-item {
-        display: flex;
-        align-items: center;
-        padding: 15px;
-        border-radius: 10px;
-        background: #fafafa;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        gap: 20px;
-    }
-
-    .product-item img {
-        width: 130px;
-        height: auto;
-        border-radius: 5px;
-    }
-</style>
 
 </head>
 <body>
 
+<div class="ec-page">
 <h2>ECサイト 商品一覧</h2>
 
 <!-- カテゴリータブ -->
@@ -111,6 +47,7 @@
     </li>
 
 </ul>
+</div>
 
 <!-- 商品一覧 -->
 <div class="product-list">
