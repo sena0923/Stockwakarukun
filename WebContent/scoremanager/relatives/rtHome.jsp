@@ -6,8 +6,8 @@
   <div class="mainmenu">
     <ul>
       <li><a href="#">備品管理</a></li>
-	  <li><a href="#">購入</a></li>
-	  <li><a href="#">連絡帳</a></li>
+	  <li><a href="../ecSite/EClist.jsp">購入</a></li>
+	  <li><a href="rt_contactlist.jsp">連絡帳</a></li>
 	  <li><a href="./rtInfoDisplay.jsp">ユーザー情報表示</a></li>
 	  <li><a href="./rtLogoutCon.jsp">ログアウト</a></li>
     </ul>
