@@ -1,6 +1,8 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="../../headerEC.jsp" %>
+<%@ page import="bean.Goods" %>
+
 
 <!DOCTYPE html>
 <html lang="ja">
@@ -13,40 +15,15 @@
 <body>
 
 <div class="ec-page">
-<h2>ECサイト 商品一覧</h2>
 
-<!-- カテゴリータブ -->
-<ul class="category-menu">
+	<%
+    	Goods goods = (Goods) request.getAttribute("goods");
+	%>
 
-   <li class="${selectedCategory == 'All' ? 'active' : ''}">
-    	<a href="NyuECExecute.action?category=All">すべて</a>
-	</li>
+	<p>商品名：<%= goods.getGoods_name() %></p>
 
-    <li class="${selectedCategory == 'A' ? 'active' : ''}">
-        <a href="NyuECExecute.action?category=A">洗面用具</a>
-    </li>
 
-    <li class="${selectedCategory == 'B' ? 'active' : ''}">
-        <a href="NyuECExecute.action?category=B">タオル</a>
-    </li>
 
-    <li class="${selectedCategory == 'C' ? 'active' : ''}">
-        <a href="NyuECExecute.action?category=C">衣類</a>
-    </li>
-
-    <li class="${selectedCategory == 'D' ? 'active' : ''}">
-        <a href="NyuECExecute.action?category=D">防寒</a>
-    </li>
-
-    <li class="${selectedCategory == 'E' ? 'active' : ''}">
-        <a href="NyuECExecute.action?category=E">備品</a>
-    </li>
-
-    <li class="${selectedCategory == 'F' ? 'active' : ''}">
-        <a href="NyuECExecute.action?category=F">娯楽</a>
-    </li>
-
-</ul>
 </div>
 
 <!-- 商品一覧 -->
@@ -63,5 +40,6 @@
     </ul>
 </c:if>
 </div>
+
 </body>
 </html>
