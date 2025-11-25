@@ -21,6 +21,6 @@ public class AllExecuteAction extends Action {
 
         req.setAttribute("goodsList", goodsList);  // JSPに渡す
 
-        req.getRequestDispatcher("../../EClist.jsp").forward(req, res);
+        req.getRequestDispatcher("../ecSite/EClist.jsp").forward(req, res);
     }
 }

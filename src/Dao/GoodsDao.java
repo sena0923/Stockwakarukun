@@ -63,11 +63,8 @@ public class GoodsDao extends Dao {
 
             while (resultSet.next()) {
                 Goods goods = new Goods();
-                goods.setGoods_id(resultSet.getString("goods_id"));
                 goods.setGoods_name(resultSet.getString("goods_name"));
                 goods.setPrice(resultSet.getInt("price"));
-                goods.setCategory_id(resultSet.getString("category_id"));
-                goods.setCategory_name(resultSet.getString("category_name"));
                 goods.setStock(resultSet.getInt("stock"));
 
                 list.add(goods);

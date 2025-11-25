@@ -6,7 +6,7 @@
   <div class="mainmenu">
     <ul>
       <li><a href="./rd_stockList.jsp">備品管理</a></li>
-	  <li><a href="../ecSite/EClist.jsp">購入</a></li>
+	  <li><a href="../ECsite/AllExecute.action">購入</a></li>
 	  <li><a href="./rdInfoDisplay.jsp">ユーザー情報表示</a></li>
 	  <li><a href="./rdLogoutCon.jsp">ログアウト</a></li>
     </ul>
