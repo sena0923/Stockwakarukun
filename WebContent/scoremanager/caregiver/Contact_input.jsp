@@ -30,9 +30,9 @@
     		<div>
 				<a>返信欄選択</a>
 				<div>
-					<input type="checkbox" name="cheak1" value="ok">Yes / No
-					<input type="checkbox" name="cheak2" value="ok">確認しました
-					<input type="checkbox" name="cheak3" value="ok">返信不要
+					<input type="radio" name="cheak" value="ok">Yes / No
+					<input type="radio" name="cheak" value="ok">確認しました
+					<input type="radio" name="cheak" value="ok">返信不要
 				</div>
 			</div>
 
