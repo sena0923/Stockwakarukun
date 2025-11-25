@@ -3,7 +3,6 @@
 <%@ include file="../../headerEC.jsp" %>
 <%@ page import="bean.Goods" %>
 
-
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -13,24 +12,19 @@
 
 </head>
 <body>
-
 <div class="ec-page">
 
-	<%
-    Goods goods = (Goods) request.getAttribute("goods");
-    if (goods != null) {
-%>
-    <p>商品名：${goods.goods_name}</p>
-<%
-    } else {
-%>
-    <p>商品情報が見つかりませんでした</p>
-<%
-    }
-%>
-
-
-
+     <ul>
+        <c:forEach var="goods" items="${goodsList}">
+            <li>
+                商品ID：${goods.goods_id}　
+                商品名：${goods.goods_name}　
+                価格：${goods.price}円　
+                在庫：${goods.stock}
+                <a href="cart?goods_id=${goods.goods_id}">カートに入れる</a>
+            </li>
+        </c:forEach>
+    </ul>
 
 </div>
 
