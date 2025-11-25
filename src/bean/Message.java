@@ -37,6 +37,12 @@ public class Message implements Serializable {
 	 */
 	private String title;
 
+	/**
+	 * メッセージチョイス
+	 */
+	private Message_choice message_choice;
+
+
 
 	/**
 	 * ゲッター・セッター
@@ -89,5 +95,14 @@ public class Message implements Serializable {
 	public void setTitle(String title) {
 		this.title = title;
 	}
+
+	public Message_choice getMessage_choice(){
+		return message_choice;
+	}
+
+	public void setMessage_choice(Message_choice message_choice){
+		this.message_choice = message_choice;
+	}
+
 
 }
