@@ -57,7 +57,7 @@ public class Goods implements Serializable {
 		this.goods_name = goods_name;
 	}
 
-	public int get() {
+	public int getPrice() {
 		return price;
 	}
 
