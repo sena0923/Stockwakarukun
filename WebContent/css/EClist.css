@@ -67,4 +67,46 @@ body {
     width: 130px;
     height: auto;
     border-radius: 5px;
+
+/* ページ全体 */
+.ec-page {
+    max-width: 960px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    font-family: "Hiragino Kaku Gothic ProN", "Meiryo", sans-serif;
+}
+
+/* 商品リストの文字部分を見やすく */
+.ec-page li {
+    background: #fff;
+    border: 1px solid #ddd;
+    margin-bottom: 12px;
+    padding: 15px;
+    border-radius: 6px;
+    font-size: 15px;       /* 少し大きめに */
+    line-height: 1.8;      /* 行間を広げて読みやすく */
+    color: #333;           /* 濃いグレーで視認性アップ */
+}
+
+/* 商品IDや在庫などの補助情報を控えめに */
+.ec-page li {
+    font-family: "Hiragino Kaku Gothic ProN", "Meiryo", sans-serif;
+}
+
+.ec-page li a {
+    display: inline-block;
+    margin-left: 10px;
+    background-color: #0078d7;
+    color: #fff;
+    text-decoration: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+.ec-page li a:hover {
+    background-color: #005a9e;
 }
