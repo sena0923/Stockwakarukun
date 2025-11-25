@@ -17,10 +17,18 @@
 <div class="ec-page">
 
 	<%
-    	Goods goods = (Goods) request.getAttribute("goods");
-	%>
+    Goods goods = (Goods) request.getAttribute("goods");
+    if (goods != null) {
+%>
+    <p>商品名：${goods.goods_name}</p>
+<%
+    } else {
+%>
+    <p>商品情報が見つかりませんでした</p>
+<%
+    }
+%>
 
-	<p>商品名：<%= goods.getGoods_name() %></p>
 
 
 

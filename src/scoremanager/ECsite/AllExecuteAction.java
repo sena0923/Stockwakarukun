@@ -27,6 +27,6 @@ public class AllExecuteAction extends Action {
 
 		req.setAttribute("goods", goods);
 
-		req.getRequestDispatcher("EClist.jsp").forward(req, res);
+		req.getRequestDispatcher("../../EClist.jsp").forward(req, res);
 	}
 }
