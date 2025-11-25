@@ -7,7 +7,7 @@
     <h1>ログアウトしますか？</h1>
     <div class="logout-buttons">
       <a href="./rdLogout.jsp" class="btn yes">はい</a>
-      <a href="rdHome.jsp" class="btn no">いいえ</a>
+      <a class="btn" href="#" onclick="history.back()">いいえ</a>
     </div>
   </div>
 </main>

@@ -53,6 +53,6 @@
 
 <body>
   <h1>ログアウトしました</h1>
-  <a href="./rdLogin.jsp">ログイン画面へ</a>
+  <a href="/stockwakarukun/scoremanager/Login.action">ログイン画面へ</a>
 </body>
 </html>

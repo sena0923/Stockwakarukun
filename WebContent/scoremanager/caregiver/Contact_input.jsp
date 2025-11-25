@@ -15,33 +15,46 @@
 	</c:param>
 
 	<c:param name="content">
-		<form class="notification-list" action="Kai_conCreate.action" method="get" >
+		<form class="notification-list" action="Kai_conCreateExecute.action" method="get" >
 		    <h1>連絡帳　${resident.name} さん</h1>
 		    <h2>親族名　${relatives.name} さん</h2>
 
 		    <div class="input-list">
     		<div>
-		        <a>件名</a><input type="text" value="title" name="title">
+		        <a>件名</a><input type="text" name="title" required>
 		        <br>
 		        <a>内容</a>
-		        <br><textarea rows="10" cols="60"></textarea>
+		        <br><textarea name="content" rows="10" cols="60" required></textarea>
    			</div>
 
     		<div>
-				<a>返信欄選択</a>
+				<a>返信欄選択 ※いずれか一つ必ず選択してください。</a>
 				<div>
-					<input type="radio" name="cheak" value="ok">Yes / No
-					<input type="radio" name="cheak" value="ok">確認しました
-					<input type="radio" name="cheak" value="ok">返信不要
+					<input type="radio" name="cheak" value="1">Yes / No
+					<input type="radio" name="cheak" value="2">確認しました
+					<input type="radio" name="cheak" value="3">返信不要
 				</div>
 			</div>
 
 			<div class="text-right">
-				<button class="">送信</button>
+				<input type="hidden" name="rd_id" value="${resident.rd_id}">
+				<input type="hidden" name="rt_id" value="${relatives.rt_id}">
+				<button class="" id="submitBtn" disabled>送信</button>
 			</div>
 			</div>
-		</form>
 
+			<script>
+				// ラジオボタンが選択されたら送信ボタンを有効化
+				const radios = document.querySelectorAll('input[name="cheak"]');
+				const submitBtn = document.getElementById('submitBtn');
+
+				radios.forEach(radio => {
+					radio.addEventListener('change', () => {
+						submitBtn.disabled = false;
+					});
+				});
+			</script>
+		</form>
 	</c:param>
 </c:import>
 

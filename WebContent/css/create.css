@@ -1,19 +1,11 @@
-body {
-	font-family: sans-serif;
-	background-color: #f9f9f9;
-	margin: 0;
-	height: 100vh;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-
-form {
+.content {
 	background: #fff;
-	padding: 40px 50px;
+	padding: 20px 50px;
 	border-radius: 10px;
 	box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 	width: 400px;
+	margin: 50px auto; /* ヘッダー分の余白を確保 */
+	padding-top: 70px; /* ヘッダーの高さ＋余裕 */
 }
 
 h2 {
