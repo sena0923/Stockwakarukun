@@ -10,8 +10,7 @@ import tool.Action;
 public class SinDisplayAction extends Action {
 
 	@Override
-	public void execute(HttpServletRequest req, HttpServletResponse res)
-			throws Exception{
+	public void execute(HttpServletRequest req, HttpServletResponse res)throws Exception{
 
 		HttpSession session = req.getSession(); // セッション
 		Relatives relatives = (Relatives)session.getAttribute("rt_id");
