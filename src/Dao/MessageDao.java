@@ -9,6 +9,7 @@ import java.util.List;
 
 import bean.Message;
 
+
 public class MessageDao extends Dao {
 
     public static void main(String[] args) {
@@ -64,4 +65,24 @@ public class MessageDao extends Dao {
 
         return list;
     }
+
+    public boolean save(Message message) throws Exception {
+    	String sql = "INSERT INTO MESSAGE (cg_num, rt_id, message, da_ti, title) VALUES ( ?, ?, ?, ?, ?)";
+
+        try (Connection connection = getConnection();
+             PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setString(1, message.getCg_id());
+            statement.setString(2, message.getRt_id());
+            statement.setString(3, message.getMessage());
+            statement.setTimestamp(4, new java.sql.Timestamp(message.getDa_ti().getTime()));
+            statement.setString(5, message.getTitle());
+
+            int count = statement.executeUpdate();
+            return count == 1;
+        } catch (SQLException e) {
+            throw new Exception("メッセージ保存エラー", e);
+        }
+    }
+
+
 }
