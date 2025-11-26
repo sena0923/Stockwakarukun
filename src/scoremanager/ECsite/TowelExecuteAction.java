@@ -1,30 +1,23 @@
 package scoremanager.ECsite;
 
-import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import Dao.GoodsDao;
+import bean.Goods;
 import tool.Action;
 
 public class TowelExecuteAction extends Action {
+    @Override
+    public void execute(HttpServletRequest req, HttpServletResponse res) throws Exception {
+        GoodsDao goodsDao = new GoodsDao();
 
-	@Override
-	public void execute(HttpServletRequest req, HttpServletResponse res) throws Exception {
+        // 洗濯カテゴリのIDを指定
+        List<Goods> goodsList = goodsDao.getGoodsByCategory("002");
 
-		// 介護施設向け持ち物リスト（カテゴリ別）
-		Map<String, List<String>> TowelList = new HashMap<>();
-
-		TowelList.put("タオル", Arrays.asList(
-			"バスタオル",
-			"フェイスタオル",
-			"ハンドタオル"
-		));
-
-		req.setAttribute("TowelList", TowelList);
-		req.setAttribute("selectedCategory", "Towel"); // 「タオル」が選ばれたとき
-	}
+        req.setAttribute("goodsList", goodsList);
+        req.getRequestDispatcher("../ecSite/EClist.jsp").forward(req, res);
+    }
 }

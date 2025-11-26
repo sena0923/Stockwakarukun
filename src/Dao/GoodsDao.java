@@ -85,13 +85,14 @@ public class GoodsDao extends Dao {
      * カテゴリーIDで商品一覧を取得
      */
     public List<Goods> getGoodsByCategory(String categoryId) throws Exception {
-
         List<Goods> list = new ArrayList<>();
         Connection connection = getConnectionEc();
         PreparedStatement statement = null;
 
         try {
-            String sql = "SELECT * FROM goods WHERE category_id = ? ORDER BY goods_id";
+            String sql = "SELECT g.goods_id, g.goods_name, g.price, g.stock, g.goods_imagepath, c.category_name " +
+                         "FROM goods g JOIN goods_category c ON g.category_id = c.category_id " +
+                         "WHERE g.category_id = ? ORDER BY g.goods_id";
 
             statement = connection.prepareStatement(sql);
             statement.setString(1, categoryId);
@@ -100,18 +101,13 @@ public class GoodsDao extends Dao {
 
             while (resultSet.next()) {
                 Goods goods = new Goods();
-                goods.setGoods_id(resultSet.getString("goods_id"));
                 goods.setGoods_name(resultSet.getString("goods_name"));
                 goods.setPrice(resultSet.getInt("price"));
-                goods.setCategory_id(resultSet.getString("category_id"));
-                goods.setCategory_name(resultSet.getString("category_name"));
                 goods.setStock(resultSet.getInt("stock"));
 
                 list.add(goods);
             }
 
-        } catch (SQLException e) {
-            throw new Exception("カテゴリー別データ取得エラー", e);
         } finally {
             if (statement != null) try { statement.close(); } catch (SQLException ignored) {}
             if (connection != null) try { connection.close(); } catch (SQLException ignored) {}
@@ -119,4 +115,5 @@ public class GoodsDao extends Dao {
 
         return list;
     }
+
 }

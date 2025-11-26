@@ -19,13 +19,13 @@
     </div>
     <nav class="main-nav">
         <ul>
-            <li><a href="../../AllExecute.action">すべて</a></li>
-            <li><a href="../../WashExecute.action">洗面用具</a></li>
-            <li><a href="#">タオル類</a></li>
-            <li><a href="#">衣類</a></li>
-            <li><a href="#">防寒用具</a></li>
-            <li><a href="#">備品・日用品</a></li>
-            <li><a href="#">娯楽</a></li>
+            <li><a href="../../scoremanager/ECsite/AllExecute.action">すべて</a></li>
+            <li><a href="../../scoremanager/ECsite/WashExecute.action">洗面用具</a></li>
+            <li><a href="../../scoremanager/ECsite/TowelExecute.action">タオル類</a></li>
+            <li><a href="../../scoremanager/ECsite/ClotExecute.action">衣類</a></li>
+            <li><a href="../../scoremanager/ECsite/ColdExecute.action">防寒用具</a></li>
+            <li><a href="../../scoremanager/ECsite/EquipmentExecute.action">備品・日用品</a></li>
+            <li><a href="../../scoremanager/ECsite/EntertainmentExecute.action">娯楽</a></li>
         </ul>
     </nav>
 </header>
