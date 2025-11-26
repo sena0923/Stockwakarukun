@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<link rel="stylesheet" href="../WebContent/css/EClist.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/EClist.css">
 <meta charset="UTF-8">
 <title>EC商品一覧</title>
 
@@ -17,7 +17,6 @@
      <ul>
         <c:forEach var="goods" items="${goodsList}">
             <li>
-                商品ID：${goods.goods_id}　
                 商品名：${goods.goods_name}　
                 価格：${goods.price}円　
                 在庫：${goods.stock}
