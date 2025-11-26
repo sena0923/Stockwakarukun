@@ -1,3 +1,72 @@
+<%-- 親族ログイン画面 --%>
+<%-- ログインJSP --%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+<c:import url="../../baseSin.jsp">
+	<c:param name="title">
+		介護士ログイン画面
+	</c:param>
+
+	<c:param name="scripts">
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/login.css">
+	</c:param>
+
+	<c:param name="content">
+		<form class="content" action="SinLoginExecute.action" method="post">
+			<h1>親族ログイン</h1>
+
+			<!-- ログインID -->
+			<label for="RT_ID">ログインID</label>
+			<input type="text" id="rt_id" name="rt_id" pattern="^[0-9]+$" required>
+
+			<!-- パスワード -->
+			<label for="password">パスワード</label>
+			<input type="password" id="password" name="password" pattern="^[0-9]+$" required>
+
+			<!-- エラーメッセージ表示 -->
+			<p id="login-error" class="error-message">
+				<%= request.getAttribute("errorMessage") != null ? request.getAttribute("errorMessage") : "" %>
+			</p>
+
+		<script>
+			const form = document.getElementById("loginForm");
+			const rd_id = document.getElementById("rt_id");
+			const password = document.getElementById("password");
+			const errorDiv = document.getElementById("login-error");
+
+			form.addEventListener("submit", function(event) {
+				event.preventDefault();
+				errorDiv.textContent = "";
+				errorDiv.style.color = "red";
+
+				const idValue = loginId.value.trim();
+				const pwValue = password.value.trim();
+
+				if (!idValue || !pwValue) {
+					errorDiv.textContent = "ログインIDとパスワードを入力してください。";
+					return;
+				}else {
+					errorDiv.textContent = "ログインIDまたはパスワードが正しくありません。";
+				}
+			});
+		</script>
+
+
+
+	        <!-- 入力欄のすぐ下に配置 -->
+
+				<button class="btn2" type="submit">ログイン</button>
+				<br><br>
+				<a href="./rtSignUp.jsp">新規登録</a>
+
+		</form>
+	</c:param>
+</c:import>
+
+
+<%--
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <head>
@@ -7,7 +76,7 @@
 </head>
 <body>
 
-  <h1>ログイン画面</h1>
+  <h1>親族ログイン画面</h1>
 
   <form class="content" action="SinLoginExecute.action" method="get">
 
@@ -60,7 +129,7 @@
 
 </body>
 </html>
-
+--%>
 
 
 

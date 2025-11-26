@@ -1,46 +1,47 @@
-<%-- 親族用　連絡帳受信一覧 --%>
-
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
-<%@ include file="../../baseSin.jsp" %>
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>通知一覧</title>
-  <link rel="stylesheet" href="constyle.css">
-</head>
-<body>
+<%@ include file="../../baseKai.jsp" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-  <div class="notification-list">
-    <h1>連絡帳</h1>
-    <h2>通知一覧</h2>
-    <ul>
-      <li class="notification">
-        <span class="date">2025-10-23 10:37</span>
-        <span class="title">せんべいの購入依頼</span>
-      </li>
+<c:import url="../../baseKai.jsp">
+	<c:param name="title">
+		連絡帳一覧
+	</c:param>
 
-      <li class="notification">
-        <span class="date">2025-09-28 08:00</span>
-        <span class="title">
-            <span class="badge">返信</span>
-            ＜定期＞施設内でヘアカットを行います</span>
-      </li>
+	<c:param name="scripts">
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/conList.css">
+	</c:param>
 
-      <li class="notification">
-        <span class="date">2025-09-13 08:00</span>
-        <span class="title">
-            <span class="badge">返信</span>
-            イベントを行います</span>
-      </li>
+	<c:param name="content">
+		<form class="notification-list" action="Sin_conCreate.action" method="get" >
+		    <h1>連絡帳</h1>
+		    <h2>通知一覧</h2>
 
-    </ul>
-  </div>
+			<c:if test="${empty list}">
+				<p>メッセージはありません。</p>
+			</c:if>
 
-<div class="contact">
-    <button class="">連絡を作成</button>
-</div>
+			<ul>
+			    <c:forEach var="m" items ="${list}">
 
-</body>
-</html>
+			      <li class="notification">
+			        <span class="date"><fmt:formatDate value="${m.da_ti}" pattern="yyyy/MM/dd HH:mm"/></span>
+			        <span class="title" href="#">${m.title}</span>
+			      </li>
+				</c:forEach>
+			</ul>
+
+			<div class="contact">
+			<input type="hidden" name="rd_id" value="${resident.rd_id}">
+			<input type="hidden" name="rt_id" value="${relatives.rt_id}">
+		    <button class="">連絡を作成</button>
+			</div>
+		  </form>
+
+	</c:param>
+</c:import>
+
+
+
+
+
