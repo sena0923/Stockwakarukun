@@ -4,7 +4,7 @@
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<c:import url="../../baseKai.jsp">
+<c:import url="../../baseNyu.jsp">
 	<c:param name="title">
 		ストック備品追加入力
 	</c:param>
