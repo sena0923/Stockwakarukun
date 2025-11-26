@@ -17,7 +17,6 @@
      <ul>
         <c:forEach var="goods" items="${goodsList}">
             <li>
-                商品ID：${goods.goods_id}　
                 商品名：${goods.goods_name}　
                 価格：${goods.price}円　
                 在庫：${goods.stock}
