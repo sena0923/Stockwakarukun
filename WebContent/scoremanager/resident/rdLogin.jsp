@@ -50,9 +50,6 @@
       if (!idValue || !pwValue) {
         errorDiv.textContent = "ログインIDとパスワードを入力してください。";
         return;
-      }
-
-
       } else {
         errorDiv.textContent = "ログインIDまたはパスワードが正しくありません。";
       }

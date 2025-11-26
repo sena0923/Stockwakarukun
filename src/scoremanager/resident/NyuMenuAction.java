@@ -2,7 +2,9 @@ package scoremanager.resident;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import bean.Resident;
 import tool.Action;
 
 public class NyuMenuAction extends Action {
@@ -10,23 +12,19 @@ public class NyuMenuAction extends Action {
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse res) throws Exception {
 
-		//ローカル変数の宣言 1
-		//なし
 
-		//リクエストパラメータ―の取得 2
-		//なし
 
-		//DBからデータ取得 3
-		//なし
+		// セッションからログイン情報を取得
+		HttpSession session = req.getSession(false); // falseで新規作成しない
+		Resident resident = new Resident();
 
-		//ビジネスロジック 4
-		//なし
+		if (session != null) {
+			resident = (Resident) session.getAttribute("resident");
+		}
 
-		//DBへデータ保存 5
-		//なし
 
-		//レスポンス値をセット 6
-		//なし
+		// JSPに渡すためにリクエスト属性にセット
+		req.setAttribute("resident", resident);
 
 		//JSPへフォワード 7
 		req.getRequestDispatcher("rdHome.jsp").forward(req, res);
