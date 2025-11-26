@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<link rel="stylesheet" href="../WebContent/css/EClist.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/EClist.css">
 <meta charset="UTF-8">
 <title>EC商品一覧</title>
 
