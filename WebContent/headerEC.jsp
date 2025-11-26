@@ -19,8 +19,8 @@
     </div>
     <nav class="main-nav">
         <ul>
-            <li><a href="#">すべて</a></li>
-            <li><a href="#">洗面用具</a></li>
+            <li><a href="../../AllExecute.action">すべて</a></li>
+            <li><a href="../../WashExecute.action">洗面用具</a></li>
             <li><a href="#">タオル類</a></li>
             <li><a href="#">衣類</a></li>
             <li><a href="#">防寒用具</a></li>
