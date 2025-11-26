@@ -1,17 +1,19 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ include file="../../headerEC.jsp" %>
 <%@ page import="bean.Goods" %>
 
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/EClist.css">
+<link rel="stylesheet" href="">
 <meta charset="UTF-8">
 <title>EC商品一覧</title>
 
 </head>
 <body>
+
+<%@ include file="../../headerEC.jsp" %>
+
 <div class="ec-page">
 
      <ul>
