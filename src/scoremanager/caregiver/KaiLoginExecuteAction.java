@@ -19,7 +19,6 @@ public class KaiLoginExecuteAction extends Action {
 		//ローカル変数の宣言
 			String url = "";
 			String staffnum = "";
-			String name = "";
 			String password = "";
 			CaregiverDao caregiverDao = new CaregiverDao();
 			Caregiver caregiver = null;
