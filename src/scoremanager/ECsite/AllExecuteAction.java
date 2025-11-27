@@ -13,11 +13,9 @@ public class AllExecuteAction extends Action {
 
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse res) throws Exception {
-    	System.out.println("AllExecuteAction開始");  // デバッグ用
         GoodsDao goodsDao = new GoodsDao();
         List<Goods> goodsList = goodsDao.getAllGoods();  // 全件取得
 
-        System.out.println("取得件数: " + goodsList.size());
 
         req.setAttribute("goodsList", goodsList);  // JSPに渡す
 

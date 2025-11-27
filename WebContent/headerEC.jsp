@@ -11,7 +11,7 @@
 <header class="site-header">
     <div class="header-top">
         <div class="logo">
-            <a href="index.jsp">ストックかえる君</a>
+            <a>ストックかえる君</a>
         </div>
         <div class="user-actions">
             <a href="cart.jsp">カート</a>
@@ -19,6 +19,7 @@
     </div>
     <nav class="main-nav">
         <ul>
+        	<li class="nav-home"><a href="../../scoremanager/resident/NyuMenu.action">ホームへ</a></li>
             <li><a href="../../scoremanager/ECsite/AllExecute.action">すべて</a></li>
             <li><a href="../../scoremanager/ECsite/WashExecute.action">洗面用具</a></li>
             <li><a href="../../scoremanager/ECsite/TowelExecute.action">タオル類</a></li>
