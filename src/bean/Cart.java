@@ -20,6 +20,8 @@ public class Cart implements Serializable {
     /** 価格 */
     private int price;
 
+    private String goods_name;
+
     // --- Getter / Setter ---
     public String getCourse_id() {
         return course_id;
@@ -60,4 +62,12 @@ public class Cart implements Serializable {
     public void setPrice(int price) {
         this.price = price;
     }
+
+    public String getGoods_name() {
+        return goods_name;
+    }
+    public void setGoods_name(String goods_name) {
+        this.goods_name = goods_name;
+    }
+
 }
