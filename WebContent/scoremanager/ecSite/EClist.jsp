@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="java.util.List" %>
+<%@ page import="bean.Goods" %>
 
 <!DOCTYPE html>
 <html lang="ja">
@@ -28,47 +29,49 @@
 
 <%@ include file="../../headerEC.jsp" %>
 
-<!-- ここに通知 -->
+<!-- 通知 -->
 <div id="popupMessage">カートに追加されました</div>
 
 <div class="ec-page">
 
 <ul>
-    <c:forEach var="goods" items="${goodsList}">
-        <li>
-    <!-- 画像 -->
-    <img src="/images/101.png" width="150" height="150">
+<%
+    // goodsList をリクエストから取得
+    List<Goods> goodsList = (List<Goods>) request.getAttribute("goodsList");
+    if(goodsList != null){
+        for(Goods goods : goodsList){
+%>
+    <li>
+        <!-- 商品画像 -->
+        <img src="<%= goods.getImage_path(#ここはbeenを確認) %>" width="150" height="150">
 
-    商品名:${goods.goods_name}　
-    価格:${goods.price}円　
-    在庫:${goods.stock}
+        <!-- 商品情報 -->
+        商品名: <%= goods.getGoods_name() %>　
+        価格: <%= goods.getPrice() %>円　
+        在庫: <%= goods.getStock() %>
 
-    <!-- 🔽ここで条件分岐 -->
-  <c:choose>
+        <!-- カートに入れる / 在庫なし -->
+<%
+    if(goods.getStock() != null && !goods.getStock().equals("0")) { #ここはintは使えない
+%>
+    <a href="#" onclick="addToCart('<%= goods.getGoods_id() %>'); return false;">
+        カートに入れる
+    </a>
+<%
+    } else {
+%>
+    <span style="color:red; font-weight:bold;">在庫なし</span>
+<%
+    }}}
+%>
 
-    <c:when test="${not empty goods.stock and goods.stock ne '0'}">
-        <a href="#" onclick="addToCart('${goods.goods_id}'); return false;">
-            カートに入れる
-        </a>
-    </c:when>
-
-    <c:otherwise>
-        <span style="color:red; font-weight:bold;">在庫なし</span>
-    </c:otherwise>
-
-</c:choose>
-
-
-</li>
-
-    </c:forEach>
+    </li>
 </ul>
 
 </div>
 
 <script>
 function addToCart(goodsId) {
-
     fetch("cart", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
