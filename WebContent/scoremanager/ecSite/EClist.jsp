@@ -19,9 +19,9 @@
      <ul>
         <c:forEach var="goods" items="${goodsList}">
             <li>
-                商品名：${goods.goods_name}　
-                価格：${goods.price}円　
-                在庫：${goods.stock}
+                商品名:${goods.goods_name}　
+                価格:${goods.price}円　
+                在庫:${goods.stock}
                 <a href="cart?goods_id=${goods.goods_id}">カートに入れる</a>
             </li>
         </c:forEach>
