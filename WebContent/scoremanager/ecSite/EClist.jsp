@@ -37,10 +37,10 @@
     <c:forEach var="goods" items="${goodsList}">
         <li>
 
-<<<<<<< HEAD
+
             <!-- ★画像表示 -->
            <img src="/images/101.png" width="120" height="120">
-=======
+
                 <!-- クリックでAjax処理、元の形を維持 -->
                <c:choose>
 				    <c:when test="${goods.stock > 0}">
@@ -50,8 +50,6 @@
 				        <span style="color:red;">在庫なし</span>
 				    </c:otherwise>
 				</c:choose>
->>>>>>> branch 'master' of https://github.com/sena0923/Stockwakarukun.git
-
 
             商品名:${goods.goods_name}　
             価格:${goods.price}円　
