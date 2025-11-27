@@ -18,7 +18,15 @@
 			<h1>ストック登録</h1>
 			<h2>${resident.name}さん</h2>
 
-
+			<c:if test="${errors.size()>0}">
+				<div>
+					<ul>
+						<c:forEach var="error" items="${errors}">
+							<li>${error}</li>
+						</c:forEach>
+					</ul>
+				</div>
+			</c:if>
 
 			<div class="controll">
 				<label for="inve_name">ストック名</label>

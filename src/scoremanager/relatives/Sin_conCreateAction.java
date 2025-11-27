@@ -37,7 +37,7 @@ public class Sin_conCreateAction extends Action{
 		req.setAttribute("relatives", rt);
 
 		//フォワード
-		req.getRequestDispatcher("Contact_input.jsp").forward(req, res);
+		req.getRequestDispatcher("rt_contact_input.jsp").forward(req, res);
 
 
 	}

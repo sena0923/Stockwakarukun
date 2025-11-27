@@ -17,12 +17,15 @@
 		<form class="content" action="KaiLoginExecute.action" method="post">
 			<h1>介護士ログイン</h1>
 
-
-
-			<div class="controll">
-			<label for="name">氏名</label>
-			<input type="text" id="name" name="name" required>
-			</div>
+			<c:if test="${errors.size()>0}">
+				<div>
+					<ul>
+						<c:forEach var="error" items="${errors}">
+							<li>${error}</li>
+						</c:forEach>
+					</ul>
+				</div>
+			</c:if>
 
 			<div class="controll">
 			<label for="staffnum">職員番号</label>
