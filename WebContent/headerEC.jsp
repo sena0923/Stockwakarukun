@@ -14,7 +14,7 @@
             <a>ストックかえる君</a>
         </div>
         <div class="user-actions">
-            <a href="cart.jsp">カート</a>
+            <a href="../../scoremanager/ECsite/ECcart.jsp">カート</a>
         </div>
     </div>
     <nav class="main-nav">

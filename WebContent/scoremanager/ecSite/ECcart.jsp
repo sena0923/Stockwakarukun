@@ -1,79 +1,56 @@
-<%-- 入居者と親族が閲覧するECサイトのカート画面 --%>
-
-<%@ page contentType="text/html; charset=UTF-8" language="java" %>
+<%@ page contentType="text/html; charset=UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <title>Cart List</title>
-
-    <meta charset="UTF-8">
-    <title>Cart List</title>
-    <link rel="stylesheet" href="ecstyle.css">
-
-
+<meta charset="UTF-8">
+<title>カート内容</title>
 </head>
 <body>
-    <header>
-        <nav>
-            <li><a href="#">アカウント情報</a></li>
-            <li><a href="#">ログアウト</a></li>
-        </nav>
-    </header>
 
-    <div>
-        <h2>ECサイト ーカート一覧ー</h2>
-    </div>
+<%@ include file="../../headerEC.jsp" %>
 
-    <div>
-        <a href="#">カート</a>
-        <a href="#">購入履歴</a>
-    </div>
+<h2>🛒 カートの中身</h2>
 
-    <div class="product-list">
-        <div class="product-item">
-            <img src="image/image1.jpg">
-            <span>商品名A
-                <br>￥150
-                <br>
-                <div class="counter-container">
-                    <button id="minus-btn">-</button>
-                    <span id="count" class="count-display">1</span>
-                    <button id="plus-btn">+</button>
-                </div>
-            </span>
-            <a href="#">削除</a>
-        </div>
-    </div>
+<c:if test="${empty cartList}">
+    <p>カートは空です</p>
+</c:if>
 
-    <div>
-        合計数 : ○○○個
-        <br>合計金額 : ￥●●●
-    </div>
+<c:if test="${not empty cartList}">
+    <table border="1" cellpadding="8" cellspacing="0">
+        <tr>
+            <th>商品名</th>
+            <th>価格</th>
+            <th>数量</th>
+            <th>操作</th>
+        </tr>
+        <c:forEach var="item" items="${cartList}">
+            <tr>
+                <td>${item.goods_name}</td>
+                <td>${item.price}円</td>
+                <td>
+                    <!-- 数量変更フォーム -->
+                    <form action="updateCart" method="post" style="display:inline;">
+                        <input type="hidden" name="goods_id" value="${item.goods_id}">
+                        <input type="number" name="quantity" value="${item.quantity}" min="1">
+                        <input type="submit" value="変更">
+                    </form>
+                </td>
+                <td>
+                    <!-- 削除ボタン -->
+                    <form action="removeCart" method="post" style="display:inline;">
+                        <input type="hidden" name="goods_id" value="${item.goods_id}">
+                        <input type="submit" value="削除">
+                    </form>
+                </td>
+            </tr>
+        </c:forEach>
+    </table>
 
+    <p>合計金額: ${totalPrice}円</p>
+    <a href="checkout.jsp">購入手続きへ進む</a>
+</c:if>
 
-    <script>
-        const countDisplay = document.getElementById('count');
-        const minusBtn = document.getElementById('minus-btn');
-        const plusBtn = document.getElementById('plus-btn');
-
-        let count = 0;
-
-        minusBtn.addEventListener('click', () => {
-        if (count > 0) {
-            count--;
-            countDisplay.textContent = count;
-        }
-        });
-
-        plusBtn.addEventListener('click', () => {
-        count++;
-        countDisplay.textContent = count;
-        });
-  </script>
-
-    <footer>
-    </footer>
 </body>
 </html>
