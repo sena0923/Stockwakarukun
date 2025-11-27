@@ -5,7 +5,7 @@
 <main>
   <div class="mainmenu">
     <ul>
-      <li><a href="#">備品管理</a></li>
+      <li><a href="Sin_stockList.action?rt_id=${relatives.rt_id}">備品管理</a></li>
 	  <li><a href="../ecSite/EClist.jsp">購入</a></li>
 	 <li><a href="${pageContext.request.contextPath}/scoremanager/relatives/Sin_conList.action">連絡帳</a></li>
 	  <li><a href="./rtInfoDisplay.jsp">ユーザー情報表示</a></li>

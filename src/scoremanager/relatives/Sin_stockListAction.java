@@ -24,34 +24,33 @@ public class Sin_stockListAction extends Action{
 		ResidentDao residentDao = new ResidentDao();
 		Resident resident = new Resident();
 		RelativesDao rtDao = new RelativesDao();
-		Relatives rt = new Relatives();
+		Relatives relatives = new Relatives();
 		Indevidual_inventoryDAO iiDao = new Indevidual_inventoryDAO(); //個人で登録したストックDAO
 
 		//リクエストパラメーターの取得
 		rt_id = req.getParameter("rt_id");
 
-		relatives = relatives.get1(rt_id);
+		relatives = rtDao.get(rt_id);
 
-		//DBから入居者Beanを，rd_idを用いて取得
-		resident = residentDao.get(rd_id);
+		//入居者Beanを取得
+		resident = relatives.getResident();
+
+		rd_id = resident.getRd_id();
 
 		List<Indevidualinventory> list = iiDao.get(rd_id);
 
-
-		System.out.println(resident.getName());
-
-		for (Indevidualinventory r : list) {
-			System.out.println(r.getInve_name() + " / " + r.getInve_count());
-		}
+/**このページでerror出ている
+ * 直す
+ * **/
 
 
 		//レスポンス値をセット
-		req.setAttribute("rd_id", rd_id);
+		req.setAttribute("rt_id", rt_id);
 		req.setAttribute("resident", resident);
 		req.setAttribute("iiList", list);
 
 		//JSPへフォワード
-		req.getRequestDispatcher("Kai_stockList.jsp").forward(req, res);
+		req.getRequestDispatcher("rt_stockList.jsp").forward(req, res);
 
 
 	}
