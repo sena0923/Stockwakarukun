@@ -15,10 +15,6 @@ body {
         padding: 10px 20px;
     }
 
-    .nav-home {
-    	margin-right: 80px; /* ホームへと次のリンクの間に余白 */
-	}
-
     .logo a {
         font-size: 24px;
         font-weight: bold;
@@ -45,6 +41,10 @@ body {
         margin: 0;
         padding: 0;
     }
+
+    .nav-home {
+    	padding-right: 60px; /* gapに加えてさらに余白を足す */
+	}
 
     .main-nav a {
         text-decoration: none;
