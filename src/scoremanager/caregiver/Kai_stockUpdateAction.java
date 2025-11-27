@@ -60,8 +60,6 @@ public class Kai_stockUpdateAction extends Action{
 	        }
 	    }
 
-	    //更新件数をJSPに渡す
-	    req.setAttribute("updateCount", updateCount);
 
 	    resident = residentDao.get(rd_id);
 		// レスポンス値をセット 6

@@ -21,6 +21,9 @@ public class Resident implements Serializable {
 	/**パスワード**/
 	private String password;
 
+	/** コースBean **/
+	private Course course;
+
 
 
 	/**
@@ -65,6 +68,14 @@ public class Resident implements Serializable {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public Course getCourse(){
+		return course;
+	}
+
+	public void setCourse(Course course){
+		this.course = course;
 	}
 
 

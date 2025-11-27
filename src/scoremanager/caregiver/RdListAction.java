@@ -5,7 +5,9 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import Dao.CourseDao;
 import Dao.ResidentDao;
+import bean.Course;
 import bean.Resident;
 import tool.Action;
 
@@ -16,9 +18,22 @@ public class RdListAction extends Action{
 
 		// ローカル変数の指定 1
 		ResidentDao residentDao = new ResidentDao(); //入居者DAO
+		CourseDao courseDao = new CourseDao();
+		int course_id = 0;
+		Course course = new Course();
 
 		// getAllを使って入居者一覧を取得
 		List<Resident> list = residentDao.getAll();
+
+
+		/**取得した入居者一覧のコースIDから
+		 * コース名を取得する
+		 */
+		for (Resident r : list){
+			course_id = r.getCourse_id();
+			course = courseDao.get(course_id);
+			r.setCourse(course);
+		}
 
 
 		// リクエストパラメーターの取得 2

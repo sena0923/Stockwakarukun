@@ -15,6 +15,11 @@
 	<c:param name="content">
 		<form class="container" <%-- action="RdList.action"--%> method="get">
 			<h1>入居者一覧</h1>
+
+			<div>
+
+			</div>
+
 			<p>詳細を押下すると入居者の連絡帳やプロフィールが確認できます。</p>
 
 					<table class="table">
@@ -28,7 +33,7 @@
 							<tr>
 								<td>${resident.name}</td>
 								<td>${resident.gender}</td>
-								<td>${resident.course_id}</td>
+								<td>${resident.course.course_name}</td>
 								<td><a href="Kai_rdMenu.action?rd_id=${resident.rd_id}">詳細</a></td>
 							</tr>
 						</c:forEach>

@@ -1,5 +1,7 @@
 package scoremanager.caregiver;
 
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -30,19 +32,35 @@ public class Kai_ECstockUpdateAction extends Action{
 		//リクエストパラメーターの取得
 		rd_id = req.getParameter("rd_id");
 
+		//既存のEC連携ストック情報を取得
+		List<Ingoodsinventory> currentList = igDao.get(rd_id);
 
-	    for (String key : paramMap.keySet()) {
-	        if (key.startsWith("count_")) {
-	            String goodsId = key.substring(6); // "count_"を除去
-	            int goodsCount = Integer.parseInt(paramMap.get(key)[0]);
-	            igDao.update(rd_id, goodsId, goodsCount);
-	        }
-	    }
+		//上記のEC連携ストックをMap化して比較しやすくする
+		Map<String, Integer> currentMap = new HashMap<>();
+		for (Ingoodsinventory item : currentList){
+			currentMap.put(item.getGoods_id(), item.getGoods_inve_count());
+		}
+		int updateCount = 0 ;
+
+		//パラメーターをループして更新判定
+		for (String key : paramMap.keySet()) {
+			if (key.startsWith("count_")) {
+				String goodsId = key.substring(6); // "count_"を除去
+				int goodsCount = Integer.parseInt(paramMap.get(key)[0]);
+				int newCount = Integer.parseInt(paramMap.get(key)[0]);
+				int oldCount = currentMap.getOrDefault(goodsId, -1);
+
+				//値が変わった場合のみ更新
+				if (oldCount != newCount){
+					boolean updates = igDao.update(rd_id, goodsId, newCount);
+					if(updates){
+						updateCount++;
+					}
+				}
+			}
+		}
 
 	    resident = residentDao.get(rd_id);
-
-
-
 		// レスポンス値をセット 6
 		// リクエストに入居者リストをセット
 		req.setAttribute("resident", resident);
