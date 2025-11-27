@@ -33,21 +33,26 @@
 
 <div class="ec-page">
 
-    <ul>
-        <c:forEach var="goods" items="${goodsList}">
-            <li>
-                商品名:${goods.goods_name}　
-                価格:${goods.price}円　
-                在庫:${goods.stock}
+<ul>
+    <c:forEach var="goods" items="${goodsList}">
+        <li>
 
-                <!-- クリックでAjax処理、元の形を維持 -->
-                <a href="#" onclick="addToCart('${goods.goods_id}'); return false;">
-                    カートに入れる
-                </a>
+            <!-- ★画像表示 -->
+           <img src="/images/101.png" width="120" height="120">
 
-            </li>
-        </c:forEach>
-    </ul>
+
+            商品名:${goods.goods_name}　
+            価格:${goods.price}円　
+            在庫:${goods.stock}
+
+            <a href="#" onclick="addToCart('${goods.goods_id}'); return false;">
+                カートに入れる
+            </a>
+
+        </li>
+    </c:forEach>
+</ul>
+
 </div>
 
 <script>
