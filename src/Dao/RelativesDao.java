@@ -81,7 +81,7 @@ public class RelativesDao extends Dao {
 
 		try {
 			// プリペアードステートメントにSQL文をセット
-			statement = connection.prepareStatement("select * from Relatives where rd_id=?");
+			statement = connection.prepareStatement("select * from Relatives where rt_id=?");
 			// プリペアードステートメントに親族IDをバインド
 			statement.setString(1, rd_id);
 			// プリペアードステートメントを実行

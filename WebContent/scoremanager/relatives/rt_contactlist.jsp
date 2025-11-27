@@ -26,7 +26,7 @@
 
 			      <li class="notification">
 			        <span class="date"><fmt:formatDate value="${m.da_ti}" pattern="yyyy/MM/dd HH:mm"/></span>
-			        <span class="title" href="#">${m.title}</span>
+			        <span class="title" href="#}">${m.title}</span>
 			      </li>
 				</c:forEach>
 			</ul>

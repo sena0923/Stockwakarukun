@@ -1,61 +1,36 @@
 package scoremanager.ECsite;
 
-import java.sql.Connection;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import Dao.CartDao;
 import Dao.GoodsDao;
-import bean.Cart;
 import bean.Goods;
 import tool.Action;
 
 public class CartExecuteAction extends Action {
-
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse res) throws Exception {
-        // DBコネクションの取得（環境に合わせて書き換え）
-        Connection conn = (Connection) req.getServletContext().getAttribute("conn");
-        CartDao cartDao = new CartDao(conn);
-        GoodsDao goodsDao = new GoodsDao();
-
-        String action = req.getParameter("action");   // "add", "update", "remove"
-        String rdId   = req.getParameter("rd_id");    // 入居者ID（ユーザー識別用）
         String goodsId = req.getParameter("goods_id");
 
-        if ("add".equals(action)) {
-            int quantity = Integer.parseInt(req.getParameter("quantity"));
-            Goods goods = goodsDao.getGoodsById(goodsId);
+        // 商品情報を取得（DAOなどから）
+        GoodsDao goodsDao = new GoodsDao();
+        Goods goods = goodsDao.get(goodsId);
 
-            Cart cart = new Cart();
-            cart.setCourse_id(goodsId);   // 本来はcart_idなど専用キーが望ましい
-            cart.setRd_id(rdId);
-            cart.setGoods_id(goodsId);
-            cart.setQuantity(quantity);
-            cart.setPrice(goods.getPrice());
+        HttpSession session = req.getSession();
+        List<Goods> cartList = (List<Goods>) session.getAttribute("cartList");
 
-            cartDao.addItem(cart);
-
-        } else if ("update".equals(action)) {
-            int quantity = Integer.parseInt(req.getParameter("quantity"));
-            String courseId = req.getParameter("course_id");
-            cartDao.updateQuantity(courseId, quantity);
-
-        } else if ("remove".equals(action)) {
-            String courseId = req.getParameter("course_id");
-            cartDao.removeItem(courseId);
+        if (cartList == null) {
+            cartList = new ArrayList<>();
         }
 
-        // カート一覧と合計金額を再取得
-        List<Cart> cartList = cartDao.getCartList(rdId);
-        int totalPrice = cartDao.getTotalPrice(rdId);
-
-        req.setAttribute("cartList", cartList);
-        req.setAttribute("totalPrice", totalPrice);
+        cartList.add(goods);  // カートに商品追加
+        session.setAttribute("cartList", cartList);
 
         // カート画面へフォワード
-        req.getRequestDispatcher("../ecSite/cart.jsp").forward(req, res);
+        req.getRequestDispatcher("../../scoremanager/ecSite/ECcart.jsp").forward(req, res);
     }
 }
