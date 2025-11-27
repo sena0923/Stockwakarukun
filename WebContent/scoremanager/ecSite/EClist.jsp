@@ -36,29 +36,31 @@
 <ul>
     <c:forEach var="goods" items="${goodsList}">
         <li>
+    <!-- 画像 -->
+    <img src="/images/101.png" width="150" height="150">
+
+    商品名:${goods.goods_name}　
+    価格:${goods.price}円　
+    在庫:${goods.stock}
+
+    <!-- 🔽ここで条件分岐 -->
+  <c:choose>
+
+    <c:when test="${not empty goods.stock and goods.stock ne '0'}">
+        <a href="#" onclick="addToCart('${goods.goods_id}'); return false;">
+            カートに入れる
+        </a>
+    </c:when>
+
+    <c:otherwise>
+        <span style="color:red; font-weight:bold;">在庫なし</span>
+    </c:otherwise>
+
+</c:choose>
 
 
-            <!-- ★画像表示 -->
-           <img src="/images/101.png" width="120" height="120">
+</li>
 
-                <!-- クリックでAjax処理、元の形を維持 -->
-               <c:choose>
-				    <c:when test="${goods.stock > 0}">
-				    </c:when>
-				    <c:otherwise>
-				        <span style="color:red;">在庫なし</span>
-				    </c:otherwise>
-				</c:choose>
-
-            商品名:${goods.goods_name}　
-            価格:${goods.price}円　
-            在庫:${goods.stock}
-
-            <a href="#" onclick="addToCart('${goods.goods_id}'); return false;">
-                カートに入れる
-            </a>
-
-        </li>
     </c:forEach>
 </ul>
 
