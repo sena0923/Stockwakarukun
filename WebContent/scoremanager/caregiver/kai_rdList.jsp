@@ -13,11 +13,17 @@
 	</c:param>
 
 	<c:param name="content">
-		<form class="container" <%-- action="RdList.action"--%> method="get">
+		<form class="container"  action="RdSearch.action" method="get">
 			<h1>入居者一覧</h1>
 
 			<div>
-
+				<div class="">
+					<label for="f1">入居者名</label>
+					<input type="text" name="name" placeholder="フルネーム" required>
+				</div>
+				<div class="col-2 mt-3 text-center">
+					<button type="submit" class="btn btn-secondary" id="filter-button">検索</button>
+				</div>
 			</div>
 
 			<p>詳細を押下すると入居者の連絡帳やプロフィールが確認できます。</p>

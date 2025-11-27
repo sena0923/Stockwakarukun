@@ -20,9 +20,8 @@
       <span></span>
       <span></span>
     <nav id="nav">
-      <a href="#">入居者一覧</a>
-      <a href="#">連絡帳</a>
-      <a href="#">マイページ</a>
+      <a href="RdList.action">入居者一覧</a>
+      <a href="cg_infoDisplay.jsp">マイページ</a>
       <a href="logout.jsp">ログアウト</a>
     </nav>
     </div>

@@ -66,6 +66,67 @@ public class ResidentDao extends Dao {
 	}
 
 	/**
+	 * 入居者の名前から，入居者情報を一件取得
+	 * @param name
+	 * @return
+	 * @throws Exception
+	 */
+	public List<Resident>  get2(String name) throws Exception {
+		// リストを初期化
+		List<Resident> list = new ArrayList<>();
+		// コネクションを確立
+		Connection connection = getConnection();
+		// プリペアードステートメント
+		PreparedStatement statement = null;
+
+		try {
+			// プリペアードステートメントにSQL文をセット
+			statement = connection.prepareStatement("select * from Resident where name = ?");
+			// プリペアードステートメントに入居者IDをバインド
+			statement.setString(1, name);
+			// プリペアードステートメントを実行
+			ResultSet resultSet = statement.executeQuery();
+
+			// リザルトセットを全権走査
+			while (resultSet.next()) {
+				// 学生インスタンスを初期化
+				Resident resident = new Resident();
+				// 学生インスタンスに検索結果をセット
+				resident.setRd_id(resultSet.getString("rd_id"));
+				resident.setName(resultSet.getString("name"));
+				resident.setPassword(resultSet.getString("password"));
+				resident.setCourse_id(resultSet.getInt("course_id"));
+				resident.setGender(resultSet.getString("gender"));
+				// リストに追加
+				list.add(resident);
+			}
+
+		} catch (Exception e) {
+			throw e;
+		} finally {
+			// プリペアードステートメントを閉じる
+			if (statement != null) {
+				try {
+					statement.close();
+				} catch (SQLException sqle) {
+					throw sqle;
+				}
+			}
+			// コネクションを閉じる
+			if (connection != null) {
+				try {
+					connection.close();
+				} catch (SQLException sqle) {
+					throw sqle;
+				}
+			}
+		}
+
+		return list;
+	}
+
+
+	/**
 	 * loginメソッド 入居者IDとパスワードで認証する
 	 *
 	 * @param id:String
