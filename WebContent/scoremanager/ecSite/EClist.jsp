@@ -21,19 +21,11 @@
     <ul>
         <c:forEach var="goods" items="${goodsList}">
             <li>
-<<<<<<< HEAD
                 商品名:${goods.goods_name}　
                 価格:${goods.price}円　
                 在庫:${goods.stock}
                 <a href="cart?goods_id=${goods.goods_id}">カートに入れる</a>
-=======
-                商品名：${goods.goods_name}　
-                価格：${goods.price}円　
-                在庫：${goods.stock}
-                <a href="cartExecute?goods_id=${goods.goods_id}">
-                   カートに入れる
                 </a>
->>>>>>> branch 'master' of https://github.com/sena0923/Stockwakarukun.git
             </li>
         </c:forEach>
     </ul>
