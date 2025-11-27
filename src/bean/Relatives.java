@@ -21,6 +21,8 @@ public class Relatives implements Serializable {
 	/**パスワード**/
 	private String password;
 
+	private Resident resident;
+
 	/**
 	 * ゲッター・セッター
 	 */
@@ -63,6 +65,14 @@ public class Relatives implements Serializable {
 
 	public void setE_mail(String e_mail) {
 		this.e_mail = e_mail;
+	}
+
+	public Resident getResident(){
+		return resident;
+	}
+
+	public void setResident(Resident resident){
+		this.resident = resident;
 	}
 
 	/**

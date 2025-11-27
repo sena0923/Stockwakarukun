@@ -125,7 +125,6 @@ public class ResidentDao extends Dao {
 		return list;
 	}
 
-
 	/**
 	 * loginメソッド 入居者IDとパスワードで認証する
 	 *
