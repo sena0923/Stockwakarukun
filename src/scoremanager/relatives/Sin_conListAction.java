@@ -36,7 +36,7 @@ public class Sin_conListAction extends Action {
 //		cg_num = req.getParameter("cg_num");
 		cg_num = relatives.getRt_id();
 		cg = cgDao.get(cg_num);
-		rt = rtDao.get2(cg_num);//介護士IDから親族Beanを取得するDAOを作る
+		rt = rtDao.get3(cg_num);//介護士IDから親族Beanを取得するDAOを作る
 
 
 		System.out.println("debug-Sin_conListAction-cgnum:" + cg_num);
