@@ -41,9 +41,14 @@
                 在庫:${goods.stock}
 
                 <!-- クリックでAjax処理、元の形を維持 -->
-                <a href="#" onclick="addToCart('${goods.goods_id}'); return false;">
-                    カートに入れる
-                </a>
+               <c:choose>
+				    <c:when test="${goods.stock > 0}">
+				        <a href="#" onclick="addToCart('${goods.goods_id}'); return false;">カートに入れる</a>
+				    </c:when>
+				    <c:otherwise>
+				        <span style="color:red;">在庫なし</span>
+				    </c:otherwise>
+				</c:choose>
 
             </li>
         </c:forEach>
