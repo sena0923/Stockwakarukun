@@ -1,7 +1,6 @@
 <%-- 入居者と親族が閲覧するECサイトの商品詳細画面 --%>
 
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
-<%@ include file="base.jsp" %>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
