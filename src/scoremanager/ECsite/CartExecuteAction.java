@@ -31,7 +31,7 @@ public class CartExecuteAction extends Action {
         if (goods == null) {
             // 商品が存在しない場合の処理
             req.setAttribute("errorMessage", "商品が見つかりません: " + goodsId);
-            req.getRequestDispatcher("../../scoremanager/ecSite/error.jsp").forward(req, res);
+            req.getRequestDispatcher("../../scoremanager/ecSite/ECcart.jsp").forward(req, res);
             return;
         }
 
