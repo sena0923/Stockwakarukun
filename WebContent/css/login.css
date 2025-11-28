@@ -1,6 +1,7 @@
 /* ===== ログイン画面専用 ===== */
 
 h1 {
+
   font-size: 2rem;
   margin-bottom: 40px;
   text-align: center;
@@ -11,24 +12,13 @@ h2 {
   margin: 10px 0 5px 0;
 }
 
-.content {
-  background: #ffffff;
-    padding: 20px 40px;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    text-align: center;
-    width: 500px;
-    max-width: 90%;
-    margin: 100px auto; /* ヘッダー分の余白を確保 */
-}
-
 
 .controll {
   margin-bottom: 15px;
 }
 
 label {
-  margin-bottom: 12px;     /* ← 今 5px → 12px にして距離を広げる */
+  margin-bottom: 12px;
   display: block;
   font-weight: bold;
 }

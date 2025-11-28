@@ -81,7 +81,7 @@ public class ResidentDao extends Dao {
 
 		try {
 			// プリペアードステートメントにSQL文をセット
-			statement = connection.prepareStatement("select * from Resident where name = ?");
+			statement = connection.prepareStatement("SELECT * FROM RESIDENT WHERE REPLACE(REPLACE(NAME, ' ', ''), '　', '') LIKE ?");
 			// プリペアードステートメントに入居者IDをバインド
 			statement.setString(1, name);
 			// プリペアードステートメントを実行

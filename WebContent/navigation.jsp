@@ -1,0 +1,16 @@
+<%-- サイドバー --%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/navigation.css">
+
+<div class="navigation">
+	<a class="title">介護士</a>
+	<ul class="">
+		<li class="nav-item"><a href="KaiMenu.action">メニュー</a></li>
+		<li class="nav-item"><a href="RdList.action">入居者一覧</a></li>
+		<li class="nav-item"><a href="#">マイページ</a></li>
+		<li class="nav-item"><a href="logout.jsp">ログアウト</a></li>
+	</ul>
+</div>

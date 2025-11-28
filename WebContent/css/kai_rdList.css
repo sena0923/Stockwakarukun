@@ -20,6 +20,45 @@ p {
     margin: 8px 0;
 }
 
+.search{
+	display : flex;
+	padding: 17px 17px;
+	border-radius: 6px;
+	width : 100%;
+	text-align : center;
+	gap: 10px; /** 要素間の余白 */
+	align-items: center; /* 垂直方向を中央揃え */
+}
+
+.search input[type="text"] {
+    font-size: 1.2em;       /* 文字サイズを大きく */
+    padding: 12px 16px;     /* 内側余白を広げて高さを確保 */
+    width: 70%;            /* 横幅をフォームに合わせる */
+    box-sizing: border-box; /* パディング込みで幅調整 */
+    border-radius: 6px;     /* 角を丸く */
+    border: 1px solid #ccc; /* 枠線を見やすく */
+}
+
+.search label {
+    margin: 0; /* 不要な余白を削除 */
+    font-weight: bold;
+
+}
+
+.btn-search{
+	margin-top: 5px;
+    background: #b0e0e6;
+    color: #000;
+    padding: 8px 16px;
+    border-radius: 10px;
+    display: inline-block;
+    text-decoration: none;
+}
+
+.btn-search:hover {
+	transform: scale(1.02);
+}
+
 table {
     width: 100%;
     border-collapse: collapse;
@@ -69,3 +108,4 @@ table a:hover {
 .back-btn:hover {
     background: #bbb;
 }
+

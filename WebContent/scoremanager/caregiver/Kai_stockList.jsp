@@ -63,7 +63,7 @@
 			<input type="hidden" name="rd_id" value="${resident.rd_id}">
 			<button type="submit" class="update_link">更新</button>
 			<a class ="update_link" href="Kai_stockAdd.action?rd_id=${resident.rd_id}">ストック登録</a>
-			<a class = "" href="RdList.action">入居者の詳細メニューへ戻る</a>
+			<a class = "" href="Kai_rdMenu.action?rd_id=${resident.rd_id}">入居者の詳細メニューへ戻る</a>
 		</form>
 	</c:param>
 </c:import>

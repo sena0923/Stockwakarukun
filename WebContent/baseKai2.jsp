@@ -7,7 +7,7 @@
 <head>
  	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/baseKai.css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/baseKai2.css">
 	<title>${param.title}</title>
   	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 	${param.scripts}
@@ -16,16 +16,13 @@
 
 
   <header>
-	<c:import url="/headerKai.jsp" />
+	<c:import url="/headerKai2.jsp" />
   </header>
 
   <main>
-	<c:if test="${sessionScope.caregiver.isAuthenticated()}">
-		<c:import url="/navigation.jsp" />
-	</c:if>
-		<div class="content">
-			${param.content}
-		</div>
+	<div class="content">
+		${param.content}
+	</div>
   </main>
 
 

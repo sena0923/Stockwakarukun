@@ -1,0 +1,34 @@
+.navigation{
+	width: 15%; /* サイドバーの幅 */
+	background-color: #fdeff2;
+	position: fixed; /* 左固定 */
+	top: 80px; /* ヘッダーの高さ分下げる */
+	left: 0;
+	height: calc(100vh - 80px); /* ヘッダーを除いた高さ */
+	padding: 20px
+}
+
+ul {
+  list-style: none;
+}
+
+li{
+	font-size: 1.5em;
+	line-height: 2;
+}
+
+a{
+	text-decoration: none;
+}
+
+.title{
+    margin: 0 10px;
+    padding: 10px 20px;
+    text-decoration: none;
+    background-color: #ffffff;
+    color: #000;
+    border-radius: 6px;
+    /*font-weight: bold;*/
+	font-size: 1.3em;
+	line-height: 2;
+}

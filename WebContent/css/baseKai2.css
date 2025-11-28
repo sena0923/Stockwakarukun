@@ -6,6 +6,23 @@ body {
   background-color: #f7f7f7;
 }
 
+
+main {
+	display: flex;
+	justify-content: center; /* 横方向中央 */
+	align-items: center;     /* 縦方向中央 */
+    min-height: calc(100vh - 80px); /* ヘッダーを除いた高さ */
+	background: #ffffff;
+    padding: 20px 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    text-align: center;
+    width: 500px;
+    max-width: 90%;
+    margin: 100px auto; /* ヘッダー分の余白を確保 */
+}
+
+
 /* ===== ヘッダー ===== */
 
 /* ヘッダーを固定 */
@@ -15,7 +32,7 @@ header {
   top: 0;
   left: 0;
   width: 100%;
-  background-color: #fdeff2;
+  background-color: #e8d3c7;
   color: #302833;
   display: flex;
   justify-content: space-between;
