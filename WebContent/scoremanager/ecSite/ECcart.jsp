@@ -31,7 +31,7 @@
                 <td>${item.price}円</td>
                 <td>
                     <!-- 数量変更フォーム -->
-                    <form action="updateCart" method="post" style="display:inline;">
+                    <form action="UpdateCartExecute.action" method="post" style="display:inline;">
                         <input type="hidden" name="goods_id" value="${item.goods_id}">
                         <input type="number" name="quantity" value="${item.quantity}" min="1">
                         <input type="submit" value="変更">
@@ -39,7 +39,7 @@
                 </td>
                 <td>
                     <!-- 削除ボタン -->
-                    <form action="removeCart" method="post" style="display:inline;">
+                    <form action="RemoveCartExecute.action" method="post" style="display:inline;">
                         <input type="hidden" name="goods_id" value="${item.goods_id}">
                         <input type="submit" value="削除">
                     </form>

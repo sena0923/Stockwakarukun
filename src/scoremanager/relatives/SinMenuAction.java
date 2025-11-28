@@ -2,7 +2,9 @@ package scoremanager.relatives;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import bean.Relatives;
 import tool.Action;
 
 public class SinMenuAction extends Action {
@@ -10,23 +12,18 @@ public class SinMenuAction extends Action {
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse res) throws Exception {
 
-		//ローカル変数の宣言 1
-		//なし
+		// セッションからログイン情報を取得
+		HttpSession session = req.getSession(false); // falseで新規作成しない
+		Relatives relatives = new Relatives();
 
-		//リクエストパラメータ―の取得 2
-		//なし
+		if (session != null) {
+			relatives = (Relatives) session.getAttribute("relatives");
+		}
 
-		//DBからデータ取得 3
-		//なし
 
-		//ビジネスロジック 4
-		//なし
+		// JSPに渡すためにリクエスト属性にセット
+		req.setAttribute("relatives", relatives);
 
-		//DBへデータ保存 5
-		//なし
-
-		//レスポンス値をセット 6
-		//なし
 
 		//JSPへフォワード 7
 		req.getRequestDispatcher("rtHome.jsp").forward(req, res);
