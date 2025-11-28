@@ -32,16 +32,15 @@ public class Sin_stockListAction extends Action{
 
 		relatives = rtDao.get(rt_id);
 
-		//入居者Beanを取得
-		resident = relatives.getResident();
 
-		rd_id = resident.getRd_id();
+		//入居者IDを取得
+		rd_id = relatives.getRd_id();
+
 
 		List<Indevidualinventory> list = iiDao.get(rd_id);
 
-/**このページでerror出ている
- * 直す
- * **/
+
+		resident = residentDao.get(rd_id);
 
 
 		//レスポンス値をセット
