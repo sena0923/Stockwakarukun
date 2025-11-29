@@ -1,0 +1,73 @@
+.container{
+	max-width: 800px;
+	margin: 20px auto;
+	padding: 20px;
+	background: #fff;
+	border-radius: 8px;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+	margin: 40px auto; /* ヘッダー分の余白を確保 */
+}
+
+
+.recipient{
+	display: flex;
+    justify-content: space-between; /* 左右に配置 */
+	align-items: center; /* 垂直方向を中央揃え */
+	margin-bottom: 20px;
+
+}
+
+.recipient h1{
+	margin: 0 auto; /* 中央寄せ */
+	text-align: center;
+	flex: 1; /* 中央に広がる */
+	margin-left: 125px; /* 左から50px内側に移動 */
+}
+
+
+.recipient a{
+	color: #000;
+	text-align: right;
+	margin-right: 20px ; /* 右寄せ */
+}
+
+.unread {
+  background-color: #fffbcc;
+  border-left: 4px solid #ffcc00;
+}
+
+
+.badge {
+  display: inline-block;
+  background-color: red;
+  color: white;
+  font-size: 0.75em;
+  font-weight: bold;
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin-left: 8px;
+}
+
+.contact {
+    text-align: center;
+}
+
+
+.text-right {
+  text-align: right;
+}
+
+.input-list{
+	max-width: 500px;
+	margin: 20px auto;
+	padding: 20px;
+	background: #fff;
+	color: #000;
+	border-radius: 8px;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.input-list a{
+	color: #000;
+
+}

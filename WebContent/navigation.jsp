@@ -8,8 +8,8 @@
 <div class="navigation">
 	<a class="title">介護士</a>
 	<ul class="">
-		<li class="nav-item"><a href="KaiMenu.action">メニュー</a></li>
 		<li class="nav-item"><a href="RdList.action">入居者一覧</a></li>
+		<li class="nab-item"><a href="">連絡帳</a></li>
 		<li class="nav-item"><a href="#">マイページ</a></li>
 		<li class="nav-item"><a href="logout.jsp">ログアウト</a></li>
 	</ul>

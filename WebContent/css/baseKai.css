@@ -34,8 +34,8 @@ header {
   top: 0;
   left: 0;
   width: 100%;
-  background-color: #e8d3c7;
-  color: #302833;
+  background-color: #302833;
+  color: #fdeff2;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -61,11 +61,11 @@ header h1 {
     display: flex;
     align-items: center;
     gap: 15px;
-    color: #302833;
+    color: #fdeff2;
 }
 
 .logout-link {
-    color: #302833;
+    color: #fdeff2;
     text-decoration: none;
     font-weight: bold;
 }
@@ -76,7 +76,7 @@ header h1 {
 
 /* ===== ハンバーガー ===== */
 .hamburger {
-	color: #302833;
+	color: #fdeff2;
 	width: 30px;
 	cursor: pointer;
 	display: flex;
@@ -87,7 +87,7 @@ header h1 {
 .hamburger span {
   display: block;
   height: 3px;
-  background-color: #302833;
+  background-color: #fdeff2;
   margin: 6px 0;
   transition: 0.3s;
 }

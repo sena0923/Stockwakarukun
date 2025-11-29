@@ -16,13 +16,10 @@
 
 
   <header>
-	<c:import url="/headerKai2.jsp" />
   </header>
 
   <main>
-	<div class="content">
 		${param.content}
-	</div>
   </main>
 
 

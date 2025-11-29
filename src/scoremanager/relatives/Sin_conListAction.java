@@ -1,5 +1,6 @@
 package scoremanager.relatives;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
 
@@ -49,6 +50,10 @@ public class Sin_conListAction extends Action {
 		for (Message r : list) {
 			System.out.println(r.getTitle());
 		}
+
+		// 日付の降順にソート
+		list.sort(Comparator.comparing(Message::getDa_ti).reversed());
+
 
 		req.setAttribute("resident", cg);
 		req.setAttribute("relatives", rt);

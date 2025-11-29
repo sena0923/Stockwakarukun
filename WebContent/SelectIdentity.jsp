@@ -1,10 +1,12 @@
 <%-- 身分選択ページ --%>
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
 
+<div class="Gradation_1">
 
 <main>
 <form class="container">
-  <h1>あなたの立場は何ですか</h1>
+	<a>ストックわかる君</a>
+	<h1>あなたの立場を選択</h1>
 
 <form class="container">
   <div class="button-row">
@@ -14,6 +16,8 @@
   </div>
 </form>
 </main>
+</div>
+
 
 <style>
   body {
@@ -25,6 +29,10 @@
     min-height: 100vh;
     margin: 0;
     background-color: #f7f7f7;
+  }
+
+  a{
+  font-family:"ヒラギノ丸ゴ Pro W4","ヒラギノ丸ゴ Pro","Hiragino Maru Gothic Pro","ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro","HG丸ｺﾞｼｯｸM-PRO","HGMaruGothicMPRO";
   }
 
   h1 {

@@ -70,7 +70,7 @@ public class KaiCreateExecuteAction extends Action {
 			if (errors.isEmpty()) { // エラーメッセージがない場合
 
 				// 登録完了画面にフォワード
-				req.getRequestDispatcher("KaiMenu.action").forward(req, res);
+				req.getRequestDispatcher("KaiLogin.action").forward(req, res);
 			} else { // エラーメッセージがある場合
 				req.setAttribute("errors", errors);
 				// 登録画面にフォワード

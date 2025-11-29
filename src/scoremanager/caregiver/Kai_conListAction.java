@@ -1,5 +1,6 @@
 package scoremanager.caregiver;
 
+import java.util.Comparator;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -46,6 +47,11 @@ public class Kai_conListAction extends Action{
 		for (Message r : list) {
 			System.out.println(r.getTitle());
 		}
+
+
+		// 日付の降順にソート
+		list.sort(Comparator.comparing(Message::getDa_ti).reversed());
+
 
 		req.setAttribute("resident", rd);
 		req.setAttribute("relatives", rt);

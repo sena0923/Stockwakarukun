@@ -1,34 +1,40 @@
-.content {
-	background: #fff;
-	padding: 20px 50px;
-	border-radius: 10px;
-	box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-	width: 400px;
-	margin: 50px auto; /* ヘッダー分の余白を確保 */
-	padding-top: 70px; /* ヘッダーの高さ＋余裕 */
-}
-
 h2 {
 	text-align: center;
 	margin-bottom: 25px;
 }
 
-.controll {
-	margin-bottom: 15px;
+
+form.content {
+    max-width: 600px; /* フォーム全体の最大幅を設定 */
+    width: 100%;       /* 画面幅に応じて広げる */
+    margin: 0 auto;   /* 中央寄せ */
 }
 
+
+.controll {
+	width: 100%;
+    display: block;
+    margin-bottom: 15px;
+}
+
+
 label {
-	display: block;
-	margin-bottom: 5px;
-	font-weight: bold;
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+	text-align: left; /* ラベルを左寄せ */
+	margin-left: 50px; /* 左から50px内側に移動 */
 }
 
 input {
-	width: 100%;
-	padding: 8px;
+	margin-bottom: 9px;
+	font-size: 1rem;
+	padding: 10px 20px;
 	border: 1px solid #ccc;
-	border-radius: 4px;
-	font-size: 14px;
+	border-radius: 6px;
+	box-sizing: border-box;
+	width: 80%;
+	padding: 8px;
 }
 
 .required {
@@ -36,10 +42,17 @@ input {
 	font-size: 12px;
 }
 
+.select{
+    display: flex;              /* Flexboxを有効化 */
+    justify-content: center;    /* 横方向中央寄せ */
+    gap: 20px;                  /* ボタンとリンクの間に余白 */
+    margin-top: 20px;           /* 上に余白 */
+}
+
 .btn {
-	background: #fff;
-	color: #333;
-	border: 1px solid #aaa;
+	background: #4CAF50;
+	color: #fff;
+	border: none;
 	border-radius: 5px;
 	padding: 10px 25px;
 	font-size: 16px;
@@ -47,15 +60,19 @@ input {
 	font-weight: bold;
 	text-decoration: none;
 	display: block;
-	width: 100%;
+	width: 40%;
 	text-align: center;
 	transition: background 0.2s, border-color 0.2s;
 }
 
 .btn:hover {
-	background: #f2f2f2;
-	border-color: #888;
+	background: #45a049;
 }
+
+ul {
+  list-style: none;
+}
+
 
 #error-message {
 	color: red;
