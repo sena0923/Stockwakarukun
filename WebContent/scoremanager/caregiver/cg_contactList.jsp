@@ -14,7 +14,16 @@
 
 	<c:param name="content">
 		<form class="notification-list" action="Kai_conCreate.action" method="get" >
+			<a class = "back" href="Kai_rdMenu.action?rd_id=${resident.rd_id}">戻る</a>
+
 		    <h1>連絡帳　${resident.name} さん</h1>
+
+			<div class="contact">
+				<input type="hidden" name="rd_id" value="${resident.rd_id}">
+				<input type="hidden" name="rt_id" value="${relatives.rt_id}">
+				<button class="add">連絡を作成</button>
+			</div>
+
 		    <h2>通知一覧</h2>
 
 			<c:if test="${empty list}">
@@ -31,11 +40,7 @@
 				</c:forEach>
 			</ul>
 
-			<div class="contact">
-			<input type="hidden" name="rd_id" value="${resident.rd_id}">
-			<input type="hidden" name="rt_id" value="${relatives.rt_id}">
-		    <button class="">連絡を作成</button>
-			</div>
+
 		  </form>
 
 	</c:param>

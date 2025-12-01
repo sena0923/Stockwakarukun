@@ -14,6 +14,9 @@
 
 	<c:param name="content">
 		<form class="container"  action="RdSearch.action" method="get">
+			<a href="KaiMenu.action" class="back-btn">戻る</a>
+
+
 			<h1>入居者一覧</h1>
 
 			<div class="search">
@@ -48,8 +51,7 @@
 				</c:otherwise>
 
 			</c:choose>
-			<a href="KaiMenu.action" class="back-btn">ホームへ戻る</a>
-			<a href="RdList.action">入居者一覧へ</a>
+			<a class="all" href="RdList.action">全員</a>
 		</form>
 	</c:param>
 </c:import>

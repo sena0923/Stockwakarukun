@@ -2,13 +2,13 @@
 /* カード風コンテナ */
   .container {
     background: #ffffff;
-    padding: 30px 50px;
+    padding: 15px 50px;
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     text-align: center;
     width: 500px;
     max-width: 90%;
-    margin: 50px auto; /* ヘッダー分の余白を確保 */
+    margin: 100px auto; /* ヘッダー分の余白を確保 */
   }
 
 
@@ -96,16 +96,14 @@ table a:hover {
 
 /* 戻るボタン */
 .back-btn {
-    margin-top: 20px;
-    background: #ccc;
-    color: #000;
-    padding: 8px 16px;
-    border-radius: 6px;
-    display: inline-block;
-    text-decoration: none;
+	display: block;
+	text-align: left;
+	margin: 0;
+	color: #ff8000;
+	text-decoration: none;
 }
 
-.back-btn:hover {
-    background: #bbb;
+a.all{
+	color: #000080;
 }
 

@@ -8,6 +8,13 @@
 	margin: 40px auto; /* ヘッダー分の余白を確保 */
 }
 
+a.back-con{
+	display: block;
+	text-align: left;
+	margin: 0;
+	color: #ff8000;
+	text-decoration: none;
+}
 
 .recipient{
 	display: flex;
@@ -29,6 +36,10 @@
 	color: #000;
 	text-align: right;
 	margin-right: 20px ; /* 右寄せ */
+	font-family: "Noto Sans JP", "ヒラギノ角ゴシック", "Meiryo", sans-serif;
+	font-weight: bold;
+	color: #808080;
+
 }
 
 .unread {
@@ -68,6 +79,14 @@
 }
 
 .input-list a{
-	color: #000;
+	font-family: "Noto Sans JP", "ヒラギノ角ゴシック", "Meiryo", sans-serif;
+	/*font-weight: bold;*/
+	color: #808080;
+	line-height: 2;
+}
 
+textarea {
+	resize: none;
+	width:500px;
+	height:200px;
 }

@@ -1,3 +1,13 @@
+.add{
+	display: inline-block;
+	margin: 0;
+	padding: 5px 10px;
+	text-decoration: none;
+	background-color: #b0e0e6;
+	color: #000;
+	border-radius: 6px;
+}
+
 .notification-list {
   max-width: 600px;
   margin: 20px auto;
@@ -6,6 +16,12 @@
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   margin: 50px auto; /* ヘッダー分の余白を確保 */
+}
+
+.notification-list a{
+	margin: 0;
+	color: #ff8000;
+	text-decoration: none;
 }
 
 .notification {
@@ -32,7 +48,7 @@
 
 
 .notification:last-child {
-  border-bottom: none;
+	border-bottom: none;
 }
 
 .notification .date {

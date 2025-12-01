@@ -16,6 +16,9 @@
 
 	<c:param name="content">
 		<form class="container" action="Kai_conCreateExecute.action" method="get" >
+			<a class="back-con" href="Kai_conList.action?rd_id=${resident.rd_id}">戻る</a>
+
+
 		    <div class="recipient">
 		    	<h1>連絡帳　作成</h1>
 		    	<a>入居者：${resident.name} さん</a>
@@ -26,7 +29,7 @@
 		        <a>件名</a><input type="text" name="title" required>
 		        <br>
 		        <a>内容</a>
-		        <br><textarea name="content" rows="20" cols="70" required></textarea>
+		        <br><textarea name="content" required></textarea>
    			</div>
 
     		<div>
@@ -42,6 +45,7 @@
 				<input type="hidden" name="rd_id" value="${resident.rd_id}">
 				<input type="hidden" name="rt_id" value="${relatives.rt_id}">
 				<button class="" id="submitBtn" disabled>送信</button>
+				<a href="Kai_conList.action?rd_id=${resident.rd_id}" class="">キャンセル</a>
 			</div>
 			</div>
 

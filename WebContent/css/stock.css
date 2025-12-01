@@ -1,16 +1,31 @@
-
 /* カード風コンテナ */
-  .container {
+.container {
     background: #ffffff;
-    padding: 30px 50px;
+    padding: 20px 50px;
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     text-align: center;
     width: 500px;
     max-width: 90%;
-    margin: 50px auto; /* ヘッダー分の余白を確保 */
-  }
+    margin: 100px auto; /* ヘッダー分の余白を確保 */
+}
 
+
+.input{
+	display: flex;
+	justify-content: space-between; /* 左右に配置 */
+	align-items: center; /* 垂直方向を中央揃え */
+	margin: 0;
+	padding: 0;
+}
+
+a.back{
+	display: block;
+	text-align: left;
+	margin: 0;
+	color: #ff8000;
+	text-decoration: none;
+}
 
 h1 {
     margin-bottom: 10px;
@@ -29,6 +44,38 @@ p {
     gap: 0; /* ボタンをくっつける*/
 
 }
+
+a.update_link{
+	display: inline-block;
+	margin: 15px;
+	padding: 5px 10px;
+	text-decoration: none;
+	background-color: #b0e0e6;
+	color: #000;
+	border-radius: 6px;
+	font-weight: bold;
+}
+
+a.update_link:hover {
+	transform: scale(1.02);
+	background-color: #b0e0e6;
+}
+
+.update_link{
+	display: inline-block;
+	margin: 0 10px;
+	padding: 10px 20px;
+	text-decoration: none;
+	background-color: #b8d200;
+	color: #000;
+	border-radius: 6px;
+	font-weight: bold;
+}
+
+.update_link:hover {
+	background-color: #a5bf00;
+}
+
 
 
 .type_list {
@@ -55,24 +102,6 @@ p {
 }
 .type_list non:hover{
 	background-color: #edb492;
-}
-
-
-
-.update_link {
-	display: inline-block;
-    margin: 0 10px;
-    padding: 10px 20px;
-    text-decoration: none;
-    background-color: #b8d200;
-    color: #000;
-    border-radius: 6px;
-    font-weight: bold;
-}
-
-
-.update_link:hover {
-    background-color: #a5bf00;
 }
 
 

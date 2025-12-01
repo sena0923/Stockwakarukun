@@ -17,19 +17,7 @@ li{
 	line-height: 2;
 }
 
-a{
+.navigation a{
 	color: #fdeff2;
 	text-decoration: none;
-}
-
-.title{
-    margin: 0 10px;
-    padding: 10px 20px;
-    text-decoration: none;
-    background-color: #ffffff;
-    color: #000;
-    border-radius: 6px;
-    /*font-weight: bold;*/
-	font-size: 1.3em;
-	line-height: 2;
 }

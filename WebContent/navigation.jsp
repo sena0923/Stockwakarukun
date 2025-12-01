@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/navigation.css">
 
 <div class="navigation">
-	<a class="title">介護士</a>
+
 	<ul class="">
 		<li class="nav-item"><a href="RdList.action">入居者一覧</a></li>
 		<li class="nab-item"><a href="">連絡帳</a></li>
