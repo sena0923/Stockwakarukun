@@ -68,7 +68,7 @@
   <p>名前 | ○○</p>
   <p>職員番号 | 1234</p>
 
-  <a href="cg_infoChange.jsp.jsp">情報更新</a>
+  <a href="cg_infoChange.jsp">情報更新</a>
   <a href="logoutkai.jsp">ログアウト</a>
   <a href="kai_menu.jsp" class="back-button">戻る</a>
 </body>
