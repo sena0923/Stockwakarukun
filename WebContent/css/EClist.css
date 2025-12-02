@@ -112,3 +112,56 @@ body {
 .ec-page li a:hover {
     background-color: #005a9e;
 }
+
+/* スマホ対応 */
+@media (max-width: 768px) {
+    /* ページ全体 */
+    .ec-page {
+        padding: 10px;
+        margin: 10px;
+    }
+
+    /* カテゴリーメニューを縦並びに */
+    .category-menu {
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+    }
+
+    .category-menu li {
+        border-radius: 6px;
+        text-align: center;
+        width: 100%;
+    }
+
+    /* 商品一覧を幅いっぱいに */
+    .product-list {
+        width: 100%;
+    }
+
+    /* 商品カードを縦並びに */
+    .product-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .product-item img {
+        width: 100%;
+        max-width: 300px; /* 画像が大きすぎないよう制限 */
+        height: auto;
+    }
+
+    /* 商品リストの文字サイズを少し小さめに */
+    .ec-page li {
+        font-size: 14px;
+        line-height: 1.6;
+    }
+
+    /* ボタンを幅広にしてタップしやすく */
+    .ec-page li a {
+        display: block;
+        margin: 10px 0 0;
+        text-align: center;
+        width: 100%;
+    }
+}

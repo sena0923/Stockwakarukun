@@ -52,16 +52,40 @@ body {
         font-weight: bold;
     }
 
-    /* 📱 スマホ対応 */
     @media (max-width: 768px) {
-        .header-top {
-            flex-direction: column;
-            align-items: flex-start;
-        }
-        .user-actions {
-            margin-top: 10px;
-        }
-        .main-nav ul {
-            flex-direction: column; /* ✅ 縦並びに変更 */
-            gap: 10px;
-        }
+    /* ヘッダーを縦並びに */
+    .header-top {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .logo a {
+        font-size: 20px; /* ロゴ文字を少し小さめに */
+    }
+
+    .user-actions {
+        margin-top: 10px;
+    }
+
+    .user-actions a {
+        display: inline-block;
+        margin: 5px 0;
+    }
+
+    /* ナビゲーションを縦並びに */
+    .main-nav ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .main-nav a {
+        display: block;
+        padding: 10px;
+        background: #eee;   /* 背景をつけてボタン風に */
+        border-radius: 4px;
+    }
+
+    .main-nav a:hover {
+        background: #ddd;
+    }
+}
