@@ -64,7 +64,7 @@
 <script>
 function addToCart(goodsId) {
 
-    fetch("/scoremanager/ECsite/", {
+    fetch("cart", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: "goods_id=" + goodsId
