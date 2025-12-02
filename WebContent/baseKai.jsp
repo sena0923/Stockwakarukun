@@ -29,5 +29,30 @@
   </main>
 
 
+	<footer>
+		<a href="#" id="page-top"><i class="blogicon-chevron-up">▲</i></a>
+	</footer>
+
+
+<script>
+$(function() {
+  var pageTop = $('#page-top');
+  pageTop.hide(); // 初期は非表示
+  $(window).scroll(function() {
+    if ($(this).scrollTop() > 10) {
+      pageTop.fadeIn();
+    } else {
+      pageTop.fadeOut();
+    }
+  });
+  pageTop.click(function() {
+    $('html, body').animate({ scrollTop: 0 }, 500);
+    return false;
+  });
+});
+</script>
+
+
+
 </body>
 </html>

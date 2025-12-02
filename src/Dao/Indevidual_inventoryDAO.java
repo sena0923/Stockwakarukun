@@ -41,21 +41,6 @@ public class Indevidual_inventoryDAO extends Dao {
 				list.add(indevidualinventory);
 			}
 
-
-
-            /*
-            if (resultSet.next()) {
-            	indevidualinventory = new Indevidualinventory();
-
-            	indevidualinventory.setRd_id(resultSet.getString("rd_id"));
-            	indevidualinventory.setInve_name(resultSet.getString("inve_name"));
-            	indevidualinventory.setInve_count(resultSet.getInt("inve_count"));
-            	indevidualinventory.setRegi_date(resultSet.getTimestamp("regi_date"));
-            	list.add(indevidualinventory);
-            }else{
-            	indevidualinventory = null;
-            }*/
-
         } catch (SQLException e) {
             throw new Exception("データ取得エラー", e);
         } finally {
@@ -179,5 +164,56 @@ public class Indevidual_inventoryDAO extends Dao {
 			return false;
 		}
 	}
+
+	public boolean delete(String rd_id , String inve_name) throws Exception {
+
+
+		// プリペアードステートメント
+		PreparedStatement statement = null;
+	    int count = 0;
+
+	    try {Connection connection = getConnection();
+
+			// DELETE
+
+			statement = connection.prepareStatement(
+				"DELETE FROM INDEVIDUAL_INVENTORY WHERE RD_ID = ? and INVE_NAME  = ? ;"
+			);
+			statement.setString(1, rd_id);
+			statement.setString(2,inve_name);
+			count = statement.executeUpdate();
+	    } catch (Exception e) {
+			throw e;
+		} finally {
+			// プリペアードステートメントを閉じる
+			if (statement != null) {
+				try {
+					statement.close();
+				} catch (SQLException sqle) {
+					throw sqle;
+				}
+			}
+			/*
+			// コネクションを閉じる
+			if (connection != null) {
+				try {
+					connection.close();
+
+				} catch (SQLException sqle) {
+					throw sqle;
+				}
+			}
+			*/
+		}
+
+		if (count > 0) {
+			// 実行件数が1件以上ある場合
+			return true;
+		} else {
+			// 実行件数が0件の場合
+			return false;
+		}
+	}
+
 
 }

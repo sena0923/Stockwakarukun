@@ -39,7 +39,7 @@
 							<button type="button" class="up">+</button>
 						</div>
 					</td>
-					<td><a class = "" href="#">削除</a>
+					<td><a class = "" href="Kai_stockDelete_q.action?rd_id=${resident.rd_id}&inve_name=${iiList.inve_name}">削除</a>
 					</td>
 				</tr>
 			</c:forEach>
