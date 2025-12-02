@@ -23,7 +23,7 @@ public class MessageDao extends Dao {
      * @return
      * @throws Exception
      */
-    public List<Message> get(String rt_id) throws Exception {
+	public List<Message> get(String rt_id) throws Exception {
 
     	Message message = null;
         Connection connection = getConnection();
@@ -65,6 +65,48 @@ public class MessageDao extends Dao {
 
         return list;
     }
+
+	public Message getone(String me_id) throws Exception {
+
+    	Message message = new Message();
+        Connection connection = getConnection();
+        PreparedStatement statement = null;
+
+        try {
+            // メッセージ取得SQL
+            String sql = "SELECT * FROM message WHERE me_id = ?";
+
+            statement = connection.prepareStatement(sql);
+            statement.setString(1, me_id);
+
+            ResultSet resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                message = new Message();
+
+                message.setMessage_id(resultSet.getString("me_id"));
+                message.setCg_id(resultSet.getString("cg_num"));
+                message.setRt_id(resultSet.getString("rt_id"));
+                message.setMessage(resultSet.getString("message"));
+                message.setDa_ti(resultSet.getTimestamp("da_ti"));
+                message.setTitle(resultSet.getString("title"));
+            }
+
+        } catch (SQLException e) {
+            throw new Exception("データ取得エラー", e);
+        } finally {
+            if (statement != null) {
+                try { statement.close(); } catch (SQLException ignored) {}
+            }
+            if (connection != null) {
+                try { connection.close(); } catch (SQLException ignored) {}
+            }
+        }
+
+        return message;
+    }
+
+
 
     public boolean save(Message message) throws Exception {
     	String sql = "INSERT INTO MESSAGE (cg_num, rt_id, message, da_ti, title) VALUES ( ?, ?, ?, ?, ?)";

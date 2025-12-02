@@ -35,7 +35,7 @@
 
 			      <li class="notification">
 			        <span class="date"><fmt:formatDate value="${m.da_ti}" pattern="yyyy/MM/dd"/></span>
-			        <span class="title" href="#">${m.title}</span>
+			        <a class="title" href="Kai_conContent.action?rd_id=${resident.rd_id}&rt_id=${relatives.rt_id}&me_id=${m.me_id}">${m.title}</a>
 			      </li>
 				</c:forEach>
 			</ul>

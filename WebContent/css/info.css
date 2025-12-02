@@ -1,0 +1,31 @@
+.container{
+	background: #ffffff;
+	padding: 20px 50px;
+	border-radius: 10px;
+	box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+	text-align: center;
+	width: 500px;
+	max-width: 90%;
+	margin: 100px auto; /* ヘッダー分の余白を確保 */
+}
+
+.btn-info{
+	display: inline-block;
+	margin: 30px 10px;
+	padding: 10px 20px;
+	text-decoration: none;
+	background-color: #b8d200;
+	color: #000;
+	border-radius: 6px;
+	font-weight: bold;
+}
+
+
+
+a.back{
+	display: block;
+	text-align: left;
+	margin: 0;
+	color: #ff8000;
+	text-decoration: none;
+}

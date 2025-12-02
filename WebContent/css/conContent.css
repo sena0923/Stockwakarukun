@@ -1,5 +1,5 @@
 .container{
-	max-width: 800px;
+	max-width: 900px;
 	margin: 20px auto;
 	padding: 20px;
 	background: #fff;
@@ -7,6 +7,7 @@
 	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 	margin: 40px auto; /* ヘッダー分の余白を確保 */
 }
+
 
 a.back-con{
 	display: block;
@@ -42,9 +43,60 @@ a.back-con{
 
 }
 
-.unread {
-  background-color: #fffbcc;
-  border-left: 4px solid #ffcc00;
+
+.con-main{
+	display: flex;
+	justify-content: space-between; /* 左右に配置 */
+	align-items: center; /* 垂直方向を中央揃え */
+	align-items: flex-start; /* 高さを揃える */
+ 	gap: 0; /* 要素間の隙間をゼロにする */
+	margin-bottom: 20px;
+}
+
+.con-list{
+	margin: 0;
+	width: 200px;
+	height: 350px;
+	overflow: auto;
+}
+
+.con-list::-webkit-scrollbar {
+  display: none;
+}
+
+.con-list ul{
+	margin: 0;        /* 外側余白をゼロ */
+	padding: 0;       /* 内側余白をゼロ */
+	list-style: none; /* ●や番号を消す */
+}
+
+
+.notification {
+  padding: 1px 2px;
+  border-bottom: 1px solid #ddd;
+  margin-bottm: 5px ;
+}
+
+
+.notification.active {
+	background-color: #f0f8ff;
+}
+
+
+.notification .date {
+	font-size:0.6em;
+	color: #888;
+	line-height: 1.2; /* 行間を狭く */
+}
+
+.notification .title {
+	font-size: 0.7em;
+	font-weight: bold;
+	color: #333;
+	display: block;
+	margin: 0;
+	line-height: 1.2; /* 行間を狭く */
+	text-decoration: none;
 }
 
 
@@ -69,13 +121,14 @@ a.back-con{
 }
 
 .input-list{
-	max-width: 500px;
-	margin: 20px auto;
+	width: 600px;
+	margin: 0;
 	padding: 20px;
 	background: #fff;
 	color: #000;
 	border-radius: 8px;
 	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
 }
 
 .input-list a{
@@ -91,3 +144,20 @@ textarea {
 	height:200px;
 }
 
+.con{
+	margin: 10px auto; /* ヘッダー分の余白を確保 */
+
+}
+
+.taitle,
+.con{
+	border-bottom: solid 5px #e9dfe5;
+}
+
+
+.input-list a,
+.input-list p {
+    display: block;
+    line-height: 1.7;
+    margin: 2; /* 余白を完全にリセット */
+}
