@@ -46,7 +46,7 @@
             <!-- 🔽ここで条件分岐 -->
             <c:choose>
                 <c:when test="${not empty goods.stock and goods.stock ne '0'}">
-                    <a href="#" onclick="addToCart('${goods.goods_id}'); return false;">
+                    <a href="AddCartExecute.action" onclick="addToCart('${goods.goods_id}'); return false;">
                         カートに入れる
                     </a>
                 </c:when>
