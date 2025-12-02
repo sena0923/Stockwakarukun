@@ -1,6 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
-<%@ page import="java.util.List" %>
-<%@ page import="bean.Goods" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <html lang="ja">
@@ -29,71 +28,43 @@
 
 <%@ include file="../../headerEC.jsp" %>
 
-<!-- 通知 -->
+<!-- ここに通知 -->
 <div id="popupMessage">カートに追加されました</div>
 
 <div class="ec-page">
 
 <ul>
-<%
-    // goodsList をリクエストから取得
-    List<Goods> goodsList = (List<Goods>) request.getAttribute("goodsList");
-    if(goodsList != null){
-        for(Goods goods : goodsList){
-%>
-    <li>
-        <!-- 商品画像 -->
-        <img src="<%= goods.getImage_path() %>" width="150" height="150">
+    <c:forEach var="goods" items="${goodsList}">
+        <li>
+            <!-- ★固定画像を簡単に表示 -->
+            <img src="/images/101.png" width="150" height="150">
 
-        <!-- 商品情報 -->
-        商品名: <%= goods.getGoods_name() %>　
-        価格: <%= goods.getPrice() %>円　
-        在庫: <%= goods.getStock() %>
+            商品名: ${goods.goods_name}　
+            価格: ${goods.price}円　
+            在庫: ${goods.stock}
 
-        <!-- カートに入れる / 在庫なし -->
-<%
-    if(goods.getStock() > 0) {
-%>
-    <a href="#" onclick="addToCart('<%= goods.getGoods_id() %>'); return false;">
-        カートに入れる
-    </a>
-<%
-    } else {
-%>
-    <span style="color:red; font-weight:bold;">在庫なし</span>
-<%
-    }}}
-%>
+            <!-- 🔽ここで条件分岐 -->
+            <c:choose>
+                <c:when test="${not empty goods.stock and goods.stock ne '0'}">
+                    <a href="#" onclick="addToCart('${goods.goods_id}'); return false;">
+                        カートに入れる
+                    </a>
+                </c:when>
+                <c:otherwise>
+                    <span style="color:red; font-weight:bold;">在庫なし</span>
+                </c:otherwise>
+            </c:choose>
 
-
-    </li>
+        </li>
+    </c:forEach>
 </ul>
 
 </div>
 
-<!-- カートに追加したときのポップアップも含めたJS -->
 <script>
-function showPopup() {
-    const popup = document.createElement("div");
-    popup.textContent = "カートに追加しました";
-    popup.style.position = "fixed";
-    popup.style.top = "20px";
-    popup.style.right = "20px";
-    popup.style.backgroundColor = "#4caf50";
-    popup.style.color = "#fff";
-    popup.style.padding = "10px 20px";
-    popup.style.borderRadius = "5px";
-    popup.style.boxShadow = "0 2px 6px rgba(0,0,0,0.2)";
-    document.body.appendChild(popup);
-
-    // 1.5秒後に自動で消す
-    setTimeout(() => {
-        popup.remove();
-    }, 1500);
-}
-
 function addToCart(goodsId) {
-    fetch("cart", {
+
+    fetch("/scoremanager/ECsite/", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: "goods_id=" + goodsId
@@ -105,6 +76,15 @@ function addToCart(goodsId) {
     .catch(() => {
         alert("エラーが発生しました");
     });
+}
+
+function showPopup() {
+    const popup = document.getElementById("popupMessage");
+    popup.style.display = "block";
+
+    setTimeout(() => {
+        popup.style.display = "none";
+    }, 2000);
 }
 </script>
 
