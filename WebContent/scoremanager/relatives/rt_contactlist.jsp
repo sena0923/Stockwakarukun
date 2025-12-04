@@ -14,6 +14,8 @@
 
 	<c:param name="content">
 		<form class="notification-list" action="Sin_conCreate.action" method="get" >
+			<a class = "back" href="SinMenu.action">戻る</a>
+
 		    <h1>連絡帳</h1>
 		    <h2>通知一覧</h2>
 
@@ -25,17 +27,12 @@
 			    <c:forEach var="m" items ="${list}">
 
 			      <li class="notification">
-			        <span class="date"><fmt:formatDate value="${m.da_ti}" pattern="yyyy/MM/dd HH:mm"/></span>
-			        <span class="title" href="#}">${m.title}</span>
+			        <span class="date"><fmt:formatDate value="${m.da_ti}" pattern="yyyy/MM/dd"/></span>
+			        <a class="title" href="Sin_conContent.action?rd_id=${resident.rd_id}&rt_id=${relatives.rt_id}&me_id=${m.me_id}">${m.title}</a>
 			      </li>
 				</c:forEach>
 			</ul>
 
-			<div class="contact">
-			<input type="hidden" name="rd_id" value="${resident.rd_id}">
-			<input type="hidden" name="rt_id" value="${relatives.rt_id}">
-		    <button class="">連絡を作成</button>
-			</div>
 		  </form>
 
 	</c:param>

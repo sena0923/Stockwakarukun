@@ -1,6 +1,5 @@
 .container{
 	max-width: 900px;
-	margin: 20px auto;
 	padding: 20px;
 	background: #fff;
 	border-radius: 8px;
@@ -74,7 +73,7 @@ a.back-con{
 .notification {
   padding: 1px 2px;
   border-bottom: 1px solid #ddd;
-  margin-bottm: 5px ;
+  margin-bottom: 5px ;
 }
 
 
@@ -144,8 +143,16 @@ textarea {
 	height:200px;
 }
 
+
+.con p {
+	white-space: pre-wrap;   /* 改行・連続スペースを保持して折り返し */
+	word-wrap: break-word;   /* 長い単語も折り返し */
+}
+
+
 .con{
 	margin: 10px auto; /* ヘッダー分の余白を確保 */
+
 
 }
 

@@ -2,18 +2,17 @@ package scoremanager.relatives;
 
 import java.util.Comparator;
 import java.util.List;
-import java.util.Objects;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import Dao.CaregiverDao;
 import Dao.MessageDao;
 import Dao.RelativesDao;
-import bean.Caregiver;
+import Dao.ResidentDao;
 import bean.Message;
 import bean.Relatives;
+import bean.Resident;
 import tool.Action;
 
 public class Sin_conListAction extends Action {
@@ -25,26 +24,26 @@ public class Sin_conListAction extends Action {
 		Relatives relatives = (Relatives)session.getAttribute("relatives");
 
 		//ローカル変数の指定
-		String cg_num = "";//介護士ID
+		String rd_id = "";//入居者ID
 		String rt_id = "";//親族ID
-		CaregiverDao cgDao = new CaregiverDao();//介護士Bean
-		Caregiver cg = new Caregiver();//介護士DAO
+		ResidentDao residentDao = new ResidentDao();//入居者Dao
+		Resident resident = new Resident();//入居者bean
 		RelativesDao rtDao = new RelativesDao();//親族DAO
 		Relatives rt = new Relatives();//親族Bean
 		MessageDao messageDao = new MessageDao();
 		Message message = new Message();
 
-//		cg_num = req.getParameter("cg_num");
-		cg_num = relatives.getRt_id();
-		cg = cgDao.get(cg_num);
-		rt = rtDao.get3(cg_num);//介護士IDから親族Beanを取得するDAOを作る
+
+		rt_id = relatives.getRt_id();
+		rt = rtDao.get(rt_id);
+		rd_id = relatives.getRd_id();
+		resident = residentDao.get(rd_id);
 
 
-		System.out.println("debug-Sin_conListAction-cgnum:" + cg_num);
-		System.out.println("debug-Sin_conListAction-rt:" + Objects.isNull(rt));
+
 		List<Message> list = messageDao.get(rt.getRt_id());
 
-		System.out.println(cg_num);
+
 
 		System.out.println("取得件数: " + list.size());
 		for (Message r : list) {
@@ -55,7 +54,7 @@ public class Sin_conListAction extends Action {
 		list.sort(Comparator.comparing(Message::getDa_ti).reversed());
 
 
-		req.setAttribute("resident", cg);
+		req.setAttribute("resident", resident);
 		req.setAttribute("relatives", rt);
 		req.setAttribute("list", list);
 
