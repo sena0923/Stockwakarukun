@@ -108,23 +108,34 @@ public class MessageDao extends Dao {
 
 
 
-    public boolean save(Message message) throws Exception {
-    	String sql = "INSERT INTO MESSAGE (cg_num, rt_id, message, da_ti, title) VALUES ( ?, ?, ?, ?, ?)";
+	public int save(Message message) throws Exception {
+	    String sql = "INSERT INTO MESSAGE (cg_num, rt_id, message, da_ti, title) VALUES ( ?, ?, ?, ?, ?)";
 
-        try (Connection connection = getConnection();
-             PreparedStatement statement = connection.prepareStatement(sql)) {
-            statement.setString(1, message.getCg_id());
-            statement.setString(2, message.getRt_id());
-            statement.setString(3, message.getMessage());
-            statement.setTimestamp(4, new java.sql.Timestamp(message.getDa_ti().getTime()));
-            statement.setString(5, message.getTitle());
+	    try (Connection connection = getConnection();
+	         PreparedStatement statement = connection.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS)) {
 
-            int count = statement.executeUpdate();
-            return count == 1;
-        } catch (SQLException e) {
-            throw new Exception("メッセージ保存エラー", e);
-        }
-    }
+	        statement.setString(1, message.getCg_id());
+	        statement.setString(2, message.getRt_id());
+	        statement.setString(3, message.getMessage());
+	        statement.setTimestamp(4, new java.sql.Timestamp(message.getDa_ti().getTime()));
+	        statement.setString(5, message.getTitle());
+
+	        int count = statement.executeUpdate();
+	        if (count != 1) {
+	            throw new Exception("Message の INSERT に失敗しました。");
+	        }
+
+	        ResultSet keys = statement.getGeneratedKeys();
+	        if (keys.next()) {
+	            return keys.getInt(1); // ← これが me_id !!
+	        } else {
+	            throw new Exception("自動採番された me_id を取得できませんでした。");
+	        }
+
+	    } catch (SQLException e) {
+	        throw new Exception("メッセージ保存エラー", e);
+	    }
+	}
 
 
 }
