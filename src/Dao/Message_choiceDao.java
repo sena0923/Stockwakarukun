@@ -63,20 +63,32 @@ public class Message_choiceDao extends Dao {
     }
 
     public boolean save(Message_choice message_choice) throws Exception {
-    	String sql = "INSERT INTO MESSAGE_CHOICE (me_id, choise_num, choise) VALUES ( ?, ?, ?)";
+
+        String sql = "INSERT INTO MESSAGE_CHOICE (me_id, choise_num, choise) VALUES (?, ?, ?)";
 
         try (Connection connection = getConnection();
              PreparedStatement statement = connection.prepareStatement(sql)) {
+
+            // me_id
             statement.setInt(1, message_choice.getMe_id());
-            statement.setInt(2, message_choice.getChoise_num());
-            statement.setBoolean(3, message_choice.getChoise());
+
+            // choise_num（1 or 2）
+            int choiceNum = message_choice.getChoise_num();
+            statement.setInt(2, choiceNum);
+
+            // ★ 数値 → boolean 変換ロジック
+            //   1 → true,   2 → false
+            boolean choiceBool = (choiceNum == 1);
+            statement.setBoolean(3, choiceBool);
 
             int count = statement.executeUpdate();
             return count == 1;
+
         } catch (SQLException e) {
             throw new Exception("メッセージ保存エラー", e);
         }
     }
+
 
 
 }

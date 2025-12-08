@@ -37,7 +37,6 @@
 				<div>
 					<input type="radio" name="cheak" value="1">Yes / No
 					<input type="radio" name="cheak" value="2">確認しました
-					<input type="radio" name="cheak" value="3">返信不要
 				</div>
 			</div>
 

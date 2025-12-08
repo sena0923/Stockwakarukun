@@ -17,65 +17,66 @@ import tool.Action;
 
 public class Kai_conCreateExecuteAction extends Action{
 
-	@Override
-	public void execute(HttpServletRequest req, HttpServletResponse res) throws Exception {
+    @Override
+    public void execute(HttpServletRequest req, HttpServletResponse res) throws Exception {
 
-	    HttpSession session = req.getSession();
-	    Caregiver caregiver = (Caregiver)session.getAttribute("caregiver");
+        HttpSession session = req.getSession();
+        Caregiver caregiver = (Caregiver)session.getAttribute("caregiver");
 
-	    // 入力値の取得
-	    String rd_id = req.getParameter("rd_id");   // 入居者ID
-	    String rt_id = req.getParameter("rt_id");   // 親族ID
-	    String title = req.getParameter("title");   // タイトル
-	    String content = req.getParameter("content"); // 内容
+        // 入力値の取得
+        String rd_id = req.getParameter("rd_id");   // 入居者ID
+        String rt_id = req.getParameter("rt_id");   // 親族ID
+        String title = req.getParameter("title");   // タイトル
+        String content = req.getParameter("content"); // 内容
 
-	    //チョイスの取得
-	    String choiseNumParam = req.getParameter("choise_num");
-	    int choise_num = (choiseNumParam != null) ? Integer.parseInt(choiseNumParam) : 0;
-	    boolean choise = Boolean.parseBoolean(req.getParameter("choise"));
+        // ----------------------------------------
+        // ★ JSP の name="cheak" を正しく取得
+        // ----------------------------------------
+        String choiseNumParam = req.getParameter("cheak");
 
-	    // BeanとDaoの準備
-	    ResidentDao rdDao = new ResidentDao();
-	    Resident rd = rdDao.get(rd_id);
+        // 1 or 2 を整数に変換
+        int choise_num = (choiseNumParam != null) ? Integer.parseInt(choiseNumParam) : 0;
 
-	    RelativesDao rtDao = new RelativesDao();
-	    Relatives rt = rtDao.get2(rd_id);
+        // 1 → true、2 → false
+        boolean choise = (choise_num == 1);
 
-	    MessageDao messageDao = new MessageDao();
-	    Message msg = new Message();
+        // Dao などの準備
+        ResidentDao rdDao = new ResidentDao();
+        Resident rd = rdDao.get(rd_id);
 
-	    Message_choiceDao message_choiceDao = new Message_choiceDao();
-	    Message_choice choice = new Message_choice();
+        RelativesDao rtDao = new RelativesDao();
+        Relatives rt = rtDao.get2(rd_id);
 
-	    // メッセージBeanに値をセット
-//	    msg.setMe_id(/* 主キーを生成するか自動採番に任せる */);
-	    msg.setCg_id(caregiver.getStaffid()); // 介護士IDを紐づけ
-	    msg.setRt_id(rt_id);                // 親族ID
-	    msg.setMessage(content);            // 内容
-	    msg.setDa_ti(new java.util.Date()); // 現在日時
-	    msg.setTitle(title);                // タイトル
+        MessageDao messageDao = new MessageDao();
+        Message msg = new Message();
 
-	    // DBに保存
-	 // DBに保存（メッセージ）→ 自動採番された me_id を取得
-	    int meId = messageDao.save(msg);
+        Message_choiceDao message_choiceDao = new Message_choiceDao();
+        Message_choice choice = new Message_choice();
 
-	    // メッセージチョイスの保存
-	    choice.setMe_id(meId);
-	    choice.setChoise_num(choise_num);
-	    choice.setChoise(choise);
+        // メッセージBeanに値をセット
+        msg.setCg_id(caregiver.getStaffid());
+        msg.setRt_id(rt_id);
+        msg.setMessage(content);
+        msg.setDa_ti(new java.util.Date());
+        msg.setTitle(title);
 
-	    boolean savedChoice = message_choiceDao.save(choice);
+        // DBに保存して自動採番された me_id を取得
+        int meId = messageDao.save(msg);
 
+        // メッセージチョイスを保存
+        choice.setMe_id(meId);
+        choice.setChoise_num(choise_num);  // ← 1 or 2 が入る
+        choice.setChoise(choise);          // ← true / false
 
+        boolean savedChoice = message_choiceDao.save(choice);
 
-	    // 保存結果をリクエストスコープにセット（必要なら）
-	    //req.setAttribute("saved", saved);
-	    req.setAttribute("savedChoice", savedChoice);
-	    req.setAttribute("resident", rd);
-	    req.setAttribute("relatives", rt);
+        // 保存結果をセット
+        req.setAttribute("savedChoice", savedChoice);
+        req.setAttribute("resident", rd);
+        req.setAttribute("relatives", rt);
 
-	    // 完了ページへフォワード
-	    req.getRequestDispatcher("contact_input_done.jsp").forward(req, res);
-	}
+        // 完了ページへ
+        req.getRequestDispatcher("contact_input_done.jsp").forward(req, res);
+    }
 
 }
