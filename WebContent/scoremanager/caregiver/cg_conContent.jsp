@@ -56,7 +56,6 @@
 					<div class="text-right">
 						<input type="hidden" name="rd_id" value="${resident.rd_id}">
 						<input type="hidden" name="rt_id" value="${relatives.rt_id}">
-						<button class="" id="submitBtn" disabled>返信</button>
 					</div>
 				</div>
 			</div><%-- class="con-main"ここまで --%>
