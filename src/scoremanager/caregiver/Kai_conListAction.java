@@ -8,10 +8,12 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import Dao.MessageDao;
+import Dao.Message_choiceDao;
 import Dao.RelativesDao;
 import Dao.ResidentDao;
 import bean.Caregiver;
 import bean.Message;
+import bean.Message_choice;
 import bean.Relatives;
 import bean.Resident;
 import tool.Action;
@@ -33,6 +35,8 @@ public class Kai_conListAction extends Action{
 		Relatives rt = new Relatives();//親族Bean
 		MessageDao messageDao = new MessageDao();
 		Message message = new Message();
+		Message_choiceDao me_chDao = new Message_choiceDao();
+		Message_choice me_ch = new Message_choice();
 
 		rd_id = req.getParameter("rd_id");
 		rd = rdDao.get(rd_id);
@@ -40,6 +44,16 @@ public class Kai_conListAction extends Action{
 
 
 		List<Message> list = messageDao.get(rt.getRt_id());
+
+
+		for (Message m : list) {
+			int meId = Integer.parseInt(m.getMe_id());
+
+			me_ch= me_chDao.getOneByMeId(meId);
+
+			m.setMessage_choice(me_ch);
+		}
+
 
 		System.out.println(rd_id);
 

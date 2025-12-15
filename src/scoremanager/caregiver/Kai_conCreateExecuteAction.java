@@ -37,8 +37,6 @@ public class Kai_conCreateExecuteAction extends Action{
         // 1 or 2 を整数に変換
         int choise_num = (choiseNumParam != null) ? Integer.parseInt(choiseNumParam) : 0;
 
-        // 1 → true、2 → false
-        boolean choise = (choise_num == 1);
 
         // Dao などの準備
         ResidentDao rdDao = new ResidentDao();
@@ -66,7 +64,6 @@ public class Kai_conCreateExecuteAction extends Action{
         // メッセージチョイスを保存
         choice.setMe_id(meId);
         choice.setChoise_num(choise_num);  // ← 1 or 2 が入る
-        choice.setChoise(choise);          // ← true / false
 
         boolean savedChoice = message_choiceDao.save(choice);
 

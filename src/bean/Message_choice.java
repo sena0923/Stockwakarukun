@@ -5,7 +5,7 @@ public class Message_choice {
 
 	private int choise_num;
 
-	private boolean choise;
+	private Boolean choise;
 
     public int getMe_id() {
         return me_id;
@@ -22,11 +22,11 @@ public class Message_choice {
 		this.choise_num = choise_num;
 	}
 
-	public boolean getChoise() {
+	public Boolean getChoise() {
 		return choise;
 	}
 
-	public void setChoise(boolean choise) {
+	public void setChoise(Boolean choise) {
 		this.choise = choise;
 	}
 }
