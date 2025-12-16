@@ -1,0 +1,130 @@
+/* ===== ログイン画面専用 ===== */
+body {
+	margin: 0;
+	padding: 0;
+	font-family: "Hiragino Sans", "Meiryo", sans-serif;
+	background-color: #f7f7f7;
+}
+
+.content {
+	justify-content: center; /* 横方向中央 */
+	align-items: center;     /* 縦方向中央 */
+	background: #ffffff;
+	padding: 20px 40px;
+	border-radius: 10px;
+	box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+	text-align: center;
+	width: 400px;
+	max-width: 90%;
+    margin: 60px auto; /* ヘッダー分の余白を確保 */
+}
+
+
+h1 {
+
+  font-size: 2rem;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+h2 {
+  font-size: 1.1rem;
+  margin: 10px 0 5px 0;
+}
+
+
+.controll {
+  margin-bottom: 15px;
+}
+
+label {
+  margin-bottom: 12px;
+  display: block;
+  font-weight: bold;
+}
+
+input {
+  margin-bottom: 9px;     /* 入力欄同士も少しゆとりを追加 */
+}
+
+
+input {
+  height: 45px;
+  width: 80vw;
+  max-width: 300px;
+  font-size: 1rem;
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-sizing: border-box;
+}
+
+ /* シンプルボタンデザイン */
+.btn {
+	background: #4CAF50;
+	color: white;
+	border: 1px solid #aaa;
+	border-radius: 5px;
+	padding: 10px 25px;
+	font-size: 16px;
+	cursor: pointer;
+	font-weight: bold;
+	text-decoration: none;
+	display: inline-block;
+	text-align: center;
+	transition: background 0.2s, border-color 0.2s;
+}
+
+.btn:hover {
+	background: #45a049;
+	border-color: white;
+}
+
+/* ボタンを横並びに */
+.button-group {
+	display: flex;
+	justify-content: center;
+	gap: 15px;
+	margin-top: 25px;
+}
+
+
+.btn2 {
+  margin-top: 30px;
+  height: 50px;
+  width: 80vw;
+  max-width: 300px;
+  font-size: 1.1rem;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn2:hover {
+  background-color: #45a049;
+}
+
+
+.error-message {
+  color: red;
+  font-size: 0.9rem;
+  margin-top: 10px;
+  text-align: center;
+}
+
+
+@media screen and (max-width: 370px) {
+  h1 {
+    font-size: 1.6rem;
+    margin-bottom: 25px;
+  }
+  h2 {
+    font-size: 1rem;
+  }
+  input, .btn-primary {
+    width: 90vw;
+  }
+}

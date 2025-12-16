@@ -72,7 +72,7 @@
     background-color: #45a049;
   }
 
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 600px) {
     .button-row {
       gap: 15px;
     }
