@@ -3,7 +3,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<c:import url="../../baseKai.jsp">
+<c:import url="../../baseSin.jsp">
 	<c:param name="title">
 		連絡帳一覧
 	</c:param>
@@ -28,7 +28,12 @@
 
 			      <li class="notification">
 			        <span class="date"><fmt:formatDate value="${m.da_ti}" pattern="yyyy/MM/dd"/></span>
+			         <div class = "title_content">
+			        <c:if test="${m.message_choice.choise != null}">
+			        	<span class="badge">返信</span>
+			        </c:if>
 			        <a class="title" href="Sin_conContent.action?rd_id=${resident.rd_id}&rt_id=${relatives.rt_id}&me_id=${m.me_id}">${m.title}</a>
+			      	</div>
 			      </li>
 				</c:forEach>
 			</ul>

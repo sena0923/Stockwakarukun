@@ -30,7 +30,12 @@
 						<c:forEach var="m" items ="${list}">
 							<li class="notification  ${m.me_id == param.me_id ? 'active' : ''}">
 								<span class="date"><fmt:formatDate value="${m.da_ti}" pattern="yyyy/MM/dd"/></span>
+								<div class = "title_content">
+			        			<c:if test="${m.message_choice.choise != null}">
+			        				<span class="badge">返信</span>
+			        			</c:if>
 								<a class="title" href="Kai_conContent.action?rd_id=${resident.rd_id}&rt_id=${relatives.rt_id}&me_id=${m.me_id}">${m.title}</a>
+								</div>
 							</li>
 						</c:forEach>
 					</ul>

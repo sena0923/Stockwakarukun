@@ -7,9 +7,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import Dao.MessageDao;
+import Dao.Message_choiceDao;
 import Dao.RelativesDao;
 import Dao.ResidentDao;
 import bean.Message;
+import bean.Message_choice;
 import bean.Relatives;
 import bean.Resident;
 import tool.Action;
@@ -29,6 +31,8 @@ public class Kai_conContentAction extends Action{
 		Relatives relatives = new Relatives();//親族Bean
 		MessageDao messageDao = new MessageDao();
 		Message message = new Message();
+		Message_choiceDao me_chDao = new Message_choiceDao();
+		Message_choice me_ch = new Message_choice();
 
 
 		rd_id = req.getParameter("rd_id");
@@ -40,6 +44,15 @@ public class Kai_conContentAction extends Action{
 		System.out.println(me_id);
 
 		List<Message> list = messageDao.get(rt_id);
+
+		for (Message m : list) {
+			int meId = Integer.parseInt(m.getMe_id());
+
+			me_ch= me_chDao.getOneByMeId(meId);
+
+			m.setMessage_choice(me_ch);
+		}
+
 		// 日付の降順にソート
 		list.sort(Comparator.comparing(Message::getDa_ti).reversed());
 
