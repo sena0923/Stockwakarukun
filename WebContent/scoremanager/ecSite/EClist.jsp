@@ -36,7 +36,12 @@
 <ul>
     <c:forEach var="goods" items="${goodsList}">
     <li>
-        <img src="/images/101.png" width="150" height="150">
+      <img
+  src="${pageContext.request.contextPath}/image?name=${goods.goods_id}.png"
+  width="150"
+  height="150"
+>
+
 
         商品名: ${goods.goods_name}　
         価格: ${goods.price}円　
@@ -62,7 +67,6 @@
     </li>
 </c:forEach>
 </ul>
-
 </div>
 
 <script>
