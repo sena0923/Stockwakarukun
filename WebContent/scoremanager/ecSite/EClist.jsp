@@ -35,28 +35,32 @@
 
 <ul>
     <c:forEach var="goods" items="${goodsList}">
-        <li>
-            <!-- ★固定画像を簡単に表示 -->
-            <img src="/images/101.png" width="150" height="150">
+    <li>
+        <img src="/images/101.png" width="150" height="150">
 
-            商品名: ${goods.goods_name}　
-            価格: ${goods.price}円　
-            在庫: ${goods.stock}
+        商品名: ${goods.goods_name}　
+        価格: ${goods.price}円　
+        在庫: ${goods.stock}
 
-            <!-- 🔽ここで条件分岐 -->
-            <c:choose>
-                <c:when test="${not empty goods.stock and goods.stock ne '0'}">
-                    <a href="AddCartExecute.action" onclick="addToCart('${goods.goods_id}'); return false;">
-                        カートに入れる
-                    </a>
-                </c:when>
-                <c:otherwise>
-                    <span style="color:red; font-weight:bold;">在庫なし</span>
-                </c:otherwise>
-            </c:choose>
-
-        </li>
-    </c:forEach>
+        <c:choose>
+            <c:when test="${not empty goods.stock and goods.stock ne '0'}">
+                <!-- フォームで必要な情報をPOST -->
+                <form action="AddCartExecute.action" method="post" style="display:inline;">
+                    <input type="hidden" name="course_id" value="${goods.course_id}">
+                    <input type="hidden" name="rd_id" value="${sessionScope.rd_id}">
+                    <input type="hidden" name="goods_id" value="${goods.goods_id}">
+                    <input type="hidden" name="goods_name" value="${goods.goods_name}">
+                    <input type="hidden" name="price" value="${goods.price}">
+                    <input type="hidden" name="quantity" value="1">
+                    <input type="submit" value="カートに入れる">
+                </form>
+            </c:when>
+            <c:otherwise>
+                <span style="color:red; font-weight:bold;">在庫なし</span>
+            </c:otherwise>
+        </c:choose>
+    </li>
+</c:forEach>
 </ul>
 
 </div>
