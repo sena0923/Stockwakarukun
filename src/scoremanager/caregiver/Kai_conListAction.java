@@ -47,7 +47,7 @@ public class Kai_conListAction extends Action{
 
 
 		for (Message m : list) {
-			int meId = Integer.parseInt(m.getMe_id());
+			String meId = m.getMe_id();
 
 			me_ch= me_chDao.getOneByMeId(meId);
 

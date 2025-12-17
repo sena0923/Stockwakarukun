@@ -56,31 +56,37 @@
 
 					    <c:choose>
 
-					        <%-- 親族から返信がある場合 --%>
-					        <c:when test="${message.sin_message_choice != null}">
+					         <%--親族から返信がある場合 --%>
+					        <c:when test="${message.message_choice.choise != null}">
 
 					            <c:choose>
 
-					                <c:when test="${message.sin_message_choice.sin_choise == 'YES'}">
-					                    <p>YES</p>
+									<%-- Yes/No の返信だった場合 --%>
+					                <c:when test="${message.message_choice.choise_num == 1}">
+					                    <c:choose>
+					                    	<c:when test="${message.message_choice.choise == true}">
+					                    		<p>Yes</p>
+					                    	</c:when>
+					                    	<c:when test="${message.message_choice.choise == false}">
+					                    		<p>No</p>
+					                    	</c:when>
+					                    </c:choose>
 					                </c:when>
 
-					                <c:when test="${message.sin_message_choice.sin_choise == 'NO'}">
-					                    <p>NO</p>
-					                </c:when>
-
-					                <c:when test="${message.sin_message_choice.sin_choise == 'CONFIRMED'}">
+									<%-- 確認しました の返信だった場合 --%>
+					                <c:when test="${message.message_choice.choise_num == 2}">
 					                    <p>確認しました</p>
 					                </c:when>
+
 
 					            </c:choose>
 
 					        </c:when>
 
-					        <%-- まだ返信がない場合 --%>
+					         <%-- まだ返信がない場合 --%>
 					        <c:otherwise>
 					            <p>------</p>
-					        </c:otherwise>
+					         </c:otherwise>
 
 					    </c:choose>
 					</div>
