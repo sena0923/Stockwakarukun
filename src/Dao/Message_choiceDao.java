@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import bean.Message_choice;
+import bean.Sin_Message_choice;
 
 public class Message_choiceDao extends Dao {
 
@@ -106,44 +107,37 @@ public class Message_choiceDao extends Dao {
      * @return
      * @throws Exception
      */
-    public boolean save(Message_choice message_choice) throws Exception {
+	public boolean save(Message_choice message_choice) throws Exception {
 
-        String sql = "INSERT INTO MESSAGE_CHOICE (me_id, choise_num, choise) VALUES (?, ?, ?)";
+	    String sql = "INSERT INTO MESSAGE_CHOICE (me_id, choise_num, choise) VALUES (?, ?, ?)";
 
-        try (Connection connection = getConnection();
-             PreparedStatement statement = connection.prepareStatement(sql)) {
+	    try (Connection connection = getConnection();
+	         PreparedStatement statement = connection.prepareStatement(sql)) {
 
-            // me_id
-            statement.setInt(1, message_choice.getMe_id());
+	        // me_id
+	        statement.setInt(1, message_choice.getMe_id());
 
-            // choise_num（1 or 2）
-            int choiceNum = message_choice.getChoise_num();
-            statement.setInt(2, choiceNum);
+	        // choise_num
+	        int choiceNum = message_choice.getChoise_num();
+	        if (choiceNum != 1 && choiceNum != 2) {
+	            throw new Exception("不正な返信形式です: " + choiceNum);
+	        }
+	        statement.setInt(2, choiceNum);
 
-            // ★ 作成時は必ず NULL を入れる（返信時に更新）
-            statement.setNull(3, java.sql.Types.BOOLEAN);
+	        // ★ 1=true, 2=false
+	        boolean choiseValue = (choiceNum == 1);
+	        statement.setBoolean(3, choiseValue);
 
-            int count = statement.executeUpdate();
-            return count == 1;
+	        return statement.executeUpdate() == 1;
 
-        } catch (SQLException e) {
-            throw new Exception("メッセージ保存エラー", e);
-        }
-    }
+	    } catch (SQLException e) {
+	        throw new Exception("メッセージ保存エラー", e);
+	    }
+	}
 
 
-    /**
-     * 親族が返信するときに，choiceをupdateする
-     * １[Yes or No] => yesを選択=true  /  noを選択=false
-     * ２[確認しました] => チェックボタンをクリック=true
-     *
-     * ===★親族が返信して始めて，メッセージチョイスデータテーブルのchoiceにデータが入る★===
-     *
-     * @param meId
-     * @param choiceValue
-     * @return
-     * @throws Exception
-     */
+
+    //親族返信内容保存
 	public boolean updateChoiceValue(int meId, Boolean choiceValue) throws Exception {
 		String sql = "UPDATE MESSAGE_CHOICE SET choise = ? WHERE me_id = ?";
 
@@ -164,5 +158,27 @@ public class Message_choiceDao extends Dao {
 			throw new Exception("メッセージチョイス更新エラー", e);
 		}
 	}
+
+	public void update(Sin_Message_choice mc) throws Exception {
+
+		Connection con = getConnection();
+		PreparedStatement ps = null;
+
+		String sql =
+			"INSERT INTO SIN_MESSAGE_CHOICE (me_id, sin_choise,) VALUES (?, ?)";
+
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setString(1, mc.getSin_Choise());
+			ps.setInt(2, mc.getMe_id());
+
+			ps.executeUpdate();
+
+		} finally {
+			if (ps != null) ps.close();
+			if (con != null) con.close();
+		}
+	}
+
 
 }
