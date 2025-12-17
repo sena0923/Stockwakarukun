@@ -55,3 +55,17 @@ button {
    transform: translateY(-2px);
    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
+.ec-page ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    list-style: none;
+    padding: 0;
+}
+
+.ec-page li {
+    border: 1px solid #ccc;
+    padding: 10px;
+    width: 220px;
+    text-align: center;
+}
