@@ -38,6 +38,7 @@ public class Goods implements Serializable {
 	private int stock;
 
 
+
 	/**
 	 * ゲッター・セッター
 	 */
