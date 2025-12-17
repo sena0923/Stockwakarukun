@@ -24,8 +24,9 @@ public class CartDao {
             ps.setString(1, cart.getCourse_id());
             ps.setString(2, cart.getRd_id());
             ps.setString(3, cart.getGoods_id());
-            ps.setInt(4, cart.getQuantity());
-            ps.setInt(5, cart.getPrice());
+            ps.setString(4, cart.getGoods_name());
+            ps.setInt(5, cart.getQuantity());
+            ps.setInt(6, cart.getPrice());
             ps.executeUpdate();
         }
     }
@@ -61,6 +62,7 @@ public class CartDao {
                     cart.setCourse_id(rs.getString("course_id"));
                     cart.setRd_id(rs.getString("rd_id"));
                     cart.setGoods_id(rs.getString("goods_id"));
+                    cart.setGoods_name(rs.getString("goods_name"));
                     cart.setQuantity(rs.getInt("quantity"));
                     cart.setPrice(rs.getInt("price"));
                     list.add(cart);
