@@ -19,7 +19,7 @@ public class CartDao {
 
     /** カートに商品を追加 */
     public void addItem(Cart cart) throws SQLException {
-        String sql = "INSERT INTO cart(course_id, rd_id, goods_id, quantity, price) VALUES(?,?,?,?,?)";
+        String sql = "INSERT INTO cart(course_id, rd_id, goods_id, goods_name, quantity, price) VALUES(?,?,?,?,?)";
         try (PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setString(1, cart.getCourse_id());
             ps.setString(2, cart.getRd_id());
@@ -33,7 +33,7 @@ public class CartDao {
 
     /** 数量更新 */
     public void updateQuantity(String courseId, int quantity) throws SQLException {
-        String sql = "UPDATE cart SET quantity = ? WHERE course_id = ?";
+        String sql = "UPDATE cart SET quantity = ? WHERE course_id = ? AND rd_id = ?";
         try (PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setInt(1, quantity);
             ps.setString(2, courseId);
@@ -43,7 +43,7 @@ public class CartDao {
 
     /** 商品削除 */
     public void removeItem(String courseId) throws SQLException {
-        String sql = "DELETE FROM cart WHERE course_id = ?";
+        String sql = "DELETE FROM cart WHERE course_id = ? AND rd_id = ?";;
         try (PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setString(1, courseId);
             ps.executeUpdate();
@@ -53,7 +53,7 @@ public class CartDao {
     /** カート一覧取得（入居者IDごと） */
     public List<Cart> getCartList(String rdId) throws SQLException {
         List<Cart> list = new ArrayList<>();
-        String sql = "SELECT * FROM cart WHERE rd_id = ?";
+        String sql = "SELECT course_id, rd_id, goods_id, goods_name, quantity, price FROM cart WHERE rd_id = ?";
         try (PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setString(1, rdId);
             try (ResultSet rs = ps.executeQuery()) {
