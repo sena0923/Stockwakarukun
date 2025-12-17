@@ -58,7 +58,6 @@ public class Kai_conContentAction extends Action{
 
 
 
-
 		resident = rdDao.get(rd_id);
 		relatives = rtDao.get2(rd_id);
 
@@ -76,5 +75,3 @@ public class Kai_conContentAction extends Action{
 
 	}
 }
-
-

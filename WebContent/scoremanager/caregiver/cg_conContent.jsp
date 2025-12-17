@@ -52,11 +52,39 @@
 					</div>
 
 					<div class="reply">
-						<a>返信</a>
-						<%-- 返信があった場合，if処理で表示 --%>
-						<%-- まだ無い場合，「-----」 --%>
-						<p>------</p>
+					    <a>返信</a>
+
+					    <c:choose>
+
+					        <%-- 親族から返信がある場合 --%>
+					        <c:when test="${message.sin_message_choice != null}">
+
+					            <c:choose>
+
+					                <c:when test="${message.sin_message_choice.sin_choise == 'YES'}">
+					                    <p>YES</p>
+					                </c:when>
+
+					                <c:when test="${message.sin_message_choice.sin_choise == 'NO'}">
+					                    <p>NO</p>
+					                </c:when>
+
+					                <c:when test="${message.sin_message_choice.sin_choise == 'CONFIRMED'}">
+					                    <p>確認しました</p>
+					                </c:when>
+
+					            </c:choose>
+
+					        </c:when>
+
+					        <%-- まだ返信がない場合 --%>
+					        <c:otherwise>
+					            <p>------</p>
+					        </c:otherwise>
+
+					    </c:choose>
 					</div>
+
 
 					<div class="text-right">
 						<input type="hidden" name="rd_id" value="${resident.rd_id}">
