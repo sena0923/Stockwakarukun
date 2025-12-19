@@ -2,6 +2,7 @@ package scoremanager.ECsite;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.io.OutputStream;
 
 import javax.servlet.ServletException;
@@ -14,41 +15,34 @@ import javax.servlet.http.HttpServletResponse;
 public class ImageServlet extends HttpServlet {
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp)
-            throws ServletException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse res)
+            throws ServletException, IOException {
 
-        try {
-            String name = req.getParameter("name");
+        String name = req.getParameter("name");
+        if (name == null || name.isEmpty()) {
+            return;
+        }
 
-            // 画像の実体（例：WebContent外でもOK）
-            String imagePath = getServletContext()
-                    .getRealPath("/WEB-INF/images/" + name);
+        // images フォルダの実体パスを取得
+        String imagePath = getServletContext().getRealPath("/images/" + name);
+        File file = new File(imagePath);
 
-            File file = new File(imagePath);
+        // 画像が存在しない場合は noimage.png
+        if (!file.exists()) {
+            file = new File(getServletContext().getRealPath("/images/noimage.png"));
+        }
 
-            // 無い場合は noimage
-            if (!file.exists()) {
-                imagePath = getServletContext()
-                        .getRealPath("/WEB-INF/images/noimage.png");
-                file = new File(imagePath);
-            }
+        res.setContentType("image/png");
 
-            resp.setContentType("image/png");
-
-            FileInputStream fis = new FileInputStream(file);
-            OutputStream os = resp.getOutputStream();
-
-            byte[] buf = new byte[1024];
+        try (
+            FileInputStream in = new FileInputStream(file);
+            OutputStream out = res.getOutputStream();
+        ) {
+            byte[] buffer = new byte[1024];
             int len;
-            while ((len = fis.read(buf)) != -1) {
-                os.write(buf, 0, len);
+            while ((len = in.read(buffer)) != -1) {
+                out.write(buffer, 0, len);
             }
-
-            fis.close();
-            os.close();
-
-        } catch (Exception e) {
-            throw new ServletException(e);
         }
     }
 }
