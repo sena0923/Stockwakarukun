@@ -15,7 +15,7 @@
 	</c:param>
 
 	<c:param name="content">
-		<form class="container" action="#" method="get">
+		<form class="container" action="Sin_conContentExecute.action" method="get">
 
 			<a class="back-con" href="Sin_conList.action?rd_id=${resident.rd_id}">戻る</a>
 
@@ -35,7 +35,7 @@
 									<fmt:formatDate value="${m.da_ti}" pattern="yyyy/MM/dd"/>
 								</span>
 								<div class="title_content">
-									<c:if test="${m.message_choice != null}">
+									<c:if test="${m.message_choice.choise != null}">
 										<span class="badge">返信</span>
 									</c:if>
 									<a class="title"
@@ -67,29 +67,65 @@
 
 					    <c:choose>
 
-					        <%-- ① YES / NO を表示（choise = true） --%>
-					        <c:when test="${message.message_choice != null && message.message_choice.choise}">
-					            <label>
-					                <input type="radio" name="cheak" value="YES">
-					                YES
-					            </label>
-					            <label style="margin-left:20px;">
-					                <input type="radio" name="cheak" value="NO">
-					                NO
-					            </label>
+							<%-- 返信をまだしていない場合 --%>
+							<c:when test="${message.message_choice.choise == null}">
+
+								<c:choose>
+
+									<%-- Yes/No を表示する場合 --%>
+									<c:when test="${message.message_choice.choise_num == 1}">
+										<label>
+											<input type="radio" name="cheak" value=true>
+												YES
+										</label>
+										<label style="margin-left:20px;">
+					 						<input type="radio" name="cheak" value=false>
+					 							NO
+					 					</label>
+									</c:when>
+
+									<%-- 確認しました を表示する場合 --%>
+					                <c:when test="${message.message_choice.choise_num == 2}">
+										<label>
+											<input type="checkbox" name="cheak" value=true>
+												確認しました
+										</label>
+									</c:when>
+
+									<%-- 返信不要 を表示する場合 --%>
+									<c:when test="${message.message_choice.choise_num == 3}">
+										<p>返信不要です</p>
+									</c:when>
+
+								</c:choose>
+
 					        </c:when>
 
-					        <%-- ② 確認しました（choise = false） --%>
-					        <c:when test="${message.message_choice != null && !message.message_choice.choise}">
-					            <label>
-					                <input type="checkbox" name="cheak" value="CONFIRMED">
-					                確認しました
-					            </label>
-					        </c:when>
 
-					        <%-- ③ MESSAGE_CHOICE がない --%>
-					        <c:otherwise>
-					            <p>------</p>
+					        <%-- すでに返信している場合 --%>
+							<c:otherwise>
+							<p>返信済みです</p>
+
+								<c:choose>
+
+									<%-- Yes/No の返信だった場合 --%>
+					                <c:when test="${message.message_choice.choise_num == 1}">
+					                    <c:choose>
+					                    	<c:when test="${message.message_choice.choise == true}">
+					                    		<p>Yes</p>
+					                    	</c:when>
+					                    	<c:when test="${message.message_choice.choise == false}">
+					                    		<p>No</p>
+					                    	</c:when>
+					                    </c:choose>
+					                </c:when>
+
+									<%-- 確認しました の返信だった場合 --%>
+					                <c:when test="${message.message_choice.choise_num == 2}">
+					                    <p>確認しました</p>
+					                </c:when>
+
+					            </c:choose>
 					        </c:otherwise>
 
 					    </c:choose>

@@ -146,18 +146,14 @@ public class Message_choiceDao extends Dao {
      * @return
      * @throws Exception
      */
-	public boolean updateChoiceValue(int meId, Boolean choiceValue) throws Exception {
+	public boolean updateChoiceValue(String meId, String choiceValue) throws Exception {
 		String sql = "UPDATE MESSAGE_CHOICE SET choise = ? WHERE me_id = ?";
 
 		try (Connection connection = getConnection();
 			PreparedStatement statement = connection.prepareStatement(sql)) {
 
-			if (choiceValue == null) {
-				statement.setNull(1, java.sql.Types.BOOLEAN);
-			} else {
-				statement.setBoolean(1, choiceValue);
-			}
-			statement.setInt(2, meId);
+			statement.setString(1, choiceValue);
+			statement.setString(2, meId);
 
 			int count = statement.executeUpdate();
 			return count == 1;

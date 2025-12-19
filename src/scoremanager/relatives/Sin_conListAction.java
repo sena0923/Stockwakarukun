@@ -47,7 +47,7 @@ public class Sin_conListAction extends Action {
 
 		List<Message> list = messageDao.get(rt.getRt_id());
 		for (Message m : list) {
-			int meId = Integer.parseInt(m.getMe_id());
+			String meId = m.getMe_id();
 
 			me_ch= me_chDao.getOneByMeId(meId);
 

@@ -63,7 +63,7 @@ public class Kai_conCreateExecuteAction extends Action{
 
         // メッセージチョイスを保存
         choice.setMe_id(meId);
-        choice.setChoise_num(choise_num);  // ← 1 or 2 が入る
+        choice.setChoise_num(choise_num);  // ← 1から3のいずれか が入る
 
         boolean savedChoice = message_choiceDao.save(choice);
 

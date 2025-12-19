@@ -1,64 +1,70 @@
-<%-- 親族 送信完了画面 --%>
+<%-- 連絡帳　親族＿連絡帳詳細画面 --%>
+
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <title>送信完了</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    body {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      height: 70vh;
-      margin: 0;
-      font-family: "Segoe UI", sans-serif;
-      background-color: #f5f5f5;
-      padding: 20px;
-      box-sizing: border-box;
-      text-align: center;
-    }
+<%@ include file="../../baseKai.jsp" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-    h1 {
-      color: #333;
-      margin-bottom: 30px;
-      font-size: 24px;
-    }
+<c:import url="../../baseSin.jsp">
+	<c:param name="title">
+		連絡帳内容
+	</c:param>
 
-    button {
-      padding: 14px 30px;
-      font-size: 18px;
-      font-weight: bold;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      color: #fff;
-      background-color: #4CAF50;
-      transition: background-color 0.3s, transform 0.2s;
-      width: 100%;
-      max-width: 300px;
-    }
+	<c:param name="scripts">
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/conContent.css">
+	</c:param>
 
-    button:hover {
-      background-color: #45a049;
-      transform: translateY(-2px);
-    }
+	<c:param name="content">
+		<form class="container" action="Sin_conContentExecute.action" method="get">
 
-    @media (max-width: 400px) {
-      h1 {
-        font-size: 20px;
-      }
-      button {
-        font-size: 16px;
-        padding: 12px 20px;
-      }
-    }
-  </style>
-</head>
-<body>
-  <h1>送信が完了しました</h1>
-  <button onclick="location.href='./rt_conContent.jsp'">メッセージ一覧へ</button>
-</body>
-</html>
+			<a class="back-con" href="Sin_conList.action?rd_id=${resident.rd_id}">戻る</a>
+
+		    <div class="recipient">
+		    	<h1>連絡帳　内容</h1>
+		    	<a>入居者：${resident.name} さん</a>
+		    </div>
+
+		    <div class="con-main">
+
+			    <%-- 左側：一覧 --%>
+			    <div class="con-list">
+			    	<ul>
+						<c:forEach var="m" items="${list}">
+							<li class="notification ${m.me_id == param.me_id ? 'active' : ''}">
+								<span class="date">
+									<fmt:formatDate value="${m.da_ti}" pattern="yyyy/MM/dd"/>
+								</span>
+								<div class="title_content">
+									<c:if test="${m.message_choice.choise != null}">
+										<span class="badge">返信</span>
+									</c:if>
+									<a class="title"
+									   href="Sin_conContent.action?rd_id=${resident.rd_id}&rt_id=${relatives.rt_id}&me_id=${m.me_id}">
+										${m.title}
+									</a>
+								</div>
+							</li>
+						</c:forEach>
+					</ul>
+			    </div>
+
+			    <%-- 右側：詳細 --%>
+			    <div class="input-list">
+				<p>返信 ありがとうございます。</p>
+				</div>
+			</div>
+
+			<script>
+				const inputs = document.querySelectorAll('input[name="cheak"]');
+				const submitBtn = document.getElementById('submitBtn');
+
+				inputs.forEach(input => {
+					input.addEventListener('change', () => {
+						submitBtn.disabled = false;
+					});
+				});
+			</script>
+
+		</form>
+	</c:param>
+</c:import>

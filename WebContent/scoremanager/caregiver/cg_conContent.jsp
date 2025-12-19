@@ -65,28 +65,51 @@
 					                <c:when test="${message.message_choice.choise_num == 1}">
 					                    <c:choose>
 					                    	<c:when test="${message.message_choice.choise == true}">
-					                    		<p>Yes</p>
+					                    		<p>返信済みです</p>
+					                    		<p>●Yes</p>
 					                    	</c:when>
 					                    	<c:when test="${message.message_choice.choise == false}">
-					                    		<p>No</p>
+					                    		<p>返信済みです</p>
+					                    		<p>●No</p>
 					                    	</c:when>
 					                    </c:choose>
 					                </c:when>
 
 									<%-- 確認しました の返信だった場合 --%>
 					                <c:when test="${message.message_choice.choise_num == 2}">
-					                    <p>確認しました</p>
+					                	<p>返信済みです</p>
+					                    <p>●確認しました</p>
 					                </c:when>
-
 
 					            </c:choose>
 
 					        </c:when>
 
-					         <%-- まだ返信がない場合 --%>
-					        <c:otherwise>
-					            <p>------</p>
-					         </c:otherwise>
+							<%-- まだ返信がない場合 --%>
+							<c:otherwise>
+
+								<c:choose>
+
+									<%-- Yes/No の返信だった場合 --%>
+					                <c:when test="${message.message_choice.choise_num == 1}">
+					                	<p>返信は ありません</p>
+										<p>〇Yes  〇No</p>
+					                </c:when>
+
+									<%-- 確認しました の返信だった場合 --%>
+					                <c:when test="${message.message_choice.choise_num == 2}">
+					                    <p>返信は ありません</p>
+										<p>〇確認しました</p>
+					                </c:when>
+
+									<%-- 返信不要 だった場合 --%>
+									<c:when test="${message.message_choice.choise_num == 3}">
+										<p>〇返信不要です</p>
+					                </c:when>
+
+					            </c:choose>
+
+							</c:otherwise>
 
 					    </c:choose>
 					</div>

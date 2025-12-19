@@ -16,7 +16,7 @@ import bean.Relatives;
 import bean.Resident;
 import tool.Action;
 
-public class Sin_conContentAction extends Action{
+public class Sin_conContentExecuteAction extends Action{
 
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse res) throws Exception {
@@ -41,12 +41,18 @@ public class Sin_conContentAction extends Action{
 		rd_id = req.getParameter("rd_id");
 		rt_id = req.getParameter("rt_id");
 		me_id = req.getParameter("me_id");
+		cheak = req.getParameter("cheak");
 
+
+		//返信処理
+		boolean Completed = me_chDao.updateChoiceValue(me_id , cheak);
+
+		//デバック
 		System.out.println(rd_id);
 		System.out.println(rt_id);
 		System.out.println(me_id);
 
-
+		//左の連絡帳リストを取得するための処理
 		List<Message> list = messageDao.get(rt_id);
 		for (Message m : list) {
 			String meId = m.getMe_id();
@@ -62,19 +68,11 @@ public class Sin_conContentAction extends Action{
 
 
 
+
 		resident = rdDao.get(rd_id);
 		relatives = rtDao.get2(rd_id);
 
-		//選択したメッセージの内容を取得
-		message = messageDao.getone(me_id);
-
-		//選択したメッセージのchoice(返信)テーブルのデータを取得
-		Message_choice detailChoice =
-		me_chDao.getOneByMeId(me_id);
-		//取得した返信データをメッセージbeanにセットする
-		message.setMessage_choice(detailChoice);
-
-
+		req.setAttribute("Completed" , Completed);
 		req.setAttribute("resident", resident);
 		req.setAttribute("relatives", relatives);
 		req.setAttribute("message", message);
@@ -82,7 +80,7 @@ public class Sin_conContentAction extends Action{
 
 
 		//フォワード
-		req.getRequestDispatcher("rt_conContent.jsp").forward(req, res);
+		req.getRequestDispatcher("rt_conContentComplete.jsp").forward(req, res);
 
 
 	}
