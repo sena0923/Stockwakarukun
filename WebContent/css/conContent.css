@@ -150,6 +150,7 @@ textarea {
 
 
 .con p {
+
 	white-space: pre-wrap;   /* 改行・連続スペースを保持して折り返し */
 	word-wrap: break-word;   /* 長い単語も折り返し */
 }
@@ -157,8 +158,6 @@ textarea {
 
 .con{
 	margin: 10px auto; /* ヘッダー分の余白を確保 */
-
-
 }
 
 .taitle,

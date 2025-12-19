@@ -40,7 +40,7 @@ public class AddCartExecute extends HttpServlet {
 
         // DB接続とDAO呼び出し
         try (Connection conn = DriverManager.getConnection(
-                "jdbc:mysql://localhost:3306/yourdb", "user", "password")) {
+                "jdbc:h2:~/ecdb", "sa", "")) {
 
             CartDao dao = new CartDao(conn);
             dao.addItem(cart);

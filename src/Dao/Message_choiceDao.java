@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import bean.Message_choice;
-import bean.Sin_Message_choice;
 
 public class Message_choiceDao extends Dao {
 
@@ -71,12 +70,12 @@ public class Message_choiceDao extends Dao {
      * @throws Exception
      */
 
-	public Message_choice getOneByMeId(int meId) throws Exception {
+	public Message_choice getOneByMeId(String meId) throws Exception {
 		String sql = "SELECT me_id, choise_num, choise FROM message_choice WHERE me_id = ?";
 		try (Connection connection = getConnection();
 			PreparedStatement ps = connection.prepareStatement(sql)) {
 
-			ps.setInt(1, meId);
+			ps.setString(1, meId);
 
 			try (ResultSet rs = ps.executeQuery()) {
 				if (rs.next()) {
@@ -135,9 +134,18 @@ public class Message_choiceDao extends Dao {
 	    }
 	}
 
-
-
-    //親族返信内容保存
+	/**
+     * 親族が返信するときに，choiceをupdateする
+     * １[Yes or No] => yesを選択=true  /  noを選択=false
+     * ２[確認しました] => チェックボタンをクリック=true
+     *
+     * ===★親族が返信して始めて，メッセージチョイスデータテーブルのchoiceにデータが入る★===
+     *
+     * @param meId
+     * @param choiceValue
+     * @return
+     * @throws Exception
+     */
 	public boolean updateChoiceValue(int meId, Boolean choiceValue) throws Exception {
 		String sql = "UPDATE MESSAGE_CHOICE SET choise = ? WHERE me_id = ?";
 
@@ -156,27 +164,6 @@ public class Message_choiceDao extends Dao {
 
 		} catch (SQLException e) {
 			throw new Exception("メッセージチョイス更新エラー", e);
-		}
-	}
-
-	public void update(Sin_Message_choice mc) throws Exception {
-
-		Connection con = getConnection();
-		PreparedStatement ps = null;
-
-		String sql =
-			"INSERT INTO SIN_MESSAGE_CHOICE (me_id, sin_choise,) VALUES (?, ?)";
-
-		try {
-			ps = con.prepareStatement(sql);
-			ps.setString(1, mc.getSin_Choise());
-			ps.setInt(2, mc.getMe_id());
-
-			ps.executeUpdate();
-
-		} finally {
-			if (ps != null) ps.close();
-			if (con != null) con.close();
 		}
 	}
 

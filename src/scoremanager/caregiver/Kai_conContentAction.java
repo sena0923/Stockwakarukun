@@ -46,7 +46,7 @@ public class Kai_conContentAction extends Action{
 		List<Message> list = messageDao.get(rt_id);
 
 		for (Message m : list) {
-			int meId = Integer.parseInt(m.getMe_id());
+			String meId = m.getMe_id();
 
 			me_ch= me_chDao.getOneByMeId(meId);
 
@@ -56,12 +56,14 @@ public class Kai_conContentAction extends Action{
 		// 日付の降順にソート
 		list.sort(Comparator.comparing(Message::getDa_ti).reversed());
 
+		Message_choice meone_ch = me_chDao.getOneByMeId(me_id);
 
 
 		resident = rdDao.get(rd_id);
 		relatives = rtDao.get2(rd_id);
 
 		message = messageDao.getone(me_id);
+		message.setMessage_choice(meone_ch);
 
 		req.setAttribute("resident", resident);
 		req.setAttribute("relatives", relatives);
