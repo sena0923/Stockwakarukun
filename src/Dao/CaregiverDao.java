@@ -53,6 +53,8 @@ public class CaregiverDao extends Dao {
 
         return caregiver;
     }
+
+
 		public boolean save(Caregiver caregiver) throws Exception {
 			// コネクションを確立
 			Connection connection = getConnection();

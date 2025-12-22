@@ -16,8 +16,8 @@
 	</c:param>
 
 	<c:param name="content">
-		<form class="container" action="#" method="get">
-			<a href="" class="back">戻る</a>
+		<form class="container" action="Kai_infoChange.action" method="get">
+			<a href="KaiMenu.action" class="back">戻る</a>
 
 			<h1>アカウント情報</h1>
 
@@ -32,6 +32,7 @@
 
 
 	        <div class="button-group">
+				<input type="hidden" name="cg_id" value="${caregiver.staffid}">
 	            <button class="btn-info" type="submit">変更</button>
 
 			</div>

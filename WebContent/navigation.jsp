@@ -9,8 +9,8 @@
 
 	<ul class="">
 		<li class="nav-item"><a href="RdList.action">入居者一覧</a></li>
-		<li class="nab-item"><a href="">連絡帳</a></li>
-		<li class="nav-item"><a href="#">マイページ</a></li>
+		<li class="nab-item"><a href="Kai_conList.action">連絡帳</a></li>
+		<li class="nav-item"><a href="Kai_account.action">マイページ</a></li>
 		<li class="nav-item"><a href="logout.jsp">ログアウト</a></li>
 	</ul>
 </div>

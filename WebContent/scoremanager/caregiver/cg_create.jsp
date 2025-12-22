@@ -50,9 +50,6 @@
 	        </div>
 
 
-
-
-
         <div class="select">
             <button class="btn" type="submit">新規登録</button>
             <a href="KaiLogin.action">ログイン</a>
