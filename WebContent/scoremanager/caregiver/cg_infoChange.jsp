@@ -41,7 +41,7 @@
 
 
         <div class="select">
-        	<input type="hidden" name="cg_id" value="${cg.staffid}">
+        	<input type="hidden" name="cg_num" value="${cg.staffid}">
             <button class="btn" type="submit">変更</button>
             <a href="Kai_account.action?cg_num=${cg.staffid}">キャンセル</a>
         </div>

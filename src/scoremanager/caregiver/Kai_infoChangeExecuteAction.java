@@ -20,18 +20,18 @@ public class Kai_infoChangeExecuteAction extends Action {
 		String cg_pw = "";
 		String cg_pw2 = "";
 		String cg_name = "";
-		String cg_id = "";
+		String cg_num = "";
 		Caregiver caregiver = new Caregiver();
 		CaregiverDao cgDao = new CaregiverDao();
 		Map<String, String> errors = new HashMap<>(); // エラーメッセージ
 
 		//リクエストパラメーターの取得
-		cg_id = req.getParameter("cg_id");
+		cg_num = req.getParameter("cg_num");
 		cg_pw = req.getParameter("pw");
 		cg_pw2 = req.getParameter("pw_2");
 		cg_name = req.getParameter("name");
 
-		caregiver = cgDao.get(cg_id);
+		caregiver = cgDao.get(cg_num);
 
 
 		if (!cg_pw.equals(req.getParameter("pw_2"))) {
@@ -39,7 +39,7 @@ public class Kai_infoChangeExecuteAction extends Action {
 
 		} else {
 			// 介護士beanに科目情報をセット
-			caregiver.setStaffid(cg_id);
+			caregiver.setStaffid(cg_num);
 			caregiver.setName(cg_name);
 			caregiver.setPassword(cg_pw);
 			// saveメソッドで情報を登録
@@ -49,7 +49,7 @@ public class Kai_infoChangeExecuteAction extends Action {
 
 		// JSPへフォワード
 		if (errors.isEmpty()) { // エラーメッセージがない場合
-			caregiver = cgDao.get(cg_id);
+			caregiver = cgDao.get(cg_num);
 			req.setAttribute("caregiver", caregiver);
 
 			// 登録完了画面にフォワード

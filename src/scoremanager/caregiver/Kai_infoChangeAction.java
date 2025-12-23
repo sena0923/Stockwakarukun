@@ -13,15 +13,15 @@ public class Kai_infoChangeAction extends Action {
 	public void execute(HttpServletRequest req, HttpServletResponse res) throws Exception {
 
 		//ローカル変数の宣言 1
-		String cg_id = "";
+		String cg_num = "";
 		CaregiverDao cgDao = new CaregiverDao();
 		Caregiver cg = new Caregiver();
 
 		//リクエストパラメータ―の取得 2
-		cg_id = req.getParameter("cg_id");
+		cg_num = req.getParameter("cg_num");
 
 		//ビジネスロジック 4
-		cg = cgDao.get(cg_id);
+		cg = cgDao.get(cg_num);
 		//DBへデータ保存 5
 		//なし
 
