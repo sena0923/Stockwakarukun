@@ -11,8 +11,10 @@
 <div class="header-right">
 <c:if test="${sessionScope.relatives.isAuthenticated()}">
 
+	<div class="header-name">
 		<span class="user">${sessionScope.relatives.getName()} さん</span>
 		<a class="logout-link" href="rtLogout.jsp">ログアウト</a>
+	</div>
 
 	<div class="hamburger" id="hamburger">
       <span></span>

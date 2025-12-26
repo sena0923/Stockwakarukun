@@ -11,9 +11,10 @@
 <div class="header-right">
 <c:if test="${sessionScope.resident.isAuthenticated()}">
 
+	<div class="header-name">
 		<span class="user">${sessionScope.resident.getName()} さん</span>
 		<a class="logout-link" href="rdLogoutCon.jsp">ログアウト</a>
-
+	</div>
 
 	<div class="hamburger" id="hamburger">
       <span></span>
@@ -22,7 +23,6 @@
     <nav id="nav">
       <a href="rd_stockList.jsp">ストック管理</a>
       <a href="../ecSite/EClist.jsp">ECサイト</a>
-      <%-- <a href="#">連絡帳</a> --%>
       <a href="rdInfoDisplay.jsp">マイページ</a>
       <a href="rdLogoutCon.jsp">ログアウト</a>
     </nav>

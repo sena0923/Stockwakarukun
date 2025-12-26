@@ -9,13 +9,12 @@
 	</c:param>
 
 	<c:param name="scripts">
-		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/stock.css">
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/stock_phone.css">
 	</c:param>
 
 	<c:param name="content">
 		<form class="container"  action="Nyu_ECstockUpdate.action"method="get">
-			<h1>== ストック管理画面 ==</h1>
-			<h2>${resident.name}さん</h2>
+			<h1>ストック管理画面</h1>
 
 			<div class="tab-container">
 				<a class="type_list non" href="Nyu_stockList.action?rd_id=${resident.rd_id}">個人ストック</a>
