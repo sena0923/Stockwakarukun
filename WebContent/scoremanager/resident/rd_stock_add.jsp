@@ -10,15 +10,12 @@
 	</c:param>
 
 	<c:param name="scripts">
-		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/stock_add.css">
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/stock_add_phone.css">
 	</c:param>
 
 	<c:param name="content">
 		<form class="container" action="Nyu_stockAddExecute.action" method="get">
 			<h1>ストック登録</h1>
-			<h2>${resident.name}さん</h2>
-
-
 
 			<div class="controll">
 				<label for="inve_name">ストック名</label>

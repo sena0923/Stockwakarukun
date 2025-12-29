@@ -226,7 +226,7 @@ nav a:hover {
 
 /***トップへ戻るボタンここまで***/
 
-/* ===== スマホ対応 ===== */
+/* ===== スマホ対応 =====
 @media (max-width: 600px) {
   header h1 {
     font-size: 1.2rem;
@@ -238,4 +238,4 @@ nav a:hover {
     width: 70vw;
   }
 }
-
+*/
