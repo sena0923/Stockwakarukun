@@ -16,7 +16,7 @@
 
 		<div class="container">
 			<h1>ストック更新が完了しました</h1>
-			<a href="Nyu_stockList.action?rd_id=${resident.rd_id}">ストック管理へ</a>
+			<a class="a" href="Nyu_stockList.action?rd_id=${resident.rd_id}">ストック管理へ</a>
 		</div>
 	</c:param>
 </c:import>
