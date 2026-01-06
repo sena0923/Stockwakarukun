@@ -52,7 +52,6 @@
 <img src="..." width="150" height="150">
 --%>
 
->
 
 
         <div>商品名：${goods.goods_name}</div>
