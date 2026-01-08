@@ -51,7 +51,7 @@
     <li>
 
  <img
-  src="${pageContext.request.contextPath}/images/${goods.goods_id}.png"
+  src="${pageContext.request.contextPath}${goods.image_path}"
   width="150"
   height="150"
   onerror="this.onerror=null; this.src='${pageContext.request.contextPath}/images/noimage.png';"

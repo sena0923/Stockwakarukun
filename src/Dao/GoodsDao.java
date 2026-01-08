@@ -66,7 +66,8 @@ public class GoodsDao extends Dao {
                 goods.setGoods_name(resultSet.getString("goods_name"));
                 goods.setPrice(resultSet.getInt("price"));
                 goods.setStock(resultSet.getInt("stock"));
-
+                goods.setImage_path(resultSet.getString("goods_imagepath"));
+//                System.out.println("GoodsDao:goods_imagepath:" + resultSet.getString("goods_imagepath"));
                 list.add(goods);
             }
 
