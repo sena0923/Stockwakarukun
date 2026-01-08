@@ -59,7 +59,7 @@
         <div>在庫：${goods.stock}</div>
 
         <c:choose>
-            <!-- ★ 正しい在庫判定（int） -->
+
             <c:when test="${goods.stock > 0}">
                 <form action="AddCartExecute.action" method="post">
                     <input type="hidden" name="goods_id" value="${goods.goods_id}">
