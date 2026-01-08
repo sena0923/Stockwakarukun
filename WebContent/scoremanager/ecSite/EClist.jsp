@@ -1,6 +1,8 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -48,12 +50,13 @@
 <c:forEach var="goods" items="${goodsList}">
     <li>
 
-  <img
+ <img
   src="${pageContext.request.contextPath}/images/${goods.goods_id}.png"
   width="150"
   height="150"
   onerror="this.onerror=null; this.src='${pageContext.request.contextPath}/images/noimage.png';"
   alt="商品画像">
+
 
 
 
