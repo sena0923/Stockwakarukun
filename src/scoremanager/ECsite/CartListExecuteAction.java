@@ -37,7 +37,7 @@ public class CartListExecuteAction extends HttpServlet {
             request.setAttribute("cartList", cartList);
             request.setAttribute("totalPrice", totalPrice);
 
-            request.getRequestDispatcher("/ECsite/cart.jsp").forward(request, response);
+            request.getRequestDispatcher("../ECsite/cart.jsp").forward(request, response);
 
         } catch (SQLException e) {
             throw new ServletException(e);
