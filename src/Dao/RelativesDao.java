@@ -272,6 +272,29 @@ public class RelativesDao extends Dao {
 			return false;
 		}
 	}
+	public boolean existsOver8Months(String rtId) throws Exception {
+
+	    Relatives relatives = get(rtId);
+	    if (relatives == null) return false;
+
+	    String rdId = relatives.getRd_id();
+
+	    String sql =
+	        "SELECT COUNT(*) FROM INDEVIDUAL_INVENTORY WHERE RD_ID = ? AND REGI_DATE <= DATEADD('MONTH', -8, CURRENT_TIMESTAMP)";
+
+	    try (Connection con = getConnection();
+	         PreparedStatement ps = con.prepareStatement(sql)) {
+
+	        ps.setString(1, rdId);
+
+	        try (ResultSet rs = ps.executeQuery()) {
+	            return rs.next() && rs.getInt(1) > 0;
+	        }
+	    }
+	}
+
+
+
 
 }
 
