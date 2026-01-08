@@ -10,6 +10,8 @@
 }
 
 
+
+
 h2 {
 	text-align: center;
 	margin-bottom: 25px;
@@ -29,13 +31,23 @@ form.content {
     margin-bottom: 15px;
 }
 
+.radio-item{
+	display: flex;
+}
 
 label {
     display: block;
     margin-bottom: 8px;
     font-weight: bold;
 	text-align: left; /* ラベルを左寄せ */
-	margin-left: 50px; /* 左から50px内側に移動 */
+	margin-left: 30px; /* 左から50px内側に移動 */
+}
+
+.co{
+	width: 100%;
+	margin-bottom: 5px;
+	font-size: 1.2rem;
+	display: block;
 }
 
 input {

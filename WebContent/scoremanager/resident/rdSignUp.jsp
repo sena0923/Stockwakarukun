@@ -80,7 +80,10 @@
           : "" %>
     </div>
 
-    <button class="btn2" type="submit">送信</button>
+	<div class="select">
+	    <button class="btn2" type="submit">新規登録</button>
+	    <a href="NyuLogin.action">ログイン</a>
+	</div>
 
   </form>
 

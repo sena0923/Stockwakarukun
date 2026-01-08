@@ -1,67 +1,34 @@
 <%-- 入居者アカウント情報表示画面 --%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<%@ page contentType="text/html; charset=UTF-8" language="java" %>
-<%@ include file="../../baseNyu.jsp" %>
-<link rel="stylesheet" href="../css/base.css">
+<c:import url="../../baseNyu.jsp">
+	<c:param name="title">
+		介護士アカウント表示
+	</c:param>
 
-<main>
-	<br><br>
-  	<h2 style="font-size: 50px;">ユーザー情報</h2>
+	<c:param name="scripts">
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/info.css">
+	</c:param>
 
-	<c:if test="${not empty resident}">
-	    <p>名前: ${resident.name}</p>
-	    <p>パスワード: ${resident.password}</p>
-  	</c:if>
+	<c:param name="content">
+		<form class="container" action="#" method="get">
+			<a href="NyuMenu.action" class="back">戻る</a>
+
+			<h1>アカウント情報</h1>
+
+			<div class="controll">
+			<a class="">入居者名：${resident.name}</a>
+			<br>
+			<a class="">パスワード：${resident.password}</a>
+	        </div>
 
 
-  	<div class="button-container">
-	    <button onclick="location.href='./rdHome.jsp'">戻る</button>
-	    <button onclick="location.href='./rdInfoChange.jsp'">変更する</button>
-  	</div>
-</main>
+	        <div class="button-group">
+				<a href="rdInfoChange.jsp" class="btn-info">変更</a>
 
-<style>
-  main {
-    font-family: "Hiragino Sans", "Meiryo", sans-serif;
-  }
-
-  h2 {
-    margin: 0;
-    height: 15vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  p {
-    margin: 0;
-    height: 10vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: bold;
-    color: #333;
-  }
-
-  .button-container {
-    display: flex;
-    gap: 15px;
-    justify-content: center;
-  }
-
-  button {
-    padding: 10px 20px;
-    font-size: 16px;
-    font-weight: bold;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    color: #fff;
-    background-color: #4CAF50;
-    transition: background-color 0.3s;
-  }
-
-  button:hover {
-    background-color: #45a049;
-  }
-</style>
+			</div>
+		</form>
+	</c:param>
+</c:import>

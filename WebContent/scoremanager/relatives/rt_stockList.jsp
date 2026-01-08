@@ -1,6 +1,7 @@
 <%-- 入居者の日用品のリストを表示／変更する画面 --%>
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <c:import url="../../baseSin.jsp">
 	<c:param name="title">
@@ -8,12 +9,12 @@
 	</c:param>
 
 	<c:param name="scripts">
-		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/stock.css">
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/stock_phone.css">
 	</c:param>
 
 	<c:param name="content">
 		<form class="container">
-			<h1>== ストック管理画面 ==</h1>
+			<h1>ストック管理画面</h1>
 			<h2>${resident.name}さん</h2>
 
 			<div class="tab-container">
@@ -31,7 +32,7 @@
 				<tr>
 					<td>${iiList.inve_name}</td>
 					<td>${iiList.inve_count}</td>
-					<td>${iiList.regi_date}</td>
+					<td><fmt:formatDate value="${iiList.regi_date}" pattern="yyyy-MM-dd" /></td>
 				</tr>
 			</c:forEach>
 			</table>

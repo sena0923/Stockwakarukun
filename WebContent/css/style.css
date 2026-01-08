@@ -75,22 +75,23 @@ input[type="radio"] {
 
 
 .btn2 {
-  display: block;
-  width: 60%;
-  max-width: 200px;
-  margin: 30px auto 0;
-  height: 45px;
-  font-size: 1.2rem;
-  color: #fff;
-  background-color: #4CAF50;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: 0.3s;
+	background: #4CAF50;
+	color: #fff;
+	border: none;
+	border-radius: 5px;
+	padding: 10px 25px;
+	font-size: 16px;
+	cursor: pointer;
+	font-weight: bold;
+	text-decoration: none;
+	display: block;
+	width: 40%;
+	text-align: center;
+	transition: background 0.2s, border-color 0.2s;
 }
 
-.btn2:hover {
-  background-color: #45a049;
+.btn:hover {
+	background: #45a049;
 }
 
 .error-message {
@@ -103,6 +104,13 @@ input[type="radio"] {
   font-size: 1rem;
   margin-top: 10px;
   font-weight: bold;
+}
+
+.select{
+    display: flex;              /* Flexboxを有効化 */
+    justify-content: center;    /* 横方向中央寄せ */
+    gap: 20px;                  /* ボタンとリンクの間に余白 */
+    margin-top: 20px;
 }
 
 .error {
