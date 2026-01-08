@@ -11,7 +11,7 @@
 	</c:param>
 
 	<c:param name="scripts">
-		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/conContent.css">
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/conContent_phone.css">
 	</c:param>
 
 	<c:param name="content">
@@ -19,14 +19,17 @@
 
 			<a class="back-con" href="Sin_conList.action?rd_id=${resident.rd_id}">戻る</a>
 
-		    <div class="recipient">
+			<div class="set">
 		    	<h1>連絡帳　内容</h1>
+
 		    	<a>入居者：${resident.name} さん</a>
 		    </div>
 
+
+
 		    <div class="con-main">
 
-			    <%-- 左側：一覧 --%>
+			    <%-- 左側：一覧
 			    <div class="con-list">
 			    	<ul>
 						<c:forEach var="m" items="${list}">
@@ -47,6 +50,7 @@
 						</c:forEach>
 					</ul>
 			    </div>
+			    --%>
 
 			    <%-- 右側：詳細 --%>
 			    <div class="input-list">

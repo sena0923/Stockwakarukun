@@ -1,0 +1,185 @@
+.container{
+	background: #ffffff;
+	padding: 15px 50px;
+	border-radius: 10px;
+	box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+	width: 400px;
+	max-width: 90%;
+	margin: 100px auto; /* ヘッダー分の余白を確保 */
+}
+
+.set{
+	text-align: center;
+}
+
+.set a{
+	font-family: "Noto Sans JP", "ヒラギノ角ゴシック", "Meiryo", sans-serif;
+	/*font-weight: bold;*/
+	color: #808080;
+	line-height: 2;
+}
+
+a.back-con{
+	display: block;
+	text-align: left;
+	margin: 0;
+	color: #ff8000;
+	text-decoration: none;
+}
+
+.recipient{
+	display: flex;
+    justify-content: space-between; /* 左右に配置 */
+	align-items: center; /* 垂直方向を中央揃え */
+	margin-bottom: 20px;
+
+}
+
+.recipient h1{
+	margin: 0 auto; /* 中央寄せ */
+	text-align: center;
+	flex: 1; /* 中央に広がる */
+	margin-left: 125px; /* 左から50px内側に移動 */
+}
+
+
+.recipient a{
+	color: #000;
+	text-align: right;
+	margin-right: 20px ; /* 右寄せ */
+	font-family: "Noto Sans JP", "ヒラギノ角ゴシック", "Meiryo", sans-serif;
+	font-weight: bold;
+	color: #808080;
+
+}
+
+
+.con-main{
+	display: flex;
+	justify-content: space-between; /* 左右に配置 */
+	align-items: center; /* 垂直方向を中央揃え */
+	align-items: flex-start; /* 高さを揃える */
+ 	gap: 0; /* 要素間の隙間をゼロにする */
+	margin-bottom: 20px;
+}
+
+.con-list{
+	margin: 0;
+	width: 200px;
+	height: 350px;
+	overflow: auto;
+}
+
+.con-list::-webkit-scrollbar {
+  display: none;
+}
+
+.con-list ul{
+	margin: 0;        /* 外側余白をゼロ */
+	padding: 0;       /* 内側余白をゼロ */
+	list-style: none; /* ●や番号を消す */
+}
+
+
+.notification {
+  padding: 1px 2px;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 5px ;
+}
+
+
+.notification.active {
+	background-color: #f0f8ff;
+}
+
+
+.notification .date {
+	font-size:0.6em;
+	color: #888;
+	line-height: 1.2; /* 行間を狭く */
+}
+
+.notification .title {
+	font-size: 0.7em;
+	font-weight: bold;
+	color: #333;
+	display: block;
+	margin: 0;
+	line-height: 1.2; /* 行間を狭く */
+	text-decoration: none;
+}
+
+.title_content {
+	display: flex;
+}
+
+
+.badge {
+  display: inline-block;
+  background-color: red;
+  color: white;
+  font-size: 0.6em;
+  font-weight: bold;
+  padding: 2px 3px;
+  border-radius: 5px;
+  margin-left: 8px;
+  line-height: 1.2; /* 行間を狭く */
+}
+
+.contact {
+    text-align: center;
+}
+
+
+.text-right {
+  text-align: right;
+}
+
+.input-list{
+	width: 600px;
+	margin: 0;
+	padding: 20px;
+	background: #fff;
+	color: #000;
+	border-radius: 8px;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+}
+
+.input-list a{
+	font-family: "Noto Sans JP", "ヒラギノ角ゴシック", "Meiryo", sans-serif;
+	/*font-weight: bold;*/
+	color: #808080;
+	line-height: 2;
+}
+
+textarea {
+	resize: none;
+	width:500px;
+	height:200px;
+}
+
+
+.con p {
+
+	white-space: pre-wrap;   /* 改行・連続スペースを保持して折り返し */
+	word-wrap: break-word;   /* 長い単語も折り返し */
+}
+
+
+.con{
+	margin: 10px auto; /* ヘッダー分の余白を確保 */
+}
+
+.taitle,
+.con{
+	border-bottom: solid 5px #e9dfe5;
+}
+
+
+.input-list a,
+.input-list p {
+    display: block;
+    line-height: 1.7;
+    margin: 2; /* 余白を完全にリセット */
+}

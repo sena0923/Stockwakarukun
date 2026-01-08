@@ -1,6 +1,8 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -47,10 +49,14 @@
 
 <c:forEach var="goods" items="${goodsList}">
     <li>
-        <!-- 画像（存在しない場合は noimage に切替） -->
-       <%--
-<img src="..." width="150" height="150">
---%>
+
+ <img
+  src="${pageContext.request.contextPath}/images/${goods.goods_id}.png"
+  width="150"
+  height="150"
+  onerror="this.onerror=null; this.src='${pageContext.request.contextPath}/images/noimage.png';"
+  alt="商品画像">
+
 
 
 
@@ -59,11 +65,12 @@
         <div>在庫：${goods.stock}</div>
 
         <c:choose>
-            <!-- ★ 正しい在庫判定（int） -->
+
             <c:when test="${goods.stock > 0}">
                 <form action="AddCartExecute.action" method="post">
                     <input type="hidden" name="goods_id" value="${goods.goods_id}">
                     <input type="hidden" name="quantity" value="1">
+                    <input type="hidden" name="price" value="${goods.price}">
                     <input type="submit" value="カートに入れる">
                 </form>
             </c:when>

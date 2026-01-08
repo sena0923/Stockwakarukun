@@ -13,7 +13,8 @@
 	</c:param>
 
 	<c:param name="content">
-		<form class="content" action="Kai_infoChangeExecute.action" method="get">
+		<form class="container" action="Kai_infoChangeExecute.action" method="get">
+
 				<h1>介護士アカウント変更</h1>
 
 			<c:if test="${not empty errors}">
