@@ -2,13 +2,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="../../baseSin.jsp" %>
 
-<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/base.css">
 
 <!-- ===== メインコンテンツ ===== -->
 <main>
 
-  <div class="home-container">
-  </div>
+
+
 
   <div class="mainmenu">
     <ul>

@@ -32,7 +32,7 @@
 
 			<div class="select">
 	            <button class="btn" type="submit">変更</button>
-	            <a href="NyuChange.action">キャンセル</a>
+	            <a href="SinDisplayExecute.action?rt_id=${relatives.rt_id}">キャンセル</a>
 			</div>
 
 	    <script>

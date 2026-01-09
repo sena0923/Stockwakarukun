@@ -21,7 +21,7 @@ public class GoodsDao extends Dao {
         PreparedStatement statement = null;
 
         try {
-            String sql = "SELECT goods.goods_id , goods.goods_name , goods.PRICE  , GOODS_CATEGORY.CATEGORY_NAME , goods.stock FROM goods join GOODS_CATEGORY on GOODS.CATEGORY_ID = GOODS_CATEGORY.CATEGORY_ID  WHERE goods_id = ?";
+            String sql = "SELECT goods.goods_id , goods.goods_name , goods.PRICE  , GOODS_CATEGORY.CATEGORY_NAME , goods.stock ,goods.goods_imagepath FROM goods join GOODS_CATEGORY on GOODS.CATEGORY_ID = GOODS_CATEGORY.CATEGORY_ID  WHERE goods_id = ?";
             statement = connection.prepareStatement(sql);
             statement.setString(1, goods_Id);
 
