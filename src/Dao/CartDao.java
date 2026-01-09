@@ -19,11 +19,11 @@ public class CartDao {
 
     /** カートに商品を追加 */
     public void addItem(Cart cart) throws SQLException {
-        String sql = "INSERT INTO cart(course_id, rd_id, goods_id, goods_name, quantity, price) VALUES(?,?,?,?,?,?)";
+        String sql = "INSERT INTO cart(rd_id, goods_id, course_id, goods_name, quantity, price) VALUES(?,?,?,?,?,?)";
         try (PreparedStatement ps = conn.prepareStatement(sql)) {
-            ps.setString(1, cart.getCourse_id());
-            ps.setString(2, cart.getRd_id());
-            ps.setString(3, cart.getGoods_id());
+            ps.setString(1, cart.getRd_id());
+            ps.setString(2, cart.getGoods_id());
+            ps.setString(3, cart.getCourse_id());
             ps.setString(4, cart.getGoods_name());
             ps.setInt(5, cart.getQuantity());
             ps.setInt(6, cart.getPrice());

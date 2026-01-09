@@ -1,68 +1,42 @@
 <%-- 親族アカウント情報表示画面 --%>
+<%-- 介護士アカウント情報表示画面 --%>
 
-<%@ page contentType="text/html; charset=UTF-8" language="java" %>
-<%@ include file="../../baseSin.jsp" %>
-<link rel="stylesheet" href="../css/base.css">
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<main>
-	<br><br>
-  	<h2 style="font-size: 50px;">ユーザー情報</h2>
+<c:import url="../../baseSin.jsp">
+	<c:param name="title">
+		アカウント表示
+	</c:param>
 
-	<c:if test="${not empty relatives}">
-	    <p>名前: ${relatives.name}</p>
-	    <p>メールアドレス: ${relatives.e_mail}</p>
-	    <p>パスワード: ${relatives.password}</p>
-  	</c:if>
+	<c:param name="scripts">
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/info.css">
+	</c:param>
+
+	<c:param name="content">
+		<form class="container" action="SinInformationChange.action" method="get">
+			<a href="SinMenu.action" class="back">戻る</a>
+
+			<h1>アカウント情報</h1>
 
 
-  	<div class="button-container">
-	    <button onclick="location.href='./rtHome.jsp'">戻る</button>
-	    <button onclick="location.href='./rtInfoChange.jsp'">変更する</button>
-  	</div>
-</main>
+			<div class="controll">
+			<a class="">名前: ${relatives.name}</a>
+			<br>
+			<a class="">入居者: ${resident.name}</a>
+			<br>
+			<a class="">メールアドレス: ${relatives.e_mail}</a>
+			<br>
+			<a class="">パスワード：${relatives.password}</a>
+	        </div>
 
-<style>
-  main {
-    font-family: "Hiragino Sans", "Meiryo", sans-serif;
-  }
 
-  h2 {
-    margin: 0;
-    height: 15vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+	        <div class="button-group">
+	            <button class="btn-info" type="submit">変更</button>
 
-  p {
-    margin: 0;
-    height: 10vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: bold;
-    color: #333;
-  }
+			</div>
+		</form>
+	</c:param>
+</c:import>
 
-  .button-container {
-    display: flex;
-    gap: 15px;
-    justify-content: center;
-  }
-
-  button {
-    padding: 10px 20px;
-    font-size: 16px;
-    font-weight: bold;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    color: #fff;
-    background-color: #4CAF50;
-    transition: background-color 0.3s;
-  }
-
-  button:hover {
-    background-color: #45a049;
-  }
-</style>

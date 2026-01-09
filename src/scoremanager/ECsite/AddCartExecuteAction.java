@@ -1,25 +1,20 @@
 package scoremanager.ECsite;
 
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import Dao.CartDao;
 import bean.Cart;
+import tool.Action;
 
-@WebServlet("/AddCartExecute.action")
-public class AddCartExecute extends HttpServlet {
-    private static final long serialVersionUID = 1L;
+public class AddCartExecuteAction extends Action {
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    @Override
+    public void execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
         // パラメータ取得
         String courseId = request.getParameter("course_id");
@@ -46,10 +41,10 @@ public class AddCartExecute extends HttpServlet {
             dao.addItem(cart);
 
         } catch (SQLException e) {
-            throw new ServletException(e);
+            throw new Exception(e);
         }
 
-        // カート一覧ページへリダイレクト
-        response.sendRedirect("CartList.action");
+        // リダイレクト
+        response.sendRedirect("CartListExecute.action");
     }
 }
