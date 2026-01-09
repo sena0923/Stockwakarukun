@@ -3,28 +3,24 @@ package Dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 import bean.Cart;
 
-public class CartDao {
+public class CartDao extends Dao {
 
-    private Connection conn;
 
-    public CartDao(Connection conn) {
-        this.conn = conn;
-    }
 
     /** カートに商品を追加 */
-    public void addItem(Cart cart) throws SQLException {
-        String sql = "INSERT INTO cart(rd_id, goods_id, course_id, goods_name, quantity, price) VALUES(?,?,?,?,?,?)";
-        try (PreparedStatement ps = conn.prepareStatement(sql)) {
+    public void addItem(Cart cart) throws Exception {
+
+        String sql = "INSERT INTO cart(rd_id, goods_id, goods_name, course_id, quantity, price) VALUES(?,?,?,?,?,?)";
+        try (Connection conn = getConnectionEc();PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setString(1, cart.getRd_id());
             ps.setString(2, cart.getGoods_id());
-            ps.setString(3, cart.getCourse_id());
-            ps.setString(4, cart.getGoods_name());
+            ps.setString(3, cart.getGoods_name());
+            ps.setString(4, cart.getCourse_id());
             ps.setInt(5, cart.getQuantity());
             ps.setInt(6, cart.getPrice());
             ps.executeUpdate();
@@ -32,9 +28,9 @@ public class CartDao {
     }
 
     /** 数量更新（ユーザーごとに安全に更新） */
-    public void updateQuantity(String courseId, String rdId, int quantity) throws SQLException {
+    public void updateQuantity(String courseId, String rdId, int quantity) throws Exception {
         String sql = "UPDATE cart SET quantity = ? WHERE course_id = ? AND rd_id = ?";
-        try (PreparedStatement ps = conn.prepareStatement(sql)) {
+        try (Connection conn = getConnectionEc();PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setInt(1, quantity);
             ps.setString(2, courseId);
             ps.setString(3, rdId);
@@ -43,9 +39,9 @@ public class CartDao {
     }
 
     /** 商品削除（ユーザーごとに安全に削除） */
-    public void removeItem(String courseId, String rdId) throws SQLException {
+    public void removeItem(String courseId, String rdId) throws Exception {
         String sql = "DELETE FROM cart WHERE course_id = ? AND rd_id = ?";
-        try (PreparedStatement ps = conn.prepareStatement(sql)) {
+        try (Connection conn = getConnectionEc();PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setString(1, courseId);
             ps.setString(2, rdId);
             ps.executeUpdate();
@@ -53,10 +49,10 @@ public class CartDao {
     }
 
     /** カート一覧取得（入居者IDごと） */
-    public List<Cart> getCartList(String rdId) throws SQLException {
+    public List<Cart> getCartList(String rdId) throws Exception {
         List<Cart> list = new ArrayList<>();
         String sql = "SELECT course_id, rd_id, goods_id, goods_name, quantity, price FROM cart WHERE rd_id = ?";
-        try (PreparedStatement ps = conn.prepareStatement(sql)) {
+        try (Connection conn = getConnectionEc();PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setString(1, rdId);
             try (ResultSet rs = ps.executeQuery()) {
                 while (rs.next()) {
@@ -75,10 +71,10 @@ public class CartDao {
     }
 
     /** 合計金額計算 */
-    public int getTotalPrice(String rdId) throws SQLException {
+    public int getTotalPrice(String rdId) throws Exception {
         int total = 0;
         String sql = "SELECT SUM(quantity * price) AS total FROM cart WHERE rd_id = ?";
-        try (PreparedStatement ps = conn.prepareStatement(sql)) {
+        try (Connection conn = getConnectionEc();PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setString(1, rdId);
             try (ResultSet rs = ps.executeQuery()) {
                 if (rs.next()) {
