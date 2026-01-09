@@ -8,12 +8,12 @@
 
   <div class="home-container">
 
-    <c:if test="${hasExpiredProduct}">
-      <p>hasExpiredProduct = ${hasExpiredProduct}</p>
-      <div class="warning">
-        <li><a>購入から8カ月経過した商品があります</a></li>
-      </div>
-    </c:if>
+	<c:if test="${hasExpiredProduct}">
+	  <div class="warning">
+	    <li><a>購入から8カ月経過した商品があります</a></li>
+	  </div>
+	</c:if>
+
   </div>
 
   <div class="mainmenu">
