@@ -33,6 +33,7 @@ public class GoodsDao extends Dao {
                 goods.setGoods_name(resultSet.getString("goods_name"));
                 goods.setPrice(resultSet.getInt("price"));
                 goods.setCategory_name(resultSet.getString("category_name"));
+                goods.setImage_path(resultSet.getString("goods_imagepath"));
                 goods.setStock(resultSet.getInt("stock"));
             }
 
@@ -105,6 +106,7 @@ public class GoodsDao extends Dao {
                 goods.setGoods_name(resultSet.getString("goods_name"));
                 goods.setPrice(resultSet.getInt("price"));
                 goods.setStock(resultSet.getInt("stock"));
+                goods.setImage_path(resultSet.getString("goods_imagepath"));
 
                 list.add(goods);
             }

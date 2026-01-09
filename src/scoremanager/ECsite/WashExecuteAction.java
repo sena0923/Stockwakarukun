@@ -14,10 +14,10 @@ public class WashExecuteAction extends Action {
     public void execute(HttpServletRequest req, HttpServletResponse res) throws Exception {
         GoodsDao goodsDao = new GoodsDao();
 
-        // 洗濯カテゴリのIDを指定
         List<Goods> goodsList = goodsDao.getGoodsByCategory("001");
 
         req.setAttribute("goodsList", goodsList);
-        req.getRequestDispatcher("../ecSite/EClist.jsp").forward(req, res);
+        req.getRequestDispatcher("../ecSite/EClist.jsp")
+        	.forward(req, res);
     }
 }
