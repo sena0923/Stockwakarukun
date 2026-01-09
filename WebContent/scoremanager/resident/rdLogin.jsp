@@ -1,5 +1,7 @@
 <%-- 入居者ログイン画面 --%>
-<%@ page contentType="text/html; charset=UTF-8" language="java" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,6 +15,15 @@
 
 	<h1>入居者ログイン画面</h1>
 
+	<c:if test="${errors.size()>0}">
+	  <div>
+	    <ul>
+	      <c:forEach var="error" items="${errors}">
+	        <li>${error}</li>
+	      </c:forEach>
+	    </ul>
+	  </div>
+	</c:if>
 
     <!-- ログインID -->
     <label for="RD_ID">ログインID</label>
