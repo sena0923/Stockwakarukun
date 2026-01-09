@@ -19,9 +19,9 @@
 
 		  <!-- ダイアログ本体 -->
 		  <div id="message-dialog">
-		    <div class="dialog-body blink-text">
-		      ⚠ 購入から8カ月経過した商品があります。<br>
-		    </div>
+			<div class="dialog-body blink-text">
+			  ⚠ 購入から8カ月経過した商品があります。<br>
+			</div>
 		    <div class="dialog-footer">
 		      <button type="button" onclick="closeDialog()">OK</button>
 		    </div>
