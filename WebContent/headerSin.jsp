@@ -24,7 +24,7 @@
       <a href="Sin_stockList.action?rt_id=${relatives.rt_id}">ストック管理</a>
       <a href="../ecSite/EClist.jsp">ECサイト</a>
       <a href="Sin_conList.action">連絡帳</a>
-      <a href="rtInfoDisplay.jsp">マイページ</a>
+      <a href="SinDisplayExecute.action?rt_id=${relatives.rt_id}">マイページ</a>
       <a href="rtLogoutCon.jsp">ログアウト</a>
     </nav>
     </div>
