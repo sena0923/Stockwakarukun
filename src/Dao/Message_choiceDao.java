@@ -123,9 +123,8 @@ public class Message_choiceDao extends Dao {
 	        }
 	        statement.setInt(2, choiceNum);
 
-	        // ★ 1=true, 2=false
-	        boolean choiseValue = (choiceNum == 1);
-	        statement.setBoolean(3, choiseValue);
+	        // ★ 返信前のためnullを入れる
+	        statement.setNull(3, java.sql.Types.BOOLEAN);
 
 	        return statement.executeUpdate() == 1;
 
@@ -165,3 +164,30 @@ public class Message_choiceDao extends Dao {
 
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
