@@ -3,8 +3,8 @@
 	padding: 15px 50px;
 	border-radius: 10px;
 	box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-	width: 400px;
-	max-width: 90%;
+	width: 70%;
+	max-width: 100%;
 	margin: 100px auto; /* ヘッダー分の余白を確保 */
 }
 
@@ -63,6 +63,7 @@ a.back-con{
 	margin-bottom: 20px;
 }
 
+/*
 .con-list{
 	margin: 0;
 	width: 200px;
@@ -75,11 +76,11 @@ a.back-con{
 }
 
 .con-list ul{
-	margin: 0;        /* 外側余白をゼロ */
-	padding: 0;       /* 内側余白をゼロ */
-	list-style: none; /* ●や番号を消す */
+	margin: 0;        /* 外側余白をゼロ
+	padding: 0;       /* 内側余白をゼロ
+	list-style: none; /* ●や番号を消す
 }
-
+*/
 
 .notification {
   padding: 1px 2px;
@@ -136,7 +137,7 @@ a.back-con{
 }
 
 .input-list{
-	width: 600px;
+	width: 100%;
 	margin: 0;
 	padding: 20px;
 	background: #fff;

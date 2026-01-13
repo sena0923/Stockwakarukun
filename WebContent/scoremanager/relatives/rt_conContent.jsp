@@ -61,9 +61,8 @@
 
 					<div class="con">
 						<a>内容</a>
-						<p>
 							<c:out value="${message.message}" escapeXml="true"/>
-						</p>
+
 					</div>
 
 					<div class="reply">
