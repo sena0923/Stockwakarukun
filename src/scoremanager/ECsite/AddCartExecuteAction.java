@@ -48,7 +48,10 @@ public class AddCartExecuteAction extends Action {
         CartDao dao = new CartDao();
         dao.addItem(cart);
 
+
+        request.getSession().setAttribute("cartAdded", true);
+
         // リダイレクト
-        response.sendRedirect("CartListExecute.action");
+        response.sendRedirect("AllExecute.action");
     }
 }

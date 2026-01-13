@@ -1,8 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-
-
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -10,7 +8,7 @@
 <title>EC商品一覧</title>
 
 <style>
-#popupMessage {
+#popupMessage { /* ★追加 */
     position: fixed;
     top: 20px;
     right: 20px;
@@ -41,8 +39,22 @@
 
 <%@ include file="../../headerEC.jsp" %>
 
-
+<!-- ★追加：ポップアップメッセージ -->
 <div id="popupMessage">カートに追加されました</div>
+
+<!-- ★追加：cartAdded があるときだけポップアップ表示 -->
+<c:if test="${not empty sessionScope.cartAdded}">
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const popup = document.getElementById("popupMessage");
+            popup.style.display = "block";
+            setTimeout(() => popup.style.display = "none", 2000);
+        });
+    </script>
+
+    <!-- ★追加：一度表示したら削除 -->
+    <c:remove var="cartAdded" scope="session" />
+</c:if>
 
 <div class="ec-page">
 <ul>
@@ -50,22 +62,18 @@
 <c:forEach var="goods" items="${goodsList}">
     <li>
 
- <img
-  src="${pageContext.request.contextPath}${goods.image_path}"
-  width="150"
-  height="150"
-  onerror="this.onerror=null; this.src='${pageContext.request.contextPath}/images/noimage.png';"
-  alt="商品画像">
-
-
-
+        <img
+            src="${pageContext.request.contextPath}${goods.image_path}"
+            width="150"
+            height="150"
+            onerror="this.onerror=null; this.src='${pageContext.request.contextPath}/images/noimage.png';"
+            alt="商品画像">
 
         <div>商品名：${goods.goods_name}</div>
         <div>価格：${goods.price}円</div>
         <div>在庫：${goods.stock}</div>
 
         <c:choose>
-
             <c:when test="${goods.stock > 0}">
                 <form action="AddCartExecute.action" method="post">
                     <input type="hidden" name="goods_id" value="${goods.goods_id}">
@@ -83,14 +91,6 @@
 
 </ul>
 </div>
-
-<script>
-function showPopup() {
-    const popup = document.getElementById("popupMessage");
-    popup.style.display = "block";
-    setTimeout(() => popup.style.display = "none", 2000);
-}
-</script>
 
 </body>
 </html>
