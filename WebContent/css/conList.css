@@ -15,7 +15,9 @@
   background: #fff;
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  margin: 50px auto; /* ヘッダー分の余白を確保 */
+  box-sizing: border-box; /* paddingを含めてワイド100％を計算 */
+  width: 100%;
+  margin: 100px auto; /* ヘッダー分の余白を確保 */
 }
 
 .notification-list a{

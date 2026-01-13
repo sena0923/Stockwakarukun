@@ -1,4 +1,16 @@
 /* ===== ログイン画面専用 ===== */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+
+html, body {
+  overflow-x: hidden;
+}
+
+
 body {
 	margin: 0;
 	padding: 0;
@@ -14,8 +26,9 @@ body {
 	border-radius: 10px;
 	box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 	text-align: center;
-	width: 400px;
-	max-width: 90%;
+	width: 100%;
+	max-width: 100%;
+	box-sizing: border-box; /* paddingを含めてワイド100％を計算 */
     margin: 60px auto; /* ヘッダー分の余白を確保 */
 }
 

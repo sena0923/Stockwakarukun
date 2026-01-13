@@ -1,7 +1,6 @@
 <%-- 連絡帳　親族＿連絡帳詳細画面 --%>
 
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
-<%@ include file="../../baseKai.jsp" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
@@ -61,8 +60,7 @@
 
 					<div class="con">
 						<a>内容</a>
-							<c:out value="${message.message}" escapeXml="true"/>
-
+							<p>${message.message}<p/>
 					</div>
 
 					<div class="reply">

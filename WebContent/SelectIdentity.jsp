@@ -1,5 +1,7 @@
 <%-- 身分選択ページ --%>
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 
 <div class="Gradation_1">
 
@@ -20,6 +22,17 @@
 
 
 <style>
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  overflow-x: hidden;
+}
+
+
   body {
     font-family: "Hiragino Sans", "Meiryo", sans-serif;
     display: flex;
@@ -47,7 +60,8 @@
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     text-align: center;
-    width: 500px;
+    width: 100%;
+	box-sizing: border-box; <%-- paddingを含めてワイド100％を計算 --%>
 }
 
   .button-row {
@@ -72,7 +86,7 @@
     background-color: #45a049;
   }
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 400px) {
     .button-row {
       gap: 15px;
     }

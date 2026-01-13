@@ -1,7 +1,6 @@
 <%-- 連絡帳　親族＿連絡帳詳細画面 --%>
 
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
-<%@ include file="../../baseKai.jsp" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
@@ -11,7 +10,7 @@
 	</c:param>
 
 	<c:param name="scripts">
-		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/conContent.css">
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/conContent_phone.css">
 	</c:param>
 
 	<c:param name="content">
@@ -19,14 +18,15 @@
 
 			<a class="back-con" href="Sin_conList.action?rd_id=${resident.rd_id}">戻る</a>
 
-		    <div class="recipient">
+			<div class="set">
 		    	<h1>連絡帳　内容</h1>
+
 		    	<a>入居者：${resident.name} さん</a>
 		    </div>
 
 		    <div class="con-main">
 
-			    <%-- 左側：一覧 --%>
+			    <%-- 左側：一覧
 			    <div class="con-list">
 			    	<ul>
 						<c:forEach var="m" items="${list}">
@@ -47,6 +47,7 @@
 						</c:forEach>
 					</ul>
 			    </div>
+				 --%>
 
 			    <%-- 右側：詳細 --%>
 			    <div class="input-list">
