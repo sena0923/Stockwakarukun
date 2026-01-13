@@ -11,11 +11,15 @@
 
 <%@ include file="../../headerEC.jsp" %>
 
+<c:set var="cartList" value="${sessionScope.cartList}" />
+
 <h2>🛒 カートの中身</h2>
+
 
 <c:if test="${empty cartList}">
     <p>カートは空です</p>
 </c:if>
+
 
 <c:if test="${not empty cartList}">
     <table border="1" cellpadding="8" cellspacing="0">

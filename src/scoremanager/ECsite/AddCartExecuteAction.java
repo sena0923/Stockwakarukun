@@ -1,53 +1,69 @@
 package scoremanager.ECsite;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import Dao.CartDao;
+import Dao.GoodsDao;
 import bean.Cart;
-import bean.Resident;
+import bean.Goods;
 import tool.Action;
 
 public class AddCartExecuteAction extends Action {
-
     @Override
-    public void execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+    public void execute(HttpServletRequest req, HttpServletResponse res) throws Exception {
 
-    	// セッション取得
-        HttpSession session = request.getSession(false);
+        System.out.println("AddCartExecuteAction が呼ばれた");
 
-    	// セッションから resident を取得
-        Resident resident = (Resident) session.getAttribute("resident");
+        String goodsId = req.getParameter("goods_id");
+        System.out.println("goodsId = " + goodsId);
 
+        GoodsDao goodsDao = new GoodsDao();
+        Goods goods = goodsDao.get(goodsId);
 
-        // ★ セッションからログインIDを取得（ここが重要）
-        String rdID = resident.getRd_id();
+        HttpSession session = req.getSession();
+        List<Cart> cartList = (List<Cart>) session.getAttribute("cartList");
 
-        // パラメータ取得
-        String courseId = request.getParameter("course_id");
-        String goodsId = request.getParameter("goods_id");
-        String goodsName = request.getParameter("goods_name");
-        int price = Integer.parseInt(request.getParameter("price"));
-        int quantity = Integer.parseInt(request.getParameter("quantity"));
+        if (cartList == null) {
+            cartList = new ArrayList<>();
+        }
 
-        // Cartオブジェクトに詰める
-        Cart cart = new Cart();
-        cart.setCourse_id(courseId);
-        cart.setRd_id(rdID);  // ← ★ここがセッションからのID
-        cart.setGoods_id(goodsId);
-        cart.setGoods_name(goodsName);
-        cart.setPrice(price);
-        cart.setQuantity(quantity);
+        // ★ goodsId または goods が null の場合は処理中断
+        if (goodsId == null || goods == null) {
+            session.setAttribute("cartAdded", false);
+            res.sendRedirect("AllExecute.action");
+            return;
+        }
 
+        // 既にカートにあるかチェック（goodsId を使う）
+        boolean exists = false;
+        for (Cart c : cartList) {
+            if (c.getGoods_id().equals(goodsId)) {
+                c.setQuantity(c.getQuantity() + 1);
+                exists = true;
+                break;
+            }
+        }
 
-        CartDao dao = new CartDao();
-        dao.addItem(cart);
+        if (!exists) {
+            Cart cart = new Cart();
+            cart.setGoods_id(goods.getGoods_id());
+            cart.setGoods_name(goods.getGoods_name());
+            cart.setPrice(goods.getPrice());
+            cart.setQuantity(1);
+            cartList.add(cart);
+        }
 
+        session.setAttribute("cartList", cartList);
 
-        request.getSession().setAttribute("cartAdded", true);
+        // ポップアップ用フラグ
+        session.setAttribute("cartAdded", true);
 
-        // リダイレクト
-        response.sendRedirect("AllExecute.action");
+        System.out.println("cartList size after add = " + cartList.size());
+        // 商品一覧に戻る
+        res.sendRedirect(req.getContextPath() + "/scoremanager/ECsite/AllExecute.action");
     }
 }

@@ -75,7 +75,7 @@
 
         <c:choose>
             <c:when test="${goods.stock > 0}">
-                <form action="AddCartExecute.action" method="post">
+                <form action="${pageContext.request.contextPath}/scoremanager/ECsite/AddCartExecute.action" method="post">
                     <input type="hidden" name="goods_id" value="${goods.goods_id}">
                     <input type="hidden" name="quantity" value="1">
                     <input type="hidden" name="price" value="${goods.price}">
