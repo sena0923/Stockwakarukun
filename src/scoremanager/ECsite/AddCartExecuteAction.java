@@ -20,10 +20,6 @@ public class AddCartExecuteAction extends Action {
     	// セッションから resident を取得
         Resident resident = (Resident) session.getAttribute("resident");
 
-        if (resident == null || !resident.isAuthenticated()) {
-            response.sendRedirect("rdLogin.jsp");
-            return;
-        }
 
         // ★ セッションからログインIDを取得（ここが重要）
         String rdID = resident.getRd_id();
