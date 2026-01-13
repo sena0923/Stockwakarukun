@@ -36,10 +36,10 @@
 				<br>
 
         <label>②パスワード</label>
-        <input type="password" id="password" name="password" pattern="^[0-9]+$" required>
+        <input type="password" id="password" name="password"  required>
 
         <label>③パスワード(確認用)</label>
-        <input type="password" id="passwordConfirm" name="passwordConfirm" pattern="^[0-9]+$" required placeholder="もう一度入力">
+        <input type="password" id="passwordConfirm" name="passwordConfirm" required placeholder="もう一度入力">
 
         <p id="passwordError" style="color: red; display: none;"></p>
 

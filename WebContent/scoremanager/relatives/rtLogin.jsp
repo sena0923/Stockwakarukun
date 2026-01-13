@@ -27,11 +27,11 @@
 
 			<!-- ログインID -->
 			<label for="RT_ID">ログインID</label>
-			<input type="text" id="rt_id" name="rt_id" pattern="^[0-9]+$" required>
+			<input type="text" id="rt_id" name="rt_id"  required>
 
 			<!-- パスワード -->
 			<label for="password">パスワード</label>
-			<input type="password" id="password" name="password" pattern="^[0-9]+$" required>
+			<input type="password" id="password" name="password"  required>
 
 			<!-- エラーメッセージ表示 -->
 			<p id="login-error" class="error-message">

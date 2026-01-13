@@ -68,11 +68,11 @@
 
     <!-- パスワード -->
     <label for="password">パスワード</label>
-    <input type="password" id="password" name="password" pattern="^[0-9]+$" required>
+    <input type="password" id="password" name="password"  required>
 
     <!-- パスワード確認 -->
     <label for="passwordconfirm">パスワード(確認用)</label>
-    <input type="password" id="passwordconfirm" name="password2" pattern="^[0-9]+$" required>
+    <input type="password" id="passwordconfirm" name="password2"  required>
 
     <div id="password-error" class="error-message">
       <%= request.getAttribute("errors") != null && ((java.util.Map)request.getAttribute("errors")).get("2") != null

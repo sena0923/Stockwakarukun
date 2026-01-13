@@ -31,7 +31,7 @@
 
     <!-- パスワード -->
     <label for="password">パスワード</label>
-    <input type="password" id="password" name="password" pattern="^[0-9]+$" required>
+    <input type="password" id="password" name="password" required>
 
     <!-- エラーメッセージ表示 -->
     <p id="login-error" class="error-message">
