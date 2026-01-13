@@ -1,0 +1,96 @@
+<%@ page contentType="text/html; charset=UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>EC商品一覧</title>
+
+<style>
+#popupMessage {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 6px;
+    display: none;
+    z-index: 9999;
+}
+.ec-page ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 0;
+}
+.ec-page li {
+    border: 1px solid #ccc;
+    padding: 10px;
+    width: 220px;
+    text-align: center;
+}
+</style>
+</head>
+
+<body>
+
+<%@ include file="../../headerECsin.jsp" %>
+
+
+<div id="popupMessage">カートに追加されました</div>
+
+<div class="ec-page">
+<ul>
+
+<c:forEach var="goods" items="${goodsList}">
+    <li>
+
+ <img
+  src="${pageContext.request.contextPath}${goods.image_path}"
+  width="150"
+  height="150"
+  onerror="this.onerror=null; this.src='${pageContext.request.contextPath}/images/noimage.png';"
+  alt="商品画像">
+
+
+
+
+        <div>商品名：${goods.goods_name}</div>
+        <div>価格：${goods.price}円</div>
+        <div>在庫：${goods.stock}</div>
+
+        <c:choose>
+
+            <c:when test="${goods.stock > 0}">
+                <form action="AddCartExecute.action" method="post">
+                    <input type="hidden" name="goods_id" value="${goods.goods_id}">
+                    <input type="hidden" name="quantity" value="1">
+                    <input type="hidden" name="price" value="${goods.price}">
+                    <input type="submit" value="カートに入れる">
+                </form>
+            </c:when>
+            <c:otherwise>
+                <span style="color:red; font-weight:bold;">在庫なし</span>
+            </c:otherwise>
+        </c:choose>
+    </li>
+</c:forEach>
+
+</ul>
+</div>
+
+<script>
+function showPopup() {
+    const popup = document.getElementById("popupMessage");
+    popup.style.display = "block";
+    setTimeout(() => popup.style.display = "none", 2000);
+}
+</script>
+
+</body>
+</html>

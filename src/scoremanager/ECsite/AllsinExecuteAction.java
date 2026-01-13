@@ -9,7 +9,7 @@ import Dao.GoodsDao;
 import bean.Goods;
 import tool.Action;
 
-public class AllExecuteAction extends Action {
+public class AllsinExecuteAction extends Action {
 
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse res) throws Exception {
@@ -20,7 +20,7 @@ public class AllExecuteAction extends Action {
         req.setAttribute("goodsList", goodsList);
 
         // 商品一覧JSPへフォワード
-        req.getRequestDispatcher("../ecSite/EClistsin.jsp")
+        req.getRequestDispatcher("../ecSite/EClist.jsp")
            .forward(req, res);
     }
 }
