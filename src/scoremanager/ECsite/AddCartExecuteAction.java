@@ -20,10 +20,6 @@ public class AddCartExecuteAction extends Action {
     	// セッションから resident を取得
         Resident resident = (Resident) session.getAttribute("resident");
 
-        if (resident == null || !resident.isAuthenticated()) {
-            response.sendRedirect("rdLogin.jsp");
-            return;
-        }
 
         // ★ セッションからログインIDを取得（ここが重要）
         String rdID = resident.getRd_id();
@@ -48,7 +44,10 @@ public class AddCartExecuteAction extends Action {
         CartDao dao = new CartDao();
         dao.addItem(cart);
 
+
+        request.getSession().setAttribute("cartAdded", true);
+
         // リダイレクト
-        response.sendRedirect("CartListExecute.action");
+        response.sendRedirect("AllExecute.action");
     }
 }
