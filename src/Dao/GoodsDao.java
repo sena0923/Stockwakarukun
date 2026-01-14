@@ -119,4 +119,18 @@ public class GoodsDao extends Dao {
         return list;
     }
 
+    /**
+     * 在庫数の更新
+     */
+    public void updateStock(String goodsId, int quantity) throws Exception {
+        Connection con = getConnectionEc();
+        String sql = "UPDATE goods SET stock = stock - ? WHERE goods_id = ?";
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setInt(1, quantity);
+        ps.setString(2, goodsId);
+        ps.executeUpdate();
+        ps.close();
+        con.close();
+    }
+
 }
