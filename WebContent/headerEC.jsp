@@ -14,7 +14,7 @@
             <a>ストックかえる君</a>
         </div>
         <div class="user-actions">
-            <a href="../../scoremanager/ECsite/CartExecute.action">カート</a>
+            <a href="${pageContext.request.contextPath}/scoremanager/ECsite/CartExecute.action">カート</a>
         </div>
     </div>
     <nav class="main-nav">

@@ -57,18 +57,18 @@ public class GoodsDao extends Dao {
         PreparedStatement statement = null;
 
         try {
-            String sql = "SELECT * FROM goods ORDER BY goods_id";
+            String sql = "SELECT goods_id, goods_name, price, stock, goods_imagepath FROM goods ORDER BY goods_id";
             statement = connection.prepareStatement(sql);
 
             ResultSet resultSet = statement.executeQuery();
 
             while (resultSet.next()) {
                 Goods goods = new Goods();
+                goods.setGoods_id(resultSet.getString("goods_id"));   // ★追加
                 goods.setGoods_name(resultSet.getString("goods_name"));
                 goods.setPrice(resultSet.getInt("price"));
                 goods.setStock(resultSet.getInt("stock"));
                 goods.setImage_path(resultSet.getString("goods_imagepath"));
-//                System.out.println("GoodsDao:goods_imagepath:" + resultSet.getString("goods_imagepath"));
                 list.add(goods);
             }
 
