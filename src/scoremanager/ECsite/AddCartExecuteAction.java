@@ -16,8 +16,6 @@ public class AddCartExecuteAction extends Action {
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse res) throws Exception {
 
-        System.out.println("AddCartExecuteAction が呼ばれた");
-
         String goodsId = req.getParameter("goods_id");
         System.out.println("goodsId = " + goodsId);
 
@@ -38,10 +36,18 @@ public class AddCartExecuteAction extends Action {
             return;
         }
 
-        // 既にカートにあるかチェック（goodsId を使う）
+     // 既にカートにあるかチェック（goodsId を使う）
         boolean exists = false;
         for (Cart c : cartList) {
             if (c.getGoods_id().equals(goodsId)) {
+
+                // ★ 在庫チェック（数量 + 1 が在庫を超えるか）
+                if (c.getQuantity() + 1 > goods.getStock()) {
+                    session.setAttribute("error", "在庫数を超えています（在庫: " + goods.getStock() + "）");
+                    res.sendRedirect(req.getContextPath() + "/scoremanager/ECsite/AllExecute.action");
+                    return;
+                }
+
                 c.setQuantity(c.getQuantity() + 1);
                 exists = true;
                 break;
@@ -49,6 +55,14 @@ public class AddCartExecuteAction extends Action {
         }
 
         if (!exists) {
+
+            // ★ 新規追加時も在庫チェック
+            if (1 > goods.getStock()) {
+                session.setAttribute("error", "在庫がありません");
+                res.sendRedirect(req.getContextPath() + "/scoremanager/ECsite/AllExecute.action");
+                return;
+            }
+
             Cart cart = new Cart();
             cart.setGoods_id(goods.getGoods_id());
             cart.setGoods_name(goods.getGoods_name());
@@ -62,7 +76,7 @@ public class AddCartExecuteAction extends Action {
         // ポップアップ用フラグ
         session.setAttribute("cartAdded", true);
 
-        System.out.println("cartList size after add = " + cartList.size());
+
         // 商品一覧に戻る
         res.sendRedirect(req.getContextPath() + "/scoremanager/ECsite/AllExecute.action");
     }

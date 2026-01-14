@@ -13,7 +13,6 @@ public class NyuMenuAction extends Action {
 	public void execute(HttpServletRequest req, HttpServletResponse res) throws Exception {
 
 
-
 		// セッションからログイン情報を取得
 		HttpSession session = req.getSession(false); // falseで新規作成しない
 		Resident resident = new Resident();

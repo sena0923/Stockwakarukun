@@ -23,6 +23,9 @@
 
 <c:if test="${not empty cartList}">
     <table border="1" cellpadding="8" cellspacing="0">
+    <c:if test="${not empty error}">
+    	<p style="color:red; font-weight:bold;">${error}</p>
+	</c:if>
         <tr>
             <th>商品名</th>
             <th>価格</th>
@@ -38,7 +41,7 @@
                     <form action="UpdateCartExecute.action" method="post" style="display:inline;">
                         <input type="hidden" name="goods_id" value="${item.goods_id}">
                         <input type="number" name="quantity" value="${item.quantity}" min="1">
-                        <input type="submit" value="変更">
+                        <input type="submit" value="変更する">
                     </form>
                 </td>
                 <td>
@@ -53,7 +56,10 @@
     </table>
 
     <p>合計金額: ${totalPrice}円</p>
-    <a href="checkout.jsp">購入手続きへ進む</a>
+
+    <form action="${pageContext.request.contextPath}/scoremanager/ECsite/Confirm.action" method="post">
+    	<button type="submit">購入へ進む</button>
+	</form>
 </c:if>
 
 </body>
