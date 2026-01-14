@@ -9,7 +9,7 @@ import Dao.GoodsDao;
 import bean.Goods;
 import tool.Action;
 
-public class WashsinExecuteAction2 extends Action {
+public class WashsinExecuteAction extends Action {
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse res) throws Exception {
         GoodsDao goodsDao = new GoodsDao();
