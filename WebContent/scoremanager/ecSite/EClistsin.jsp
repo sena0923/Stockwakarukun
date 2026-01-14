@@ -39,7 +39,7 @@
 
 <body>
 
-<%@ include file="../../headerEC.jsp" %>
+<%@ include file="../../headerECsin.jsp" %>
 
 
 <div id="popupMessage">カートに追加されました</div>
