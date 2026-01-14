@@ -20,13 +20,13 @@
     <nav class="main-nav">
         <ul>
         	<li class="nav-home"><a href="../../scoremanager/relatives/SinMenu.action">ホームへ</a></li>
-            <li><a href="../../scoremanager/ECsite/AllExecute.action">すべて</a></li>
-            <li><a href="../../scoremanager/ECsite/WashExecute.action">洗面用具</a></li>
-            <li><a href="../../scoremanager/ECsite/TowelExecute.action">タオル類</a></li>
-            <li><a href="../../scoremanager/ECsite/ClotExecute.action">衣類</a></li>
-            <li><a href="../../scoremanager/ECsite/ColdExecute.action">防寒用具</a></li>
-            <li><a href="../../scoremanager/ECsite/EquipmentExecute.action">備品・日用品</a></li>
-            <li><a href="../../scoremanager/ECsite/EntertainmentExecute.action">娯楽</a></li>
+            <li><a href="../../scoremanager/ECsite/AllsinExecute.action">すべて</a></li>
+            <li><a href="../../scoremanager/ECsite/WashsinExecute.action">洗面用具</a></li>
+            <li><a href="../../scoremanager/ECsite/TowelsinExecute.action">タオル類</a></li>
+            <li><a href="../../scoremanager/ECsite/ClotsinExecute.action">衣類</a></li>
+            <li><a href="../../scoremanager/ECsite/ColdsinExecute.action">防寒用具</a></li>
+            <li><a href="../../scoremanager/ECsite/EquipmentsinExecute.action">備品・日用品</a></li>
+            <li><a href="../../scoremanager/ECsite/EntertainmentsinExecute.action">娯楽</a></li>
         </ul>
     </nav>
 </header>

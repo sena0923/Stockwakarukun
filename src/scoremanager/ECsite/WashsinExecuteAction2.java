@@ -9,18 +9,15 @@ import Dao.GoodsDao;
 import bean.Goods;
 import tool.Action;
 
-public class AllsinExecuteAction extends Action {
-
+public class WashsinExecuteAction2 extends Action {
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse res) throws Exception {
-
         GoodsDao goodsDao = new GoodsDao();
-        List<Goods> goodsList = goodsDao.getAllGoods(); // 全商品取得
+
+        List<Goods> goodsList = goodsDao.getGoodsByCategory("001");
 
         req.setAttribute("goodsList", goodsList);
-
-        // 商品一覧JSPへフォワード
         req.getRequestDispatcher("../ecSite/EClistsin.jsp")
-           .forward(req, res);
+        	.forward(req, res);
     }
 }
