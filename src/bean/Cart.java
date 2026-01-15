@@ -20,7 +20,11 @@ public class Cart implements Serializable {
     /** 価格 */
     private int price;
 
+    /** 商品名 */
     private String goods_name;
+
+    /** 名入れの判別 */
+    private boolean can_name;
 
     // --- Getter / Setter ---
     public String getCourse_id() {
@@ -69,5 +73,14 @@ public class Cart implements Serializable {
     public void setGoods_name(String goods_name) {
         this.goods_name = goods_name;
     }
+
+    public boolean isCan_name() {
+        return can_name;
+    }
+
+    public void setCan_name(boolean can_name) {
+        this.can_name = can_name;
+    }
+
 
 }

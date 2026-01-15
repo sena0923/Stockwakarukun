@@ -29,6 +29,7 @@
         <tr>
             <th>商品名</th>
             <th>価格</th>
+            <th>名入れ</th>
             <th>数量</th>
             <th>操作</th>
         </tr>
@@ -36,6 +37,22 @@
             <tr>
                 <td>${item.goods_name}</td>
                 <td>${item.price}円</td>
+                <td>
+					<c:if test="${item.can_name}">
+					    <form action="SetName.action" method="post" style="margin-top:5px;">
+					        <input type="hidden" name="goods_id" value="${item.goods_id}">
+
+					        <label>
+					            <input type="checkbox" name="use_name" value="true"
+					            <c:if test="${item.use_name}">checked</c:if>>
+					            名入れする
+					        </label>
+
+					        <input type="submit" value="設定">
+					    </form>
+					</c:if>
+				</td>
+
                 <td>
                     <!-- 数量変更フォーム -->
                     <form action="UpdateCartExecute.action" method="post" style="display:inline;">

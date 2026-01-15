@@ -15,7 +15,7 @@ public class CartDao extends Dao {
     /** カートに商品を追加 */
     public void addItem(Cart cart) throws Exception {
 
-        String sql = "INSERT INTO cart(rd_id, goods_id, goods_name, course_id, quantity, price) VALUES(?,?,?,?,?,?)";
+    	String sql = "INSERT INTO cart(rd_id, goods_id, goods_name, course_id, quantity, price, can_name) VALUES(?,?,?,?,?,?,?)";
         try (Connection conn = getConnectionEc();PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setString(1, cart.getRd_id());
             ps.setString(2, cart.getGoods_id());
@@ -23,6 +23,7 @@ public class CartDao extends Dao {
             ps.setString(4, cart.getCourse_id());
             ps.setInt(5, cart.getQuantity());
             ps.setInt(6, cart.getPrice());
+            ps.setBoolean(7, cart.isCan_name());  // ← 名入れフラグ
             ps.executeUpdate();
         }
     }
@@ -51,7 +52,7 @@ public class CartDao extends Dao {
     /** カート一覧取得（入居者IDごと） */
     public List<Cart> getCartList(String rdId) throws Exception {
         List<Cart> list = new ArrayList<>();
-        String sql = "SELECT course_id, rd_id, goods_id, goods_name, quantity, price FROM cart WHERE rd_id = ?";
+        String sql = "SELECT course_id, rd_id, goods_id, goods_name, quantity, price, can_name FROM cart WHERE rd_id = ?";
         try (Connection conn = getConnectionEc();PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setString(1, rdId);
             try (ResultSet rs = ps.executeQuery()) {
@@ -63,6 +64,7 @@ public class CartDao extends Dao {
                     cart.setGoods_name(rs.getString("goods_name"));
                     cart.setQuantity(rs.getInt("quantity"));
                     cart.setPrice(rs.getInt("price"));
+                    cart.setCan_name(rs.getBoolean("can_name"));
                     list.add(cart);
                 }
             }
