@@ -20,7 +20,7 @@ public class AllExecuteAction extends Action {
         req.setAttribute("goodsList", goodsList);
 
         // 商品一覧JSPへフォワード
-        req.getRequestDispatcher("../ecSite/EClistsin.jsp")
+        req.getRequestDispatcher("../ecSite/EClist.jsp")
            .forward(req, res);
     }
 }
