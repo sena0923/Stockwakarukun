@@ -24,7 +24,7 @@
 					<button type="submit" class="btn-search" id="filter-button">検索</button>
 			</div>
 
-			<p>詳細を押下すると入居者の連絡帳やプロフィールが確認できます。</p>
+			<p>詳細を押下すると入居者のストック管理や連絡帳が確認できます。</p>
 
 					<table class="table">
 						<tr>
