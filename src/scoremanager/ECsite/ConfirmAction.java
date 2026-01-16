@@ -13,13 +13,16 @@ public class ConfirmAction extends Action {
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse res) throws Exception {
 
+
         HttpSession session = req.getSession();
         List<Cart> cartList = (List<Cart>) session.getAttribute("cartList");
+
 
         if (cartList == null || cartList.isEmpty()) {
             req.setAttribute("error", "カートが空です");
             req.getRequestDispatcher("ECcart.jsp").forward(req, res);
             return;
+
         }
 
         req.getRequestDispatcher("../ecSite/Confirm.jsp").forward(req, res);
