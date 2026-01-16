@@ -1,3 +1,7 @@
+package scoremanager.ECsite;
+
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -43,6 +47,6 @@ public class PurchaseExecuteAction extends Action {
         session.removeAttribute("cartList");
 
         // 完了画面へ
-        req.getRequestDispatcher("Complete.jsp").forward(req, res);
+        req.getRequestDispatcher("../ecSite/Complete.jsp").forward(req, res);
     }
 }
