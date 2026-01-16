@@ -6,6 +6,104 @@
 <head>
 <meta charset="UTF-8">
 <title>カート内容</title>
+
+<style>
+/* ===== 全体 ===== */
+body {
+    font-family: "Segoe UI", sans-serif;
+    background-color: #f7f7f7;
+    text-align: center;
+}
+
+/* 見出し */
+h2 {
+    margin: 30px 0 20px;
+}
+
+/* ===== テーブル ===== */
+table {
+    margin: 0 auto 20px;
+    border-collapse: collapse;
+    background-color: #ffffff;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    min-width: 700px;
+}
+
+th {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px;
+}
+
+td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+}
+
+/* 商品名を少し目立たせる */
+td:first-child {
+    font-weight: bold;
+}
+
+/* ===== フォーム共通 ===== */
+input[type="number"] {
+    width: 60px;
+    padding: 5px;
+}
+
+/* ===== ボタン共通 ===== */
+input[type="submit"],
+button {
+    padding: 8px 16px;
+    font-size: 14px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+/* 変更・設定ボタン */
+input[value="変更する"],
+input[value="設定"] {
+    background-color: #2196F3;
+    color: white;
+}
+
+/* 削除ボタン */
+input[value="削除"] {
+    background-color: #f44336;
+    color: white;
+}
+
+/* 購入へ進むボタン */
+button {
+    font-size: 18px;
+    padding: 15px 40px;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 10px;
+}
+
+/* ホバー */
+input[type="submit"]:hover,
+button:hover {
+    opacity: 0.85;
+}
+
+/* ===== 合計金額 ===== */
+.total {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 20px 0;
+}
+
+/* エラーメッセージ */
+.error {
+    color: red;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+</style>
+
 </head>
 <body>
 
@@ -15,17 +113,17 @@
 
 <h2>🛒 カートの中身</h2>
 
-
 <c:if test="${empty cartList}">
     <p>カートは空です</p>
 </c:if>
 
-
 <c:if test="${not empty cartList}">
-    <table border="1" cellpadding="8" cellspacing="0">
+
     <c:if test="${not empty error}">
-    	<p style="color:red; font-weight:bold;">${error}</p>
-	</c:if>
+        <p class="error">${error}</p>
+    </c:if>
+
+    <table>
         <tr>
             <th>商品名</th>
             <th>価格</th>
@@ -33,37 +131,36 @@
             <th>数量</th>
             <th>操作</th>
         </tr>
+
         <c:forEach var="item" items="${cartList}">
             <tr>
                 <td>${item.goods_name}</td>
                 <td>${item.price}円</td>
-                <td>
-					<c:if test="${item.can_name}">
-					    <form action="SetName.action" method="post" style="margin-top:5px;">
-					        <input type="hidden" name="goods_id" value="${item.goods_id}">
-
-					        <label>
-					            <input type="checkbox" name="use_name" value="true"
-					            <c:if test="${item.use_name}">checked</c:if>>
-					            名入れする
-					        </label>
-
-					        <input type="submit" value="設定">
-					    </form>
-					</c:if>
-				</td>
 
                 <td>
-                    <!-- 数量変更フォーム -->
-                    <form action="UpdateCartExecute.action" method="post" style="display:inline;">
+                    <c:if test="${item.can_name}">
+                        <form action="SetName.action" method="post">
+                            <input type="hidden" name="goods_id" value="${item.goods_id}">
+                            <label>
+                                <input type="checkbox" name="use_name" value="true"
+                                <c:if test="${item.use_name}">checked</c:if>>
+                                名入れする
+                            </label>
+                            <input type="submit" value="設定">
+                        </form>
+                    </c:if>
+                </td>
+
+                <td>
+                    <form action="UpdateCartExecute.action" method="post">
                         <input type="hidden" name="goods_id" value="${item.goods_id}">
                         <input type="number" name="quantity" value="${item.quantity}" min="1">
                         <input type="submit" value="変更する">
                     </form>
                 </td>
+
                 <td>
-                    <!-- 削除ボタン -->
-                    <form action="RemoveCartExecute.action" method="post" style="display:inline;">
+                    <form action="RemoveCartExecute.action" method="post">
                         <input type="hidden" name="goods_id" value="${item.goods_id}">
                         <input type="submit" value="削除">
                     </form>
@@ -72,11 +169,12 @@
         </c:forEach>
     </table>
 
-    <p>合計金額: ${totalPrice}円</p>
+    <p class="total">合計金額：${totalPrice}円</p>
 
     <form action="${pageContext.request.contextPath}/scoremanager/ECsite/Confirm.action" method="post">
-    	<button type="submit">購入へ進む</button>
-	</form>
+        <button type="submit">購入へ進む</button>
+    </form>
+
 </c:if>
 
 </body>
