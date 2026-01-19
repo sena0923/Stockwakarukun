@@ -31,6 +31,53 @@
     padding: 10px;
     width: 220px;
     text-align: center;
+
+/* =========================
+   スマホ用CSS（768px以下）
+========================= */
+@media screen and (max-width: 768px) {
+
+    /* 商品一覧を縦並びに */
+    .ec-page ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+
+    /* 商品カードを画面幅いっぱいに */
+    .ec-page li {
+        width: 90%;
+        padding: 15px;
+        font-size: 16px;
+    }
+
+    /* 商品画像を少し大きく */
+    .ec-page img {
+        width: 180px;
+        height: 180px;
+        object-fit: contain;
+    }
+
+    /* カートボタンを大きく */
+    .ec-page input[type="submit"] {
+        width: 100%;
+        padding: 12px;
+        font-size: 18px;
+        margin-top: 10px;
+        border-radius: 6px;
+    }
+
+    /* ポップアップ位置調整 */
+    #popupMessage {
+        right: 50%;
+        transform: translateX(50%);
+        top: 10px;
+        width: 80%;
+        text-align: center;
+        font-size: 16px;
+    }
+}
+
 }
 </style>
 </head>
