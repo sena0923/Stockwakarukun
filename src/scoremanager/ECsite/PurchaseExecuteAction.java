@@ -7,8 +7,11 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import Dao.GoodsDao;
+import Dao.PurchaseDao;
+import Dao.PurchaseDetailDao;
 import bean.Cart;
 import bean.Goods;
+import bean.Resident;
 import tool.Action;
 
 public class PurchaseExecuteAction extends Action {
@@ -18,18 +21,13 @@ public class PurchaseExecuteAction extends Action {
         HttpSession session = req.getSession();
         List<Cart> cartList = (List<Cart>) session.getAttribute("cartList");
 
-        if (cartList == null || cartList.isEmpty()) {
-            req.setAttribute("error", "カートが空です");
-            req.getRequestDispatcher("ECcart.jsp").forward(req, res);
-            return;
-        }
-
         GoodsDao goodsDao = new GoodsDao();
+        PurchaseDao purchaseDao = new PurchaseDao();
+        PurchaseDetailDao detailDao = new PurchaseDetailDao();
 
-        // ★ 在庫チェック（最終確認）
+        // 在庫チェック
         for (Cart c : cartList) {
             Goods goods = goodsDao.get(c.getGoods_id());
-
             if (c.getQuantity() > goods.getStock()) {
                 req.setAttribute("error", goods.getGoods_name() + " の在庫が不足しています");
                 req.getRequestDispatcher("ECcart.jsp").forward(req, res);
@@ -37,13 +35,29 @@ public class PurchaseExecuteAction extends Action {
             }
         }
 
-        // ★ 在庫を減らす
+        // 合計金額
+        int totalPrice = 0;
+        for (Cart c : cartList) {
+            totalPrice += c.getPrice() * c.getQuantity();
+        }
+
+        // 購入情報を保存
+        Resident resident = (Resident) session.getAttribute("resident");
+        String rd_Id = resident.getRd_id();
+
+        int purchaseId = purchaseDao.insert(resident.getRd_id(), totalPrice);
+
+        // 購入詳細を保存
+        for (Cart c : cartList) {
+            detailDao.insert(purchaseId, c);
+        }
+
+        // 在庫更新
         for (Cart c : cartList) {
             goodsDao.updateStock(c.getGoods_id(), c.getQuantity());
         }
 
-
-        // ★ カートを空にする
+        // カート削除
         session.removeAttribute("cartList");
 
         // 完了画面へ
