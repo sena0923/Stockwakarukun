@@ -8,7 +8,7 @@ import bean.Cart;
 public class PurchaseDetailDao extends Dao {
 
     public void insert(int purchaseId, Cart cart) throws Exception {
-        Connection con = getConnection();
+        Connection con = getConnectionEc();
 
         String sql = "INSERT INTO purchase_detail (purchase_id, goods_id, quantity, price) VALUES (?, ?, ?, ?)";
         PreparedStatement st = con.prepareStatement(sql);

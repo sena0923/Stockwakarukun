@@ -8,7 +8,7 @@ import java.sql.Statement;
 public class PurchaseDao extends Dao {
 
 	public int insert(String rd_id, int totalPrice) throws Exception {
-	    Connection con = getConnection();
+	    Connection con = getConnectionEc();
 
 	    String sql = "INSERT INTO purchase (rd_id, total_price) VALUES (?, ?)";
 	    PreparedStatement st = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
