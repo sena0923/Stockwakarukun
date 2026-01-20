@@ -1,40 +1,40 @@
-<%@ page contentType="text/html; charset=UTF-8" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
 <!DOCTYPE html>
-<html lang="ja">
+<html>
 <head>
-<meta charset="UTF-8">
-<title>購入完了画面</title>
-
-<style>
-body {
-    text-align: center;
-}
-
-.back-button {
-    font-size: 20px;
-    padding: 15px 40px;
-    background-color: #4CAF50; /* 緑色 */
-    color: white;
-    border: none;
-    border-radius: 10px;      /* 角を丸く */
-    cursor: pointer;
-}
-
-.back-button:hover {
-    opacity: 0.8;
-}
-</style>
-
+    <meta charset="UTF-8">
+    <title>購入完了</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/complete.css">
 </head>
 <body>
 
-<h2>ご購入ありがとうございました</h2>
+<h2>購入が完了しました</h2>
+<p>ご利用ありがとうございました。</p>
 
-<form action="AllExecute.action">
-    <input type="submit" value="戻る" class="back-button">
-</form>
+<div class="back-home">
+    <c:choose>
+
+
+	    <c:when test="${not empty resident}">
+	        <a href="../../scoremanager/resident/NyuMenu.action">ホームへ戻る</a>
+	    </c:when>
+
+
+	    <c:when test="${not empty selectedResident}">
+	        <a href="../../scoremanager/relatives/SinMenu.action">ホームへ戻る</a>
+	    </c:when>
+
+
+	    <c:when test="${not empty relatives}">
+	        <a href="../../scoremanager/relatives/SinMenu.action">ホームへ戻る</a>
+	    </c:when>
+
+	</c:choose>
+	<!-- 入居者本人ログインを最優先 -->
+	<!-- 親族が入居者を選んで代理操作中 -->
+	<!-- 親族本人ログイン -->
+</div>
 
 </body>
 </html>

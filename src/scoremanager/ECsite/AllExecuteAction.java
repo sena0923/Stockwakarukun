@@ -7,20 +7,27 @@ import javax.servlet.http.HttpServletResponse;
 
 import Dao.GoodsDao;
 import bean.Goods;
+import bean.Resident;
 import tool.Action;
 
 public class AllExecuteAction extends Action {
 
-    @Override
-    public void execute(HttpServletRequest req, HttpServletResponse res) throws Exception {
+	@Override
+	public void execute(HttpServletRequest req, HttpServletResponse res) throws Exception {
 
-        GoodsDao goodsDao = new GoodsDao();
-        List<Goods> goodsList = goodsDao.getAllGoods(); // 全商品取得
+	    // ★ 入居者本人なら自動で selectedResident をセット
+	    Resident r = (Resident) req.getSession().getAttribute("resident");
+	    if (r != null) {
+	        req.getSession().setAttribute("selectedResident", r);
+	    }
 
-        req.setAttribute("goodsList", goodsList);
+	    // ここから先は商品一覧表示（入居者 or 親族どちらでもOK）
+	    GoodsDao goodsDao = new GoodsDao();
+	    List<Goods> goodsList = goodsDao.getAllGoods();
 
-        // 商品一覧JSPへフォワード
-        req.getRequestDispatcher("../ecSite/EClist.jsp")
-           .forward(req, res);
-    }
+	    req.setAttribute("goodsList", goodsList);
+
+	    req.getRequestDispatcher("../ecSite/EClist.jsp")
+	       .forward(req, res);
+	}
 }

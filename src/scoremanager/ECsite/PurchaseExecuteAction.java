@@ -25,6 +25,20 @@ public class PurchaseExecuteAction extends Action {
         PurchaseDao purchaseDao = new PurchaseDao();
         PurchaseDetailDao detailDao = new PurchaseDetailDao();
 
+
+     // 購入対象の入居者（親族が選んだ入居者）
+        Resident selected = (Resident) session.getAttribute("selectedResident");
+
+        if (selected == null) {
+            req.setAttribute("error", "購入対象の入居者が選択されていません");
+            req.getRequestDispatcher("../ecSite/selectResident.jsp").forward(req, res);
+            return;
+        }
+
+        // 購入者IDは selectedResident の rd_id
+        String buyerId = selected.getRd_id();
+
+
         // 在庫チェック
         for (Cart c : cartList) {
             Goods goods = goodsDao.get(c.getGoods_id());
@@ -41,11 +55,10 @@ public class PurchaseExecuteAction extends Action {
             totalPrice += c.getPrice() * c.getQuantity();
         }
 
-        // 購入情報を保存
-        Resident resident = (Resident) session.getAttribute("resident");
-        String rd_Id = resident.getRd_id();
 
-        int purchaseId = purchaseDao.insert(resident.getRd_id(), totalPrice);
+	    // 購入情報を保存
+	    int purchaseId = purchaseDao.insert(buyerId, totalPrice);
+
 
         // 購入詳細を保存
         for (Cart c : cartList) {
@@ -59,6 +72,7 @@ public class PurchaseExecuteAction extends Action {
 
         // カート削除
         session.removeAttribute("cartList");
+
 
         // 完了画面へ
         req.getRequestDispatcher("../ecSite/Complete.jsp").forward(req, res);

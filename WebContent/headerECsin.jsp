@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,7 +20,16 @@
     </div>
     <nav class="main-nav">
         <ul>
-        	<li class="nav-home"><a href="../../scoremanager/relatives/SinMenu.action">ホームへ</a></li>
+        	<li class="nav-home">
+			    <c:choose>
+
+
+			        <c:when test="${not empty selectedResident}">
+			            <a href="../../scoremanager/relatives/SinMenu.action">ホームへ</a>
+			        </c:when>
+
+			    </c:choose>
+			</li>
             <li><a href="../../scoremanager/ECsite/AllsinExecute.action">すべて</a></li>
             <li><a href="../../scoremanager/ECsite/WashsinExecute.action">洗面用具</a></li>
             <li><a href="../../scoremanager/ECsite/TowelsinExecute.action">タオル類</a></li>
