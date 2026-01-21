@@ -2,25 +2,48 @@ package Dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 import bean.Cart;
 
 public class PurchaseDetailDao extends Dao {
 
-    public void insert(int purchaseId, Cart cart) throws Exception {
-        Connection con = getConnectionEc();
+	public List<Cart> getPurchaseDetailList(String rdId) throws Exception {
 
-        String sql = "INSERT INTO purchase_detail (purchase_id, goods_id, quantity, price) VALUES (?, ?, ?, ?)";
-        PreparedStatement st = con.prepareStatement(sql);
+	    List<Cart> list = new ArrayList<>();
 
-        st.setInt(1, purchaseId);
-        st.setString(2, cart.getGoods_id());
-        st.setInt(3, cart.getQuantity());
-        st.setInt(4, cart.getPrice());
+	    String sql =
+	        "SELECT " +
+	        " pd.goods_id, pd.quantity, pd.price, " +
+	        " g.goods_name, g.can_name " +
+	        "FROM purchase_detail pd " +
+	        "JOIN goods g ON pd.goods_id = g.goods_id " +
+	        "JOIN purchase p ON pd.purchase_id = p.purchase_id " +
+	        "WHERE p.rd_id = ?";
 
-        st.executeUpdate();
+	    Connection con = getConnectionEc();
+	    PreparedStatement st = con.prepareStatement(sql);
+	    st.setString(1, rdId);
 
-        st.close();
-        con.close();
-    }
+	    ResultSet rs = st.executeQuery();
+
+	    while (rs.next()) {
+	        Cart c = new Cart();
+	        c.setGoods_id(rs.getString("goods_id"));
+	        c.setGoods_name(rs.getString("goods_name"));
+	        c.setQuantity(rs.getInt("quantity"));
+	        c.setPrice(rs.getInt("price"));
+	        c.setCan_name(rs.getBoolean("can_name"));
+	        list.add(c);
+	    }
+
+	    rs.close();
+	    st.close();
+	    con.close();
+
+	    return list;
+	}
+
 }
