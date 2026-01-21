@@ -8,9 +8,9 @@ import javax.servlet.http.HttpSession;
 
 import Dao.PurchaseDao;
 import Dao.PurchaseDetailDao;
+import bean.Purchase;
+import bean.PurchaseDetail;
 import bean.Resident;
-import model.Purchase;
-import model.PurchaseDetail;
 import tool.Action;
 
 public class PurchaseHistoryAction extends Action {

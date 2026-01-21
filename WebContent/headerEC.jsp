@@ -27,6 +27,8 @@
             <li><a href="../../scoremanager/ECsite/ColdExecute.action">防寒用具</a></li>
             <li><a href="../../scoremanager/ECsite/EquipmentExecute.action">備品・日用品</a></li>
             <li><a href="../../scoremanager/ECsite/EntertainmentExecute.action">娯楽</a></li>
+			<br><br>
+            <li><a href="../../scoremanager/ECsite/PurchaseHistory.action">購入履歴</a></li>
         </ul>
     </nav>
 </header>

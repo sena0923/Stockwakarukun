@@ -47,7 +47,7 @@ public class PurchaseDao extends Dao {
 
 	    while (rs.next()) {
 	        Purchase p = new Purchase();
-	        p.setPurchaseId(rs.getInt("purchase_id"));
+	        p.setPurchaseId(rs.getString("purchase_id"));
 	        p.setPurchaseDate(rs.getTimestamp("purchase_date"));
 	        list.add(p);
 	    }

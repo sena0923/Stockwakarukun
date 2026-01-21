@@ -18,7 +18,7 @@ public class PurchaseDetailDao extends Dao {
 
         String sql =
             "SELECT " +
-            " pd.goods_id, pd.quantity, pd.price, pd.use_name, " +
+            " pd.goods_id, pd.quantity, pd.price, " +
             " g.goods_name, g.can_name " +
             "FROM purchase_detail pd " +
             "JOIN goods g ON pd.goods_id = g.goods_id " +
@@ -37,7 +37,6 @@ public class PurchaseDetailDao extends Dao {
                     c.setQuantity(rs.getInt("quantity"));
                     c.setPrice(rs.getInt("price"));
                     c.setCan_name(rs.getBoolean("can_name"));
-                    c.setUse_name(rs.getBoolean("use_name")); // ← use_name反映
                     list.add(c);
                 }
             }
@@ -50,7 +49,7 @@ public class PurchaseDetailDao extends Dao {
     public void insert(int purchaseId, Cart cart) throws Exception {
 
         String sql = "INSERT INTO purchase_detail " +
-                     "(purchase_id, goods_id, quantity, price, use_name) " +
+                     "(purchase_id, goods_id, quantity, price) " +
                      "VALUES (?, ?, ?, ?, ?)";
 
         try (Connection con = getConnectionEc();
@@ -60,7 +59,6 @@ public class PurchaseDetailDao extends Dao {
             st.setString(2, cart.getGoods_id());
             st.setInt(3, cart.getQuantity());
             st.setInt(4, cart.getPrice());
-            st.setBoolean(5, cart.isUse_name()); // ← use_name反映
 
             st.executeUpdate();
         }
