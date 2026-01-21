@@ -11,66 +11,87 @@ import bean.PurchaseDetail;
 
 public class PurchaseDetailDao extends Dao {
 
-	public List<Cart> getPurchaseDetailList(String rdId) throws Exception {
+    /** カート画面用：購入履歴表示（use_name追加） */
+    public List<Cart> getPurchaseDetailList(String rdId) throws Exception {
 
-	    List<Cart> list = new ArrayList<>();
+        List<Cart> list = new ArrayList<>();
 
-	    String sql =
-	        "SELECT " +
-	        " pd.goods_id, pd.quantity, pd.price, " +
-	        " g.goods_name, g.can_name " +
-	        "FROM purchase_detail pd " +
-	        "JOIN goods g ON pd.goods_id = g.goods_id " +
-	        "JOIN purchase p ON pd.purchase_id = p.purchase_id " +
-	        "WHERE p.rd_id = ?";
+        String sql =
+            "SELECT " +
+            " pd.goods_id, pd.quantity, pd.price, pd.use_name, " +
+            " g.goods_name, g.can_name " +
+            "FROM purchase_detail pd " +
+            "JOIN goods g ON pd.goods_id = g.goods_id " +
+            "JOIN purchase p ON pd.purchase_id = p.purchase_id " +
+            "WHERE p.rd_id = ?";
 
-	    Connection con = getConnectionEc();
-	    PreparedStatement st = con.prepareStatement(sql);
-	    st.setString(1, rdId);
+        try (Connection con = getConnectionEc();
+             PreparedStatement st = con.prepareStatement(sql)) {
 
-	    ResultSet rs = st.executeQuery();
+            st.setString(1, rdId);
+            try (ResultSet rs = st.executeQuery()) {
+                while (rs.next()) {
+                    Cart c = new Cart();
+                    c.setGoods_id(rs.getString("goods_id"));
+                    c.setGoods_name(rs.getString("goods_name"));
+                    c.setQuantity(rs.getInt("quantity"));
+                    c.setPrice(rs.getInt("price"));
+                    c.setCan_name(rs.getBoolean("can_name"));
+                    c.setUse_name(rs.getBoolean("use_name")); // ← use_name反映
+                    list.add(c);
+                }
+            }
+        }
 
-	    while (rs.next()) {
-	        Cart c = new Cart();
-	        c.setGoods_id(rs.getString("goods_id"));
-	        c.setGoods_name(rs.getString("goods_name"));
-	        c.setQuantity(rs.getInt("quantity"));
-	        c.setPrice(rs.getInt("price"));
-	        c.setCan_name(rs.getBoolean("can_name"));
-	        list.add(c);
-	    }
+        return list;
+    }
 
-	    rs.close();
-	    st.close();
-	    con.close();
+    /** 購入確定時に purchase_detail に登録 */
+    public void insert(int purchaseId, Cart cart) throws Exception {
 
-	    return list;
-	}
+        String sql = "INSERT INTO purchase_detail " +
+                     "(purchase_id, goods_id, quantity, price, use_name) " +
+                     "VALUES (?, ?, ?, ?, ?)";
 
-	public List<PurchaseDetail> findByPurchaseId(String purchaseId) throws Exception {
+        try (Connection con = getConnectionEc();
+             PreparedStatement st = con.prepareStatement(sql)) {
 
-	    List<PurchaseDetail> list = new ArrayList<>();
+            st.setInt(1, purchaseId);
+            st.setString(2, cart.getGoods_id());
+            st.setInt(3, cart.getQuantity());
+            st.setInt(4, cart.getPrice());
+            st.setBoolean(5, cart.isUse_name()); // ← use_name反映
 
-	    String sql = "SELECT d.quantity, d.price, i.item_name "
-	               + "FROM purchase_detail d "
-	               + "JOIN item i ON d.item_id = i.item_id "
-	               + "WHERE d.purchase_id = ?";
+            st.executeUpdate();
+        }
+    }
 
-	    Connection con = getConnectionEc();
-	    PreparedStatement st = con.prepareStatement(sql);
-	    st.setString(1, purchaseId);   // ← String のまま渡す
+    /** 過去購入履歴用（変更なし） */
+    public List<PurchaseDetail> findByPurchaseId(String purchaseId) throws Exception {
 
-	    ResultSet rs = st.executeQuery();
+        List<PurchaseDetail> list = new ArrayList<>();
 
-	    while (rs.next()) {
-	        PurchaseDetail detail = new PurchaseDetail();
-	        detail.setItemName(rs.getString("item_name"));
-	        detail.setQuantity(rs.getInt("quantity"));
-	        detail.setPrice(rs.getInt("price"));
-	        list.add(detail);
-	    }
+        String sql = "SELECT d.quantity, d.price, i.item_name "
+                   + "FROM purchase_detail d "
+                   + "JOIN item i ON d.item_id = i.item_id "
+                   + "WHERE d.purchase_id = ?";
 
-	    return list;
-	}
+        try (Connection con = getConnectionEc();
+             PreparedStatement st = con.prepareStatement(sql)) {
 
+            st.setString(1, purchaseId);
+
+            try (ResultSet rs = st.executeQuery()) {
+                while (rs.next()) {
+                    PurchaseDetail detail = new PurchaseDetail();
+                    detail.setItemName(rs.getString("item_name"));
+                    detail.setQuantity(rs.getInt("quantity"));
+                    detail.setPrice(rs.getInt("price"));
+                    list.add(detail);
+                }
+            }
+        }
+
+        return list;
+    }
 }
