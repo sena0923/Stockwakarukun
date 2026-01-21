@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import bean.Cart;
+import bean.PurchaseDetail;
 
 public class PurchaseDetailDao extends Dao {
 
@@ -42,6 +43,32 @@ public class PurchaseDetailDao extends Dao {
 	    rs.close();
 	    st.close();
 	    con.close();
+
+	    return list;
+	}
+
+	public List<PurchaseDetail> findByPurchaseId(String purchaseId) throws Exception {
+
+	    List<PurchaseDetail> list = new ArrayList<>();
+
+	    String sql = "SELECT d.quantity, d.price, i.item_name "
+	               + "FROM purchase_detail d "
+	               + "JOIN item i ON d.item_id = i.item_id "
+	               + "WHERE d.purchase_id = ?";
+
+	    Connection con = getConnectionEc();
+	    PreparedStatement st = con.prepareStatement(sql);
+	    st.setString(1, purchaseId);   // ← String のまま渡す
+
+	    ResultSet rs = st.executeQuery();
+
+	    while (rs.next()) {
+	        PurchaseDetail detail = new PurchaseDetail();
+	        detail.setItemName(rs.getString("item_name"));
+	        detail.setQuantity(rs.getInt("quantity"));
+	        detail.setPrice(rs.getInt("price"));
+	        list.add(detail);
+	    }
 
 	    return list;
 	}
