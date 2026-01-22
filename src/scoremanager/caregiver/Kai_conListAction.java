@@ -42,6 +42,13 @@ public class Kai_conListAction extends Action{
 		rd = rdDao.get(rd_id);
 		rt = rtDao.get2(rd_id);//入居者IDから親族Beanを取得するDAOを作る
 
+		//入居者に対応する親族が存在しない場合
+        if (rt == null) {
+            req.setAttribute("resident", rd);
+            req.getRequestDispatcher("not_rt.jsp").forward(req, res);
+            return;
+        }
+
 
 		List<Message> list = messageDao.get(rt.getRt_id());
 
