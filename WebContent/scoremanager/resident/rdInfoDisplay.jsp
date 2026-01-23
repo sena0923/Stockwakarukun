@@ -18,7 +18,10 @@
 
 			<h1>アカウント情報</h1>
 
+
 			<div class="controll">
+			<a class="">ログインID：${resident.rd_id}</a>
+			<br>
 			<a class="">入居者名：${resident.name}</a>
 			<br>
 			<a class="">パスワード：${resident.password}</a>

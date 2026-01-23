@@ -17,6 +17,15 @@
 
 			<h1>アカウント変更</h1>
 
+			<c:if test="${not empty errors}">
+				<ul style="color:red;">
+					<c:forEach var="err" items="${errors}">
+						<li>${err.value}</li>
+					</c:forEach>
+				</ul>
+			</c:if>
+
+
 			<label>①コースを選んでください</label>
 
 

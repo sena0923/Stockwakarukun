@@ -1,4 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -13,6 +15,14 @@
 
   <!-- ★ここを JSP のアクションに変更 -->
   <form id="residentForm" action="NyuCreateExecute.action" method="post">
+
+			<c:if test="${not empty errors}">
+				<ul style="color:red;">
+					<c:forEach var="err" items="${errors}">
+						<li>${err.value}</li>
+					</c:forEach>
+				</ul>
+			</c:if>
 
     <!-- コース選択 -->
     <div class="row">
@@ -56,7 +66,7 @@
     </div>
 
     <!-- ログインID -->
-    <label for="login-id">ログインID</label>
+    <label for="login-id">ログインID(携帯番号を入力。" - "は入力しない)</label>
     <input type="text" id="login-id" name="rd_id" pattern="^[0-9]+$"
            value="<%= request.getAttribute("id") != null ? request.getAttribute("id") : "" %>"
            required>
