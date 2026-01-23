@@ -18,8 +18,6 @@ public class PurchaseHistoryAction extends Action {
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse res) throws Exception {
 
-    	int e = 0;
-    	System.out.println("debug:PurchaseHistoryAction:" + ++e);
         HttpSession session = req.getSession();
 
         // 入居者本人 or 親族が選んだ入居者
@@ -29,7 +27,6 @@ public class PurchaseHistoryAction extends Action {
         // rd_id は String のまま扱う
         String residentId = null;
 
-        System.out.println("debug:PurchaseHistoryAction:" + ++e);
 
         if (selected != null) {
             residentId = selected.getRd_id();
@@ -37,7 +34,6 @@ public class PurchaseHistoryAction extends Action {
             residentId = resident.getRd_id();
         }
 
-    	System.out.println("debug:PurchaseHistoryAction:" + ++e);
 
         // rd_id が取れなければ履歴なし
         if (residentId == null) {
@@ -47,14 +43,10 @@ public class PurchaseHistoryAction extends Action {
         }
 
 
-    	System.out.println("debug:PurchaseHistoryAction:" + ++e);
-
-
         // 購入履歴を取得
         PurchaseDao purchaseDao = new PurchaseDao();
         List<Purchase> purchaseList = purchaseDao.findByResident(residentId);
 
-    	System.out.println("debug:PurchaseHistoryAction:" + ++e);
 
 
         // 各購入に購入詳細をセット
@@ -63,9 +55,6 @@ public class PurchaseHistoryAction extends Action {
             List<PurchaseDetail> details = detailDao.findByPurchaseId(p.getPurchaseId());
             p.setDetails(details);
         }
-
-    	System.out.println("debug:PurchaseHistoryAction:" + ++e);
-
 
 
         // JSP に渡す

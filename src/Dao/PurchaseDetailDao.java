@@ -69,7 +69,7 @@ public class PurchaseDetailDao extends Dao {
 
         List<PurchaseDetail> list = new ArrayList<>();
 
-        String sql = "SELECT d.QUANTITY, d.PRICE, g.GOODS_NAME "
+        String sql = "SELECT d.GOODS_ID, d.QUANTITY, d.PRICE, g.GOODS_NAME "
                    + "FROM purchase_detail d "
                    + "JOIN goods g ON d.GOODS_ID = CAST(g.GOODS_ID AS INTEGER) "
                    + "WHERE d.PURCHASE_ID = ?";
@@ -83,6 +83,7 @@ public class PurchaseDetailDao extends Dao {
 
                 while (rs.next()) {
                     PurchaseDetail detail = new PurchaseDetail();
+                    detail.setGoodsId(rs.getString("GOODS_ID"));
                     detail.setItemName(rs.getString("GOODS_NAME"));
                     detail.setQuantity(rs.getInt("QUANTITY"));
                     detail.setPrice(rs.getInt("PRICE"));
@@ -91,8 +92,6 @@ public class PurchaseDetailDao extends Dao {
             }
         }
 
-        System.out.println("PurchaseDetailDao: purchaseId=" + purchaseId
-                           + " / detail size=" + list.size());
 
         return list;
     }

@@ -49,12 +49,21 @@
             </tr>
 
             <c:forEach var="d" items="${p.details}">
-                <tr>
-                    <td>${d.itemName}</td>
-                    <td>${d.quantity}</td>
-                    <td>${d.price}</td>
-                </tr>
-            </c:forEach>
+			    <tr>
+			        <td>${d.itemName}</td>
+			        <td>${d.quantity}</td>
+			        <td>${d.price}</td>
+
+			        <td>
+			            <form action="${pageContext.request.contextPath}/scoremanager/ECsite/AddCartExecute.action" method="post">
+			                <input type="hidden" name="goods_id" value="${d.goodsId}">
+			                <input type="hidden" name="quantity" value="${d.quantity}">
+			                <input type="hidden" name="price" value="${d.price}">
+			                <input type="submit" value="カートに入れる">
+			            </form>
+			        </td>
+			    </tr>
+			</c:forEach>
 
         </table>
 
