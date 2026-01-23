@@ -50,7 +50,7 @@ public class PurchaseDetailDao extends Dao {
 
         String sql = "INSERT INTO purchase_detail " +
                      "(purchase_id, goods_id, quantity, price) " +
-                     "VALUES (?, ?, ?, ?, ?)";
+                     "VALUES (?, ?, ?, ?)";
 
         try (Connection con = getConnectionEc();
              PreparedStatement st = con.prepareStatement(sql)) {
@@ -65,31 +65,37 @@ public class PurchaseDetailDao extends Dao {
     }
 
     /** 過去購入履歴用（変更なし） */
-    public List<PurchaseDetail> findByPurchaseId(String purchaseId) throws Exception {
+    public List<PurchaseDetail> findByPurchaseId(int purchaseId) throws Exception {
 
         List<PurchaseDetail> list = new ArrayList<>();
 
-        String sql = "SELECT d.quantity, d.price, i.item_name "
+        String sql = "SELECT d.QUANTITY, d.PRICE, g.GOODS_NAME "
                    + "FROM purchase_detail d "
-                   + "JOIN item i ON d.item_id = i.item_id "
-                   + "WHERE d.purchase_id = ?";
+                   + "JOIN goods g ON d.GOODS_ID = g.GOODS_ID "
+                   + "WHERE d.PURCHASE_ID = ?";
 
         try (Connection con = getConnectionEc();
              PreparedStatement st = con.prepareStatement(sql)) {
 
-            st.setString(1, purchaseId);
+            st.setInt(1, purchaseId);
 
             try (ResultSet rs = st.executeQuery()) {
+
                 while (rs.next()) {
                     PurchaseDetail detail = new PurchaseDetail();
-                    detail.setItemName(rs.getString("item_name"));
-                    detail.setQuantity(rs.getInt("quantity"));
-                    detail.setPrice(rs.getInt("price"));
+                    detail.setItemName(rs.getString("GOODS_NAME"));
+                    detail.setQuantity(rs.getInt("QUANTITY"));
+                    detail.setPrice(rs.getInt("PRICE"));
                     list.add(detail);
                 }
             }
         }
 
+        System.out.println("PurchaseDetailDao: purchaseId=" + purchaseId
+                           + " / detail size=" + list.size());
+
         return list;
     }
+
+
 }
