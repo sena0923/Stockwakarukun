@@ -171,16 +171,13 @@ button:hover {
 	<div class="back-home">
 	    <c:choose>
 
-
 		    <c:when test="${not empty resident}">
 		        <a href="../../scoremanager/resident/NyuMenu.action">ホームへ戻る</a>
 		    </c:when>
 
-
-		    <c:when test="${not empty selectedResident}">
+			<c:when test="${not empty selectedResident}">
 		        <a href="../../scoremanager/relatives/SinMenu.action">ホームへ戻る</a>
 		    </c:when>
-
 
 		    <c:when test="${not empty relatives}">
 		        <a href="../../scoremanager/relatives/SinMenu.action">ホームへ戻る</a>
