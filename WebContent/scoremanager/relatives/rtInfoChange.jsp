@@ -14,7 +14,7 @@
 	</c:param>
 
 	<c:param name="content">
-		<form class="container" action="SinInformationChangeExecute.action" method="get">
+		<form class="container" action="SinInformationChangeExecute.action" method="get" onsubmit="return checkPasswords();">
 
 			<h1>アカウント変更</h1>
 

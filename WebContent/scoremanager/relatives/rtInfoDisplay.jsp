@@ -28,6 +28,10 @@
 			<br>
 			<a class="">メールアドレス: ${relatives.e_mail}</a>
 			<br>
+
+			<a class="">ログインID: ${relatives.rt_id}</a>
+			<br>
+
 			<a class="">パスワード：${relatives.password}</a>
 	        </div>
 
