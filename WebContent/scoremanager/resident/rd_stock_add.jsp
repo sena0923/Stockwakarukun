@@ -15,7 +15,19 @@
 
 	<c:param name="content">
 		<form class="container" action="Nyu_stockAddExecute.action" method="get">
+			<a class="back" href="#" onclick="history.back()">戻る</a>
+
 			<h1>ストック登録</h1>
+
+			<c:if test="${errors.size()>0}">
+				<div>
+					<ul>
+						<c:forEach var="error" items="${errors}">
+							<li>${error}</li>
+						</c:forEach>
+					</ul>
+				</div>
+			</c:if>
 
 			<div class="controll">
 				<label for="inve_name">ストック名</label>
