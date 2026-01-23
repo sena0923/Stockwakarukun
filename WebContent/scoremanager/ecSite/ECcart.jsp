@@ -1,3 +1,5 @@
+<p>件数：${cartList.size()}</p>
+
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
@@ -107,9 +109,6 @@ button:hover {
 </head>
 <body>
 
-<%@ include file="../../headerEC.jsp" %>
-
-<c:set var="cartList" value="${sessionScope.cartList}" />
 
 <h2>🛒 カートの中身</h2>
 
@@ -132,24 +131,20 @@ button:hover {
             <th>操作</th>
         </tr>
 
-        <c:forEach var="item" items="${cartList}">
-            <tr>
-                <td>${item.goods_name}</td>
-                <td>${item.price}円</td>
+       <c:forEach var="item" items="${cartList}">
 
-                <td>
-                    <c:if test="${item.can_name}">
-                        <form action="SetName.action" method="post">
-                            <input type="hidden" name="goods_id" value="${item.goods_id}">
-                            <label>
-                                <input type="checkbox" name="use_name" value="true"
-                                <c:if test="${item.use_name}">checked</c:if>>
-                                名入れする
-                            </label>
-                            <input type="submit" value="設定">
-                        </form>
-                    </c:if>
-                </td>
+   <td>
+    <c:if test="${item.can_name}">
+        <form action="SetNameExecute.action" method="post">
+            <input type="hidden" name="goods_id" value="${item.goods_id}">
+
+            <input type="text" name="name_text" placeholder="名入れ文字" maxlength="10">
+
+            <input type="submit" value="設定">
+        </form>
+    </c:if>
+</td>
+
 
                 <td>
                     <form action="UpdateCartExecute.action" method="post">
@@ -165,7 +160,6 @@ button:hover {
                         <input type="submit" value="削除">
                     </form>
                 </td>
-            </tr>
         </c:forEach>
     </table>
 
@@ -174,8 +168,29 @@ button:hover {
     <form action="${pageContext.request.contextPath}/scoremanager/ECsite/Confirm.action" method="post">
         <button type="submit">購入へ進む</button>
     </form>
+	<div class="back-home">
+	    <c:choose>
 
+		    <c:when test="${not empty resident}">
+		        <a href="../../scoremanager/resident/NyuMenu.action">ホームへ戻る</a>
+		    </c:when>
+
+			<c:when test="${not empty selectedResident}">
+		        <a href="../../scoremanager/relatives/SinMenu.action">ホームへ戻る</a>
+		    </c:when>
+
+		    <c:when test="${not empty relatives}">
+		        <a href="../../scoremanager/relatives/SinMenu.action">ホームへ戻る</a>
+		    </c:when>
+
+		</c:choose>
+		<!-- 入居者本人ログインを最優先 -->
+		<!-- 親族が入居者を選んで代理操作中 -->
+		<!-- 親族本人ログイン -->
+	</div>
 </c:if>
+
+
 
 </body>
 </html>

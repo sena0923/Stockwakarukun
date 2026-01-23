@@ -39,7 +39,6 @@
 <c:forEach var="p" items="${purchaseList}">
     <div class="purchase-block">
 
-        <p><strong>購入ID：</strong> ${p.purchaseId}</p>
         <p><strong>購入日：</strong> ${p.purchaseDate}</p>
 
         <table>

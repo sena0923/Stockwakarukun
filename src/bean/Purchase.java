@@ -5,15 +5,15 @@ import java.util.List;
 
 public class Purchase {
 
-    private String purchaseId;                 // purchase_id（String）
-    private Timestamp purchaseDate;            // 購入日時
-    private List<PurchaseDetail> details;  // 購入詳細リスト
+    private int purchaseId;                 // ← int に変更
+    private Timestamp purchaseDate;
+    private List<PurchaseDetail> details;
 
-    public String getPurchaseId() {
+    public int getPurchaseId() {
         return purchaseId;
     }
 
-    public void setPurchaseId(String purchaseId) {
+    public void setPurchaseId(int purchaseId) {
         this.purchaseId = purchaseId;
     }
 

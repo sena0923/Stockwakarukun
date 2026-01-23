@@ -25,7 +25,7 @@
 
 
 			        <c:when test="${not empty selectedResident}">
-			            <a href="../../scoremanager/relatives/SinMenu.action">ホームへ</a>
+			            <a href="../../scoremanager/relatives/SinMenu.action">ホーム</a>
 			        </c:when>
 
 			    </c:choose>
