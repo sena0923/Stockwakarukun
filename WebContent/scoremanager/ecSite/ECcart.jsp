@@ -109,7 +109,6 @@ button:hover {
 </head>
 <body>
 
-<%@ include file="../../headerEC.jsp" %>
 
 <h2>🛒 カートの中身</h2>
 
@@ -161,7 +160,6 @@ button:hover {
                         <input type="submit" value="削除">
                     </form>
                 </td>
-            </tr>
         </c:forEach>
     </table>
 
@@ -170,8 +168,32 @@ button:hover {
     <form action="${pageContext.request.contextPath}/scoremanager/ECsite/Confirm.action" method="post">
         <button type="submit">購入へ進む</button>
     </form>
+	<div class="back-home">
+	    <c:choose>
 
+
+		    <c:when test="${not empty resident}">
+		        <a href="../../scoremanager/resident/NyuMenu.action">ホームへ戻る</a>
+		    </c:when>
+
+
+		    <c:when test="${not empty selectedResident}">
+		        <a href="../../scoremanager/relatives/SinMenu.action">ホームへ戻る</a>
+		    </c:when>
+
+
+		    <c:when test="${not empty relatives}">
+		        <a href="../../scoremanager/relatives/SinMenu.action">ホームへ戻る</a>
+		    </c:when>
+
+		</c:choose>
+		<!-- 入居者本人ログインを最優先 -->
+		<!-- 親族が入居者を選んで代理操作中 -->
+		<!-- 親族本人ログイン -->
+	</div>
 </c:if>
+
+
 
 </body>
 </html>
