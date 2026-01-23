@@ -1,3 +1,5 @@
+<p>件数：${cartList.size()}</p>
+
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
@@ -109,8 +111,6 @@ button:hover {
 
 <%@ include file="../../headerEC.jsp" %>
 
-<c:set var="cartList" value="${sessionScope.cartList}" />
-
 <h2>🛒 カートの中身</h2>
 
 <c:if test="${empty cartList}">
@@ -132,24 +132,20 @@ button:hover {
             <th>操作</th>
         </tr>
 
-        <c:forEach var="item" items="${cartList}">
-            <tr>
-                <td>${item.goods_name}</td>
-                <td>${item.price}円</td>
+       <c:forEach var="item" items="${cartList}">
 
-                <td>
-                    <c:if test="${item.can_name}">
-                        <form action="SetName.action" method="post">
-                            <input type="hidden" name="goods_id" value="${item.goods_id}">
-                            <label>
-                                <input type="checkbox" name="use_name" value="true"
-                                <c:if test="${item.use_name}">checked</c:if>>
-                                名入れする
-                            </label>
-                            <input type="submit" value="設定">
-                        </form>
-                    </c:if>
-                </td>
+   <td>
+    <c:if test="${item.can_name}">
+        <form action="SetNameExecute.action" method="post">
+            <input type="hidden" name="goods_id" value="${item.goods_id}">
+
+            <input type="text" name="name_text" placeholder="名入れ文字" maxlength="10">
+
+            <input type="submit" value="設定">
+        </form>
+    </c:if>
+</td>
+
 
                 <td>
                     <form action="UpdateCartExecute.action" method="post">
