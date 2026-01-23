@@ -13,18 +13,9 @@
 	</c:param>
 
 	<c:param name="content">
-		<form class="container" action="NyuChangeExecute.action" method="get">
+		<form class="container" action="NyuChangeExecute.action" method="get" onsubmit="return checkPasswords();">
 
 			<h1>アカウント変更</h1>
-
-			<c:if test="${not empty errors}">
-				<ul style="color:red;">
-					<c:forEach var="err" items="${errors}">
-						<li>${err.value}</li>
-					</c:forEach>
-				</ul>
-			</c:if>
-
 
 			<label>①コースを選んでください</label>
 
@@ -49,6 +40,14 @@
 
         <label>③パスワード(確認用)</label>
         <input type="password" id="passwordConfirm" name="passwordConfirm" required placeholder="もう一度入力">
+
+		<c:if test="${not empty errors}">
+			<ul style="color:red;">
+				<c:forEach var="err" items="${errors}">
+					<li>${err.value}</li>
+				</c:forEach>
+			</ul>
+		</c:if>
 
         <p id="passwordError" style="color: red; display: none;"></p>
 
