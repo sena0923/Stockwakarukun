@@ -71,7 +71,7 @@ public class PurchaseDetailDao extends Dao {
 
         String sql = "SELECT d.QUANTITY, d.PRICE, g.GOODS_NAME "
                    + "FROM purchase_detail d "
-                   + "JOIN goods g ON d.GOODS_ID = g.GOODS_ID "
+                   + "JOIN goods g ON d.GOODS_ID = CAST(g.GOODS_ID AS INTEGER) "
                    + "WHERE d.PURCHASE_ID = ?";
 
         try (Connection con = getConnectionEc();
