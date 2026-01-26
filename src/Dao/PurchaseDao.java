@@ -36,20 +36,22 @@ public class PurchaseDao extends Dao {
 	public List<Purchase> findByResident(String residentId) throws Exception {
 
 	    List<Purchase> list = new ArrayList<>();
-	    Connection con = getConnectionEc();
 
 	    String sql = "SELECT * FROM purchase WHERE rd_id = ? ORDER BY purchase_date DESC";
 
-	    PreparedStatement st = con.prepareStatement(sql);
-	    st.setString(1, residentId);   // ← String のまま渡す
+	    try (Connection con = getConnectionEc();
+	         PreparedStatement st = con.prepareStatement(sql)) {
 
-	    ResultSet rs = st.executeQuery();
+	        st.setString(1, residentId);
 
-	    while (rs.next()) {
-	        Purchase p = new Purchase();
-	        p.setPurchaseId(rs.getInt("purchase_id"));  // ← int で取得
-	        p.setPurchaseDate(rs.getTimestamp("purchase_date"));
-	        list.add(p);
+	        try (ResultSet rs = st.executeQuery()) {
+	            while (rs.next()) {
+	                Purchase p = new Purchase();
+	                p.setPurchaseId(rs.getInt("purchase_id"));
+	                p.setPurchaseDate(rs.getTimestamp("purchase_date"));
+	                list.add(p);
+	            }
+	        }
 	    }
 
 	    return list;
