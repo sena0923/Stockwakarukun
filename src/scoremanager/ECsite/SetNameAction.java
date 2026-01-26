@@ -11,23 +11,35 @@ import tool.Action;
 
 public class SetNameAction extends Action {
 
-	@Override
-	public void execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+    @Override
+    public void execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-	    HttpSession session = request.getSession();
-	    List<Cart> cartList = (List<Cart>) session.getAttribute("cartList");
+        HttpSession session = request.getSession();
+        List<Cart> cartList = (List<Cart>) session.getAttribute("cartList");
 
-	    String goodsId = request.getParameter("goods_id");
+        String goods_id = request.getParameter("goods_id");
+        String can_name = request.getParameter("can_name"); // 入力文字
+
+        for (Cart item : cartList) {
+            if (item.getGoods_id().equals(goods_id)) {
+
+                // 名入れ文字を保存
+                item.setCan_name(can_name);
+
+                // 文字が入っていれば true
+                if (can_name != null && !can_name.isEmpty()) {
+                    item.setNaireFlg(true);
+                } else {
+                    item.setNaireFlg(false);
+                }
+
+                break;
+            }
+        }
 
 
-	    for (Cart item : cartList) {
-	        if (item.getGoods_id().equals(goodsId)) {
-	            break;
-	        }
-	    }
+        session.setAttribute("cartList", cartList);
 
-	    session.setAttribute("cartList", cartList);
-
-	    request.getRequestDispatcher("ECcart.jsp").forward(request, response);
-	}
+        request.getRequestDispatcher("ECcart.jsp").forward(request, response);
+    }
 }

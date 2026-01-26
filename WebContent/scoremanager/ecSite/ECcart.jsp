@@ -1,5 +1,3 @@
-<p>件数：${cartList.size()}</p>
-
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
@@ -131,36 +129,68 @@ button:hover {
             <th>操作</th>
         </tr>
 
-       <c:forEach var="item" items="${cartList}">
+<c:forEach var="item" items="${cartList}">
+    <tr>
+        <!-- 商品名 -->
+        <td>${item.goods_name}</td>
 
-   <td>
-    <c:if test="${item.can_name}">
-        <form action="SetNameExecute.action" method="post">
-            <input type="hidden" name="goods_id" value="${item.goods_id}">
+        <!-- 価格 -->
+        <td>${item.price}円</td>
 
-            <input type="text" name="name_text" placeholder="名入れ文字" maxlength="10">
+ <!-- 名入れ -->
+<td>
 
-            <input type="submit" value="設定">
-        </form>
-    </c:if>
+    <!-- 名入れ可能な商品だけ表示 -->
+
+
+
+
+        <!-- チェックボックス -->
+        <label>
+            <input type="checkbox"
+                   name="naire_${item.goods_id}"
+                   onclick="toggleNameInput('${item.goods_id}')">
+            名入れを希望する
+        </label>
+
+        <br>
+
+        <!-- 名入れ入力（最初は非表示） -->
+        <div id="nameArea_${item.goods_id}" style="display:none;">
+            <form action="SetNameExecute.action" method="post">
+                <input type="hidden" name="goods_id" value="${item.goods_id}">
+                <input type="text" name="name_text"
+                       placeholder="名入れ文字"
+                       maxlength="10">
+                <input type="submit" value="設定">
+            </form>
+        </div>
+
+
+
 </td>
 
 
-                <td>
-                    <form action="UpdateCartExecute.action" method="post">
-                        <input type="hidden" name="goods_id" value="${item.goods_id}">
-                        <input type="number" name="quantity" value="${item.quantity}" min="1">
-                        <input type="submit" value="変更する">
-                    </form>
-                </td>
+        <!-- 数量 -->
+        <td>
+            <form action="UpdateCartExecute.action" method="post">
+                <input type="hidden" name="goods_id" value="${item.goods_id}">
+                <input type="number" name="quantity"
+                       value="${item.quantity}" min="1">
+                <input type="submit" value="変更する">
+            </form>
+        </td>
 
-                <td>
-                    <form action="RemoveCartExecute.action" method="post">
-                        <input type="hidden" name="goods_id" value="${item.goods_id}">
-                        <input type="submit" value="削除">
-                    </form>
-                </td>
-        </c:forEach>
+        <!-- 削除 -->
+        <td>
+            <form action="RemoveCartExecute.action" method="post">
+                <input type="hidden" name="goods_id" value="${item.goods_id}">
+                <input type="submit" value="削除">
+            </form>
+        </td>
+    </tr>
+</c:forEach>
+
     </table>
 
     <p class="total">合計金額：${totalPrice}円</p>
