@@ -18,12 +18,12 @@
   <form id="infoForm" action="SinCreateExecute.action" method="post">
     <!-- ログインID -->
     <label for="rt_id">ログインID</label>
-	<input type="text" id="rt_id" name="rt_id" value="${rt_id}" required>
+	<input type="text" id="rt_id" name="rt_id" value="${rt_id}" pattern="^[0-9]+$" required placeholder="携帯番号を入力。「-」入力不可">
 	<span class="error">${errors.rt_id}</span>
 
     <!-- 入居者ID -->
-    <label for="rd_id">ログインID（入居者）</label>
-	<input type="text" id="rd_id" name="rd_id" value="${rd_id}" required>
+    <label for="rd_id">対応する入居者のログインID</label>
+	<input type="text" id="rd_id" name="rd_id" value="${rd_id}" pattern="^[0-9]+$" required placeholder="入居者の携帯番号を入力。「-」入力不可">
 	<span class="error">${errors.rd_id}</span>
 
     <!-- 名前 -->

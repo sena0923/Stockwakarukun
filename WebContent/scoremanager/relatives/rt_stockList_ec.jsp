@@ -15,6 +15,9 @@
 
 	<c:param name="content">
 		<form class="container">
+		<a class="back-con" href="SinMenu.action">戻る</a>
+
+
 			<h1>ストック管理画面</h1>
 			<h2>${resident.name}さん</h2>
 
@@ -38,7 +41,6 @@
 			</c:forEach>
 			</table>
 
-			<a class = "" href="SinMenu.action">メニュー</a>
 		</form>
 	</c:param>
 </c:import>

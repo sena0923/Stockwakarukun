@@ -15,6 +15,8 @@
 
 	<c:param name="content">
 		<form class="container" action="SinInformationChangeExecute.action" method="get" onsubmit="return checkPasswords();">
+		<a class="back-con" href="SinDisplayExecute.action?rt_id=${relatives.rt_id}">戻る</a>
+
 
 			<h1>アカウント変更</h1>
 
@@ -32,7 +34,6 @@
 
 			<div class="select">
 	            <button class="btn" type="submit">変更</button>
-	            <a href="SinDisplayExecute.action?rt_id=${relatives.rt_id}">キャンセル</a>
 			</div>
 
 	    <script>

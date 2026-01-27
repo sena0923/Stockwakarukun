@@ -22,16 +22,14 @@
 
 
 			<div class="controll">
+			<a class="">ログインID: ${relatives.rt_id}</a>
+			<br>
 			<a class="">名前: ${relatives.name}</a>
 			<br>
 			<a class="">入居者: ${resident.name}</a>
 			<br>
 			<a class="">メールアドレス: ${relatives.e_mail}</a>
 			<br>
-
-			<a class="">ログインID: ${relatives.rt_id}</a>
-			<br>
-
 			<a class="">パスワード：${relatives.password}</a>
 	        </div>
 
