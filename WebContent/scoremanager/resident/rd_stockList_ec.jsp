@@ -14,7 +14,11 @@
 
 	<c:param name="content">
 		<form class="container"  action="Nyu_ECstockUpdate.action"method="get">
+		<a class="back-con" href="NyuMenu.action">戻る</a>
+
+
 			<h1>ストック管理画面</h1>
+
 
 			<div class="tab-container">
 				<a class="type_list non" href="Nyu_stockList.action?rd_id=${resident.rd_id}">個人ストック</a>
@@ -60,7 +64,6 @@
 			<input type="hidden" name="rd_id" value="${resident.rd_id}">
 			<button type="submit" class="update_link">更新</button>
 			<a class ="update_link" href="Nyu_stockAdd.action?rd_id=${resident.rd_id}">ストック登録</a>
-			<a class = "" href="NyuMenu.action">メニュー</a>
 		</form>
 	</c:param>
 </c:import>

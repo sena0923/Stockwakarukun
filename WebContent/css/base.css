@@ -257,7 +257,21 @@ nav a:hover {
 }
 
 
+a.back{
+	display: block;
+	text-align: left;
+	margin: 0;
+	color: #ff8000;
+	text-decoration: none;
+}
 
+a.back-con{
+	display: block;
+	text-align: left;
+	margin: 0;
+	color: #ff8000;
+	text-decoration: none;
+}
 
 /***トップへ戻るボタンここまで***/
 
