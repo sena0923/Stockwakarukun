@@ -57,6 +57,9 @@ body {
 <form action="../ECsite/PurchaseExecute.action" method="post">
     <button type="submit" class="confirm-button">購入確定</button>
 </form>
+<br><br>
+
+<a href="javascript:history.back();">戻る</a>
 
 </body>
 </html>

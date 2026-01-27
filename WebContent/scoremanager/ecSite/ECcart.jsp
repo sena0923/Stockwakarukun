@@ -111,7 +111,28 @@ button:hover {
 <h2>🛒 カートの中身</h2>
 
 <c:if test="${empty cartList}">
-    <p>カートは空です</p>
+    <p>カートは空です</p><br><br>
+
+    <div class="back-home">
+	    <c:choose>
+
+		    <c:when test="${not empty resident}">
+		        <a href="../../scoremanager/ECsite/AllExecute.action">購入画面へ戻る</a>
+		    </c:when>
+
+			<c:when test="${not empty selectedResident}">
+		        <a href="../../scoremanager/ECsite/AllsinExecute.action">購入画面へ戻る</a>
+		    </c:when>
+
+		    <c:when test="${not empty relatives}">
+		        <a href="../../scoremanager/ECsite/AllsinExecute.action">購入画面へ戻る</a>
+		    </c:when>
+
+		</c:choose>
+		<!-- 入居者本人ログインを最優先 -->
+		<!-- 親族が入居者を選んで代理操作中 -->
+		<!-- 親族本人ログイン -->
+	</div>
 </c:if>
 
 <c:if test="${not empty cartList}">
@@ -141,9 +162,6 @@ button:hover {
 <td>
 
     <!-- 名入れ可能な商品だけ表示 -->
-
-
-
 
         <!-- チェックボックス -->
         <label>
@@ -198,19 +216,20 @@ button:hover {
     <form action="${pageContext.request.contextPath}/scoremanager/ECsite/Confirm.action" method="post">
         <button type="submit">購入へ進む</button>
     </form>
+    <br><br>
 	<div class="back-home">
 	    <c:choose>
 
 		    <c:when test="${not empty resident}">
-		        <a href="../../scoremanager/resident/NyuMenu.action">ホームへ戻る</a>
+		        <a href="../../scoremanager/ECsite/AllExecute.action">購入画面へ戻る</a>
 		    </c:when>
 
 			<c:when test="${not empty selectedResident}">
-		        <a href="../../scoremanager/relatives/SinMenu.action">ホームへ戻る</a>
+		        <a href="../../scoremanager/ECsite/AllsinExecute.action">購入画面へ戻る</a>
 		    </c:when>
 
 		    <c:when test="${not empty relatives}">
-		        <a href="../../scoremanager/relatives/SinMenu.action">ホームへ戻る</a>
+		        <a href="../../scoremanager/ECsite/AllsinExecute.action">購入画面へ戻る</a>
 		    </c:when>
 
 		</c:choose>
