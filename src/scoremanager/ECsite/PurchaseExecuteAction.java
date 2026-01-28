@@ -9,12 +9,15 @@ import javax.servlet.http.HttpSession;
 import Dao.GoodsDao;
 import Dao.PurchaseDao;
 import Dao.PurchaseDetailDao;
+import Dao.UserStockDao;
 import bean.Cart;
 import bean.Goods;
 import bean.Resident;
+import bean.UserStock;
 import tool.Action;
 
 public class PurchaseExecuteAction extends Action {
+
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse res) throws Exception {
 
@@ -24,9 +27,9 @@ public class PurchaseExecuteAction extends Action {
         GoodsDao goodsDao = new GoodsDao();
         PurchaseDao purchaseDao = new PurchaseDao();
         PurchaseDetailDao detailDao = new PurchaseDetailDao();
+        UserStockDao stockDao = new UserStockDao();
 
-
-     // 購入対象の入居者（親族が選んだ入居者）
+        // 購入対象の入居者
         Resident selected = (Resident) session.getAttribute("selectedResident");
 
         if (selected == null) {
@@ -35,9 +38,8 @@ public class PurchaseExecuteAction extends Action {
             return;
         }
 
-        // 購入者IDは selectedResident の rd_id
+        // 入居者ID
         String buyerId = selected.getRd_id();
-
 
         // 在庫チェック
         for (Cart c : cartList) {
@@ -55,24 +57,36 @@ public class PurchaseExecuteAction extends Action {
             totalPrice += c.getPrice() * c.getQuantity();
         }
 
-
-	    // 購入情報を保存
-	    int purchaseId = purchaseDao.insert(buyerId, totalPrice);
-
+        // 購入情報を保存
+        int purchaseId = purchaseDao.insert(buyerId, totalPrice);
 
         // 購入詳細を保存
         for (Cart c : cartList) {
             detailDao.insert(purchaseId, c);
         }
 
-        // 在庫更新
+        // 全体在庫を減らす
         for (Cart c : cartList) {
             goodsDao.updateStock(c.getGoods_id(), c.getQuantity());
         }
 
+        // ★ 入居者ストック（user_stock）に反映
+
+        for (Cart c : cartList) {
+
+            UserStock stock = stockDao.find(buyerId, c.getGoods_id());
+
+            if (stock == null) {
+                stockDao.insert(buyerId, c.getGoods_id(), c.getQuantity());
+            } else {
+                int newCount = stock.getQuantity() + c.getQuantity();
+                stockDao.update(buyerId, c.getGoods_id(), newCount);
+            }
+        }
+
+
         // カート削除
         session.removeAttribute("cartList");
-
 
         // 完了画面へ
         req.getRequestDispatcher("../ecSite/Complete.jsp").forward(req, res);
