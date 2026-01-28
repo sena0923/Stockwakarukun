@@ -107,88 +107,104 @@ button:hover {
 </head>
 <body>
 
-
 <h2>🛒 カートの中身</h2>
 
 <c:if test="${empty cartList}">
-    <p>カートは空です</p>
+<p>カートは空です</p><br><br>
+
+    <div class="back-home">
+<c:choose>
+
+		    <c:when test="${not empty resident}">
+<a href="../../scoremanager/ECsite/AllExecute.action">購入画面へ戻る</a>
+</c:when>
+
+			<c:when test="${not empty selectedResident}">
+<a href="../../scoremanager/ECsite/AllsinExecute.action">購入画面へ戻る</a>
+</c:when>
+
+		    <c:when test="${not empty relatives}">
+<a href="../../scoremanager/ECsite/AllsinExecute.action">購入画面へ戻る</a>
+</c:when>
+
+		</c:choose>
+<!-- 入居者本人ログインを最優先 -->
+<!-- 親族が入居者を選んで代理操作中 -->
+<!-- 親族本人ログイン -->
+</div>
 </c:if>
 
 <c:if test="${not empty cartList}">
 
     <c:if test="${not empty error}">
-        <p class="error">${error}</p>
-    </c:if>
+<p class="error">${error}</p>
+</c:if>
 
     <table>
-        <tr>
-            <th>商品名</th>
-            <th>価格</th>
-            <th>名入れ</th>
-            <th>数量</th>
-            <th>操作</th>
-        </tr>
+<tr>
+<th>商品名</th>
+<th>価格</th>
+<th>名入れ</th>
+<th>数量</th>
+<th>操作</th>
+</tr>
 
 <c:forEach var="item" items="${cartList}">
-    <tr>
-        <!-- 商品名 -->
-        <td>${item.goods_name}</td>
+<tr>
+<!-- 商品名 -->
+<td>${item.goods_name}</td>
 
         <!-- 価格 -->
-        <td>${item.price}円</td>
+<td>${item.price}円</td>
 
- <!-- 名入れ -->
+<!-- 名入れ -->
 <td>
 
     <!-- 名入れ可能な商品だけ表示 -->
 
-
-
-
         <!-- チェックボックス -->
-        <label>
-            <input type="checkbox"
+<label>
+<input type="checkbox"
                    name="naire_${item.goods_id}"
                    onclick="toggleNameInput('${item.goods_id}')">
             名入れを希望する
-        </label>
+</label>
 
         <br>
 
         <!-- 名入れ入力（最初は非表示） -->
-        <div id="nameArea_${item.goods_id}" style="display:none;">
-            <form action="SetNameExecute.action" method="post">
-                <input type="hidden" name="goods_id" value="${item.goods_id}">
-                <input type="text" name="name_text"
+<div id="nameArea_${item.goods_id}" style="display:none;">
+<form action="SetNameExecute.action" method="post">
+<input type="hidden" name="goods_id" value="${item.goods_id}">
+<input type="text" name="name_text"
                        placeholder="名入れ文字"
                        maxlength="10">
-                <input type="submit" value="設定">
-            </form>
-        </div>
-
+<input type="submit" value="設定">
+</form>
+</div>
 
 
 </td>
 
 
         <!-- 数量 -->
-        <td>
-            <form action="UpdateCartExecute.action" method="post">
-                <input type="hidden" name="goods_id" value="${item.goods_id}">
-                <input type="number" name="quantity"
+<td>
+<form action="UpdateCartExecute.action" method="post">
+<input type="hidden" name="goods_id" value="${item.goods_id}">
+<input type="number" name="quantity"
                        value="${item.quantity}" min="1">
-                <input type="submit" value="変更する">
-            </form>
-        </td>
+<input type="submit" value="変更する">
+</form>
+</td>
 
         <!-- 削除 -->
-        <td>
-            <form action="RemoveCartExecute.action" method="post">
-                <input type="hidden" name="goods_id" value="${item.goods_id}">
-                <input type="submit" value="削除">
-            </form>
-        </td>
-    </tr>
+<td>
+<form action="RemoveCartExecute.action" method="post">
+<input type="hidden" name="goods_id" value="${item.goods_id}">
+<input type="submit" value="削除">
+</form>
+</td>
+</tr>
 </c:forEach>
 
     </table>
@@ -196,30 +212,30 @@ button:hover {
     <p class="total">合計金額：${totalPrice}円</p>
 
     <form action="${pageContext.request.contextPath}/scoremanager/ECsite/Confirm.action" method="post">
-        <button type="submit">購入へ進む</button>
-    </form>
-	<div class="back-home">
-	    <c:choose>
+<button type="submit">購入へ進む</button>
+</form>
+<br><br>
+<div class="back-home">
+<c:choose>
 
 		    <c:when test="${not empty resident}">
-		        <a href="../../scoremanager/resident/NyuMenu.action">ホームへ戻る</a>
-		    </c:when>
+<a href="../../scoremanager/ECsite/AllExecute.action">購入画面へ戻る</a>
+</c:when>
 
 			<c:when test="${not empty selectedResident}">
-		        <a href="../../scoremanager/relatives/SinMenu.action">ホームへ戻る</a>
-		    </c:when>
+<a href="../../scoremanager/ECsite/AllsinExecute.action">購入画面へ戻る</a>
+</c:when>
 
 		    <c:when test="${not empty relatives}">
-		        <a href="../../scoremanager/relatives/SinMenu.action">ホームへ戻る</a>
-		    </c:when>
+<a href="../../scoremanager/ECsite/AllsinExecute.action">購入画面へ戻る</a>
+</c:when>
 
 		</c:choose>
-		<!-- 入居者本人ログインを最優先 -->
-		<!-- 親族が入居者を選んで代理操作中 -->
-		<!-- 親族本人ログイン -->
-	</div>
+<!-- 入居者本人ログインを最優先 -->
+<!-- 親族が入居者を選んで代理操作中 -->
+<!-- 親族本人ログイン -->
+</div>
 </c:if>
-
 
 
 </body>
