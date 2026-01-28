@@ -70,6 +70,10 @@ public class PurchaseExecuteAction extends Action {
             goodsDao.updateStock(c.getGoods_id(), c.getQuantity());
         }
 
+        /*
+         * sessionのbeanを消しているだけで、DBアクセスがない！
+         * >>> CartDaoを使用してカラムの削除
+         */
         // カート削除
         session.removeAttribute("cartList");
 
