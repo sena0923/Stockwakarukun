@@ -18,6 +18,7 @@ public class CartListExecuteAction extends Action {
 
         CartDao dao = new CartDao();
         List<Cart> cartList = dao.getCartList(rdId);
+
         int totalPrice = dao.getTotalPrice(rdId);
 
         request.setAttribute("cartList", cartList);

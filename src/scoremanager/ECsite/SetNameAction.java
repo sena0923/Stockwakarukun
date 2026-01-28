@@ -14,29 +14,41 @@ public class SetNameAction extends Action {
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
+        request.setCharacterEncoding("UTF-8");
+
         HttpSession session = request.getSession();
         List<Cart> cartList = (List<Cart>) session.getAttribute("cartList");
 
-        String goods_id = request.getParameter("goods_id");
-        String can_name = request.getParameter("can_name"); // 入力文字
+        String goodsId = request.getParameter("goods_id");
+        String naireText = request.getParameter("naire_text");
 
         for (Cart item : cartList) {
-            if (item.getGoods_id().equals(goods_id)) {
+            if (item.getGoods_id().equals(goodsId)) {
+
 
                 // 名入れ文字を保存
-                item.setCan_name(can_name);
 
-                // 文字が入っていれば true
-                if (can_name != null && !can_name.isEmpty()) {
-                    item.setNaireFlg(true);
-                } else {
-                    item.setNaireFlg(false);
-                }
 
+
+
+
+                /*
+                 * 1.テーブルNAIREからidで一件データを抽出
+                 * 2.CAN_NAMEの値をitem.setNaireFlgに代入する
+                 *
+                 */
+
+                // 文字が入っていれば名入れON
+                //２．にif文を持ってくる
+//                if (naireText != null && !naireText.isEmpty()) {
+//                    item.setNaireFlg(true);
+//                } else {
+//                    item.setNaireFlg(false);
+//                }
+////
                 break;
             }
         }
-
 
         session.setAttribute("cartList", cartList);
 

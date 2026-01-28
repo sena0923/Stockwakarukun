@@ -63,12 +63,23 @@ public class AddCartExecuteAction extends Action {
                 return;
             }
 
+            /*
+             * CartListを生成する
+             * >>> CartDaoを使ってDBに書き込む
+             * >>> CartDaoを使ってCartテーブルの情報をbeanに書き込む
+             */
+            Cartlist cartlist = new Cartlist();
+            cartlist.setGoods_id(cartlist.getGoods_id());
+            cartlist.setGoods_id(cartlist.getGoods_id());
+
+
             Cart cart = new Cart();
             cart.setGoods_id(goods.getGoods_id());
             cart.setGoods_name(goods.getGoods_name());
             cart.setPrice(goods.getPrice());
             cart.setQuantity(1);
             cartList.add(cart);
+
         }
 
         session.setAttribute("cartList", cartList);

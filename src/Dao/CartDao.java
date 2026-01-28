@@ -23,7 +23,7 @@ public class CartDao extends Dao {
             ps.setString(4, cart.getCourse_id());
             ps.setInt(5, cart.getQuantity());
             ps.setInt(6, cart.getPrice());
-            ps.setBoolean(7, cart.isCan_name());  // ← 名入れフラグ
+            ps.setInt(7, cart.isCan_name());  // ← 名入れフラグ
             ps.executeUpdate();
         }
     }
@@ -64,7 +64,16 @@ public class CartDao extends Dao {
                     cart.setGoods_name(rs.getString("goods_name"));
                     cart.setQuantity(rs.getInt("quantity"));
                     cart.setPrice(rs.getInt("price"));
-                    cart.setCan_name(rs.getBoolean("can_name"));
+                    cart.setCan_name(rs.getInt("can_name"));
+                    /*
+                     * 名入れできるかどうか
+                     */
+                    cart.setNaireFlg(canNameCheck(cart.getGoods_id()));
+
+                    /* debug */
+                    System.out.println("debug-CartDao-getCartList-goods_id:" + cart.getGoods_id());
+                    System.out.println("debug-CartDao-getCartList-naire_flg:" + cart.isNaireFlg());
+
                     list.add(cart);
                 }
             }
@@ -85,5 +94,34 @@ public class CartDao extends Dao {
             }
         }
         return total;
+    }
+
+    /** 名入れデータ取得 */
+    public boolean canNameCheck(String goodsId) throws Exception {
+
+        boolean result = false;
+
+        String sql = "SELECT CAN_NAME FROM NAIRE WHERE GOODS_ID = ?";
+
+        try (
+            Connection conn = getConnectionEc();
+            PreparedStatement ps = conn.prepareStatement(sql);
+        ) {
+
+            ps.setString(1, goodsId);
+
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                int canName = rs.getInt("CAN_NAME");
+
+                // ★ 1 = 名入れ可
+                if (canName == 1) {
+                    result = true;
+                }
+            }
+        }
+
+        return result;
     }
 }

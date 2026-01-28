@@ -45,7 +45,6 @@
 	        <div class="button-group">
 	            <button class=btn type="submit">登録する</button>
 	            <input type="hidden" name="rd_id" value="${resident.rd_id}">
-	            <a class="logout_link" href="#" onclick="history.back()">戻る</a>
 			</div>
 		</form>
 	</c:param>

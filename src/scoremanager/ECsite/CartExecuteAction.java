@@ -17,6 +17,17 @@ public class CartExecuteAction extends Action {
         HttpSession session = req.getSession();
         List<Cart> cartList = (List<Cart>) session.getAttribute("cartList");
 
+        /*
+         * debug
+         */
+        System.out.println("-----------------------------------------");
+        System.out.println("debug-CartExecuteAction-cartList:");
+        for(Cart c: cartList) {
+        	System.out.println("  goods-id:" + c.getGoods_id());
+        	System.out.println("  naireFlg:" + c.isNaireFlg());
+        }
+        System.out.println("-----------------------------------------");
+
         if (cartList == null) {
             cartList = new ArrayList<>();
         }

@@ -66,10 +66,10 @@
     </div>
 
     <!-- ログインID -->
-    <label for="login-id">ログインID(携帯番号を入力。" - "は入力しない)</label>
+    <label for="login-id">ログインID</label>
     <input type="text" id="login-id" name="rd_id" pattern="^[0-9]+$"
            value="<%= request.getAttribute("id") != null ? request.getAttribute("id") : "" %>"
-           required>
+           required placeholder="携帯番号を入力。「-」入力不可">
     <div id="id-error" class="error-message">
       <%= request.getAttribute("errors") != null && ((java.util.Map)request.getAttribute("errors")).get("1") != null
           ? ((java.util.Map)request.getAttribute("errors")).get("1")

@@ -62,6 +62,7 @@ public class PurchaseDetailDao extends Dao {
 
             st.executeUpdate();
         }
+
     }
 
     /** 過去購入履歴用（変更なし） */

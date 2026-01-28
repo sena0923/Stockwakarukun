@@ -1,4 +1,3 @@
-/** ECサイトのストック表示 **/
 package scoremanager.resident;
 
 import java.util.List;
@@ -7,64 +6,42 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import Dao.GoodsDao;
-import Dao.In_Goods_InventoryDao;
 import Dao.ResidentDao;
+import Dao.UserStockDao;
 import bean.Goods;
-import bean.Ingoodsinventory;
 import bean.Resident;
+import bean.UserStock;
 import tool.Action;
 
-public class Nyu_ECstockListAction extends Action{
+public class Nyu_ECstockListAction extends Action {
 
-	@Override
-	public void execute(HttpServletRequest req, HttpServletResponse res) throws Exception {
+    @Override
+    public void execute(HttpServletRequest req, HttpServletResponse res) throws Exception {
 
-		//ローカル変数の指定
-		String rd_id = "";
-		ResidentDao residentDao = new ResidentDao();
-		Resident resident = new Resident();
-		In_Goods_InventoryDao igDao = new In_Goods_InventoryDao(); //ECサイトで登録したストックDAO
-		Ingoodsinventory ig = new Ingoodsinventory(); //ECサイトで登録したストックのbean
-		GoodsDao goodsDao = new GoodsDao();
-		String goods_id = "";
-		Goods goods = new Goods();
+        // rd_id を取得
+        String rd_id = req.getParameter("rd_id");
 
+        // 入居者情報取得
+        ResidentDao residentDao = new ResidentDao();
+        Resident resident = residentDao.get(rd_id);
 
-		//リクエストパラメーターの取得
-		rd_id = req.getParameter("rd_id");
+        // ECストック取得
+        UserStockDao stockDao = new UserStockDao();
+        List<UserStock> list = stockDao.get(rd_id);
 
-		//DBから入居者Beanを，rd_idを用いて取得
-		resident = residentDao.get(rd_id);
+        // 商品名をセット
+        GoodsDao goodsDao = new GoodsDao();
+        for (UserStock us : list) {
+            Goods goods = goodsDao.get(us.getGoods_id());
+            us.setGoods(goods);
+        }
 
-		//いったんEC連携個人在庫のリストを取得
-		List<Ingoodsinventory> list = igDao.get(rd_id);
+        // JSP に渡す
+        req.setAttribute("rd_id", rd_id);
+        req.setAttribute("resident", resident);
+        req.setAttribute("iiList", list);  // JSP 側は iiList を参照している
 
-		/**取得したEC連携個人在庫の商品IDからEC商品IDと紐づけして
-		 * それぞれの商品名を改めて取得する
-		 */
-		for (Ingoodsinventory r : list){
-			goods_id = r.getGoods_id(); // 個人在庫Beanから商品IDを取得
-			goods = goodsDao.get(goods_id); // 商品情報をDBから取得
-			r.setGoods(goods); // IngoodsinventoryにGoodsをセット
-		}
-
-
-
-		System.out.println(resident.getName());
-
-		for (Ingoodsinventory r : list) {
-			System.out.println(r.getGoods().getGoods_name() + " / " + r.getGoods_inve_count());
-		}
-
-
-		//レスポンス値をセット
-		req.setAttribute("rd_id", rd_id);
-		req.setAttribute("resident", resident);
-		req.setAttribute("iiList", list);
-
-		//JSPへフォワード
-		req.getRequestDispatcher("rd_stockList_ec.jsp").forward(req, res);
-
-
-	}
+        // ECストック表示 JSP へ
+        req.getRequestDispatcher("rd_stockList_ec.jsp").forward(req, res);
+    }
 }

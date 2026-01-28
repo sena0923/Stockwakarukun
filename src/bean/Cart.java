@@ -24,9 +24,11 @@ public class Cart implements Serializable {
     private String goods_name;
 
     /** 名入れの判別 */
-    private String can_name;
+    private int can_name;
+
 
     private boolean naireFlg;
+    private String naireText;
 
 
     // --- Getter / Setter ---
@@ -77,11 +79,11 @@ public class Cart implements Serializable {
         this.goods_name = goods_name;
     }
 
-    public String isCan_name() {
+    public int isCan_name() {
         return can_name;
     }
 
-    public void setCan_name(String can_name) {
+    public void setCan_name(int can_name) {
         this.can_name = can_name;
     }
 
@@ -93,6 +95,11 @@ public class Cart implements Serializable {
         this.naireFlg = naireFlg;
     }
 
+	public void setNaireFlg(String naireText) {
+		// TODO 自動生成されたメソッド・スタブ
+
+	}
 
 
-}
+
+	}
