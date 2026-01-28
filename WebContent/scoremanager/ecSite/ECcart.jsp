@@ -160,28 +160,39 @@ button:hover {
 <!-- 名入れ -->
 <td>
 
-    <!-- 名入れ可能な商品だけ表示 -->
+    <!-- 名入れ項目の表示 -->
+
+        <!-- setNaireFlgを使用してif分岐  -->
+        <!--  ${item.naireFlg}
+        <c:if test="${item.naireFlg}">-->
+
+
 
         <!-- チェックボックス -->
-<label>
-<input type="checkbox"
-                   name="naire_${item.goods_id}"
-                   onclick="toggleNameInput('${item.goods_id}')">
-            名入れを希望する
-</label>
+        <label>
+            <c:if test="${canNameFlg}">
+	    <input type="checkbox" name="can_name" value="1">
+	    名入れを希望する
+</c:if>
+
+        </label>
 
         <br>
 
         <!-- 名入れ入力（最初は非表示） -->
-<div id="nameArea_${item.goods_id}" style="display:none;">
-<form action="SetNameExecute.action" method="post">
-<input type="hidden" name="goods_id" value="${item.goods_id}">
-<input type="text" name="name_text"
+
+
+        <div id="nameArea_${item.goods_id}" style="display:none;">
+            <form action="SetNameExecute.action" method="post">
+                <input type="hidden" name="goods_id" value="${item.goods_id}">
+                <input type="text" name="name_text"
                        placeholder="名入れ文字"
                        maxlength="10">
-<input type="submit" value="設定">
-</form>
-</div>
+                <input type="submit" value="設定">
+            </form>
+        </div>
+        </c:if>
+
 
 
 </td>
