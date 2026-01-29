@@ -39,6 +39,7 @@ public class Goods implements Serializable {
 
 
 
+
 	/**
 	 * ゲッター・セッター
 	 */
