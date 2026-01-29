@@ -69,8 +69,10 @@ public class AddCartExecuteAction extends Action {
              * >>> CartDaoを使ってCartテーブルの情報をbeanに書き込む
              */
             Cartlist cartlist = new Cartlist();
+
             cartlist.setGoods_id(goods.getGoods_id());
             cartlist.setGoods_name(goods.getGoods_name());
+
 
 
             Cart cart = new Cart();
