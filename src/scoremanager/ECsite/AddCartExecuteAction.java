@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import Dao.CartDao;
 import Dao.GoodsDao;
 import bean.Cart;
 import bean.Goods;
@@ -68,10 +69,17 @@ public class AddCartExecuteAction extends Action {
              * >>> CartDaoを使ってDBに書き込む
              * >>> CartDaoを使ってCartテーブルの情報をbeanに書き込む
              */
-            Cartlist cartlist = new Cartlist();
-
-            cartlist.setGoods_id(goods.getGoods_id());
-            cartlist.setGoods_name(goods.getGoods_name());
+            CartDao cartlist = new CartDao();
+            cartlist.setCart_id(cart.getCart_id());
+            cartlist.setRd_id(cart.getRd_id());
+            cartlist.setGoods_id(cart.getGoods_id());
+            cartlist.setGoods_name(cart.getGoods_name());
+            cartlist.setCourse_id(cart.getCourse_id());
+            cartlist.setQuantity(cart.getQuantity());
+            cartlist.setPrice(cart.getPrice());
+            cartlist.setDo_name(cart.getDo_name());
+            cartDao.insert(cart);          // DBに書き込む
+            List<Cart> cartList = cartDao.findByUser(rd_id); // DBから取得
 
 
 
