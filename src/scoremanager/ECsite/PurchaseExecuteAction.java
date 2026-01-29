@@ -70,12 +70,11 @@ public class PurchaseExecuteAction extends Action {
             goodsDao.updateStock(c.getGoods_id(), c.getQuantity());
         }
 
-<<<<<<< HEAD
+
         /*
          * sessionのbeanを消しているだけで、DBアクセスがない！
          * >>> CartDaoを使用してカラムの削除
          */
-=======
         // ★ 入居者ストック（user_stock）に反映
 
         for (Cart c : cartList) {
@@ -91,7 +90,7 @@ public class PurchaseExecuteAction extends Action {
         }
 
 
->>>>>>> branch 'master' of https://github.com/sena0923/Stockwakarukun.git
+
         // カート削除
         session.removeAttribute("cartList");
 
