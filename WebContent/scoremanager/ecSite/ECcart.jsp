@@ -8,99 +8,167 @@
 <title>カート内容</title>
 
 <style>
+
 /* ===== 全体 ===== */
+
 body {
+
     font-family: "Segoe UI", sans-serif;
+
     background-color: #f7f7f7;
+
     text-align: center;
+
 }
 
 /* 見出し */
+
 h2 {
+
     margin: 30px 0 20px;
+
 }
 
 /* ===== テーブル ===== */
+
 table {
+
     margin: 0 auto 20px;
+
     border-collapse: collapse;
+
     background-color: #ffffff;
+
     box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+
     min-width: 700px;
+
 }
 
 th {
+
     background-color: #4CAF50;
+
     color: white;
+
     padding: 12px;
+
 }
 
 td {
+
     padding: 12px;
+
     border-bottom: 1px solid #ddd;
+
 }
 
 /* 商品名を少し目立たせる */
+
 td:first-child {
+
     font-weight: bold;
+
 }
 
 /* ===== フォーム共通 ===== */
+
 input[type="number"] {
+
     width: 60px;
+
     padding: 5px;
+
 }
 
 /* ===== ボタン共通 ===== */
+
 input[type="submit"],
+
 button {
+
     padding: 8px 16px;
+
     font-size: 14px;
+
     border: none;
+
     border-radius: 6px;
+
     cursor: pointer;
+
 }
 
 /* 変更・設定ボタン */
+
 input[value="変更する"],
+
 input[value="設定"] {
+
     background-color: #2196F3;
+
     color: white;
+
 }
 
 /* 削除ボタン */
+
 input[value="削除"] {
+
     background-color: #f44336;
+
     color: white;
+
 }
 
 /* 購入へ進むボタン */
+
 button {
+
     font-size: 18px;
+
     padding: 15px 40px;
+
     background-color: #4CAF50;
+
     color: white;
+
     border-radius: 10px;
+
 }
 
 /* ホバー */
+
 input[type="submit"]:hover,
+
 button:hover {
+
     opacity: 0.85;
+
 }
 
 /* ===== 合計金額 ===== */
+
 .total {
+
     font-size: 20px;
+
     font-weight: bold;
+
     margin: 20px 0;
+
 }
 
 /* エラーメッセージ */
+
 .error {
+
     color: red;
+
     font-weight: bold;
+
     margin-bottom: 10px;
+
 }
 </style>
 
@@ -171,6 +239,7 @@ button:hover {
 <label>
 <c:if test="${canNameFlg}">
 <input type="checkbox" name="can_name" value="1">
+
 	    名入れを希望する
 </c:if>
 
@@ -185,7 +254,9 @@ button:hover {
 <form action="SetNameExecute.action" method="post">
 <input type="hidden" name="goods_id" value="${item.goods_id}">
 <input type="text" name="name_text"
+
                        placeholder="名入れ文字"
+
                        maxlength="10">
 <input type="submit" value="設定">
 </form>
@@ -201,6 +272,7 @@ button:hover {
 <form action="UpdateCartExecute.action" method="post">
 <input type="hidden" name="goods_id" value="${item.goods_id}">
 <input type="number" name="quantity"
+
                        value="${item.quantity}" min="1">
 <input type="submit" value="変更する">
 </form>
@@ -249,3 +321,5 @@ button:hover {
 
 </body>
 </html>
+Oracle Java Technologies | Oracle
+Java can help reduce costs, drive innovation, & improve application services; the #1 programming language for IoT, enterprise architecture, and cloud computing.
