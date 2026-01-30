@@ -7,7 +7,7 @@
     <ul>
       <li><a href="Nyu_stockList.action?rd_id=${resident.rd_id}">ストック管理</a></li>
 	  <li><a href="../ECsite/AllExecute.action">購入</a></li>
-	  <li><a href="./rdInfoDisplay.jsp">ユーザー情報表示</a></li>
+	  <li><a href="./NyuDisplay.action">ユーザー情報表示</a></li>
 	  <li><a href="./rdLogoutCon.jsp">ログアウト</a></li>
     </ul>
   </div>

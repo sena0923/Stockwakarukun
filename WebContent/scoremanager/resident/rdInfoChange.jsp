@@ -14,7 +14,7 @@
 
 	<c:param name="content">
 		<form class="container" action="NyuChangeExecute.action" method="get" onsubmit="return checkPasswords();">
-		<a class="back-con" href="NyuChange.action">戻る</a>
+		<a class="back-con" href="NyuDisplay.action">戻る</a>
 
 			<h1>アカウント変更</h1>
 

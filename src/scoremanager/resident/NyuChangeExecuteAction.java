@@ -43,7 +43,7 @@ public class NyuChangeExecuteAction extends Action {
 		// JSPへフォワード
 		if (errors.isEmpty()) { // エラーメッセージがない場合
 			// 登録完了画面にフォワード
-			req.getRequestDispatcher("NyuChange.action").forward(req, res);
+			req.getRequestDispatcher("NyuDisplay.action").forward(req, res);
 		} else { // エラーメッセージがある場合
 			req.setAttribute("errors", errors);
 			// 登録画面にフォワード
