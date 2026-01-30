@@ -47,7 +47,10 @@
 
     <p id="error-msg" class="error" style="display: none;">⚠ パスワードが一致していません。</p>
 
+	<br><br>
     <button class="btn2" type="submit">登録</button>
+
+	<a href="SinLogin.action" class="center-link">ログイン画面</a>
 
     <style>
     .error {

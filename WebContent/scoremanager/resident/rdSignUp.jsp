@@ -92,8 +92,9 @@
 
 	<div class="select">
 	    <button class="btn2" type="submit">新規登録</button>
-	    <a href="NyuLogin.action">ログイン</a>
 	</div>
+	<br>
+	<a href="NyuLogin.action" class="center-link">ログイン画面</a>
 
   </form>
 
