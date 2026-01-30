@@ -30,7 +30,8 @@
 					<td>
 						<div class="qty">
 							<button type="button" class="down">-</button>
-							<input type="number" name="count_${iiList.inve_name}" value="${iiList.inve_count}" class="qty-input">
+							<input type="number" name="count_${iiList.inve_name}" value="${iiList.inve_count}" class="qty-input"
+							required>
 							<button type="button" class="up">+</button>
 						</div>
 					</td>

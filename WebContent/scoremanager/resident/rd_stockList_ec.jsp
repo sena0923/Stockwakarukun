@@ -48,7 +48,8 @@
 						               value="${stock.quantity}"
 						               class="qty-input"
 						               min="0"
-						               style="<c:if test='${stock.quantity == 0}'>color:red; font-weight:bold;</c:if>">
+						               style="<c:if test='${stock.quantity == 0}'>color:red; font-weight:bold;</c:if>"
+						               required>
 
 						    </div>
 						</td>
