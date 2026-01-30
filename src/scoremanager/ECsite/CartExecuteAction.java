@@ -17,6 +17,12 @@ public class CartExecuteAction extends Action {
         HttpSession session = req.getSession();
         List<Cart> cartList = (List<Cart>) session.getAttribute("cartList");
 
+
+        if (cartList == null) {
+            cartList = new ArrayList<>();
+        }
+
+
         /*
          * debug
          */
@@ -28,9 +34,6 @@ public class CartExecuteAction extends Action {
         }
         System.out.println("-----------------------------------------");
 
-        if (cartList == null) {
-            cartList = new ArrayList<>();
-        }
 
         // 合計金額計算
         int totalPrice = 0;

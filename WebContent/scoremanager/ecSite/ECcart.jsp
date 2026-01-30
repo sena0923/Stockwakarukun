@@ -231,8 +231,8 @@ button:hover {
     <!-- 名入れ項目の表示 -->
 
         <!-- setNaireFlgを使用してif分岐  -->
-<!--  ${item.naireFlg}
-<c:if test="${item.naireFlg}">-->
+<!--  ${item.naireFlg}-->
+<c:if test="${item.naireFlg}">
 
 
         <!-- チェックボックス -->
@@ -250,17 +250,20 @@ button:hover {
         <!-- 名入れ入力（最初は非表示） -->
 
 
-        <div id="nameArea_${item.goods_id}" style="display:none;">
+<!-- <div id="nameArea_${item.goods_id}" style="display:none;">  -->
 <form action="SetNameExecute.action" method="post">
 <input type="hidden" name="goods_id" value="${item.goods_id}">
+
+
 <input type="text" name="name_text"
 
-                       placeholder="名入れ文字"
+              placeholder="名入れ文字"
 
-                       maxlength="10">
-<input type="submit" value="設定">
+            maxlength="10">
+			<input type="submit" value="設定">
+
 </form>
-</div>
+<!--  </div> -->
 </c:if>
 
 

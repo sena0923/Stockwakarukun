@@ -40,12 +40,13 @@ public class CartDao extends Dao {
     }
 
     /** 商品削除（ユーザーごとに安全に削除） */
-    public void removeItem(String courseId, String rdId) throws Exception {
-        String sql = "DELETE FROM cart WHERE course_id = ? AND rd_id = ?";
+    public void removeItem(String goodsId, String rdId) throws Exception {
+        String sql = "DELETE FROM cart WHERE goods_id = ? AND rd_id = ?";
         try (Connection conn = getConnectionEc();PreparedStatement ps = conn.prepareStatement(sql)) {
-            ps.setString(1, courseId);
+            ps.setString(1, goodsId);
             ps.setString(2, rdId);
             ps.executeUpdate();
+
         }
     }
 

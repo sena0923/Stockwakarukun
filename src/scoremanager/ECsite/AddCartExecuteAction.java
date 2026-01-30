@@ -109,8 +109,8 @@ public class AddCartExecuteAction extends Action {
 
 
 
-
-
+        // 削除
+        session.removeAttribute("cartList");
 
         session.setAttribute("cartList", cartList);
 
