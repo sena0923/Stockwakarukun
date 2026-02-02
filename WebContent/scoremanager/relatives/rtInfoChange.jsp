@@ -23,7 +23,6 @@
 			<label>①メールアドレス</label>
 			<input type="email" id="e_mail" name="e_mail" placeholder="example@example.com" required>
 
-
 	        <label>②パスワード</label>
 	        <input type="password" id="password" name="password"  required>
 

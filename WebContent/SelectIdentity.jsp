@@ -20,7 +20,6 @@
 </main>
 </div>
 
-</div>
 
 
 <style>
@@ -63,7 +62,9 @@ html, body {
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     text-align: center;
     width: 100%;
-	box-sizing: border-box; <%-- paddingを含めてワイド100％を計算 --%>
+    max-width: 100%; /* ← ここを追加・調整 */
+    margin: 0 auto;
+   	box-sizing: border-box; <%-- paddingを含めてワイド100％を計算 --%>
 }
 
   .button-row {
@@ -76,11 +77,11 @@ html, body {
 
   .btn1 {
     display: inline-block;
-    padding: 15px 40px;
+    padding: 30px 70px; /* ← 少し大きめに */
     background-color: #4CAF50;
     color: white;
     text-decoration: none;
-    font-size: 1.2rem;
+    font-size: 2.0rem;
     border-radius: 8px;
     transition: background-color 0.3s;
   }
