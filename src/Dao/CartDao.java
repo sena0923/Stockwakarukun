@@ -125,4 +125,24 @@ public class CartDao extends Dao {
 
         return result;
     }
+
+    /** 名入れ情報更新（+100円込み） */
+    public void updateNaire(String goodsId, String rdId, int price, int canName) throws Exception {
+
+        String sql =
+            "UPDATE cart SET price = ?, can_name = ? WHERE goods_id = ? AND rd_id = ?";
+
+        try (
+            Connection conn = getConnectionEc();
+            PreparedStatement ps = conn.prepareStatement(sql)
+        ) {
+            ps.setInt(1, price);
+            ps.setInt(2, canName);
+            ps.setString(3, goodsId);
+            ps.setString(4, rdId);
+
+            ps.executeUpdate();
+        }
+    }
+
 }

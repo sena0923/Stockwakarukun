@@ -19,39 +19,47 @@ public class SetNameAction extends Action {
         HttpSession session = request.getSession();
         List<Cart> cartList = (List<Cart>) session.getAttribute("cartList");
 
+        // 対象商品
         String goodsId = request.getParameter("goods_id");
-        String naireText = request.getParameter("naire_text");
+
+        // 名入れ単価
+        final int NAIRE_PRICE = 300;
+
+        // チェックボックス状態
+        boolean canName = request.getParameter("can_name") != null;
 
         for (Cart item : cartList) {
+
             if (item.getGoods_id().equals(goodsId)) {
 
+                int quantity = item.getQuantity();
 
-                // 名入れ文字を保存
+                // 名入れON（まだ未設定）
+                if (canName && item.isCan_name() == 0) {
+                    item.setPrice(item.getPrice() + NAIRE_PRICE);
+                    item.setCan_name(1);
+                }
 
-
-
-
-
-                /*
-                 * 1.テーブルNAIREからidで一件データを抽出
-                 * 2.CAN_NAMEの値をitem.setNaireFlgに代入する
-                 *
-                 */
-
-                // 文字が入っていれば名入れON
-                //２．にif文を持ってくる
-//                if (naireText != null && !naireText.isEmpty()) {
-//                    item.setNaireFlg(true);
-//                } else {
-//                    item.setNaireFlg(false);
-//                }
-////
-                break;
+                // 名入れOFF（すでに設定済み）
+                if (!canName && item.isCan_name() == 1) {
+                    item.setPrice(item.getPrice() - NAIRE_PRICE);
+                    item.setCan_name(0);
+                }
             }
         }
 
-        session.setAttribute("cartList", cartList);
+        // 合計金額を再計算
+        int totalPrice = 0;
+        for (Cart c : cartList) {
+            totalPrice += c.getPrice() * c.getQuantity();
+        }
 
-        request.getRequestDispatcher("ECcart.jsp").forward(request, response);
+        // セッション＆リクエスト更新
+        session.setAttribute("cartList", cartList);
+        request.setAttribute("totalPrice", totalPrice);
+
+        // ★ Confirmには行かず、カート画面へ戻す
+        request.getRequestDispatcher("/scoremanager/ecSite/ECcart.jsp")
+               .forward(request, response);
     }
 }

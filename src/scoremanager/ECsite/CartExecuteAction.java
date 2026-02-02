@@ -37,13 +37,19 @@ public class CartExecuteAction extends Action {
 
         // 合計金額計算
         int totalPrice = 0;
+
         for (Cart c : cartList) {
-            totalPrice += c.getPrice() * c.getQuantity();
+
+            int price = c.getPrice();      // 1個あたりの価格（名入れ100円込み）
+            int quantity = c.getQuantity();
+
+            totalPrice += price * quantity;
         }
 
         req.setAttribute("cartList", cartList);
         req.setAttribute("totalPrice", totalPrice);
 
         req.getRequestDispatcher("/scoremanager/ecSite/ECcart.jsp").forward(req, res);
+
     }
 }

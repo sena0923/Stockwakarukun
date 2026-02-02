@@ -9,29 +9,32 @@
 
 <style>
 body {
-    text-align: center;   /* 全体を中央寄せ */
+    text-align: center;
 }
 
-/* 商品名 */
 .goods-name {
     font-size: 18px;
     font-weight: bold;
 }
 
-/* 数字（数量・金額） */
 .number {
     font-size: 17px;
     font-weight: bold;
 }
 
-/* 購入確定ボタン */
+.total {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
 .confirm-button {
     font-size: 20px;
     padding: 15px 40px;
-    background-color: #4CAF50; /* 緑色 */
+    background-color: #4CAF50;
     color: white;
     border: none;
-    border-radius: 10px;      /* 角丸 */
+    border-radius: 10px;
     cursor: pointer;
 }
 
@@ -39,8 +42,8 @@ body {
     opacity: 0.8;
 }
 </style>
-
 </head>
+
 <body>
 
 <h2>購入内容の確認</h2>
@@ -49,16 +52,21 @@ body {
     <p>
         <span class="goods-name">${cart.goods_name}</span>
         × <span class="number">${cart.quantity}</span>
-        ＝ <span class="number">${cart.price * cart.quantity}</span>円
+        ＝ <span class="number">
+            ${cart.price * cart.quantity}
+          </span>円
     </p>
 </c:forEach>
 
+<p class="total">
+合計金額：¥${totalPrice}
+</p>
 
 <form action="../ECsite/PurchaseExecute.action" method="post">
     <button type="submit" class="confirm-button">購入確定</button>
 </form>
-<br><br>
 
+<br><br>
 <a href="javascript:history.back();">戻る</a>
 
 </body>

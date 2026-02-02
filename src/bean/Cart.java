@@ -100,6 +100,18 @@ public class Cart implements Serializable {
 
 	}
 
+	private int can_name1;
+
+	public int getCan_name() {
+	    return can_name;
+	}
+
+	public void setCan_name1(int can_name) {
+	    this.can_name = can_name;
+	}
+
+
+
 
 
 	}
