@@ -4,20 +4,22 @@
 
 
 <div class="Gradation_1">
-
 <main>
-<form class="container">
-	<a>ストックわかる君</a>
-	<h1>あなたの立場を選択</h1>
+<div class="container">
 
-<form class="container">
+  <p class="title-logo">ストックわかる君</p>
+  <h1>あなたの立場を選択</h1>
+
   <div class="button-row">
     <a href="caregiver/KaiLogin.action" class="btn1">介護士</a>
     <a href="resident/NyuLogin.action" class="btn1">入居者</a>
-    <a href="relatives/SinLogin.action" class="btn1">親族</a>
+    <a href="relatives/SinLogin.action" class="btn1">親　族</a>
   </div>
-</form>
+
+</div>
 </main>
+</div>
+
 </div>
 
 
@@ -65,10 +67,11 @@ html, body {
 }
 
   .button-row {
-    display: flex;
-    gap: 30px;
-    flex-wrap: wrap;
-    justify-content: center;
+	  display: flex;
+	  flex-direction: column;
+	  gap: 30px;
+	  justify-content: center;
+	  align-items: center;      /* 中央揃え */
   }
 
   .btn1 {
@@ -90,4 +93,5 @@ html, body {
     .button-row {
       gap: 15px;
     }
+  }
 </style>

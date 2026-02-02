@@ -52,8 +52,9 @@
 
         <div class="select">
             <button class="btn" type="submit">新規登録</button>
-            <a href="KaiLogin.action">ログイン</a>
         </div>
+        <br>
+        <a href="KaiLogin.action">ログインへ戻る</a>
 
 		</form>
 	</c:param>

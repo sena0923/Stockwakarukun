@@ -5,10 +5,10 @@
 <main>
   <div class="logout-container">
     <h1>ログアウトしますか？</h1>
-    <div class="logout-buttons">
-      <a href="./rdLogout.jsp" class="btn yes">はい</a>
-      <a class="btn" href="#" onclick="history.back()">いいえ</a>
-    </div>
+		<div class="logout-buttons">
+		  <a href="./rdLogout.jsp" class="btn yes">はい</a>
+		  <a class="btn no" href="#" onclick="history.back()">いいえ</a>
+		</div>
   </div>
 </main>
 
@@ -50,6 +50,18 @@
     background-color: #4CAF50;
     transition: background-color 0.3s, transform 0.2s;
   }
+
+  .btn.yes {
+  background-color: #4CAF50; /* 緑（はい） */
+}
+
+.btn.no {
+  background-color: #10e10e10e; /* 赤（いいえ） */
+}
+
+.btn.no:hover {
+  background-color: #d32f2f;
+}
 
   .btn:hover {
     background-color: #45a049;
