@@ -144,9 +144,11 @@ function calcTotal() {
 <form action="UpdateCartExecute.action" method="post">
 <input type="hidden" name="goods_id" value="${item.goods_id}">
 <input type="number"
+       name="quantity"
        value="${item.quantity}"
        min="1"
        oninput="updateQuantity(this); calcTotal();">
+
 <input type="submit" value="変更する">
 </form>
 </td>

@@ -48,19 +48,30 @@ body {
 
 <h2>購入内容の確認</h2>
 
+<c:set var="NAIRE_PRICE" value="300" />
+
 <c:forEach var="cart" items="${sessionScope.cartList}">
+    <c:set var="itemTotal" value="${cart.price * cart.quantity}" />
+
+    <!-- ★ 名入れがある場合 -->
+    <c:if test="${cart.can_name == 1}">
+        <c:set var="itemTotal"
+               value="${itemTotal + (NAIRE_PRICE * cart.quantity)}" />
+    </c:if>
+
     <p>
         <span class="goods-name">${cart.goods_name}</span>
         × <span class="number">${cart.quantity}</span>
-        ＝ <span class="number">
-            ${cart.price * cart.quantity}
-          </span>円
+        ＝ <span class="number">${itemTotal}</span>円
     </p>
 </c:forEach>
+
 
 <p class="total">
 合計金額：¥${totalPrice}
 </p>
+
+
 
 <form action="../ECsite/PurchaseExecute.action" method="post">
     <button type="submit" class="confirm-button">購入確定</button>

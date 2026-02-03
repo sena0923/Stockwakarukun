@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import Dao.CartDao;   // ★ 追加
 import Dao.GoodsDao;
 import Dao.PurchaseDao;
 import Dao.PurchaseDetailDao;
@@ -28,6 +29,7 @@ public class PurchaseExecuteAction extends Action {
         PurchaseDao purchaseDao = new PurchaseDao();
         PurchaseDetailDao detailDao = new PurchaseDetailDao();
         UserStockDao stockDao = new UserStockDao();
+        CartDao cartDao = new CartDao();   // ★ 追加
 
         // 購入対象の入居者
         Resident selected = (Resident) session.getAttribute("selectedResident");
@@ -38,7 +40,6 @@ public class PurchaseExecuteAction extends Action {
             return;
         }
 
-        // 入居者ID
         String buyerId = selected.getRd_id();
 
         // 在庫チェック
@@ -51,34 +52,27 @@ public class PurchaseExecuteAction extends Action {
             }
         }
 
-        // 合計金額
+        // 合計金額（名入れ・数量込み）
         int totalPrice = 0;
         for (Cart c : cartList) {
             totalPrice += c.getPrice() * c.getQuantity();
         }
 
-        // 購入情報を保存
+        // 購入情報保存
         int purchaseId = purchaseDao.insert(buyerId, totalPrice);
 
-        // 購入詳細を保存
+        // 購入詳細保存
         for (Cart c : cartList) {
             detailDao.insert(purchaseId, c);
         }
 
-        // 全体在庫を減らす
+        // 在庫更新
         for (Cart c : cartList) {
             goodsDao.updateStock(c.getGoods_id(), c.getQuantity());
         }
 
-
-        /*
-         * sessionのbeanを消しているだけで、DBアクセスがない！
-         * >>> CartDaoを使用してカラムの削除
-         */
-        // ★ 入居者ストック（user_stock）に反映
-
+        // 入居者ストック更新
         for (Cart c : cartList) {
-
             UserStock stock = stockDao.find(buyerId, c.getGoods_id());
 
             if (stock == null) {
@@ -89,9 +83,13 @@ public class PurchaseExecuteAction extends Action {
             }
         }
 
+        // ★★★ ここが最重要 ★★★
+        // DBのカートを削除
+        for (Cart c : cartList) {
+            cartDao.removeItem(c.getGoods_id(), buyerId);
+        }
 
-
-        // カート削除
+        // sessionのカートも削除
         session.removeAttribute("cartList");
 
         // 完了画面へ
