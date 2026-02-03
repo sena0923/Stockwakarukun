@@ -11,29 +11,34 @@ import tool.Action;
 
 public class ConfirmAction extends Action {
 
+    /*private static final int NAIRE_PRICE = 300;*/
+
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse res) throws Exception {
 
         HttpSession session = req.getSession();
         List<Cart> cartList = (List<Cart>) session.getAttribute("cartList");
 
+        if (cartList == null || cartList.isEmpty()) {
+            req.setAttribute("error", "カートが空です");
+            req.getRequestDispatcher("ECcart.jsp").forward(req, res);
+            return;
+        }
+
         int totalPrice = 0;
-        final int NAIRE_PRICE = 300;
 
         for (Cart c : cartList) {
             int itemTotal = c.getPrice() * c.getQuantity();
 
-            if (c.getCan_name() == 1) {
+            // ★ 名入れ加算
+            /*if (c.getCan_name() == 1) {
                 itemTotal += NAIRE_PRICE * c.getQuantity();
-            }
+            }*/
 
             totalPrice += itemTotal;
         }
 
         req.setAttribute("totalPrice", totalPrice);
-
-        req.setAttribute("totalPrice", totalPrice);
-
         req.getRequestDispatcher("../ecSite/Confirm.jsp").forward(req, res);
     }
 }

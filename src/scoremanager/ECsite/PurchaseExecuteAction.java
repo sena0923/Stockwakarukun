@@ -6,7 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import Dao.CartDao;   // ★ 追加
+import Dao.CartDao;
 import Dao.GoodsDao;
 import Dao.PurchaseDao;
 import Dao.PurchaseDetailDao;
@@ -19,6 +19,8 @@ import tool.Action;
 
 public class PurchaseExecuteAction extends Action {
 
+    private static final int NAIRE_PRICE = 300; // ★ 名入れ料金
+
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse res) throws Exception {
 
@@ -29,7 +31,7 @@ public class PurchaseExecuteAction extends Action {
         PurchaseDao purchaseDao = new PurchaseDao();
         PurchaseDetailDao detailDao = new PurchaseDetailDao();
         UserStockDao stockDao = new UserStockDao();
-        CartDao cartDao = new CartDao();   // ★ 追加
+        CartDao cartDao = new CartDao();
 
         // 購入対象の入居者
         Resident selected = (Resident) session.getAttribute("selectedResident");
@@ -52,10 +54,18 @@ public class PurchaseExecuteAction extends Action {
             }
         }
 
-        // 合計金額（名入れ・数量込み）
+        // ★ 合計金額（名入れ・数量込み）
         int totalPrice = 0;
         for (Cart c : cartList) {
-            totalPrice += c.getPrice() * c.getQuantity();
+
+            int itemTotal = c.getPrice() * c.getQuantity();
+
+            // ★ 名入れあり
+            if (c.getCan_name() == 1) {
+                itemTotal += NAIRE_PRICE * c.getQuantity();
+            }
+
+            totalPrice += itemTotal;
         }
 
         // 購入情報保存
@@ -83,16 +93,15 @@ public class PurchaseExecuteAction extends Action {
             }
         }
 
-        // ★★★ ここが最重要 ★★★
-        // DBのカートを削除
+        // ★ DBカート削除
         for (Cart c : cartList) {
             cartDao.removeItem(c.getGoods_id(), buyerId);
         }
 
-        // sessionのカートも削除
+        // sessionカート削除
         session.removeAttribute("cartList");
 
-        // 完了画面へ
+        // 完了画面
         req.getRequestDispatcher("../ecSite/Complete.jsp").forward(req, res);
     }
 }

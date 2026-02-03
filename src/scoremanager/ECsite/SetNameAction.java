@@ -1,4 +1,4 @@
-package scoremanager.ECsite;
+/*package scoremanager.ECsite;
 
 import java.util.List;
 
@@ -43,4 +43,4 @@ public class SetNameAction extends Action {
         session.setAttribute("cartList", cartList);
         res.sendRedirect(req.getContextPath() + "/scoremanager/ECsite/CartExecute.action");
     }
-}
+}*/
