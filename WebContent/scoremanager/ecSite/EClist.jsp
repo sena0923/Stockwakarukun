@@ -8,10 +8,11 @@
 <title>EC商品一覧</title>
 
 <style>
-#popupMessage { /* ★追加 */
+#popupMessage {
     position: fixed;
     top: 20px;
-    right: 20px;
+    left: 50%;
+    transform: translateX(-50%);
     background: #4CAF50;
     color: white;
     padding: 12px 20px;
@@ -19,6 +20,7 @@
     display: none;
     z-index: 9999;
 }
+
 .ec-page ul {
     list-style: none;
     display: flex;
@@ -69,13 +71,14 @@
 
     /* ポップアップ位置調整 */
     #popupMessage {
-        right: 50%;
-        transform: translateX(50%);
-        top: 10px;
-        width: 80%;
-        text-align: center;
-        font-size: 16px;
-    }
+    left: 50%;
+    transform: translateX(-50%);
+    top: 10px;
+    width: 80%;
+    text-align: center;
+    font-size: 16px;
+	}
+
 }
 
 }
