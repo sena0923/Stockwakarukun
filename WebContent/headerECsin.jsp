@@ -37,6 +37,7 @@
             <li><a href="../../scoremanager/ECsite/ColdsinExecute.action">防寒用具</a></li>
             <li><a href="../../scoremanager/ECsite/EquipmentsinExecute.action">備品・日用品</a></li>
             <li><a href="../../scoremanager/ECsite/EntertainmentsinExecute.action">娯楽</a></li>
+            <li><a href="../../scoremanager/ECsite/NairesinExecute.action">名入れ</a></li>
         </ul>
     </nav>
 </header>
