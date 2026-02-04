@@ -15,7 +15,7 @@ public class CartDao extends Dao {
     /** カートに商品を追加 */
     public void addItem(Cart cart) throws Exception {
 
-    	String sql = "INSERT INTO cart(rd_id, goods_id, goods_name, course_id, quantity, price, can_name) VALUES(?,?,?,?,?,?,?)";
+    	String sql = "INSERT INTO cart(rd_id, goods_id, goods_name, course_id, quantity, price) VALUES(?,?,?,?,?,?)";
         try (Connection conn = getConnectionEc();PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setString(1, cart.getRd_id());
             ps.setString(2, cart.getGoods_id());
@@ -23,7 +23,7 @@ public class CartDao extends Dao {
             ps.setString(4, cart.getCourse_id());
             ps.setInt(5, cart.getQuantity());
             ps.setInt(6, cart.getPrice());
-            ps.setInt(7, cart.isCan_name());  // ← 名入れフラグ
+            /*ps.setInt(7, cart.isCan_name()); */// ← 名入れフラグ
             ps.executeUpdate();
         }
     }
@@ -53,7 +53,7 @@ public class CartDao extends Dao {
     /** カート一覧取得（入居者IDごと） */
     public List<Cart> getCartList(String rdId) throws Exception {
         List<Cart> list = new ArrayList<>();
-        String sql = "SELECT course_id, rd_id, goods_id, goods_name, quantity, price, can_name FROM cart WHERE rd_id = ?";
+        String sql = "SELECT course_id, rd_id, goods_id, goods_name, quantity, price FROM cart WHERE rd_id = ?";
         try (Connection conn = getConnectionEc();PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setString(1, rdId);
             try (ResultSet rs = ps.executeQuery()) {
@@ -65,15 +65,15 @@ public class CartDao extends Dao {
                     cart.setGoods_name(rs.getString("goods_name"));
                     cart.setQuantity(rs.getInt("quantity"));
                     cart.setPrice(rs.getInt("price"));
-                    cart.setCan_name(rs.getInt("can_name"));
+                    /*cart.setCan_name(rs.getInt("can_name"));
                     /*
                      * 名入れできるかどうか
                      */
-                    cart.setNaireFlg(canNameCheck(cart.getGoods_id()));
+                    /*cart.setNaireFlg(canNameCheck(cart.getGoods_id()));
 
                     /* debug */
                     System.out.println("debug-CartDao-getCartList-goods_id:" + cart.getGoods_id());
-                    System.out.println("debug-CartDao-getCartList-naire_flg:" + cart.isNaireFlg());
+                    /*System.out.println("debug-CartDao-getCartList-naire_flg:" + cart.isNaireFlg());*/
 
                     list.add(cart);
                 }
@@ -98,7 +98,7 @@ public class CartDao extends Dao {
     }
 
     /** 名入れデータ取得 */
-    public boolean canNameCheck(String goodsId) throws Exception {
+    /*public boolean canNameCheck(String goodsId) throws Exception {
 
         boolean result = false;
 
@@ -124,7 +124,7 @@ public class CartDao extends Dao {
         }
 
         return result;
-    }
+    }*/
 
     /** 名入れ情報更新（+100円込み） */
     public void updateNaire(String goodsId, String rdId, int price, int canName) throws Exception {
