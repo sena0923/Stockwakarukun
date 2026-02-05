@@ -17,7 +17,8 @@
 
 	<c:param name="content">
 	<div class="container">
-		  <h1>入居者：${resident.name}さん　親族：${relatives.name}さん</h1>
+		  <h1>入居者：${resident.name}さん</h1>
+		  <h1>親族：${relatives.name}さん</h1>
 		  <h2>送信完了しました</h2>
 			<div>
 				<a class="logout_link" href="Kai_conList.action?rd_id=${resident.rd_id }">通知一覧へ</a>
