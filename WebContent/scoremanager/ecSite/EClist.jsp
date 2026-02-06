@@ -86,17 +86,21 @@
 
 <!-- ★ 横向きチェック（ここに追加） -->
 <script>
-function checkOrientation() {
+document.addEventListener("DOMContentLoaded", function() {
+
+    // スマホのみ
     if (window.innerWidth < 768) {
+
+        // 縦向きだけ
         if (window.innerHeight > window.innerWidth) {
             alert("横向きでご利用ください");
         }
-    }
-}
 
-document.addEventListener("DOMContentLoaded", checkOrientation);
-window.addEventListener("resize", checkOrientation);
+    }
+
+});
 </script>
+
 
 </head>
 
