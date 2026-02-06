@@ -22,7 +22,7 @@
       <span></span>
     <nav id="nav">
       <a href="Nyu_stockList.action?rd_id=${resident.rd_id}">ストック管理</a>
-      <a href="../ecSite/EClist.jsp">ECサイト</a>
+      <a href="../../scoremanager/ECSite/AllExecute.action">ECサイト</a>
       <a href="rdInfoDisplay.jsp">マイページ</a>
       <a href="rdLogoutCon.jsp">ログアウト</a>
     </nav>
