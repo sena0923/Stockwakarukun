@@ -131,9 +131,6 @@ document.addEventListener("DOMContentLoaded", function() {
     setTimeout(() => popup.style.display = "none", 2000);
 });
 
-if (window.innerWidth < 768) {
-    alert("横向きでご利用ください");
-}
 </script>
 
 <c:remove var="cartAdded" scope="session" />
