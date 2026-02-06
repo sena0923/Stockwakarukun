@@ -27,7 +27,7 @@ public class AddCartExecuteAction extends Action {
         HttpSession session = req.getSession();
         List<Cart> cartList = (List<Cart>) session.getAttribute("cartList");
 	    // ★ 入居者本人なら自動で selectedResident をセット
-	    Resident r = (Resident) req.getSession().getAttribute("resident");
+        Resident r = (Resident) req.getSession().getAttribute("selectedResident");
 	    if (r != null) {
 	        req.getSession().setAttribute("selectedResident", r);
 	    }

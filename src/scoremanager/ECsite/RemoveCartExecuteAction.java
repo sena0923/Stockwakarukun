@@ -18,7 +18,7 @@ public class RemoveCartExecuteAction extends Action {
         String goodsId = req.getParameter("goods_id");
 
         HttpSession session = req.getSession();
-        Resident r = (Resident) req.getSession().getAttribute("resident");
+        Resident r = (Resident) req.getSession().getAttribute("selectedResident");
         List<Cart> cartList = (List<Cart>) session.getAttribute("cartList");
 
         if (cartList != null) {
