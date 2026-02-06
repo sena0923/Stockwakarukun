@@ -81,6 +81,15 @@
         text-align: center;
         font-size: 16px;
     }
+
+    #rotateWarning {
+    display: none;
+    background-color: #ffdddd;
+    color: red;
+    font-weight: bold;
+    text-align: center;
+    padding: 10px;
+}
 }
 </style>
 
@@ -104,6 +113,11 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 <body>
+
+<div id="rotateWarning">
+    横向きでご利用ください
+</div>
+
 
 <%@ include file="../../headerEC.jsp" %>
 
@@ -171,6 +185,21 @@ if (window.innerWidth <= 768) {
         });
     });
 }
+</script>
+
+<script>
+function checkOrientation() {
+    const warning = document.getElementById("rotateWarning");
+
+    if (window.innerWidth < 768 && window.innerHeight > window.innerWidth) {
+        warning.style.display = "block";
+    } else {
+        warning.style.display = "none";
+    }
+}
+
+document.addEventListener("DOMContentLoaded", checkOrientation);
+window.addEventListener("resize", checkOrientation);
 </script>
 
 </body>
