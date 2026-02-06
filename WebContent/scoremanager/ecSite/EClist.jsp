@@ -88,18 +88,16 @@
 <script>
 document.addEventListener("DOMContentLoaded", function() {
 
-    // スマホのみ
-    if (window.innerWidth < 768) {
+    if (sessionStorage.getItem("orientationChecked")) return;
 
-        // 縦向きだけ
-        if (window.innerHeight > window.innerWidth) {
-            alert("横向きでご利用ください");
-        }
-
+    if (window.innerWidth < 768 && window.innerHeight > window.innerWidth) {
+        alert("横向きでご利用ください");
+        sessionStorage.setItem("orientationChecked", "true");
     }
 
 });
 </script>
+
 
 
 </head>
