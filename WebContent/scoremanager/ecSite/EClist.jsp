@@ -92,28 +92,8 @@
 }
 }
 </style>
-
-<!-- ★ 横向きチェック（ここに追加） -->
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-
-    if (sessionStorage.getItem("orientationChecked")) return;
-
-    if (window.innerWidth < 768 && window.innerHeight > window.innerWidth) {
-        alert("横向きでご利用ください");
-        sessionStorage.setItem("orientationChecked", "true");
-    }
-
-});
-</script>
-
-
-
 </head>
-
-
 <body>
-
 <div id="rotateWarning">
     横向きでご利用ください
 </div>
