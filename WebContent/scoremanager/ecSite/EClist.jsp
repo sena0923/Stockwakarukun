@@ -86,17 +86,16 @@
 
 <!-- ★ 横向きチェック（ここに追加） -->
 <script>
-document.addEventListener("DOMContentLoaded", function() {
-
+function checkOrientation() {
     if (window.innerWidth < 768) {
-
-        if (window.matchMedia("(orientation: portrait)").matches) {
-            alert("ここから先は横向きでご利用ください");
+        if (window.innerHeight > window.innerWidth) {
+            alert("横向きでご利用ください");
         }
-
     }
+}
 
-});
+document.addEventListener("DOMContentLoaded", checkOrientation);
+window.addEventListener("resize", checkOrientation);
 </script>
 
 </head>
