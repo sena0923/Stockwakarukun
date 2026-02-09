@@ -16,6 +16,16 @@ public class WashExecuteAction extends Action {
 
         List<Goods> goodsList = goodsDao.getGoodsByCategory("001");
 
+        /* debug print */
+        System.out.println("---------------------");
+        System.out.println("WashinExcecuteAction");
+        for(Goods g: goodsList) {
+        	System.out.println("Category_id" + g.getCategory_id());
+        	System.out.println("Goods_id" + g.getGoods_id());
+        	System.out.println("Goods_name" + g.getGoods_name());
+        }
+        System.out.println("---------------------");
+
         req.setAttribute("goodsList", goodsList);
         req.getRequestDispatcher("../ecSite/EClist.jsp")
         	.forward(req, res);

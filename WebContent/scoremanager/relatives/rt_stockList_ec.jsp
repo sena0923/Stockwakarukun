@@ -30,13 +30,13 @@
 				<tr>
 					<th>ストック名</th>
 					<th>在庫数</th>
-					<th>最終更新日</th>
+					<%--<th>最終更新日</th> --%>
 				</tr>
 			<c:forEach var="iiList" items ="${iiList}">
 				<tr>
 					<td>${iiList.goods.goods_name}</td>
-					<td>${iiList.goods_inve_count}</td>
-					<td><fmt:formatDate value="${iiList.purchase_date}" pattern="yyyy-MM-dd" /></td>
+					<td>${iiList.quantity}</td>
+					<%--<td><fmt:formatDate value="${iiList.purchase_date}" pattern="yyyy-MM-dd" /></td> --%>
 				</tr>
 			</c:forEach>
 			</table>
