@@ -5,6 +5,7 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>EC商品一覧</title>
 
 <style>
@@ -28,119 +29,155 @@
     gap: 20px;
     padding: 0;
 }
+
 .ec-page li {
     border: 1px solid #ccc;
     padding: 10px;
     width: 220px;
     text-align: center;
+}
 
 /* =========================
-   スマホ用CSS（768px以下）
+   スマホ用（768px以下）
 ========================= */
 @media screen and (max-width: 768px) {
 
-    /* 商品一覧を縦並びに */
     .ec-page ul {
         flex-direction: column;
         align-items: center;
         gap: 15px;
     }
 
-    /* 商品カードを画面幅いっぱいに */
     .ec-page li {
         width: 90%;
         padding: 15px;
         font-size: 16px;
     }
 
-    /* 商品画像を少し大きく */
     .ec-page img {
         width: 180px;
         height: 180px;
         object-fit: contain;
     }
 
-    /* カートボタンを大きく */
-    .ec-page input[type="submit"] {
+    .ec-page button {
         width: 100%;
-        padding: 12px;
+        padding: 14px;
         font-size: 18px;
         margin-top: 10px;
         border-radius: 6px;
+        touch-action: manipulation;   /* ★スマホ用 */
+        pointer-events: auto;         /* ★タップ確実化 */
     }
 
-    /* ポップアップ位置調整 */
+    .ec-page form {
+        position: relative;
+        z-index: 10;                  /* ★ヘッダー被り対策 */
+    }
+
     #popupMessage {
-    left: 50%;
-    transform: translateX(-50%);
-    top: 10px;
-    width: 80%;
+        top: 10px;
+        width: 80%;
+        text-align: center;
+        font-size: 16px;
+    }
+
+    #rotateWarning {
+    display: none;
+    background-color: #ffdddd;
+    color: red;
+    font-weight: bold;
     text-align: center;
-    font-size: 16px;
-	}
-
+    padding: 10px;
 }
-
 }
 </style>
 </head>
-
 <body>
+<div id="rotateWarning">
+    横向きでご利用ください
+</div>
+
 
 <%@ include file="../../headerEC.jsp" %>
 
-<!-- ★追加：ポップアップメッセージ -->
 <div id="popupMessage">カートに追加されました</div>
 
-<!-- ★追加：cartAdded があるときだけポップアップ表示 -->
 <c:if test="${not empty sessionScope.cartAdded}">
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const popup = document.getElementById("popupMessage");
-            popup.style.display = "block";
-            setTimeout(() => popup.style.display = "none", 2000);
-        });
-    </script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const popup = document.getElementById("popupMessage");
+    popup.style.display = "block";
+    setTimeout(() => popup.style.display = "none", 2000);
+});
 
-    <!-- ★追加：一度表示したら削除 -->
-    <c:remove var="cartAdded" scope="session" />
+</script>
+
+<c:remove var="cartAdded" scope="session" />
 </c:if>
 
 <div class="ec-page">
 <ul>
 
 <c:forEach var="goods" items="${goodsList}">
-    <li>
+<li>
 
-        <img
-            src="${pageContext.request.contextPath}${goods.image_path}"
-            width="150"
-            height="150"
-            onerror="this.onerror=null; this.src='${pageContext.request.contextPath}/images/noimage.png';"
-            alt="商品画像">
+<img
+    src="${pageContext.request.contextPath}${goods.image_path}"
+    width="150"
+    height="150"
+    onerror="this.onerror=null; this.src='${pageContext.request.contextPath}/images/noimage.png';"
+    alt="商品画像">
 
-        <div>商品名：${goods.goods_name}</div>
-        <div>価格：${goods.price}円</div>
-        <div>在庫：${goods.stock}</div>
+<div>商品名：${goods.goods_name}</div>
+<div>価格：${goods.price}円</div>
+<div>在庫：${goods.stock}</div>
 
-        <c:choose>
-            <c:when test="${goods.stock > 0}">
-                <form action="${pageContext.request.contextPath}/scoremanager/ECsite/AddCartExecute.action" method="post">
-                    <input type="hidden" name="goods_id" value="${goods.goods_id}">
-                    <input type="hidden" name="quantity" value="1">
-                    <input type="hidden" name="price" value="${goods.price}">
-                    <input type="submit" value="カートに入れる">
-                </form>
-            </c:when>
-            <c:otherwise>
-                <span style="color:red; font-weight:bold;">在庫なし</span>
-            </c:otherwise>
-        </c:choose>
-    </li>
+<c:choose>
+<c:when test="${goods.stock > 0}">
+<form action="${pageContext.request.contextPath}/scoremanager/ECsite/AddCartExecute.action" method="post">
+    <input type="hidden" name="goods_id" value="${goods.goods_id}">
+    <input type="hidden" name="quantity" value="1">
+    <input type="hidden" name="price" value="${goods.price}">
+    <button type="submit">カートに入れる</button>
+</form>
+</c:when>
+<c:otherwise>
+<span style="color:red; font-weight:bold;">在庫なし</span>
+</c:otherwise>
+</c:choose>
+
+</li>
 </c:forEach>
 
 </ul>
 </div>
+
+<!-- ★スマホのみ強制submit補助 -->
+<script>
+if (window.innerWidth <= 768) {
+    document.querySelectorAll(".ec-page form").forEach(form => {
+        form.addEventListener("touchend", function() {
+            form.submit();
+        });
+    });
+}
+</script>
+
+<script>
+function checkOrientation() {
+    const warning = document.getElementById("rotateWarning");
+
+    if (window.innerWidth < 768 && window.innerHeight > window.innerWidth) {
+        warning.style.display = "block";
+    } else {
+        warning.style.display = "none";
+    }
+}
+
+document.addEventListener("DOMContentLoaded", checkOrientation);
+window.addEventListener("resize", checkOrientation);
+</script>
 
 </body>
 </html>

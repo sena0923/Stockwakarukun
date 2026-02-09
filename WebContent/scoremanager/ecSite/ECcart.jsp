@@ -77,6 +77,68 @@ input[type="submit"]:hover, button:hover {
     font-weight: bold;
     margin-bottom: 20px;
 }
+/* =========================
+   スマホ完全カード化（確実版）
+========================= */
+@media screen and (max-width: 768px) {
+
+    table {
+        display: block;
+        width: 100%;
+        min-width: 0 !important;
+        box-shadow: none;
+    }
+
+    thead {
+        display: none;
+    }
+
+    table tr {
+        display: block;
+        margin-bottom: 15px;
+        background: #ffffff;
+        padding: 15px;
+        border-radius: 12px;
+        box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    }
+
+    table td {
+        display: block;
+        border: none;
+        padding: 6px 0;
+        text-align: left;
+    }
+
+    table td:nth-child(1)::before {
+        content: "商品名：";
+        font-weight: bold;
+    }
+
+    table td:nth-child(2)::before {
+        content: "価格：";
+        font-weight: bold;
+    }
+
+    table td:nth-child(3)::before {
+        content: "数量：";
+        font-weight: bold;
+    }
+
+    table td:nth-child(4)::before {
+        content: "操作：";
+        font-weight: bold;
+    }
+
+    input[type="submit"],
+    button {
+        width: 100%;
+        margin-top: 8px;
+        padding: 12px;
+        font-size: 16px;
+    }
+
+}
+
 </style>
 
 <script>
