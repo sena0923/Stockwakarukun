@@ -118,7 +118,7 @@ public class Message_choiceDao extends Dao {
 
 	        // choise_num
 	        int choiceNum = message_choice.getChoise_num();
-	        if (choiceNum != 1 && choiceNum != 2) {
+	        if (choiceNum != 1 && choiceNum != 2 && choiceNum != 3) {
 	            throw new Exception("不正な返信形式です: " + choiceNum);
 	        }
 	        statement.setInt(2, choiceNum);
