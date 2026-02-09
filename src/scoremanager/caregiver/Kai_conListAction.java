@@ -71,7 +71,10 @@ public class Kai_conListAction extends Action{
 
 
 		// 日付の降順にソート
-		list.sort(Comparator.comparing(Message::getDa_ti).reversed());
+		list.sort(Comparator
+				.comparing(Message::getDa_ti,Comparator.reverseOrder())
+				.thenComparing(Message::getMe_id, Comparator.reverseOrder())
+				);
 
 
 		req.setAttribute("resident", rd);
